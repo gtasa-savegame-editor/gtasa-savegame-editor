@@ -7,8 +7,8 @@ import javax.swing.JSeparator;
 
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
-import nl.paulinternet.gtasaveedit.model.VariableFloat;
-import nl.paulinternet.gtasaveedit.model.VariableIntegerImpl;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableFloat;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.ValueButton;

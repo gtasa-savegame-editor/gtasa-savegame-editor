@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.model.link;
 
-import nl.paulinternet.gtasaveedit.model.SavegameData;
-import nl.paulinternet.gtasaveedit.model.VariableBooleanImpl;
+import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableBooleanImpl;
 
 public class LinkBoolean implements Link
 {

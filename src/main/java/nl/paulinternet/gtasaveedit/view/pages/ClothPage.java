@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import nl.paulinternet.gtasaveedit.model.Cloth;
 import nl.paulinternet.gtasaveedit.model.Clothes;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Variable;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variable;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothButton;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothCheckBox;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;

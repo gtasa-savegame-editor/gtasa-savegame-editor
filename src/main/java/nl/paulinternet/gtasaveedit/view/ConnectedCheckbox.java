@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view;
 
-import nl.paulinternet.gtasaveedit.model.VariableBoolean;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableBoolean;
 import nl.paulinternet.gtasaveedit.view.swing.PCheckBox;
 
 public class ConnectedCheckbox extends PCheckBox

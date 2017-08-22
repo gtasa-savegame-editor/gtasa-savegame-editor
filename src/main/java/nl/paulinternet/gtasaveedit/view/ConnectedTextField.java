@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view;
 
 import java.awt.Color;
 
-import nl.paulinternet.gtasaveedit.model.InvalidValueException;
+import nl.paulinternet.gtasaveedit.model.exceptions.InvalidValueException;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
 import nl.paulinternet.gtasaveedit.view.swing.PTextField;
 

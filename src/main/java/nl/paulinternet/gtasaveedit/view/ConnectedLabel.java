@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view;
 
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.model.VariableInteger;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableInteger;
 
 public class ConnectedLabel extends JLabel
 {

@@ -6,7 +6,7 @@ import javax.swing.SwingConstants;
 
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
-import nl.paulinternet.gtasaveedit.model.Variables;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variables;
 import nl.paulinternet.gtasaveedit.view.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.FullHealthButton;
 import nl.paulinternet.gtasaveedit.view.ValueButton;

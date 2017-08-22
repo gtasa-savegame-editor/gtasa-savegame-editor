@@ -2,11 +2,11 @@ package nl.paulinternet.gtasaveedit.view;
 
 import nl.paulinternet.gtasaveedit.model.Event;
 import nl.paulinternet.gtasaveedit.model.EventHandler;
-import nl.paulinternet.gtasaveedit.model.InvalidValueException;
+import nl.paulinternet.gtasaveedit.model.exceptions.InvalidValueException;
 import nl.paulinternet.gtasaveedit.model.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
-import nl.paulinternet.gtasaveedit.model.VariableBoolean;
-import nl.paulinternet.gtasaveedit.model.VariableInteger;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableBoolean;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableInteger;
 
 public class SelectableItemVariable implements TextFieldInterface, VariableBoolean, VariableInteger
 {

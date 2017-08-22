@@ -1,5 +1,8 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableBoolean;
+
 public class RoadblockVariable implements VariableBoolean
 {
 	public static final int SAN_FIERRO = 0, LAS_VENTURAS = 1;
@@ -44,7 +47,11 @@ public class RoadblockVariable implements VariableBoolean
 			onChange.report();
 		}
 	}
-	
+
+
+	/**
+	 * @deprecated
+	 */
 	public void updateValue () {
 
 		if (Savegame.getData() != null) {

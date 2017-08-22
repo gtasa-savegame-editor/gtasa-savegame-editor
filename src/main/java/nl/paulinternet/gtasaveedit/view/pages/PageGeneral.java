@@ -3,7 +3,7 @@ package nl.paulinternet.gtasaveedit.view.pages;
 import javax.swing.JLabel;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Variables;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variables;
 import nl.paulinternet.gtasaveedit.view.ConnectedCheckbox;
 import nl.paulinternet.gtasaveedit.view.ConnectedComboBox;
 import nl.paulinternet.gtasaveedit.view.ConnectedRadioButtons;

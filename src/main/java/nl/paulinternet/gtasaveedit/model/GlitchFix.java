@@ -1,5 +1,8 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
+import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
+
 import java.io.DataInputStream;
 
 public class GlitchFix

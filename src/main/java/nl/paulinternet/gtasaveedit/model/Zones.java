@@ -13,7 +13,7 @@ public class Zones
 	}
 
 	static {
-		zones = new ArrayList<Zone>(378);
+		zones = new ArrayList<>(378);
 		zones.add(new Zone(0, 10, 11, 601, 589));
 		zones.add(new Zone(83, 314, 387, 297, 213));
 		zones.add(new Zone(91, 189, 250, 422, 138));

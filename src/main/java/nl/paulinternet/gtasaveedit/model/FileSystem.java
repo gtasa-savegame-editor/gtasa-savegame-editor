@@ -1,5 +1,8 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.steam.SteamConfigNode;
+import nl.paulinternet.gtasaveedit.model.steam.SteamConfigReader;
+
 import java.io.File;
 
 import javax.swing.filechooser.FileSystemView;
@@ -24,7 +27,7 @@ public class FileSystem
 				dllLoaded = true;
 			}
 		}
-		catch (Throwable e) {}
+		catch (Throwable ignored) {}
 	}
 	
 	public static final File detectedSaDir = detectSanAndreasDirectory();
@@ -130,7 +133,7 @@ public class FileSystem
 	
 	public static File getDefaultSavegameDirectory () {
 		if (MAC) {
-			return new File(System.getProperty("user.home"), "Library/Application Support/Grand Theft Auto - San Andreas/p_drive/Documents/GTA San Andreas User Files");
+			return new File(System.getProperty("user.home"), "/Documents/Rockstar Games/GTA San Andreas User Files");
 		}
 		else {
 			return new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "GTA San Andreas User Files");

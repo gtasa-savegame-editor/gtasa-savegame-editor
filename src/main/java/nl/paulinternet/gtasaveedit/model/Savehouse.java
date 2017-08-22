@@ -65,7 +65,10 @@ public class Savehouse
 		houses.add(new Savehouse(17, 0, -1, 2022.2886f, 996.0208f, 11.5915f, false));
 		houses = Collections.unmodifiableList(houses);
 	}
-	
+
+	/**
+	 * @deprecated
+	 */
 	public static List<Savehouse> getHouses () {
 		return houses;
 	}

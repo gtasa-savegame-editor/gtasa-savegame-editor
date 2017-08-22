@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view;
 
 import java.util.List;
 
-import nl.paulinternet.gtasaveedit.model.VariableIntegerImpl;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 
 public class PickupCollectButton extends PButton

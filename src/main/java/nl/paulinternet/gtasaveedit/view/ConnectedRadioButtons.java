@@ -10,7 +10,7 @@ import javax.swing.JRadioButton;
 
 import nl.paulinternet.gtasaveedit.model.Event;
 import nl.paulinternet.gtasaveedit.model.EventHandler;
-import nl.paulinternet.gtasaveedit.model.VariableInteger;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableInteger;
 
 public class ConnectedRadioButtons
 {

@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,8 +31,8 @@ public class ArchiveReader
 		// Read entries
 		int n = Integer.reverseBytes(file.readInt());
 		
-		map = new HashMap<String, ArchiveEntry>(n);
-		files = new ArrayList<String>(n);
+		map = new HashMap<>(n);
+		files = new ArrayList<>(n);
 
 		byte[] data = new byte[24];
 		
@@ -40,6 +42,7 @@ public class ArchiveReader
 			
 			file.readFully(data);
 			int p;
+			//noinspection StatementWithEmptyBody
 			for (p=0; p<data.length && data[p] != 0; p++);
 			String name = new String(data, 0, p);
 			
@@ -62,6 +65,6 @@ public class ArchiveReader
 		try {
 			file.close();
 		}
-		catch (IOException e) {}
+		catch (IOException ignored) {}
 	}
 }

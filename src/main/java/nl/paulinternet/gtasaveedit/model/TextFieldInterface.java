@@ -1,12 +1,14 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.exceptions.InvalidValueException;
+
 public interface TextFieldInterface
 {
-	public String getText ();
-	public void setText (String text) throws InvalidValueException;
-	public String getDefaultText ();
-	public String getAllowedCharacters ();
-	public int getMaximumLength ();
-	public Event onChange ();
-	public boolean isEnabled ();
+	String getText();
+	void setText(String text) throws InvalidValueException;
+	String getDefaultText();
+	String getAllowedCharacters();
+	int getMaximumLength();
+	Event onChange();
+	boolean isEnabled();
 }

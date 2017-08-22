@@ -16,7 +16,7 @@ import nl.paulinternet.gtasaveedit.model.Event;
 import nl.paulinternet.gtasaveedit.model.EventHandler;
 import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Savegame;
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 
 public class MenuBar extends JMenuBar
 {

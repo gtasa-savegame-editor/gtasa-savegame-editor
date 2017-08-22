@@ -14,12 +14,12 @@ public class ByteSequence
 	private int length;
 	
 	public ByteSequence () {
-		array = new ArrayList<ByteArray>();
+		array = new ArrayList<>();
 		length = 0;
 	}
 
 	public ByteSequence (byte[] data) {
-		array = new ArrayList<ByteArray>();
+		array = new ArrayList<>();
 		array.add(new ByteArray(data));
 		length = data.length;
 	}
@@ -62,7 +62,10 @@ public class ByteSequence
 		// Return
 		return data;
 	}
-	
+
+	/**
+	 * @deprecated
+	 */
 	public byte getByte (int pos) {
 		// Check arguments
 		if (pos < 0 || pos >= length) throw new IndexOutOfBoundsException();

@@ -47,7 +47,7 @@ public class Saveplace
 	
 	static
 	{
-		places = new ArrayList<Saveplace>(37);
+		places = new ArrayList<>(37);
 		int i = 0;
 		places.add(new Saveplace(i++, 13, -1, 105, 563));
 		places.add(new Saveplace(i++, 14, -1, 398, 312));
@@ -85,7 +85,7 @@ public class Saveplace
 		places.add(new Saveplace(i++, 5, 204, 389, 361));
 		places.add(new Saveplace(i++, 5, 205, 534, 293));
 		places.add(new Saveplace(i++, 5, 210, 330, 321));
-		places.add(new Saveplace(i++, 5, 218, 165, 464));
+		places.add(new Saveplace(i, 5, 218, 165, 464));
 		places = Collections.unmodifiableList(places);
 	}
 	

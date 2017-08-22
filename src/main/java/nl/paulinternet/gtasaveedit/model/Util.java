@@ -22,6 +22,7 @@ public class Util
 
 	public static String getString (byte[] data) {
 		int i;
+		//noinspection StatementWithEmptyBody
 		for (i=0; i<data.length && data[i] != 0; i++);
 		return new String(data, 0, i);
 	}

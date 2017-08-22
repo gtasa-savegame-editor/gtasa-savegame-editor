@@ -7,7 +7,7 @@ import java.util.List;
 
 import nl.paulinternet.gtasaveedit.model.Event;
 import nl.paulinternet.gtasaveedit.model.EventHandler;
-import nl.paulinternet.gtasaveedit.model.VariableIntegerImpl;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
 
 public class ConnectedComboBox extends PComboBox

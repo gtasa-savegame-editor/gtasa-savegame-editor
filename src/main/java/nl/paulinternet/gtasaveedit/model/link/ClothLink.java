@@ -2,8 +2,8 @@ package nl.paulinternet.gtasaveedit.model.link;
 
 import nl.paulinternet.gtasaveedit.model.Cloth;
 import nl.paulinternet.gtasaveedit.model.Clothes;
-import nl.paulinternet.gtasaveedit.model.FileFormatException;
-import nl.paulinternet.gtasaveedit.model.SavegameData;
+import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
+import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
 
 public class ClothLink implements Link
 {

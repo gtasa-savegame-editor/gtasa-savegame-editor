@@ -1,5 +1,10 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
+import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variable;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variables;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +25,7 @@ public class Model
 
 	static {
 		// Quick load
-		quickLoad = new ArrayList<QuickLoad>(9);
+		quickLoad = new ArrayList<>(9);
 		quickLoad.add(null);
 		for (int i=1; i<=8; i++) {
 			quickLoad.add(new QuickLoad(i));
@@ -52,8 +57,7 @@ public class Model
 				if (FileSystem.getPlayerImageFile() != null)
 					archive = new ArchiveReader(FileSystem.getPlayerImageFile());
 			}
-			catch (FileFormatException e) {}
-			catch (IOException e) {}
+			catch (FileFormatException | IOException ignored) {}
 		}
 
 		playerImg.setValue(archive);

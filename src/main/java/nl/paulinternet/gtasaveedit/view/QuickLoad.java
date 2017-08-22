@@ -6,9 +6,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import nl.paulinternet.gtasaveedit.model.ErrorMessageException;
+import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Savegame;
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 
 public class QuickLoad extends PMenuItem

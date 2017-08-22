@@ -1,5 +1,9 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variable;
+
 import java.io.RandomAccessFile;
 
 public class QuickLoad extends Variable<String>
@@ -32,7 +36,7 @@ public class QuickLoad extends Variable<String>
 			try {
 				file.close();
 			}
-			catch (Exception e) {}
+			catch (Exception ignored) {}
 		}
 		
 		// Set the value
@@ -41,6 +45,7 @@ public class QuickLoad extends Variable<String>
 		}
 		else {
 			int i;
+			//noinspection StatementWithEmptyBody
 			for (i=0; i<data.length && data[i] != 0; i++);
 			String text = new String(data, 0, i).replace(']', '*').replace('(', '[').replace(')', ']');
 			setValue(text);

@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
+
 public class Pickup
 {
 	private int pos;

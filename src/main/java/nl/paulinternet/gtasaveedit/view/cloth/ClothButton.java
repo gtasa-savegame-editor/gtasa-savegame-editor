@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view.cloth;
 
 import nl.paulinternet.gtasaveedit.model.Cloth;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Variable;
+import nl.paulinternet.gtasaveedit.model.savegame.variables.Variable;
 import nl.paulinternet.gtasaveedit.view.swing.PRadioButton;
 
 public class ClothButton extends PRadioButton

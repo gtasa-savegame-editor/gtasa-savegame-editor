@@ -5,6 +5,9 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+/**
+ * @deprecated
+ */
 public class TextureLoader
 {
 	public static BufferedImage getTexture (String name) throws IOException {

@@ -9,9 +9,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import nl.paulinternet.gtasaveedit.model.ErrorMessageException;
+import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
 import nl.paulinternet.gtasaveedit.model.FileSystem;
-import nl.paulinternet.gtasaveedit.model.Savegame;
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 
 class FileLoad extends JMenuItem implements ActionListener
 {

@@ -8,7 +8,7 @@ public class ReportableEvent extends Event implements EventHandler
 	private List<EventHandler> handlers;
 
 	public ReportableEvent () {
-		handlers = new ArrayList<EventHandler>();
+		handlers = new ArrayList<>();
 	}
 	
 	public void addHandler (EventHandler h) {

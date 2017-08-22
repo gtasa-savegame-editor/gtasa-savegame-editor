@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 
 import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.SettingVariables;
+import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.view.ConnectedCheckbox;
 import nl.paulinternet.gtasaveedit.view.ConnectedRadioButtons;
@@ -20,7 +20,6 @@ import nl.paulinternet.gtasaveedit.view.LookAndFeelComboBox;
 import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.Window;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
-import nl.paulinternet.gtasaveedit.view.swing.PCheckBox;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 

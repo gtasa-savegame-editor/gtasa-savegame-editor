@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.model.link;
 
+import nl.paulinternet.gtasaveedit.model.link.blocks.*;
+
 public class SavegameLink extends LinkArray
 {
 	public SavegameLink () {

@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view;
 
 import static nl.paulinternet.gtasaveedit.model.Model.vars;
 import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.InvalidValueException;
+import nl.paulinternet.gtasaveedit.model.exceptions.InvalidValueException;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
