@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.model.link.blocks;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.Variables;
+import nl.paulinternet.gtasaveedit.model.variables.Variables;
 import nl.paulinternet.gtasaveedit.model.link.Link;
 import nl.paulinternet.gtasaveedit.model.link.LinkArray;
 import nl.paulinternet.gtasaveedit.model.link.LinkBoolean;

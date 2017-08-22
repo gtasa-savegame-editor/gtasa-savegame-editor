@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view;
 
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableIntegerImpl;
+import nl.paulinternet.gtasaveedit.model.variables.VariableIntegerImpl;
 
 public class IntLabel extends JLabel
 {

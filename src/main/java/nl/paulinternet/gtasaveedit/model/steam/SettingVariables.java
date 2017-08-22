@@ -4,7 +4,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import nl.paulinternet.gtasaveedit.model.*;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.*;
+import nl.paulinternet.gtasaveedit.model.variables.*;
 import nl.paulinternet.gtasaveedit.view.Window;
 
 public class SettingVariables
@@ -22,9 +22,10 @@ public class SettingVariables
 	public final VariableIntegerImpl windowWidth = new VariableIntegerImpl();
 	public final VariableIntegerImpl windowHeight = new VariableIntegerImpl();
 	public final VariableInteger windowMaximized = new VariableIntegerImpl();
+	public final VariableBoolean soundOnAboutPage = new VariableBooleanImpl();
 	public final VariableBoolean changesMade = new VariableBooleanImpl();
-	
-	public SettingVariables () {
+
+    public SettingVariables () {
 		MethodInvoker changed = new MethodInvoker(changesMade, "setBooleanValue", true);
 		
 		savegameDirectoryType.onChange().addHandler(changed);
@@ -38,6 +39,7 @@ public class SettingVariables
 		windowWidth.onChange().addHandler(changed);
 		windowHeight.onChange().addHandler(changed);
 		windowMaximized.onChange().addHandler(changed);
+		soundOnAboutPage.onChange().addHandler(changed);
 	}
 	
 	public void copyFromSettings () {
@@ -52,6 +54,7 @@ public class SettingVariables
 		windowWidth.setIntValue(Settings.getWindowWidth());
 		windowHeight.setIntValue(Settings.getWindowHeight());
 		windowMaximized.setIntValue(Settings.getWindowMaximized());
+		soundOnAboutPage.setBooleanValue(Settings.getSoundOnAboutPage() == Settings.YES);
 		
 		changesMade.setBooleanValue(false);
 	}
@@ -68,6 +71,7 @@ public class SettingVariables
 		Settings.setWindowWidth(windowWidth.getIntValue());
 		Settings.setWindowHeight(windowHeight.getIntValue());
 		Settings.setWindowMaximized(windowMaximized.getIntValue());
+		Settings.setSoundOnAboutPage(soundOnAboutPage.getBooleanValue() ? Settings.YES : Settings.NO);
 		
 		Settings.save();
 		

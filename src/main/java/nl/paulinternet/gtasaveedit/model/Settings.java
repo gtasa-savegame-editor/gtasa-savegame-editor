@@ -21,6 +21,7 @@ public class Settings implements Serializable {
     private String customSanAndreasDirectory;
     private int showClothes;
     private int windowWidth, windowHeight, windowMaximized;
+    private int soundOnAboutPage;
 
     private Settings() {
     }
@@ -113,6 +114,14 @@ public class Settings implements Serializable {
         instance.windowMaximized = windowMaximized;
     }
 
+    public static int getSoundOnAboutPage() {
+        return instance.soundOnAboutPage;
+    }
+
+    public static void setSoundOnAboutPage(int soundOnAboutPage) {
+        instance.soundOnAboutPage = soundOnAboutPage;
+    }
+
     public static void save() {
         // Try to save the settings
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(settingsFile))) {
@@ -143,8 +152,10 @@ public class Settings implements Serializable {
         if (settings.windowWidth == 0) settings.windowWidth = 900;
         if (settings.windowHeight == 0) settings.windowHeight = 900;
         if (settings.windowMaximized == UNKNOWN) settings.windowMaximized = NO;
+        if (settings.soundOnAboutPage == UNKNOWN) settings.soundOnAboutPage = YES;
 
         // Return
         return settings;
     }
+
 }

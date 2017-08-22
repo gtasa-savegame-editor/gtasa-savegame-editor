@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.model.link;
 
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableIntegerImpl;
+import nl.paulinternet.gtasaveedit.model.variables.VariableIntegerImpl;
 
 public class LinkInt implements Link
 {

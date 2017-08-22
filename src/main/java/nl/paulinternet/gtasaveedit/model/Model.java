@@ -2,8 +2,8 @@ package nl.paulinternet.gtasaveedit.model;
 
 import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
 import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.Variable;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.Variables;
+import nl.paulinternet.gtasaveedit.model.variables.Variable;
+import nl.paulinternet.gtasaveedit.model.variables.Variables;
 
 import java.io.File;
 import java.io.IOException;

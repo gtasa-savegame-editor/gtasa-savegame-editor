@@ -1,5 +1,8 @@
 package nl.paulinternet.gtasaveedit.view;
 
+import com.apple.eawt.Application;
+import nl.paulinternet.gtasaveedit.view.pages.PageAbout;
+
 import javax.swing.SwingUtilities;
 
 public class Main
@@ -15,6 +18,11 @@ public class Main
 				System.setProperty("apple.laf.useScreenMenuBar", "true");
 				System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
 			}
+
+			Application.getApplication().setAboutHandler(aboutEvent -> {
+				PageAbout aboutPage = new PageAbout();
+				aboutPage.setVisible(true);
+			});
 			
 			// Create GUI
 			GUICreator guiCreator = new GUICreator();

@@ -3,6 +3,7 @@ package nl.paulinternet.gtasaveedit.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemVariable;
 import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
 
 public class PopcycleComboBox extends PComboBox
@@ -67,6 +68,7 @@ public class PopcycleComboBox extends PComboBox
 		disabled = false;
 	}
 	
+	@SuppressWarnings("unused") // used in event
 	public void updateModel () {
 		if (disabled) return;
 		disabled = true;

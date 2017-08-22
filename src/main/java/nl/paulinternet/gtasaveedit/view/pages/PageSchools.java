@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.view.ConnectedTextField;
+import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 

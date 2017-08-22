@@ -5,7 +5,7 @@ import nl.paulinternet.gtasaveedit.model.Cloth;
 import nl.paulinternet.gtasaveedit.model.Clothes;
 import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.Variable;
+import nl.paulinternet.gtasaveedit.model.variables.Variable;
 import nl.paulinternet.gtasaveedit.model.link.Link;
 import nl.paulinternet.gtasaveedit.model.link.LinkArray;
 import nl.paulinternet.gtasaveedit.model.link.LinkFloat;

@@ -39,8 +39,8 @@ public class TabbedPane extends JTabbedPane
 			new PageClothes(),
 			new PageCollectables(),
 			new PageFix(),
-			new PageOptions(),
-			new PageAbout()
+			new PageOptions()
+			//new PageAbout()
 		};
 		
 		// Add pages
@@ -56,7 +56,8 @@ public class TabbedPane extends JTabbedPane
 		Model.gameClosed.addHandler(this, "onGameClosed");
 		onGameClosed();
 	}
-	
+
+	@SuppressWarnings("unused") // used in event
 	public void onGameLoaded () {
 		if (!loaded) {
 			removeAll();
@@ -68,6 +69,7 @@ public class TabbedPane extends JTabbedPane
 		}
 	}
 	
+	@SuppressWarnings("WeakerAccess") // used in event
 	public void onGameClosed () {
 		removeAll();
 		for (Page page : pages) {

@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.model;
 
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
-import nl.paulinternet.gtasaveedit.model.savegame.variables.VariableBoolean;
+import nl.paulinternet.gtasaveedit.model.variables.VariableBoolean;
 
 public class RoadblockVariable implements VariableBoolean
 {
