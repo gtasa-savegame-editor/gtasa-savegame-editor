@@ -13,7 +13,7 @@ public class Main
 			// OS X specific
 			if (MAC) {
 				System.setProperty("apple.laf.useScreenMenuBar", "true");
-				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "GTA SA Savegame Editor");
+				System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
 			}
 			
 			// Create GUI
