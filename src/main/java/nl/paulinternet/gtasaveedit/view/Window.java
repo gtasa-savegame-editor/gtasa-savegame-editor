@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.view;
 
+import com.apple.eawt.Application;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
@@ -36,6 +37,7 @@ public class Window extends JFrame {
                 Images.readImage("icon-32.png"),
                 Images.readImage("icon-48.png")));
         setIconImages(images);
+        Application.getApplication().setDockIconImage(Images.readImage("icon-48.png"));
 
         // Set title
         setTitle("GTA SA Savegame Editor");
