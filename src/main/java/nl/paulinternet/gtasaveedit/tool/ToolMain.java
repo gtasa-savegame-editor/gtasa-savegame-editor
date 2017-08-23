@@ -3,7 +3,7 @@ package nl.paulinternet.gtasaveedit.tool;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Main
+public class ToolMain
 {
 	public static final Module[] modules = new Module[] {
 		new ModuleHelp(),

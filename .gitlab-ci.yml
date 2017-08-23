@@ -16,3 +16,7 @@ build_with_tests_debug:
   stage: test
   script:
     - mvn install
+    - mvn clean package appbundle:bundle
+  artifacts:
+    paths:
+    - target/**/*.app

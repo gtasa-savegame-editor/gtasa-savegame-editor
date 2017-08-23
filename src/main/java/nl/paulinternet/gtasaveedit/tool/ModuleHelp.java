@@ -11,7 +11,7 @@ public class ModuleHelp implements Module
 	}
 
 	public void execute (String[] args) throws Exception {
-		for (Module module : Main.modules) {
+		for (Module module : ToolMain.modules) {
 			// Create output string
 			String output = module.getName();
 			while (output.length() < 20) output += " ";

@@ -308,7 +308,7 @@ public class PageOptions extends Page
 		buttonApply.setEnabled(changes);
 
 		if(changes) {
-			com.apple.eawt.Application.getApplication().setDockIconBadge("❕");
+			com.apple.eawt.Application.getApplication().setDockIconBadge("❕"); // emojis work 😱
 		} else {
 			com.apple.eawt.Application.getApplication().setDockIconBadge(null);
 		}
