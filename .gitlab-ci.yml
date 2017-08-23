@@ -1,0 +1,18 @@
+image: nexus.k40s.net:444/admin/buildbot:latest
+
+stages:
+  - build
+  - test
+
+before_script:
+  - mvn clean
+
+build_no_tests:
+  stage: build
+  script:
+    - mvn install -DskipTests=true
+
+build_with_tests_debug:
+  stage: test
+  script:
+    - mvn install
