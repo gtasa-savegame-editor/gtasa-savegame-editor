@@ -31,14 +31,6 @@ public class Window extends JFrame {
         // Add
         add(new Alignment(new JLabel("One moment please..."), 0.5f, 0.4f));
 
-        // Set the icon
-        List<Image> images = new ArrayList<>();
-        images.addAll(Arrays.asList(Images.readImage("icon-16.png"),
-                Images.readImage("icon-32.png"),
-                Images.readImage("icon-48.png")));
-        setIconImages(images);
-        Application.getApplication().setDockIconImage(Images.readImage("icon-48.png"));
-
         // Set title
         setTitle("GTA SA Savegame Editor");
     }

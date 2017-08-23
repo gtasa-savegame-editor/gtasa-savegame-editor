@@ -4,6 +4,10 @@ import com.apple.eawt.Application;
 import nl.paulinternet.gtasaveedit.view.pages.PageAbout;
 
 import javax.swing.SwingUtilities;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main
 {
@@ -25,7 +29,16 @@ public class Main
 			});
 
 			Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
-			
+
+			// Set the icons
+			List<Image> images = new ArrayList<>();
+			Image icon48 = Images.readImage("icon-48.png");
+			images.addAll(Arrays.asList(Images.readImage("icon-16.png"),
+					Images.readImage("icon-32.png"),
+					icon48));
+			Window.instance.setIconImages(images);
+			Application.getApplication().setDockIconImage(icon48);
+
 			// Create GUI
 			GUICreator guiCreator = new GUICreator();
 			SwingUtilities.invokeAndWait(guiCreator);
