@@ -23,6 +23,8 @@ public class Main
 				PageAbout aboutPage = new PageAbout();
 				aboutPage.setVisible(true);
 			});
+
+			Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
 			
 			// Create GUI
 			GUICreator guiCreator = new GUICreator();

@@ -20,6 +20,8 @@ import nl.paulinternet.gtasaveedit.view.pages.PageSkills;
 import nl.paulinternet.gtasaveedit.view.pages.PageWeapons;
 import nl.paulinternet.gtasaveedit.view.pages.PageZones;
 
+import java.util.Arrays;
+
 public class TabbedPane extends JTabbedPane
 {
 	private boolean loaded;
@@ -90,5 +92,13 @@ public class TabbedPane extends JTabbedPane
 				}
 			}
 		}
+	}
+
+	void onShowPreferences() {
+		Arrays.asList(pages).forEach(p -> {
+			if(p instanceof PageOptions) {
+				setSelectedComponent(p.getComponent());
+			}
+		});
 	}
 }

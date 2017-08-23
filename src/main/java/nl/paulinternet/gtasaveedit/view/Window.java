@@ -13,6 +13,7 @@ import java.util.List;
 
 public class Window extends JFrame {
     public static final Window instance = new Window();
+    private TabbedPane tabbedPane;
 
     private Window() {
         // Exit on close
@@ -43,7 +44,8 @@ public class Window extends JFrame {
     public void createContent() {
         // Add tabs
         getContentPane().remove(0);
-        add(new TabbedPane());
+        tabbedPane = new TabbedPane();
+        add(tabbedPane);
 
         // Set menu bar
         setJMenuBar(new MenuBar());
@@ -57,10 +59,16 @@ public class Window extends JFrame {
         validate();
     }
 
+    public TabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    @SuppressWarnings("unused") //used as handler
     public void onGameClose() {
         setTitle("GTA SA Savegame Editor");
     }
 
+    @SuppressWarnings("unused") //used as handler
     public void onTitleChange() {
         setTitle(Model.vars.title.getText() + " - GTA SA Savegame Editor");
     }
