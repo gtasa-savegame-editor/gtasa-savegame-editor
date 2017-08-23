@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.swing.*;
 
+import javafx.application.Application;
 import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;
@@ -305,6 +306,12 @@ public class PageOptions extends Page
 		boolean changes = Model.editSettings.changesMade.getBooleanValue();
 		buttonCancel.setEnabled(changes);
 		buttonApply.setEnabled(changes);
+
+		if(changes) {
+			com.apple.eawt.Application.getApplication().setDockIconBadge("❕");
+		} else {
+			com.apple.eawt.Application.getApplication().setDockIconBadge(null);
+		}
 	}
 
 	@SuppressWarnings("unused") // used in event
