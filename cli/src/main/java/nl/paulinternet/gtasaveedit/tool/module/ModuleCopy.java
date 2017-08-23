@@ -1,7 +1,9 @@
-package nl.paulinternet.gtasaveedit.tool;
+package nl.paulinternet.gtasaveedit.tool.module;
 
 import nl.paulinternet.gtasaveedit.model.ByteSequence;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
+import nl.paulinternet.gtasaveedit.tool.Dir;
+import nl.paulinternet.gtasaveedit.tool.Util;
 
 public class ModuleCopy implements Module
 {

@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
+
     public static final boolean WINDOWS = System.getProperty("os.name").toLowerCase().startsWith("windows");
     public static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
 
@@ -29,12 +30,11 @@ public class Main {
                 System.setProperty("apple.laf.useScreenMenuBar", "true");
                 System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
 
+                Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
                 Application.getApplication().setAboutHandler(aboutEvent -> {
                     PageAbout aboutPage = new PageAbout();
                     aboutPage.setVisible(true);
                 });
-
-                Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
             }
 
             // Create GUI

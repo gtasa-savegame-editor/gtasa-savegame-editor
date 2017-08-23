@@ -1,4 +1,6 @@
-package nl.paulinternet.gtasaveedit.tool;
+package nl.paulinternet.gtasaveedit.tool.module;
+
+import nl.paulinternet.gtasaveedit.tool.Main;
 
 public class ModuleHelp implements Module
 {
@@ -11,7 +13,7 @@ public class ModuleHelp implements Module
 	}
 
 	public void execute (String[] args) throws Exception {
-		for (Module module : ToolMain.modules) {
+		for (Module module : Main.modules) {
 			// Create output string
 			String output = module.getName();
 			while (output.length() < 20) output += " ";

@@ -20,11 +20,12 @@ public class Table
 		// Set the variables
 		this.columns = columns;
 		maxSize = new int[columns];
-		values = new ArrayList<String[]>();
+		values = new ArrayList<>();
 	}
 
 	/**
 	 * Adds a row to the table
+	 * @deprecated
 	 */
 	public void addRow (String[] data) {
 		// Check if values is not null

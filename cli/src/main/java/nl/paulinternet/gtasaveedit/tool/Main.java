@@ -1,9 +1,11 @@
 package nl.paulinternet.gtasaveedit.tool;
 
+import nl.paulinternet.gtasaveedit.tool.module.*;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class ToolMain
+public class Main
 {
 	public static final Module[] modules = new Module[] {
 		new ModuleHelp(),

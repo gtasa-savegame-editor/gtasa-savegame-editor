@@ -1,4 +1,6 @@
-package nl.paulinternet.gtasaveedit.tool;
+package nl.paulinternet.gtasaveedit.tool.module;
+
+import nl.paulinternet.gtasaveedit.tool.Dir;
 
 import java.io.File;
 
@@ -13,6 +15,6 @@ public class ModuleOpenDir implements Module
 	}
 
 	public void execute (String[] args) throws Exception {
-		Runtime.getRuntime().exec(new String[] {"explorer", new File(Dir.RESEARCH_PATH).getCanonicalPath()});
+		Runtime.getRuntime().exec(new String[] {"explorer", new File(Dir.get().RESEARCH_PATH).getCanonicalPath()});
 	}
 }

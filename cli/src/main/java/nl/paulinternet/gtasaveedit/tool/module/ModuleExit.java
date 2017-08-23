@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.tool;
+package nl.paulinternet.gtasaveedit.tool.module;
 
 public class ModuleExit implements Module
 {
