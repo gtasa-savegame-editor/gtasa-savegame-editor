@@ -1,4 +1,4 @@
-# GTA SA savegame editor
+# GTA SA savegame editor [![Build Status](https://travis-ci.org/lfuelling/gtasa-savegame-editor.svg?branch=master)](https://travis-ci.org/lfuelling/gtasa-savegame-editor)
 
 This is a modified version of the software that can be found on [paulinternet.nl](http://paulinternet.nl/?page=sa).
 
