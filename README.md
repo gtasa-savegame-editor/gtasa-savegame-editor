@@ -2,7 +2,9 @@
 
 This is a modified version of the software that can be found on [paulinternet.nl](http://paulinternet.nl/?page=sa).
 
-This version contains mostly macOS specific fixes and requires Java > 8. That said, if you try to run it on windows it may crash or missing some features.
+This version contains mostly macOS specific fixes and requires Java > 8. That said, if you try to run it on Windows or Linux it may crash or be missing some features.
+
+This doesn't mean that you shouldn't run it on those systems! I heavily advise you to do this and report any bugs you find as issue.
 
 ## Building
 
