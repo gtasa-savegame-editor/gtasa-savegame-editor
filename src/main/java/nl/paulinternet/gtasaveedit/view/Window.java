@@ -1,16 +1,11 @@
 package nl.paulinternet.gtasaveedit.view;
 
-import com.apple.eawt.Application;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Window extends JFrame {
     public static final Window instance = new Window();

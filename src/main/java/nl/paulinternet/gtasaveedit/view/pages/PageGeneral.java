@@ -27,6 +27,7 @@ public class PageGeneral extends Page
 		versionBox.addItem(0x65f3e583, "Version 1.00 Modified EXE");
 		versionBox.addItem(0x9a6ebe58, "Version 1.01 Unmodified EXE");
 		versionBox.addItem(0x9345765e, "Version 1.01 Modified EXE");
+		versionBox.addItem(0x38009aae, "Version 1.01 (German, macOS)");
 		versionBox.addItem(0xfd148df6, "Version 2.00 Unmodified EXE");
 		versionBox.addItem(0x5d31cc22, "Version 2.00 (German)");
 		

@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.model.link.blocks;
+package nl.paulinternet.gtasaveedit.model.savegame.blocks;
 
 import static nl.paulinternet.gtasaveedit.model.Model.vars;
 import nl.paulinternet.gtasaveedit.model.Cloth;

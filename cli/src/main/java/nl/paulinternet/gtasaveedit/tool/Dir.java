@@ -18,8 +18,7 @@ public class Dir
 	private Dir() {
 		String[] TEMP = {"", ""};
 		Properties prop = new Properties();
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		try (InputStream stream = loader.getResourceAsStream("/application.properties")) {
+		try (InputStream stream = Dir.class.getResourceAsStream("/application.properties")) {
 			prop.load(stream);
 			TEMP[0] = prop.getProperty("path.workdir");
 			TEMP[1] = prop.getProperty("path.savegames");
@@ -33,7 +32,7 @@ public class Dir
 	}
 
 	public static File getSavegameFile (String number) {
-		return new File(instance.SAVEGAME_PATH + number + ".b");
+		return new File(instance.SAVEGAME_PATH + File.separator + "GTASAsf" + number + ".b");
 	}
 
 	public static int[] getBlocks () {
