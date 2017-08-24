@@ -2,6 +2,7 @@ package nl.paulinternet.gtasaveedit.view.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
@@ -21,7 +22,7 @@ class FileSave extends JMenuItem implements ActionListener
 {
 	public FileSave () {
 		super("Save...");
-		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Main.MAC ? ActionEvent.META_MASK : ActionEvent.CTRL_MASK));
+		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Main.MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK));
 		addActionListener(this);
 	}
 	

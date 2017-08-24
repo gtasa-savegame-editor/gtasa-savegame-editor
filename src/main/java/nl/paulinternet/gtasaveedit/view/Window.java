@@ -28,6 +28,8 @@ public class Window extends JFrame {
 
         // Set title
         setTitle("GTA SA Savegame Editor");
+        // Set menu bar
+        setJMenuBar(new MenuBar());
     }
 
     public void createContent() {
@@ -35,9 +37,6 @@ public class Window extends JFrame {
         getContentPane().remove(0);
         tabbedPane = new TabbedPane();
         add(tabbedPane);
-
-        // Set menu bar
-        setJMenuBar(new MenuBar());
 
         // Observe
         Model.gameClosed.addHandler(this, "onGameClose");
@@ -61,4 +60,5 @@ public class Window extends JFrame {
     public void onTitleChange() {
         setTitle(Model.vars.title.getText() + " - GTA SA Savegame Editor");
     }
+
 }

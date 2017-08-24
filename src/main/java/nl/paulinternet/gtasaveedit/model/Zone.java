@@ -105,7 +105,7 @@ public class Zone {
             int r = 0, g = 0, b = 0;
             int total = 0;
 
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 10; i++) {
                 r += gang[i] * gangColor[i].getRed();
                 g += gang[i] * gangColor[i].getGreen();
                 b += gang[i] * gangColor[i].getBlue();

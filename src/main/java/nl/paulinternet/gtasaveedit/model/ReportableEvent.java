@@ -16,9 +16,7 @@ public class ReportableEvent extends Event implements EventHandler
 	}
 
 	public void report () {
-		for (EventHandler h : handlers) {
-			h.handleEvent(this);
-		}
+		handlers.forEach(h -> h.handleEvent(this));
 	}
 
 	@Override

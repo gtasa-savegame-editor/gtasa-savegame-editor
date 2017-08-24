@@ -1,19 +1,17 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.io.File;
-
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
-
-import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.model.Settings;
+import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
+import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.Window;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
+
+import javax.swing.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.io.File;
 
 public class QuickSave extends PMenuItem
 {
@@ -23,7 +21,7 @@ public class QuickSave extends PMenuItem
 		this.number = number;
 		
 		// Accelerator
-		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0 + number, (Main.MAC ? ActionEvent.META_MASK : ActionEvent.CTRL_MASK) | ActionEvent.SHIFT_MASK));
+		setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0 + number, (Main.MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK) | InputEvent.SHIFT_MASK));
 		
 		// Observe
 		Model.quickLoadUpdate.addHandler(this, "updateText");
@@ -33,6 +31,7 @@ public class QuickSave extends PMenuItem
 		updateText();
 	}
 	
+	@SuppressWarnings("WeakerAccess") //used in handler
 	public void updateText () {
 		String title = Model.quickLoad.get(number).getValue();
 		if (title == null) {
@@ -43,6 +42,8 @@ public class QuickSave extends PMenuItem
 		}
 	}
 
+
+	@SuppressWarnings("unused") //used in handler
 	public void saveFile () {
 		try {
 			File file = Model.getSavegameFile(number);

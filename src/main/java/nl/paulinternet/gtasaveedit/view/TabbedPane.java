@@ -1,14 +1,17 @@
 package nl.paulinternet.gtasaveedit.view;
 
 import nl.paulinternet.gtasaveedit.model.Model;
+import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TabbedPane extends JTabbedPane {
-    private boolean loaded;
+    private static Boolean loaded = Boolean.FALSE;
     private List<Page> pages;
 
     public TabbedPane() {
@@ -43,12 +46,19 @@ public class TabbedPane extends JTabbedPane {
         onGameClosed();
     }
 
+
     @SuppressWarnings("unused") // used in event
     public void onGameLoaded() {
         if (!loaded) {
             removeAll();
             pages.forEach(p -> addTab(p.getTitle(), p.getComponent()));
             loaded = true;
+            MenuBar menubar = (MenuBar) Window.instance.getJMenuBar();
+            if (menubar != null) {
+                menubar.onSavegameStateChange(true);
+            } else {
+                System.err.println("Unable to get menuBar: " + Window.instance.getJMenuBar());
+            }
             Window.instance.validate();
         }
     }
@@ -62,6 +72,12 @@ public class TabbedPane extends JTabbedPane {
             }
         });
         loaded = false;
+        MenuBar menubar = (MenuBar) Window.instance.getJMenuBar();
+        if (menubar != null) {
+            menubar.onSavegameStateChange(false);
+        } else {
+            System.err.println("Unable to get menuBar: " + Window.instance.getJMenuBar());
+        }
         Window.instance.validate();
     }
 

@@ -14,13 +14,14 @@ public class Model
 {
 	public static final ReportableEvent gameLoaded = new ReportableEvent();
 	public static final ReportableEvent gameClosed = new ReportableEvent();
+
 	public static final ReportableEvent quickLoadUpdate = new ReportableEvent();
 	
 	public static final Variables vars = new Variables();
 	public static final SettingVariables editSettings = new SettingVariables();
-	public static final Variable<ArchiveReader> playerImg = new Variable<ArchiveReader>();
+	public static final Variable<ArchiveReader> playerImg = new Variable<>();
 	public static final List<QuickLoad> quickLoad;
-	
+
 	private static File saDir;
 
 	static {
@@ -65,4 +66,5 @@ public class Model
 	}
 	
 	private Model () {}
+
 }
