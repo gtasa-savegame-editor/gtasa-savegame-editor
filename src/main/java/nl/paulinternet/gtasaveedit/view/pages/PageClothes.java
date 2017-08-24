@@ -10,11 +10,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import nl.paulinternet.gtasaveedit.model.ArchiveReader;
-import nl.paulinternet.gtasaveedit.model.Clothes;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Clothes;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothCheckBox;
-import nl.paulinternet.gtasaveedit.view.swing.FixedRatio;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;

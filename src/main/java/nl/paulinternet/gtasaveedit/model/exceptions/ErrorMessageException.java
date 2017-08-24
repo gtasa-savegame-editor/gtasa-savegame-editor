@@ -9,9 +9,6 @@ public class ErrorMessageException extends Exception
 		this.title = title;
 	}
 
-	/**
-	 * @deprecated
-	 */
 	public ErrorMessageException (String title, String message, Throwable cause) {
 		super(message, cause);
 		this.title = title;

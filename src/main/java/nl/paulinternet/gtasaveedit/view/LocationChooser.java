@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 
 import nl.paulinternet.gtasaveedit.model.MethodInvoker;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Saveplace;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Saveplace;
 
 public class LocationChooser extends ImageComponent implements MouseListener
 {

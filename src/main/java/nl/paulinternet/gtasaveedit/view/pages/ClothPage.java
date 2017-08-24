@@ -5,7 +5,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
 import nl.paulinternet.gtasaveedit.model.Cloth;
-import nl.paulinternet.gtasaveedit.model.Clothes;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Clothes;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.variables.Variable;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothButton;

@@ -3,7 +3,7 @@ package nl.paulinternet.gtasaveedit.model.savegame.blocks;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
 import nl.paulinternet.gtasaveedit.model.Zone;
-import nl.paulinternet.gtasaveedit.model.Zones;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Zones;
 import nl.paulinternet.gtasaveedit.model.link.Link;
 
 public class Block10 implements Link

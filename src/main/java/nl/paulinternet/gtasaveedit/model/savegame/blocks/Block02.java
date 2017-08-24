@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.model.savegame.blocks;
 
 import static nl.paulinternet.gtasaveedit.model.Model.vars;
 import nl.paulinternet.gtasaveedit.model.Cloth;
-import nl.paulinternet.gtasaveedit.model.Clothes;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Clothes;
 import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
 import nl.paulinternet.gtasaveedit.model.variables.Variable;

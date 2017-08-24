@@ -3,8 +3,8 @@ package nl.paulinternet.gtasaveedit.model.link;
 import static nl.paulinternet.gtasaveedit.model.Model.vars;
 import nl.paulinternet.gtasaveedit.model.ByteSequence;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
-import nl.paulinternet.gtasaveedit.model.Savehouse;
-import nl.paulinternet.gtasaveedit.model.Saveplace;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Savehouse;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Saveplace;
 
 public class SaveplaceLink implements Link
 {

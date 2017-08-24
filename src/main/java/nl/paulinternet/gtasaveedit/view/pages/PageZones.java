@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.Zone;
-import nl.paulinternet.gtasaveedit.model.Zones;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Zones;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedCheckbox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.MapImage;
@@ -43,12 +43,12 @@ public class PageZones extends Page implements ActionListener
 	public PageZones () {
 		super("Zones");
 		
-		items = new ArrayList<SelectableZone>();
+		items = new ArrayList<>();
 		for (Zone zone : Zones.getZones()) {
 			items.add(new SelectableZone(zone));
 		}
 		
-		zones = new SelectableItems<SelectableZone>(items);
+		zones = new SelectableItems<>(items);
 
 		Table table = new Table();
 		table.setSpacing(5, 3);
@@ -65,8 +65,10 @@ public class PageZones extends Page implements ActionListener
 		table.add(new JLabel("Italian Mafia:"), 3, 1);
 		table.add(new JLabel("Triads:"), 3, 2);
 		table.add(new JLabel("Varrio Los Aztecas:"), 3, 3);
-		table.add(new JLabel("Dealers:"), 3, 4);
-		table.add(new JLabel("Pedestrians:"), 3, 5);
+		table.add(new JLabel("Unused Gang 1:"), 3, 4);
+		table.add(new JLabel("Unused Gang 2:"), 3, 5);
+		table.add(new JLabel("Dealers:"), 3, 6);
+		table.add(new JLabel("Pedestrians:"), 3, 7);
 		table.setSpacing(5, 3);
 
 		SelectableItemVariable popCycle = new SelectableItemVariable(zones, Zone.POPCYCLE, 0, 0x1f);
@@ -83,13 +85,15 @@ public class PageZones extends Page implements ActionListener
 		table.add(new ConnectedTextField(new SelectableItemVariable(zones, 5, 0, 255)), 4, 1);
 		table.add(new ConnectedTextField(new SelectableItemVariable(zones, 6, 0, 255)), 4, 2);
 		table.add(new ConnectedTextField(new SelectableItemVariable(zones, 7, 0, 255)), 4, 3);
-		table.add(new ConnectedTextField(new SelectableItemVariable(zones, Zone.DEALER, 0, 255)), 4, 4);
-		table.add(new ConnectedTextField(new SelectableItemVariable(zones, Zone.PED, 0, 255)), 4, 5);
+		table.add(new ConnectedTextField(new SelectableItemVariable(zones, 8, 0, 255)), 4, 4);
+		table.add(new ConnectedTextField(new SelectableItemVariable(zones, 9, 0, 255)), 4, 5);
+		table.add(new ConnectedTextField(new SelectableItemVariable(zones, Zone.DEALER, 0, 255)), 4, 6);
+		table.add(new ConnectedTextField(new SelectableItemVariable(zones, Zone.PED, 0, 255)), 4, 7);
 
 		table.setCellExpand(0.0f, 0.0f);
 		table.setCellAlignment(0.0f, 0.5f);
 		for (int i=0; i<4; i++) table.add(new RectangleComponent(Zone.gangColor[i]), 2, i);
-		for (int i=4; i<8; i++) table.add(new RectangleComponent(Zone.gangColor[i]), 5, i-4);
+		for (int i=4; i<10; i++) table.add(new RectangleComponent(Zone.gangColor[i]), 5, i-4);
 	
 		String message = "<html>Click or drag the mouse to select zones.<br />";
 		message += "Hold shift or alt to respectively grow or shrink the selection.<br />";
