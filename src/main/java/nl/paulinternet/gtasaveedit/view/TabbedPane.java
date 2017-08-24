@@ -1,104 +1,86 @@
 package nl.paulinternet.gtasaveedit.view;
 
-import javax.swing.BorderFactory;
-import javax.swing.JTabbedPane;
-import javax.swing.SwingUtilities;
-
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.view.pages.Page;
-import nl.paulinternet.gtasaveedit.view.pages.PageAbout;
-import nl.paulinternet.gtasaveedit.view.pages.PageClothes;
-import nl.paulinternet.gtasaveedit.view.pages.PageCollectables;
-import nl.paulinternet.gtasaveedit.view.pages.PageFix;
-import nl.paulinternet.gtasaveedit.view.pages.PageGangWeapons;
-import nl.paulinternet.gtasaveedit.view.pages.PageGeneral;
-import nl.paulinternet.gtasaveedit.view.pages.PageLocation;
-import nl.paulinternet.gtasaveedit.view.pages.PageOptions;
-import nl.paulinternet.gtasaveedit.view.pages.PagePeds;
-import nl.paulinternet.gtasaveedit.view.pages.PageSchools;
-import nl.paulinternet.gtasaveedit.view.pages.PageSkills;
-import nl.paulinternet.gtasaveedit.view.pages.PageWeapons;
-import nl.paulinternet.gtasaveedit.view.pages.PageZones;
+import nl.paulinternet.gtasaveedit.view.pages.*;
 
+import javax.swing.*;
 import java.util.Arrays;
+import java.util.List;
 
-public class TabbedPane extends JTabbedPane
-{
-	private boolean loaded;
-	private Page[] pages;
+public class TabbedPane extends JTabbedPane {
+    private boolean loaded;
+    private List<Page> pages;
 
-	public TabbedPane () {
-		// Create pages
-		pages = new Page[] {
-			new PageGeneral(),
-			new PageSkills(),
-			new PageLocation(),
-			new PageSchools(),
-			new PageWeapons(),
-			new PageGangWeapons(),
-			new PageZones(),
-			new PagePeds(),
-			new PageClothes(),
-			new PageCollectables(),
-			new PageFix(),
-			new PageOptions()
-			//new PageAbout()
-		};
-		
-		// Add pages
-		for (Page page : pages) {
-			addTab(page.getTitle(), page.getComponent());
-		}
+    public TabbedPane() {
+        // Create pages
+        pages = Arrays.asList(
+                new PageGeneral(),
+                new PageSkills(),
+                new PageLocation(),
+                new PageSchools(),
+                new PageWeapons(),
+                new PageGangWeapons(),
+                new PageZones(),
+                new PagePeds(),
+                new PageClothes(),
+                new PageCollectables(),
+                new PageFix(),
+                new PageOptions());
 
-		// Set the border
-		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        if (!Main.MAC) {
+            new PageAbout();
+        }
 
-		// Observe
-		Model.gameLoaded.addHandler(this, "onGameLoaded");
-		Model.gameClosed.addHandler(this, "onGameClosed");
-		onGameClosed();
-	}
+        // Add tabs
+        pages.forEach(p -> addTab(p.getTitle(), p.getComponent()));
 
-	@SuppressWarnings("unused") // used in event
-	public void onGameLoaded () {
-		if (!loaded) {
-			removeAll();
-			for (Page page : pages) {
-				addTab(page.getTitle(), page.getComponent());
-			}
-			loaded = true;
-			Window.instance.validate();
-		}
-	}
-	
-	@SuppressWarnings("WeakerAccess") // used in event
-	public void onGameClosed () {
-		removeAll();
-		for (Page page : pages) {
-			if (page.isAlwaysVisible()) {
-				addTab(page.getTitle(), page.getComponent());
-			}
-		}
-		loaded = false;
-		Window.instance.validate();
-	}
-	
-	public void updateUI () {
-		super.updateUI();
-		if (!loaded && pages != null) {
-			for (Page page : pages) {
-				if (!page.isAlwaysVisible()) {
-					SwingUtilities.updateComponentTreeUI(page.getComponent());
-				}
-			}
-		}
-	}
+        // Set the border
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-	void onShowPreferences() {
-		Arrays.asList(pages).forEach(p -> {
-			if(p instanceof PageOptions) {
-				setSelectedComponent(p.getComponent());
-			}
-		});
-	}
+        // Observe
+        Model.gameLoaded.addHandler(this, "onGameLoaded");
+        Model.gameClosed.addHandler(this, "onGameClosed");
+        onGameClosed();
+    }
+
+    @SuppressWarnings("unused") // used in event
+    public void onGameLoaded() {
+        if (!loaded) {
+            removeAll();
+            pages.forEach(p -> addTab(p.getTitle(), p.getComponent()));
+            loaded = true;
+            Window.instance.validate();
+        }
+    }
+
+    @SuppressWarnings("WeakerAccess") // used in event
+    public void onGameClosed() {
+        removeAll();
+        pages.forEach(p -> {
+            if (p.isAlwaysVisible()) {
+                addTab(p.getTitle(), p.getComponent());
+            }
+        });
+        loaded = false;
+        Window.instance.validate();
+    }
+
+    public void updateUI() {
+        super.updateUI();
+        if (!loaded && pages != null) {
+            pages.forEach(p -> {
+                if (!p.isAlwaysVisible()) {
+                    SwingUtilities.updateComponentTreeUI(p.getComponent());
+                }
+            });
+        }
+    }
+
+    void onShowPreferences() {
+        pages.forEach(p -> {
+            if (p instanceof PageOptions) {
+                setSelectedComponent(p.getComponent());
+            }
+        });
+    }
 }

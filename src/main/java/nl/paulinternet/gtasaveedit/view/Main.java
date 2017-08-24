@@ -17,25 +17,22 @@ public class Main {
     public static void main(String[] args) {
         try {
 
+            // OS X specific
+            if (MAC) {
+                System.setProperty("apple.laf.useScreenMenuBar", "true");
+                System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
+                Application.getApplication().setDockIconImage(Images.readImage("icon-256.png"));
+
+                Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
+                Application.getApplication().setAboutHandler(aboutEvent -> new PageAbout().setVisible(true));
+            }
+
             // Set the icons
             List<Image> images = new ArrayList<>();
             images.addAll(Arrays.asList(Images.readImage("icon-16.png"),
                     Images.readImage("icon-32.png"),
                     Images.readImage("icon-48.png")));
             Window.instance.setIconImages(images);
-
-            // OS X specific
-            if (MAC) {
-                Application.getApplication().setDockIconImage(Images.readImage("icon-256.png"));
-                System.setProperty("apple.laf.useScreenMenuBar", "true");
-                System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
-
-                Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
-                Application.getApplication().setAboutHandler(aboutEvent -> {
-                    PageAbout aboutPage = new PageAbout();
-                    aboutPage.setVisible(true);
-                });
-            }
 
             // Create GUI
             GUICreator guiCreator = new GUICreator();
