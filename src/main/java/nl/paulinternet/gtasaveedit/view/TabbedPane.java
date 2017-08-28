@@ -5,10 +5,9 @@ import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TabbedPane extends JTabbedPane {
     private static Boolean loaded = Boolean.FALSE;
@@ -16,7 +15,9 @@ public class TabbedPane extends JTabbedPane {
 
     public TabbedPane() {
         // Create pages
-        pages = Arrays.asList(
+        pages = new ArrayList<>();
+
+        pages.addAll(Arrays.asList(
                 new PageGeneral(),
                 new PageSkills(),
                 new PageLocation(),
@@ -28,10 +29,10 @@ public class TabbedPane extends JTabbedPane {
                 new PageClothes(),
                 new PageCollectables(),
                 new PageFix(),
-                new PageOptions());
+                new PageOptions()));
 
         if (!Main.MAC) {
-            new PageAbout();
+            pages.add(new PageAbout());
         }
 
         // Add tabs

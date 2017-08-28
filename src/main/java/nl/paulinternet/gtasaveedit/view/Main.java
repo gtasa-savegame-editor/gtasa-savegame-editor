@@ -1,7 +1,6 @@
 package nl.paulinternet.gtasaveedit.view;
 
 import com.apple.eawt.Application;
-import nl.paulinternet.gtasaveedit.view.pages.PageAbout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +23,7 @@ public class Main {
                 Application.getApplication().setDockIconImage(Images.readImage("icon-256.png"));
 
                 Application.getApplication().setPreferencesHandler(pe -> Window.instance.getTabbedPane().onShowPreferences());
-                Application.getApplication().setAboutHandler(aboutEvent -> new PageAbout().setVisible(true));
+                Application.getApplication().setAboutHandler(aboutEvent -> new AboutWindow().setVisible(true));
             }
 
             // Set the icons
