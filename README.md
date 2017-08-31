@@ -20,3 +20,5 @@ $ mvn clean install -DskipTests=true
 ```
 
 You should now have a `.jar` file in the `target` folder. Run it.
+
+If you use macOS, you should also have a `.app` file in `target/gtasaveedit-<version>-SNAPSHOT` that you can run.
