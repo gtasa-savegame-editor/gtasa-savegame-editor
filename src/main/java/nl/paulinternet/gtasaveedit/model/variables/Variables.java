@@ -96,7 +96,7 @@ public class Variables
 	public final VariableIntegerImpl weaponStartSlot = new VariableIntegerImpl();
 	public final List<VariableIntegerImpl> weaponType = intList(13);
 	public final List<VariableIntegerImpl> weaponAmmo = intList(13);
-	public final List<VariableIntegerImpl> gangWeapon = intList(24);
+	public final List<VariableIntegerImpl> gangWeapon = intList(30);
 	
 	// Body / Skills
 	public final VariableFloat health = new VariableFloat();
