@@ -1,18 +1,22 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
 import nl.paulinternet.gtasaveedit.model.Model;
+import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TabbedPane extends JTabbedPane {
     private static Boolean loaded = Boolean.FALSE;
+    private final PageAbout pageAbout;
     private List<Page> pages;
 
     public TabbedPane() {
@@ -33,8 +37,9 @@ public class TabbedPane extends JTabbedPane {
                 new PageFix(),
                 new PageOptions()));
 
+        pageAbout = new PageAbout();
         if (!Main.MAC) {
-            pages.add(new PageAbout());
+            pages.add(pageAbout);
         }
 
         // Add tabs
@@ -47,6 +52,14 @@ public class TabbedPane extends JTabbedPane {
         Model.gameLoaded.addHandler(this, "onGameLoaded");
         Model.gameClosed.addHandler(this, "onGameClosed");
         onGameClosed();
+
+        addChangeListener(e -> {
+            if (pageAbout.getComponent().equals(TabbedPane.this.getSelectedComponent()) && Settings.getSoundOnAboutPage() == Settings.YES) {
+                pageAbout.play();
+            } else {
+                pageAbout.stop();
+            }
+        });
     }
 
 

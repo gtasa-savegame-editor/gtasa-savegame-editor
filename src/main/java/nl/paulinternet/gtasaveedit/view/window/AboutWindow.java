@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.window;
 
 import nl.paulinternet.gtasaveedit.model.Settings;
+import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 
@@ -12,12 +13,9 @@ import java.net.URI;
 
 public class AboutWindow extends JFrame {
 
-    private SourceDataLine sourceDataLine;
-    private AudioFormat audioFormat;
-    private AudioInputStream audioInputStream;
-    private boolean stopPlayback;
     private final PButton stopButton;
     private final YBox ybox;
+    private PlayThread playThread;
 
     public AboutWindow() {
 
@@ -77,7 +75,9 @@ public class AboutWindow extends JFrame {
 
     @SuppressWarnings({"unused", "WeakerAccess"}) // used as onClick
     public void stop() {
-        stopPlayback = true;
+        if (playThread!=null) {
+            playThread.setStopPlayback(true);
+        }
     }
 
     @Override
@@ -92,50 +92,28 @@ public class AboutWindow extends JFrame {
 
     private void play() {
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/gta-sa-intro.wav")));
-            audioFormat = audioInputStream.getFormat();
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/gta-sa-intro.wav")));
+            AudioFormat audioFormat = audioInputStream.getFormat();
 
             DataLine.Info dataLineInfo =
                     new DataLine.Info(
                             SourceDataLine.class,
                             audioFormat);
 
-            sourceDataLine = (SourceDataLine) AudioSystem.getLine(
+            SourceDataLine sourceDataLine = (SourceDataLine) AudioSystem.getLine(
                     dataLineInfo);
 
-            new PlayThread().start();
+            playThread = new PlayThread(sourceDataLine, audioFormat, audioInputStream, stopButton);
+            playThread.start();
             stopButton.setEnabled(true);
         } catch (Exception e) {
             new ExceptionDialog(e).setVisible(true);
         }
     }
 
-    class PlayThread extends Thread {
-        byte tempBuffer[] = new byte[10000];
-
-        public void run() {
-            try {
-                sourceDataLine.open(audioFormat);
-                sourceDataLine.start();
-
-                int cnt;
-
-                while ((cnt = audioInputStream.read(tempBuffer, 0, tempBuffer.length)) != -1 && !stopPlayback) {
-                    if (cnt > 0) {
-                        sourceDataLine.write(
-                                tempBuffer, 0, cnt);
-                    }
-                }
-
-                sourceDataLine.drain();
-                sourceDataLine.close();
-
-                stopButton.setEnabled(false);
-
-                stopPlayback = false;
-            } catch (Exception e) {
-                new ExceptionDialog(e).setVisible(true);
-            }
-        }
+    public PButton getStopButton() {
+        return stopButton;
     }
+
+
 }
