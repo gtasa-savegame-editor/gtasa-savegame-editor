@@ -8,8 +8,8 @@ import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
 import nl.paulinternet.gtasaveedit.model.variables.Variables;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
-import nl.paulinternet.gtasaveedit.view.FullHealthButton;
-import nl.paulinternet.gtasaveedit.view.ValueButton;
+import nl.paulinternet.gtasaveedit.view.component.FullHealthButton;
+import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 

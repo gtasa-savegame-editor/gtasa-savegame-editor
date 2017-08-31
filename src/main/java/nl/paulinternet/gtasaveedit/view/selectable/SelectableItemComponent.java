@@ -11,7 +11,7 @@ import java.util.List;
 import nl.paulinternet.gtasaveedit.model.Event;
 import nl.paulinternet.gtasaveedit.model.EventHandler;
 import nl.paulinternet.gtasaveedit.model.ReportableEvent;
-import nl.paulinternet.gtasaveedit.view.ImageComponent;
+import nl.paulinternet.gtasaveedit.view.component.ImageComponent;
 import nl.paulinternet.gtasaveedit.view.LoadableImage;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 

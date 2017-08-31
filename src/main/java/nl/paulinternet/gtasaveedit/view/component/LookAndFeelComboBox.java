@@ -1,6 +1,7 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.UIManager;
@@ -29,15 +30,15 @@ public class LookAndFeelComboBox extends PComboBox
 	private List<Item> items;
 	
 	public LookAndFeelComboBox () {
-		items = new ArrayList<Item>();
+		items = new ArrayList<>();
 
 		LookAndFeelInfo[] looks = UIManager.getInstalledLookAndFeels();
-		
-		for (LookAndFeelInfo look : looks) {
+
+		Arrays.asList(looks).forEach(look -> {
 			Item item = new Item(look.getName(), look.getClassName());
 			items.add(item);
 			addItem(item);
-		}
+		});
 		
 		// Event
 		copyFromModel();
@@ -45,7 +46,8 @@ public class LookAndFeelComboBox extends PComboBox
 		Model.editSettings.lookAndFeelClassName.onChange().addHandler(this, "copyFromModel");
 	}
 	
-	public void copyFromModel () {
+	@SuppressWarnings("WeakerAccess") // used in handler
+	public void copyFromModel() {
 		String value = Model.editSettings.lookAndFeelClassName.getValue();
 
 		for (Item item : items) {
@@ -55,6 +57,7 @@ public class LookAndFeelComboBox extends PComboBox
 		}
 	}
 	
+	@SuppressWarnings("unused") // used in handler
 	public void copyToModel () {
 		Model.editSettings.lookAndFeelClassName.setValue(items.get(getSelectedIndex()).className);
 	}

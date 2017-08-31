@@ -5,7 +5,7 @@ import javax.swing.UIManager;
 
 import nl.paulinternet.gtasaveedit.model.*;
 import nl.paulinternet.gtasaveedit.model.variables.*;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 public class SettingVariables
 {
@@ -79,7 +79,7 @@ public class SettingVariables
 		if (!UIManager.getLookAndFeel().getClass().getName().equals(Settings.getLookAndFeelClassName())) {
 			try {
 				UIManager.setLookAndFeel(Settings.getLookAndFeelClassName());
-				SwingUtilities.updateComponentTreeUI(Window.instance);
+				SwingUtilities.updateComponentTreeUI(MainWindow.instance);
 			}
 			catch (Exception ignored) {}
 		}

@@ -4,7 +4,7 @@ import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 
 import javax.swing.*;
@@ -35,7 +35,7 @@ public class QuickLoad extends PMenuItem
 			Savegame.load(Model.getSavegameFile(number));
 		}
 		catch (ErrorMessageException e) {
-			JOptionPane.showMessageDialog(Window.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	

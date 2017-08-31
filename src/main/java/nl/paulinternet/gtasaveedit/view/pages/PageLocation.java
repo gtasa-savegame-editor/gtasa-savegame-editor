@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view.pages;
 
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.view.LocationChooser;
+import nl.paulinternet.gtasaveedit.view.component.LocationChooser;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 
 public class PageLocation extends Page

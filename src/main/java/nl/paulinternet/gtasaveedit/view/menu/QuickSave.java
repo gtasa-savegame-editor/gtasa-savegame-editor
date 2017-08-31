@@ -5,7 +5,7 @@ import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 
 import javax.swing.*;
@@ -49,7 +49,7 @@ public class QuickSave extends PMenuItem
 			File file = Model.getSavegameFile(number);
 			if (Settings.getWarnOverwriteFile() == Settings.YES && file.exists()) {
 				int result = JOptionPane.showConfirmDialog(
-					Window.instance,
+					MainWindow.instance,
 					"Savegame " + number + " already exists.\nDo you want to overwrite it?",
 					"Overwrite file?",
 					JOptionPane.YES_NO_OPTION,
@@ -63,7 +63,7 @@ public class QuickSave extends PMenuItem
 			}
 		}
 		catch (ErrorMessageException e) {
-			JOptionPane.showMessageDialog(Window.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

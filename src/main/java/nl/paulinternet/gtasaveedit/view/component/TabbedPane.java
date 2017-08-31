@@ -1,6 +1,8 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.component;
 
 import nl.paulinternet.gtasaveedit.model.Model;
+import nl.paulinternet.gtasaveedit.view.Main;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
 
@@ -54,13 +56,13 @@ public class TabbedPane extends JTabbedPane {
             removeAll();
             pages.forEach(p -> addTab(p.getTitle(), p.getComponent()));
             loaded = true;
-            MenuBar menubar = (MenuBar) Window.instance.getJMenuBar();
+            MenuBar menubar = (MenuBar) MainWindow.instance.getJMenuBar();
             if (menubar != null) {
                 menubar.onSavegameStateChange(true);
             } else {
-                System.err.println("Unable to get menuBar: " + Window.instance.getJMenuBar());
+                System.err.println("Unable to get menuBar: " + MainWindow.instance.getJMenuBar());
             }
-            Window.instance.validate();
+            MainWindow.instance.validate();
         }
     }
 
@@ -73,13 +75,13 @@ public class TabbedPane extends JTabbedPane {
             }
         });
         loaded = false;
-        MenuBar menubar = (MenuBar) Window.instance.getJMenuBar();
+        MenuBar menubar = (MenuBar) MainWindow.instance.getJMenuBar();
         if (menubar != null) {
             menubar.onSavegameStateChange(false);
         } else {
-            System.err.println("Unable to get menuBar: " + Window.instance.getJMenuBar());
+            System.err.println("Unable to get menuBar: " + MainWindow.instance.getJMenuBar());
         }
-        Window.instance.validate();
+        MainWindow.instance.validate();
     }
 
     public void updateUI() {
@@ -93,7 +95,7 @@ public class TabbedPane extends JTabbedPane {
         }
     }
 
-    void onShowPreferences() {
+    public void onShowPreferences() {
         pages.forEach(p -> {
             if (p instanceof PageOptions) {
                 setSelectedComponent(p.getComponent());

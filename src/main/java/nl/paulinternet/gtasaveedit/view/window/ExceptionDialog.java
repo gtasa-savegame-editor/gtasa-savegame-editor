@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.window;
 
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -47,7 +47,7 @@ public class ExceptionDialog extends JDialog
 	}
 	
 	public ExceptionDialog (Throwable t) {
-		super(Window.instance, "Error");
+		super(MainWindow.instance, "Error");
 
 		StringWriter writer = new StringWriter();
 		t.printStackTrace(new PrintWriter(writer));

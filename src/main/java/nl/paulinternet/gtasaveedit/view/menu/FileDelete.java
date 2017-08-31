@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 class FileDelete extends JMenuItem implements ActionListener
 {
@@ -29,7 +29,7 @@ class FileDelete extends JMenuItem implements ActionListener
 		fileChooser.setMultiSelectionEnabled(true);
 		
 		// Show dialog
-		int result = fileChooser.showDialog(Window.instance, "Delete");
+		int result = fileChooser.showDialog(MainWindow.instance, "Delete");
 		
 		// Do something
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -49,7 +49,7 @@ class FileDelete extends JMenuItem implements ActionListener
 
 				// Show dialog
 				result = JOptionPane.showConfirmDialog(
-					Window.instance,
+					MainWindow.instance,
 					message,
 					title,
 					JOptionPane.YES_NO_OPTION,

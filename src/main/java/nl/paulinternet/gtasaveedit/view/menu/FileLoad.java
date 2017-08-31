@@ -13,7 +13,7 @@ import nl.paulinternet.gtasaveedit.model.exceptions.ErrorMessageException;
 import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 class FileLoad extends JMenuItem implements ActionListener
 {
@@ -31,7 +31,7 @@ class FileLoad extends JMenuItem implements ActionListener
 		fileChooser.setDialogTitle("Load file");
 		
 		// Show dialog
-		int result = fileChooser.showOpenDialog(Window.instance);
+		int result = fileChooser.showOpenDialog(MainWindow.instance);
 		
 		// Do something
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -39,7 +39,7 @@ class FileLoad extends JMenuItem implements ActionListener
 				Savegame.load(fileChooser.getSelectedFile());
 			}
 			catch (ErrorMessageException e) {
-				JOptionPane.showMessageDialog(Window.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

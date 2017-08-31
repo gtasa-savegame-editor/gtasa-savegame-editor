@@ -11,7 +11,7 @@ import nl.paulinternet.gtasaveedit.model.variables.VariableFloat;
 import nl.paulinternet.gtasaveedit.model.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
-import nl.paulinternet.gtasaveedit.view.ValueButton;
+import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;

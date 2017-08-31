@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.view;
 
+import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
+
 import java.awt.AWTEvent;
 import java.awt.EventQueue;
 

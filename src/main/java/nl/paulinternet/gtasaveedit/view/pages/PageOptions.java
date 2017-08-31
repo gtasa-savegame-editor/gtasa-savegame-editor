@@ -5,12 +5,16 @@ import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;
 import nl.paulinternet.gtasaveedit.view.*;
+import nl.paulinternet.gtasaveedit.view.component.ImageComponent;
+import nl.paulinternet.gtasaveedit.view.component.LookAndFeelComboBox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedCheckbox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
+import nl.paulinternet.gtasaveedit.view.Images;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 import javax.swing.*;
 import java.io.File;
@@ -148,7 +152,7 @@ public class PageOptions extends Page {
         ybox.addSeparator(10);
         ybox.add(xboxLookAndFeel);
         ybox.addSeparator(10);
-        ybox.add(new JLabel("<html><b>Window size at startup:"));
+        ybox.add(new JLabel("<html><b>MainWindow size at startup:"));
         ybox.add(maximized.create(Settings.YES, "Maximized"));
         ybox.add(xboxWindowSize);
         ybox.addSpace(5);
@@ -255,11 +259,11 @@ public class PageOptions extends Page {
 
     @SuppressWarnings("unused") // Used as onClick
     public void currentWindowSize() {
-        boolean maximized = (Window.instance.getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0;
+        boolean maximized = (MainWindow.instance.getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0;
         Model.editSettings.windowMaximized.setIntValue(maximized ? Settings.YES : Settings.NO);
         if (!maximized) {
-            Model.editSettings.windowWidth.setIntValue(Window.instance.getWidth());
-            Model.editSettings.windowHeight.setIntValue(Window.instance.getHeight());
+            Model.editSettings.windowWidth.setIntValue(MainWindow.instance.getWidth());
+            Model.editSettings.windowHeight.setIntValue(MainWindow.instance.getHeight());
         }
     }
 
@@ -342,7 +346,7 @@ public class PageOptions extends Page {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select savegame directory");
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int result = fileChooser.showDialog(Window.instance, "OK");
+        int result = fileChooser.showDialog(MainWindow.instance, "OK");
 
         // Change
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -356,7 +360,7 @@ public class PageOptions extends Page {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select GTA San Andreas directory");
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int result = fileChooser.showDialog(Window.instance, "OK");
+        int result = fileChooser.showDialog(MainWindow.instance, "OK");
 
         // Change
         if (result == JFileChooser.APPROVE_OPTION) {

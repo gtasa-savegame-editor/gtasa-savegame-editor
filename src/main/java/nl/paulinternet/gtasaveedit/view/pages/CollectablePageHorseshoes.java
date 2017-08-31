@@ -7,9 +7,9 @@ import javax.swing.JLabel;
 
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Pickup;
-import nl.paulinternet.gtasaveedit.view.IntLabel;
+import nl.paulinternet.gtasaveedit.view.component.IntLabel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
-import nl.paulinternet.gtasaveedit.view.PickupCollectButton;
+import nl.paulinternet.gtasaveedit.view.component.PickupCollectButton;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemComponent;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItems;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectablePickup;

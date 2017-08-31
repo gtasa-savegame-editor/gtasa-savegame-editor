@@ -1,17 +1,18 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.window;
 
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
+import nl.paulinternet.gtasaveedit.view.component.TabbedPane;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 
 import javax.swing.*;
 
-public class Window extends JFrame {
-    public static final Window instance = new Window();
+public class MainWindow extends JFrame {
+    public static final MainWindow instance = new MainWindow();
     private TabbedPane tabbedPane;
 
-    private Window() {
+    private MainWindow() {
         // Exit on close
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

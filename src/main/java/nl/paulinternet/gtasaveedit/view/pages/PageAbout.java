@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.gtasaveedit.view.AboutWindow;
+import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 
 /**
  * @author Lukas Fülling (lukas@k40s.net)

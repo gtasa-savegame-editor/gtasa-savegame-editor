@@ -1,14 +1,14 @@
-package nl.paulinternet.gtasaveedit.view;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+package nl.paulinternet.gtasaveedit.view.component;
 
 import nl.paulinternet.gtasaveedit.model.MethodInvoker;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Saveplace;
+import nl.paulinternet.gtasaveedit.view.Images;
+import nl.paulinternet.gtasaveedit.view.LoadableImage;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class LocationChooser extends ImageComponent implements MouseListener
 {

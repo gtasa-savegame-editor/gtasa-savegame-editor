@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view.menu;
 
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 
 import javax.swing.*;
@@ -39,7 +39,7 @@ public class QuickDelete extends PMenuItem {
         File file = Model.getSavegameFile(number);
         if (Settings.getWarnDeleteFile() == Settings.YES) {
             int result = JOptionPane.showConfirmDialog(
-                    Window.instance,
+                    MainWindow.instance,
                     "Are you sure you want to delete savegame " + number + "?",
                     "Delete file?",
                     JOptionPane.YES_NO_OPTION,

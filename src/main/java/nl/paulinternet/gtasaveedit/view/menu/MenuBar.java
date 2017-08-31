@@ -4,7 +4,7 @@ import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,7 +67,7 @@ public class MenuBar extends JMenuBar {
             try {
                 Desktop.getDesktop().open(FileSystem.getSavegameDirectory());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(Window.instance, "Failed to open the savegame directory.", "Opening directory", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(MainWindow.instance, "Failed to open the savegame directory.", "Opening directory", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -108,7 +108,7 @@ public class MenuBar extends JMenuBar {
                     Runtime.getRuntime().exec(new String[]{FileSystem.getSanAndreasExecutable().getPath()}, null, FileSystem.getSanAndreasDirectory());
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(Window.instance, "Failed to run GTA San Andreas.", "Run GTA San Andreas", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(MainWindow.instance, "Failed to run GTA San Andreas.", "Run GTA San Andreas", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -174,6 +174,6 @@ public class MenuBar extends JMenuBar {
         menuItemSave.setEnabled(activeSavegame);
         menuItemClose.setEnabled(activeSavegame);
         validate();
-        Window.instance.validate();
+        MainWindow.instance.validate();
     }
 }

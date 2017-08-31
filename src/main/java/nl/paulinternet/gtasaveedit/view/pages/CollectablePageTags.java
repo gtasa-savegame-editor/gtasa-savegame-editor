@@ -14,7 +14,7 @@ import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemVariable;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItems;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableTag;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectionSizeLabel;
-import nl.paulinternet.gtasaveedit.view.ValueButton;
+import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 

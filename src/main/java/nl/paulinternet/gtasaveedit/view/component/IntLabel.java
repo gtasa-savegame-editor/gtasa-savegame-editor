@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.component;
 
 import javax.swing.JLabel;
 

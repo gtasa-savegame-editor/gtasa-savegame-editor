@@ -1,9 +1,6 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.window;
 
 import nl.paulinternet.gtasaveedit.model.Settings;
-import nl.paulinternet.gtasaveedit.view.ExceptionDialog;
-import nl.paulinternet.gtasaveedit.view.Window;
-import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 
@@ -74,7 +71,7 @@ public class AboutWindow extends JFrame {
         try {
             Desktop.getDesktop().browse(new URI("http://" + website));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(Window.instance, "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(MainWindow.instance, "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

@@ -2,9 +2,10 @@ package nl.paulinternet.gtasaveedit.view;
 
 import java.awt.Toolkit;
 
-import javax.swing.UIManager;
+import javax.swing.*;
 
 import nl.paulinternet.gtasaveedit.model.Settings;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 class GUICreator implements Runnable
 {
@@ -18,16 +19,17 @@ class GUICreator implements Runnable
 			// Set look and feel
 			try {
 				UIManager.setLookAndFeel(Settings.getLookAndFeelClassName());
+				SwingUtilities.updateComponentTreeUI(MainWindow.instance);
 			}
-			catch (Throwable ignored) {}
+			catch (Exception ignored) {}
 			
 			// Create a window
-			Window.instance.setVisible(true);
+			MainWindow.instance.setVisible(true);
 			
 			secondTime = true;
 		}
 		else {
-			Window.instance.createContent();
+			MainWindow.instance.createContent();
 		}
 	}
 }

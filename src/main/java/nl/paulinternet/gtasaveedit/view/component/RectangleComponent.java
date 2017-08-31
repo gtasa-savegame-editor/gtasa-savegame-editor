@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.view;
+package nl.paulinternet.gtasaveedit.view.component;
 
 import java.awt.Color;
 import java.awt.Component;

@@ -16,7 +16,7 @@ import nl.paulinternet.gtasaveedit.model.FileSystem;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.view.Main;
-import nl.paulinternet.gtasaveedit.view.Window;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 class FileSave extends JMenuItem implements ActionListener
 {
@@ -34,7 +34,7 @@ class FileSave extends JMenuItem implements ActionListener
 		fileChooser.setDialogTitle("Save file");
 		
 		// Show dialog
-		int result = fileChooser.showSaveDialog(Window.instance);
+		int result = fileChooser.showSaveDialog(MainWindow.instance);
 		
 		// Do something
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -42,7 +42,7 @@ class FileSave extends JMenuItem implements ActionListener
 				File file = fileChooser.getSelectedFile();
 				if (Settings.getWarnOverwriteFile() == Settings.YES && file.exists()) {
 					result = JOptionPane.showConfirmDialog(
-						Window.instance,
+						MainWindow.instance,
 						"The file \"" + file + "\" already exists.\nDo you want to overwrite it?",
 						"Overwrite file?",
 						JOptionPane.YES_NO_OPTION,
@@ -56,7 +56,7 @@ class FileSave extends JMenuItem implements ActionListener
 				}
 			}
 			catch (ErrorMessageException e) {
-				JOptionPane.showMessageDialog(Window.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

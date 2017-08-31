@@ -6,6 +6,11 @@ This version contains mostly macOS specific fixes and requires Java > 8. That sa
 
 This doesn't mean that you shouldn't run it on those systems! I heavily advise you to do this and report any bugs you find as issue.
 
+## Downloading
+
+Just go to the [Releases page](https://github.com/lfuelling/gtasa-savegame-editor/releases) and download the file you need.
+
+
 ## Building
 
 To build the application:
