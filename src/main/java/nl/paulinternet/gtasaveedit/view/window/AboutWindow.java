@@ -22,7 +22,7 @@ public class AboutWindow extends JFrame {
         PButton websiteButton = new PButton("Original Website");
         websiteButton.onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
 
-        PButton repoButton = new PButton("View Source");
+        PButton repoButton = new PButton("View Source / Downloads");
         repoButton.onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
 
         stopButton = new PButton("Stop Audio");
@@ -32,10 +32,10 @@ public class AboutWindow extends JFrame {
         JLabel label = new JLabel(
                 "<html>" +
                         "<font size=+2>GTA SA Savegame Editor</font><br />" +
-                        "<font size=+1>Version 3.3-beta (without 3d)</font><br />" +
+                        "<font size=+1>Version 3.3-rc.1 (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
-                        "macOS tailored version and extended maintenance by lrk.<br /><br />" +
+                        "macOS tailored version and extended maintenance by Lukas Fülling.<br /><br />" +
                         "The original source code is available online.<br />" +
                         "The source code of <b>this</b> version can be accessed using the 'View Source' button. You can also report bugs there!<br />" +
                         "<br />" +
@@ -48,15 +48,15 @@ public class AboutWindow extends JFrame {
         ybox = new YBox();
         ybox.add(label);
         ybox.addSpace(15, 0);
-        ybox.add(websiteButton);
         ybox.add(repoButton);
+        ybox.add(websiteButton);
         ybox.add(stopButton);
         ybox.setBorder(10);
         getContentPane().add(ybox, BorderLayout.CENTER);
 
 
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setSize(new Dimension(400, 450));
+        setSize(new Dimension(400, 475));
         setLocationRelativeTo(null);
     }
 
