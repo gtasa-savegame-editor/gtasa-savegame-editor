@@ -1,10 +1,10 @@
 package nl.paulinternet.gtasaveedit.model.variables;
 
 import static nl.paulinternet.gtasaveedit.model.Model.vars;
-import nl.paulinternet.gtasaveedit.model.Event;
+import nl.paulinternet.gtasaveedit.model.event.Event;
 import nl.paulinternet.gtasaveedit.model.exceptions.InvalidValueException;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
 
 public class VariableTime implements TextFieldInterface

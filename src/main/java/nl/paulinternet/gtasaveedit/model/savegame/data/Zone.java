@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.savegame.data;
 
 import java.awt.*;
 

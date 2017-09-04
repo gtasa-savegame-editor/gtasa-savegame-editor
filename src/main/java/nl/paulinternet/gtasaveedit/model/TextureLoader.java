@@ -1,12 +1,16 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.io.ArchiveReader;
+import nl.paulinternet.gtasaveedit.model.io.LittleEndianRandomAccessFile;
+import nl.paulinternet.gtasaveedit.model.io.RWFile;
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 
 /**
- * @deprecated
+ * @deprecated only used in the 3d version
  */
 public class TextureLoader
 {

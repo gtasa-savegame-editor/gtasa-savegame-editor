@@ -1,9 +1,8 @@
 package nl.paulinternet.gtasaveedit.model.variables;
 
-import nl.paulinternet.gtasaveedit.model.Cloth;
-import nl.paulinternet.gtasaveedit.model.Jump;
-import nl.paulinternet.gtasaveedit.model.Pickup;
-import nl.paulinternet.gtasaveedit.model.RoadblockVariable;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Cloth;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Jump;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Pickup;
 
 import java.util.ArrayList;
 import java.util.Collections;

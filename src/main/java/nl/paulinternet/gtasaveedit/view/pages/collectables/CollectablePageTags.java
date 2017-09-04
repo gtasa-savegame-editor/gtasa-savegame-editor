@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.view.pages;
+package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.TextFieldInterface;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.MapImage;
+import nl.paulinternet.gtasaveedit.view.pages.Page;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemComponent;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemVariable;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItems;
@@ -26,6 +27,7 @@ public class CollectablePageTags extends Page
 			items.onDataChange().addHandler(this, "updateText");
 		}
 
+		@SuppressWarnings("unused") // used in handler
 		public void updateText () {
 			int sprayed = 0;
 			

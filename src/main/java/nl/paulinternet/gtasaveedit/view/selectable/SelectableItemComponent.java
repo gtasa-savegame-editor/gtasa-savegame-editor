@@ -8,11 +8,11 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.EventHandler;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.view.component.ImageComponent;
-import nl.paulinternet.gtasaveedit.view.LoadableImage;
+import nl.paulinternet.gtasaveedit.model.LoadableImage;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 
 public class SelectableItemComponent extends ImageComponent implements MouseListener, MouseMotionListener

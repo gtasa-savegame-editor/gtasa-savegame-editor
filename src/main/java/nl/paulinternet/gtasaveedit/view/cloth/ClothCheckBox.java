@@ -1,8 +1,8 @@
 package nl.paulinternet.gtasaveedit.view.cloth;
 
-import nl.paulinternet.gtasaveedit.model.Cloth;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Cloth;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.view.swing.PCheckBox;
 
 public class ClothCheckBox extends PCheckBox

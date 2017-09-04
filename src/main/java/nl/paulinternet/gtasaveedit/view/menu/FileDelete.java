@@ -8,7 +8,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import nl.paulinternet.gtasaveedit.model.FileSystem;
+import nl.paulinternet.gtasaveedit.model.io.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;

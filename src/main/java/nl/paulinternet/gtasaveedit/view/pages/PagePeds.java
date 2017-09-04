@@ -3,7 +3,7 @@ package nl.paulinternet.gtasaveedit.view.pages;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.model.EventHandler;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 import nl.paulinternet.gtasaveedit.model.MethodInvoker;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.swing.PCheckBox;

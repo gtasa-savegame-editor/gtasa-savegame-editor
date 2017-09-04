@@ -3,7 +3,7 @@ package nl.paulinternet.gtasaveedit.view.swing;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 
 class ActionReporter implements ActionListener
 {

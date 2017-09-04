@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.savegame.data;
 
 import java.util.zip.CRC32;
 

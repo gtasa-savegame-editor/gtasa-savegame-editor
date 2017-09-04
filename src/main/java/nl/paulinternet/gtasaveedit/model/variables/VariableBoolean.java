@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.model.variables;
 
-import nl.paulinternet.gtasaveedit.model.Event;
+import nl.paulinternet.gtasaveedit.model.event.Event;
 
 public interface VariableBoolean
 {

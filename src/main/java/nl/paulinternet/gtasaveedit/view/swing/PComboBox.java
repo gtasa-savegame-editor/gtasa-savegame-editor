@@ -5,8 +5,8 @@ import java.awt.Dimension;
 import javax.swing.JComboBox;
 import javax.swing.UIManager;
 
-import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 
 public class PComboBox extends JComboBox
 {

@@ -1,5 +1,8 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
+
 import java.lang.reflect.Method;
 
 public class MethodInvoker implements EventHandler

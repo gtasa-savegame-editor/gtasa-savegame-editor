@@ -4,7 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.model.Cloth;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Cloth;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Clothes;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.variables.Variable;

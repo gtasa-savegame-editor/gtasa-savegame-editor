@@ -1,4 +1,6 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.event;
+
+import nl.paulinternet.gtasaveedit.model.MethodInvoker;
 
 public abstract class Event
 {

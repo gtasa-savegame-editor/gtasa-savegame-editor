@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.savegame;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

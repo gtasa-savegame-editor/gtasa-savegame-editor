@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import nl.paulinternet.gtasaveedit.model.Jump;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Jump;
 
 public class SelectableJump implements SelectableItemValue
 {

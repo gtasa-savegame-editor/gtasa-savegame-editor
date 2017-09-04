@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
-import nl.paulinternet.gtasaveedit.model.FileSystem;
+import nl.paulinternet.gtasaveedit.model.io.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;

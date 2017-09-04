@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.zip.CRC32;
 
-import nl.paulinternet.gtasaveedit.model.ArchiveReader;
+import nl.paulinternet.gtasaveedit.model.io.ArchiveReader;
 
 public class CrcCalculator
 {

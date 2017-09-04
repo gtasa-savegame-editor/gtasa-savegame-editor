@@ -1,7 +1,5 @@
 package nl.paulinternet.gtasaveedit.model.savegame.data;
 
-import nl.paulinternet.gtasaveedit.model.Zone;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

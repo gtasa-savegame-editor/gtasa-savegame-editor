@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.view;
 
+import nl.paulinternet.gtasaveedit.model.LoadableImage;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;

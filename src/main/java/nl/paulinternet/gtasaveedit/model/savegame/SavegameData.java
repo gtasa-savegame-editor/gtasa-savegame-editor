@@ -1,6 +1,5 @@
 package nl.paulinternet.gtasaveedit.model.savegame;
 
-import nl.paulinternet.gtasaveedit.model.ByteSequence;
 import nl.paulinternet.gtasaveedit.model.SumOfBytes;
 import nl.paulinternet.gtasaveedit.model.Util;
 import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;

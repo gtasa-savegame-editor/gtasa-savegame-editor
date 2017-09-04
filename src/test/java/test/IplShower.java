@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.paulinternet.gtasaveedit.model.ArchiveReader;
+import nl.paulinternet.gtasaveedit.model.io.ArchiveReader;
 
 public class IplShower
 {

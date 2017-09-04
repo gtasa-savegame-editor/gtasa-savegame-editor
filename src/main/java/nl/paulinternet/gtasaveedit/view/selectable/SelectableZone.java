@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import nl.paulinternet.gtasaveedit.model.Zone;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Zone;
 
 public class SelectableZone implements SelectableItemValue
 {

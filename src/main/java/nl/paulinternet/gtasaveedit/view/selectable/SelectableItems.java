@@ -3,7 +3,7 @@ package nl.paulinternet.gtasaveedit.view.selectable;
 import java.util.List;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 
 public class SelectableItems<T extends SelectableItem>
 {

@@ -1,7 +1,5 @@
 package nl.paulinternet.gtasaveedit.model.savegame.data;
 
-import nl.paulinternet.gtasaveedit.model.Cloth;
-
 public class Clothes
 {
 	public static Cloth getCloth (int type, int textureId) {

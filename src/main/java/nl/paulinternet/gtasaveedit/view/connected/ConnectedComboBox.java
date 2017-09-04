@@ -5,8 +5,8 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.EventHandler;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 import nl.paulinternet.gtasaveedit.model.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
 

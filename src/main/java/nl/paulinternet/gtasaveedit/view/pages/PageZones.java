@@ -9,8 +9,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
-import nl.paulinternet.gtasaveedit.model.Zone;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Zone;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Zones;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedCheckbox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;

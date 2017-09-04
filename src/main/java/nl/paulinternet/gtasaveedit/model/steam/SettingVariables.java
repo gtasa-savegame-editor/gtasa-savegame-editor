@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import nl.paulinternet.gtasaveedit.model.*;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.variables.*;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 

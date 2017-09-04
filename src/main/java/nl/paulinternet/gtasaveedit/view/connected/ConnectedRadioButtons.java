@@ -8,8 +8,8 @@ import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
-import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.EventHandler;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 import nl.paulinternet.gtasaveedit.model.variables.VariableInteger;
 
 public class ConnectedRadioButtons

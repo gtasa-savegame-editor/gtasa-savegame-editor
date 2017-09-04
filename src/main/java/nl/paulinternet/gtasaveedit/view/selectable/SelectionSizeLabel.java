@@ -2,8 +2,8 @@ package nl.paulinternet.gtasaveedit.view.selectable;
 
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.EventHandler;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 
 public class SelectionSizeLabel extends JLabel implements EventHandler
 {

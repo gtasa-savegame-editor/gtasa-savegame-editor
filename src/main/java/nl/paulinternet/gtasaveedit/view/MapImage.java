@@ -1,6 +1,8 @@
 package nl.paulinternet.gtasaveedit.view;
 
 
+import nl.paulinternet.gtasaveedit.model.LoadableImage;
+
 public class MapImage
 {
 	public static final MapImage SAN_ANDREAS = new MapImage(Images.MAP, 0.1f, 310f, -0.1f, 310f);

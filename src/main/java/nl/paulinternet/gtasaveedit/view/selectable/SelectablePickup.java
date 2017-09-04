@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import nl.paulinternet.gtasaveedit.model.Pickup;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Pickup;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 
 public class SelectablePickup implements SelectableItem

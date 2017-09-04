@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
+import nl.paulinternet.gtasaveedit.view.pages.collectables.*;
+
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
 

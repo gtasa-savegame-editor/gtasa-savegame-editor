@@ -1,5 +1,6 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.io;
 
+import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.model.steam.SteamConfigNode;
 import nl.paulinternet.gtasaveedit.model.steam.SteamConfigReader;
 

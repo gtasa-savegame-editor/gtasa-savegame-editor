@@ -1,5 +1,8 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.variables;
 
+import nl.paulinternet.gtasaveedit.model.Model;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.model.variables.VariableBoolean;
 

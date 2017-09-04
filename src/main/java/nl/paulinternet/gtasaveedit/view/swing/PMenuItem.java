@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 
-import nl.paulinternet.gtasaveedit.model.Event;
-import nl.paulinternet.gtasaveedit.model.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 
 public class PMenuItem extends JMenuItem implements ActionListener
 {

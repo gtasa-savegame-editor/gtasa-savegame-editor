@@ -1,6 +1,9 @@
 package nl.paulinternet.gtasaveedit.model;
 
+import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
+import nl.paulinternet.gtasaveedit.model.io.ArchiveReader;
+import nl.paulinternet.gtasaveedit.model.io.FileSystem;
 import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;
 import nl.paulinternet.gtasaveedit.model.variables.Variable;
 import nl.paulinternet.gtasaveedit.model.variables.Variables;

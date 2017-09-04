@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import nl.paulinternet.gtasaveedit.model.exceptions.FileFormatException;
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.Pickup;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Pickup;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
 import nl.paulinternet.gtasaveedit.model.link.Link;
 

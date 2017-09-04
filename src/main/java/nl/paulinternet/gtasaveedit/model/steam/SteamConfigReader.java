@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.model.steam;
 
-import nl.paulinternet.gtasaveedit.model.IOUtil;
+import nl.paulinternet.gtasaveedit.model.io.IOUtil;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
-import nl.paulinternet.gtasaveedit.view.LoadableImage;
+import nl.paulinternet.gtasaveedit.model.LoadableImage;
 
 import java.awt.Component;
 import java.awt.Dimension;

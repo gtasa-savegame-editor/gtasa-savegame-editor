@@ -4,7 +4,7 @@ import nl.paulinternet.gtasaveedit.model.MethodInvoker;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Saveplace;
 import nl.paulinternet.gtasaveedit.view.Images;
-import nl.paulinternet.gtasaveedit.view.LoadableImage;
+import nl.paulinternet.gtasaveedit.model.LoadableImage;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

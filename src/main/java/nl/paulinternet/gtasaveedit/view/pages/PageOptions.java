@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.gtasaveedit.model.FileSystem;
+import nl.paulinternet.gtasaveedit.model.io.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.model.steam.SettingVariables;

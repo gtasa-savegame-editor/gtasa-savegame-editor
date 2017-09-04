@@ -1,15 +1,16 @@
-package nl.paulinternet.gtasaveedit.view.pages;
+package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JLabel;
 
-import nl.paulinternet.gtasaveedit.model.Jump;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Jump;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.MapImage;
+import nl.paulinternet.gtasaveedit.view.pages.Page;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemComponent;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItemVariable;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItems;

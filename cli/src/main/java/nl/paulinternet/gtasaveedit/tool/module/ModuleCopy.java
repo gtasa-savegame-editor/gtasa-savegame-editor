@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.tool.module;
 
-import nl.paulinternet.gtasaveedit.model.ByteSequence;
+import nl.paulinternet.gtasaveedit.model.savegame.ByteSequence;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
 import nl.paulinternet.gtasaveedit.tool.Dir;
 import nl.paulinternet.gtasaveedit.tool.Util;

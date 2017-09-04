@@ -1,4 +1,4 @@
-package nl.paulinternet.gtasaveedit.model;
+package nl.paulinternet.gtasaveedit.model.event;
 
 import java.util.ArrayList;
 import java.util.List;
