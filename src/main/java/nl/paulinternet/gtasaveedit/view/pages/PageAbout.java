@@ -33,6 +33,7 @@ public class PageAbout extends Page {
 
 
     public void play() {
+        // TODO: duplicate
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/gta-sa-intro.wav")));
             AudioFormat audioFormat = audioInputStream.getFormat();
