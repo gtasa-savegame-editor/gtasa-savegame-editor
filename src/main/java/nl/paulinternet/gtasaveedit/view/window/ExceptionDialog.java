@@ -47,7 +47,7 @@ public class ExceptionDialog extends JDialog
 	}
 	
 	public ExceptionDialog (Throwable t) {
-		super(MainWindow.instance, "Error");
+		super(MainWindow.getInstance(), "Error");
 
 		StringWriter writer = new StringWriter();
 		t.printStackTrace(new PrintWriter(writer));

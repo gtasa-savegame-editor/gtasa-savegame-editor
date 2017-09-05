@@ -80,7 +80,7 @@ public class SettingVariables
 		if (!UIManager.getLookAndFeel().getClass().getName().equals(Settings.getLookAndFeelClassName())) {
 			try {
 				UIManager.setLookAndFeel(Settings.getLookAndFeelClassName());
-				SwingUtilities.updateComponentTreeUI(MainWindow.instance);
+				SwingUtilities.updateComponentTreeUI(MainWindow.getInstance());
 			}
 			catch (Exception ignored) {}
 		}

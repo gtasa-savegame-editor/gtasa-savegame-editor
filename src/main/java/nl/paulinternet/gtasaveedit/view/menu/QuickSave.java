@@ -49,7 +49,7 @@ public class QuickSave extends PMenuItem
 			File file = Model.getSavegameFile(number);
 			if (Settings.getWarnOverwriteFile() == Settings.YES && file.exists()) {
 				int result = JOptionPane.showConfirmDialog(
-					MainWindow.instance,
+					MainWindow.getInstance(),
 					"Savegame " + number + " already exists.\nDo you want to overwrite it?",
 					"Overwrite file?",
 					JOptionPane.YES_NO_OPTION,
@@ -63,7 +63,7 @@ public class QuickSave extends PMenuItem
 			}
 		}
 		catch (ErrorMessageException e) {
-			JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

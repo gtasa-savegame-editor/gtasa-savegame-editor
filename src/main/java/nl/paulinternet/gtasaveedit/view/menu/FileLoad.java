@@ -31,7 +31,7 @@ class FileLoad extends JMenuItem implements ActionListener
 		fileChooser.setDialogTitle("Load file");
 		
 		// Show dialog
-		int result = fileChooser.showOpenDialog(MainWindow.instance);
+		int result = fileChooser.showOpenDialog(MainWindow.getInstance());
 		
 		// Do something
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -39,7 +39,7 @@ class FileLoad extends JMenuItem implements ActionListener
 				Savegame.load(fileChooser.getSelectedFile());
 			}
 			catch (ErrorMessageException e) {
-				JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

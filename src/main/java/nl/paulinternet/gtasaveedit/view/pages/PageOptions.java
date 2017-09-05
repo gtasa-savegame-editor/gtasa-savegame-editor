@@ -259,11 +259,11 @@ public class PageOptions extends Page {
 
     @SuppressWarnings("unused") // Used as onClick
     public void currentWindowSize() {
-        boolean maximized = (MainWindow.instance.getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0;
+        boolean maximized = (MainWindow.getInstance().getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0;
         Model.editSettings.windowMaximized.setIntValue(maximized ? Settings.YES : Settings.NO);
         if (!maximized) {
-            Model.editSettings.windowWidth.setIntValue(MainWindow.instance.getWidth());
-            Model.editSettings.windowHeight.setIntValue(MainWindow.instance.getHeight());
+            Model.editSettings.windowWidth.setIntValue(MainWindow.getInstance().getWidth());
+            Model.editSettings.windowHeight.setIntValue(MainWindow.getInstance().getHeight());
         }
     }
 
@@ -346,7 +346,7 @@ public class PageOptions extends Page {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select savegame directory");
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int result = fileChooser.showDialog(MainWindow.instance, "OK");
+        int result = fileChooser.showDialog(MainWindow.getInstance(), "OK");
 
         // Change
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -360,7 +360,7 @@ public class PageOptions extends Page {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select GTA San Andreas directory");
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int result = fileChooser.showDialog(MainWindow.instance, "OK");
+        int result = fileChooser.showDialog(MainWindow.getInstance(), "OK");
 
         // Change
         if (result == JFileChooser.APPROVE_OPTION) {

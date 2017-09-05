@@ -29,7 +29,7 @@ class FileDelete extends JMenuItem implements ActionListener
 		fileChooser.setMultiSelectionEnabled(true);
 		
 		// Show dialog
-		int result = fileChooser.showDialog(MainWindow.instance, "Delete");
+		int result = fileChooser.showDialog(MainWindow.getInstance(), "Delete");
 		
 		// Do something
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -49,7 +49,7 @@ class FileDelete extends JMenuItem implements ActionListener
 
 				// Show dialog
 				result = JOptionPane.showConfirmDialog(
-					MainWindow.instance,
+					MainWindow.getInstance(),
 					message,
 					title,
 					JOptionPane.YES_NO_OPTION,

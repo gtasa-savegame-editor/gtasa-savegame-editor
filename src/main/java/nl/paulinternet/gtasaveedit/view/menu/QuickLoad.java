@@ -35,7 +35,7 @@ public class QuickLoad extends PMenuItem
 			Savegame.load(Model.getSavegameFile(number));
 		}
 		catch (ErrorMessageException e) {
-			JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	

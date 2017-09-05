@@ -9,8 +9,15 @@ import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import javax.swing.*;
 
 public class MainWindow extends JFrame {
-    public static final MainWindow instance = new MainWindow();
+    private static MainWindow instance;
     private TabbedPane tabbedPane;
+
+    public static MainWindow getInstance() {
+        if (instance == null){
+            instance = new MainWindow();
+        }
+        return instance;
+    }
 
     private MainWindow() {
         // Exit on close

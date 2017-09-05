@@ -69,7 +69,7 @@ public class AboutWindow extends JFrame {
         try {
             Desktop.getDesktop().browse(new URI("http://" + website));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(MainWindow.instance, "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

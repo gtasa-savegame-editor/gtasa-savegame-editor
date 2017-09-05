@@ -25,7 +25,7 @@ public class Main {
                 System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
                 Application.getApplication().setDockIconImage(Images.readImage("icon-256.png"));
 
-                Application.getApplication().setPreferencesHandler(pe -> MainWindow.instance.getTabbedPane().onShowPreferences());
+                Application.getApplication().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
                 Application.getApplication().setAboutHandler(aboutEvent -> new AboutWindow().setVisible(true));
             }
 
@@ -34,7 +34,7 @@ public class Main {
             images.addAll(Arrays.asList(Images.readImage("icon-16.png"),
                     Images.readImage("icon-32.png"),
                     Images.readImage("icon-48.png")));
-            MainWindow.instance.setIconImages(images);
+            MainWindow.getInstance().setIconImages(images);
 
             // Create GUI
             GUICreator guiCreator = new GUICreator();
@@ -44,6 +44,7 @@ public class Main {
             // Load images
             Images.loadImages();
         } catch (Throwable e) {
+            e.printStackTrace();
             new ExceptionDialog(e).setVisible(true);
         }
     }

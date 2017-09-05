@@ -69,13 +69,13 @@ public class TabbedPane extends JTabbedPane {
             removeAll();
             pages.forEach(p -> addTab(p.getTitle(), p.getComponent()));
             loaded = true;
-            MenuBar menubar = (MenuBar) MainWindow.instance.getJMenuBar();
+            MenuBar menubar = (MenuBar) MainWindow.getInstance().getJMenuBar();
             if (menubar != null) {
                 menubar.onSavegameStateChange(true);
             } else {
-                System.err.println("Unable to get menuBar: " + MainWindow.instance.getJMenuBar());
+                System.err.println("Unable to get menuBar: " + MainWindow.getInstance().getJMenuBar());
             }
-            MainWindow.instance.validate();
+            MainWindow.getInstance().validate();
         }
     }
 
@@ -88,13 +88,13 @@ public class TabbedPane extends JTabbedPane {
             }
         });
         loaded = false;
-        MenuBar menubar = (MenuBar) MainWindow.instance.getJMenuBar();
+        MenuBar menubar = (MenuBar) MainWindow.getInstance().getJMenuBar();
         if (menubar != null) {
             menubar.onSavegameStateChange(false);
         } else {
-            System.err.println("Unable to get menuBar: " + MainWindow.instance.getJMenuBar());
+            System.err.println("Unable to get menuBar: " + MainWindow.getInstance().getJMenuBar());
         }
-        MainWindow.instance.validate();
+        MainWindow.getInstance().validate();
     }
 
     public void updateUI() {

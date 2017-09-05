@@ -39,7 +39,7 @@ public class QuickDelete extends PMenuItem {
         File file = Model.getSavegameFile(number);
         if (Settings.getWarnDeleteFile() == Settings.YES) {
             int result = JOptionPane.showConfirmDialog(
-                    MainWindow.instance,
+                    MainWindow.getInstance(),
                     "Are you sure you want to delete savegame " + number + "?",
                     "Delete file?",
                     JOptionPane.YES_NO_OPTION,

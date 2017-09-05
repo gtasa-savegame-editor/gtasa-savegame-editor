@@ -34,7 +34,7 @@ class FileSave extends JMenuItem implements ActionListener
 		fileChooser.setDialogTitle("Save file");
 		
 		// Show dialog
-		int result = fileChooser.showSaveDialog(MainWindow.instance);
+		int result = fileChooser.showSaveDialog(MainWindow.getInstance());
 		
 		// Do something
 		if (result == JFileChooser.APPROVE_OPTION) {
@@ -42,7 +42,7 @@ class FileSave extends JMenuItem implements ActionListener
 				File file = fileChooser.getSelectedFile();
 				if (Settings.getWarnOverwriteFile() == Settings.YES && file.exists()) {
 					result = JOptionPane.showConfirmDialog(
-						MainWindow.instance,
+						MainWindow.getInstance(),
 						"The file \"" + file + "\" already exists.\nDo you want to overwrite it?",
 						"Overwrite file?",
 						JOptionPane.YES_NO_OPTION,
@@ -56,7 +56,7 @@ class FileSave extends JMenuItem implements ActionListener
 				}
 			}
 			catch (ErrorMessageException e) {
-				JOptionPane.showMessageDialog(MainWindow.instance, e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

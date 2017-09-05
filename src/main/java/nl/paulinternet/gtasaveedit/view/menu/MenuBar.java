@@ -67,7 +67,7 @@ public class MenuBar extends JMenuBar {
             try {
                 Desktop.getDesktop().open(FileSystem.getSavegameDirectory());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(MainWindow.instance, "Failed to open the savegame directory.", "Opening directory", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(MainWindow.getInstance(), "Failed to open the savegame directory.", "Opening directory", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -108,7 +108,7 @@ public class MenuBar extends JMenuBar {
                     Runtime.getRuntime().exec(new String[]{FileSystem.getSanAndreasExecutable().getPath()}, null, FileSystem.getSanAndreasDirectory());
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(MainWindow.instance, "Failed to run GTA San Andreas.", "Run GTA San Andreas", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(MainWindow.getInstance(), "Failed to run GTA San Andreas.", "Run GTA San Andreas", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -174,6 +174,6 @@ public class MenuBar extends JMenuBar {
         menuItemSave.setEnabled(activeSavegame);
         menuItemClose.setEnabled(activeSavegame);
         validate();
-        MainWindow.instance.validate();
+        MainWindow.getInstance().validate();
     }
 }

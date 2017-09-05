@@ -7,6 +7,7 @@ import nl.paulinternet.gtasaveedit.view.Images;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class LoadableImage {
     private String fileName;

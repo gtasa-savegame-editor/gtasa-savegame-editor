@@ -19,17 +19,17 @@ class GUICreator implements Runnable
 			// Set look and feel
 			try {
 				UIManager.setLookAndFeel(Settings.getLookAndFeelClassName());
-				SwingUtilities.updateComponentTreeUI(MainWindow.instance);
+				SwingUtilities.updateComponentTreeUI(MainWindow.getInstance());
 			}
 			catch (Exception ignored) {}
 			
 			// Create a window
-			MainWindow.instance.setVisible(true);
+			MainWindow.getInstance().setVisible(true);
 			
 			secondTime = true;
 		}
 		else {
-			MainWindow.instance.createContent();
+			MainWindow.getInstance().createContent();
 		}
 	}
 }
