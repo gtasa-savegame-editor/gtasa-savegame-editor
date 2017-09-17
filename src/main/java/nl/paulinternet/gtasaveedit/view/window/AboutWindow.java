@@ -1,6 +1,10 @@
 package nl.paulinternet.gtasaveedit.view.window;
 
+import com.panayotis.jupidator.Updater;
 import nl.paulinternet.gtasaveedit.model.Settings;
+import nl.paulinternet.gtasaveedit.model.event.Event;
+import nl.paulinternet.gtasaveedit.model.event.EventHandler;
+import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
@@ -13,26 +17,30 @@ import java.net.URI;
 
 public class AboutWindow extends JFrame {
 
-    private final PButton stopButton;
+    private final PButton stopButton, repoButton, websiteButton;
     private final YBox ybox;
     private PlayThread playThread;
 
-    public AboutWindow() {
+    public AboutWindow(boolean addHandlers) {
 
-        PButton websiteButton = new PButton("Website");
-        websiteButton.onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
-
-        PButton repoButton = new PButton("View Source / Downloads");
-        repoButton.onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
-
+        websiteButton = new PButton("Website");
+        repoButton = new PButton("View Source / Downloads");
         stopButton = new PButton("Stop Audio");
         stopButton.setEnabled(false);
-        stopButton.onClick().addHandler(this, "stop");
+
+        if(addHandlers) {
+            websiteButton.onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
+            repoButton.onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
+            stopButton.onClick().addHandler(this, "stop");
+        }
+
+        PButton updateButton = new PButton("Check For Updates");
+        updateButton.onClick().addHandler(e -> Updater.start(Main.getXmlurl(), Main.getAppinfo(), null, null));
 
         JLabel label = new JLabel(
                 "<html>" +
                         "<font size=+2>GTA SA Savegame Editor</font><br />" +
-                        "<font size=+1>Version 3.3-rc.1 (without 3d)</font><br />" +
+                        "<font size=+1>Version 3.3-beta.3 (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
                         "The original source code is available online.<br />" +
@@ -51,12 +59,13 @@ public class AboutWindow extends JFrame {
         ybox.add(repoButton);
         ybox.add(websiteButton);
         ybox.add(stopButton);
+        ybox.add(updateButton);
         ybox.setBorder(10);
         getContentPane().add(ybox, BorderLayout.CENTER);
 
 
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setSize(new Dimension(400, 475));
+        setSize(new Dimension(400, 500));
         setLocationRelativeTo(null);
     }
 
@@ -116,5 +125,11 @@ public class AboutWindow extends JFrame {
         return stopButton;
     }
 
+    public PButton getRepoButton() {
+        return repoButton;
+    }
 
+    public PButton getWebsiteButton() {
+        return websiteButton;
+    }
 }

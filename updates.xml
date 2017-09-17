@@ -12,7 +12,7 @@
         <launcher exec="${APPHOME}\gtasaveedit.exe"/>
     </architect -->
 
-    <architect tag="linux" os="Linux" arch="x86">
+    <architect tag="linux" os="Linux" arch="">
         <launcher exec="${JAVABIN}">
             <argument value="-jar"/>
             <argument value="${APPHOME}/gtasaveedit.jar"/>
@@ -26,21 +26,49 @@
         </launcher>
     </architect>
 
-    <version release="331" version="v3.3-rc.1">
-        <description>Some more updates</description>
+    <version release="332" version="v3.3-beta.3">
+        <description>
+            This is the third beta for 3.3. It should fix the browser launch issues on Linux and brings automatic updates (beta).
+
+            See the release notes of the previous release for an explanation of the different file types.
+
+            The next .app file with bundled JRE will be built for the release.
+        </description>
         <!-- arch name="win32">
             <file name="gtasaveedit.exe" sourcedir="0.2.0" destdir="${APPHOME}" size="1217834" compress="gzip"/>
         </arch -->
         <arch name="any">
-            <file name="releases/download/v3.3-rc.1/gtasaveedit-3.3-SNAPSHOT.jar" sourcedir="3.3" destdir="${APPHOME}" size="7176848"/>
+            <file name="gtasaveedit-3.3-SNAPSHOT.jar" sourcedir="releases/download/v3.3-beta.3" destdir="${APPHOME}" size="7176848"/>
         </arch>
         <!-- arch name="all">
             <file name="ReadMe.html" sourcedir="0.2.0" destdir="${APPHOME}/lib" size="4298" compress="gzip" />
         </arch -->
     </version>
 
-    <version release="320" version="3.2">
-        <description>Fork</description>
+    <version release="331" version="v3.3-rc.1">
+        <description>
+            This is the first release candidate for 3.3. It contains mostly cross-platform bugfixes and adds support for the unused gangs in the "Weapons" tab.
+
+            See the release notes of the previous release for an explanation of the different file types.
+
+            The next .app file with bundled JRE will be built for the release.
+        </description>
+        <arch name="any">
+            <file name="gtasaveedit-3.3-SNAPSHOT.jar" sourcedir="releases/download/v3.3-rc.1" destdir="${APPHOME}" size="7176848"/>
+        </arch>
+    </version>
+
+    <version release="330" version="v3.3-beta.2">
+        <description>
+            This release adds the following:
+
+            - Fix the "Save" menu behaviour on Windows (For a workaround on macOS see here)
+            - Add support for the unused gangs in the area page
+            - Add the savegame format for the current macOS Steam version (german but might work for all)
+            - New higher-resolution Dock icon for macOS
+
+            If you find any bugs, please report them as issue! Also, if the "Version" Dropdown is empty when you load a savegame, please file an issue and attach your savegame file so I can add the specific Version you're using.
+        </description>
     </version>
 
 </updatelist>

@@ -100,8 +100,8 @@
     </dependencies>
     <repositories>
         <repository>
-            <id>k40s-releases</id>
-            <url>https://nexus.k40s.net/repository/maven-releases/</url>
+            <id>k40s-public</id>
+            <url>https://nexus.k40s.net/repository/maven-public/</url>
         </repository>
     </repositories>
 </project>

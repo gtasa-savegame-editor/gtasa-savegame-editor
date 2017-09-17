@@ -4,9 +4,13 @@ import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 import javax.sound.sampled.*;
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedInputStream;
+import java.net.URI;
 
 /**
  * @author Lukas Fülling (lukas@k40s.net)
@@ -18,10 +22,23 @@ public class PageAbout extends Page {
 
     public PageAbout() {
         super("About", true);
-        AboutWindow aboutWindow = new AboutWindow();
+        AboutWindow aboutWindow = new AboutWindow(false);
         stopButton = aboutWindow.getStopButton();
         stopButton.onClick().addHandler(this, "stop");
+
+        aboutWindow.getWebsiteButton().onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
+        aboutWindow.getRepoButton().onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
+
         setComponent(aboutWindow.getYbox(), false);
+    }
+
+    @SuppressWarnings("unused") // used as onClick
+    public void openWebsite(String website) {
+        try {
+            Desktop.getDesktop().browse(new URI("http://" + website));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @SuppressWarnings({"unused", "WeakerAccess"}) // used as onClick
