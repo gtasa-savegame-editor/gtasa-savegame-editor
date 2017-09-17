@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updatelist application="GTA SA Savegame Editor" baseurl="https://github.com/lfuelling/gtasa-savegame-editor" icon="raw/master/src/main/resources/icon-48.png">
+
+    <architect tag="any" os="" arch="">
+        <launcher exec="${JAVABIN}">
+            <argument value="-jar"/>
+            <argument value="${APPHOME}/gtasaveedit.jar"/>
+        </launcher>
+    </architect>
+
+    <!--TODO architect tag="win32" os="Windows" arch="x86">
+        <launcher exec="${APPHOME}\gtasaveedit.exe"/>
+    </architect -->
+
+    <architect tag="linux" os="Linux" arch="x86">
+        <launcher exec="${JAVABIN}">
+            <argument value="-jar"/>
+            <argument value="${APPHOME}/gtasaveedit.jar"/>
+        </launcher>
+    </architect>
+
+    <architect tag="mac" os="mac" arch="">
+        <launcher exec="${JAVABIN}">
+            <argument value="-jar"/>
+            <argument value="${APPHOME}/gtasaveedit.jar"/>
+        </launcher>
+    </architect>
+
+    <version release="331" version="v3.3-rc.1">
+        <description>Some more updates</description>
+        <!-- arch name="win32">
+            <file name="gtasaveedit.exe" sourcedir="0.2.0" destdir="${APPHOME}" size="1217834" compress="gzip"/>
+        </arch -->
+        <arch name="any">
+            <file name="releases/download/v3.3-rc.1/gtasaveedit-3.3-SNAPSHOT.jar" sourcedir="3.3" destdir="${APPHOME}" size="7176848"/>
+        </arch>
+        <!-- arch name="all">
+            <file name="ReadMe.html" sourcedir="0.2.0" destdir="${APPHOME}/lib" size="4298" compress="gzip" />
+        </arch -->
+    </version>
+
+    <version release="320" version="3.2">
+        <description>Fork</description>
+    </version>
+
+</updatelist>

@@ -8,7 +8,7 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
 public class FileSystem {
-    public static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
+    private static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
 
     public static final File activeDir = new File(System.getProperty("user.dir"));
 

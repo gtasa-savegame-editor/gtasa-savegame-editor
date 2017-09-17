@@ -1,6 +1,8 @@
 package nl.paulinternet.gtasaveedit.view;
 
 import com.apple.eawt.Application;
+import com.panayotis.jupidator.ApplicationInfo;
+import com.panayotis.jupidator.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
@@ -43,6 +45,12 @@ public class Main {
 
             // Load images
             Images.loadImages();
+
+            // Check for updates
+            Updater.start("https://raw.githubusercontent.com/lfuelling/gtasa-savegame-editor/master/updates.xml",
+                    new ApplicationInfo(0, null),
+                    null,
+                    null);
         } catch (Throwable e) {
             e.printStackTrace();
             new ExceptionDialog(e).setVisible(true);
