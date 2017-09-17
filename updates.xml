@@ -41,7 +41,7 @@
             <file name="gtasaveedit-3.3-SNAPSHOT.jar" sourcedir="releases/download/v3.3-beta.3" destdir="${APPHOME}" size="8592929"/>
         </arch>
         <arch name="mac">
-            <file name="GTA.SA.Savegame.Editor.app.zip" sourcedir="releases/download/v3.3-beta.3" size="8498700" destdir="/Applications" compress="zip"/>
+            <file name="GTA.SA.Savegame.Editor.app" sourcedir="releases/download/v3.3-beta.3" size="8498700" destdir="/Applications" compress="zip"/>
         </arch>
         <!-- arch name="all">
             <file name="ReadMe.html" sourcedir="0.2.0" destdir="${APPHOME}/lib" size="4298" compress="gzip" />
