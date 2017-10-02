@@ -7,3 +7,11 @@ git:
   - master
 script: 
 - mvn clean install -Dmaven.javadoc.skip=true -B -V
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/826be7a4e8dce59091ef
+    on_success: change
+    on_failure: always
+    on_start: never
