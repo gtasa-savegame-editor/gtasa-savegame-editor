@@ -2,6 +2,7 @@ package nl.paulinternet.gtasaveedit.model;
 
 public class Util
 {
+	public static final String EMPTYSTRING = "";
 	public static int indexOf (byte[] array, byte[] search, int pos) {
 		// Check arguments
 		if (array == null || search == null) throw new NullPointerException();
