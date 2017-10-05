@@ -1,11 +1,13 @@
 package nl.paulinternet.gtasaveedit.model.io;
 
 import nl.paulinternet.gtasaveedit.model.Settings;
+import nl.paulinternet.gtasaveedit.model.Util;
 import nl.paulinternet.gtasaveedit.model.steam.SteamConfigNode;
 import nl.paulinternet.gtasaveedit.model.steam.SteamConfigReader;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
+import java.util.Objects;
 
 public class FileSystem {
     private static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
@@ -13,6 +15,7 @@ public class FileSystem {
     public static final File activeDir = new File(System.getProperty("user.dir"));
 
     private static boolean dllLoaded;
+    private static String EMPTYSTRING;
 
     static {
         try {
@@ -60,10 +63,10 @@ public class FileSystem {
         if(sanAndreasDirectory != null) {
             saDir = sanAndreasDirectory.getAbsolutePath();
         } else {
-            saDir = "";
+            saDir = Util.EMPTYSTRING;
         }
 
-        if (MAC) {
+        if (MAC && !saDir.equals(Util.EMPTYSTRING)) {
             return new File(saDir.substring(0, saDir.indexOf(".app") + 4));
             // new File(saDir.getAbsolutePath().split("[.]app")[0] + ".app"); slower one
         }
