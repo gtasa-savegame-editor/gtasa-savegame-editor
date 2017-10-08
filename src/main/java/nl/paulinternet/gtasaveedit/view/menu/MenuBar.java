@@ -173,7 +173,7 @@ public class MenuBar extends JMenuBar {
         menuSave.setEnabled(activeSavegame);
         menuItemSave.setEnabled(activeSavegame);
         menuItemClose.setEnabled(activeSavegame);
-        validate();
+        MenuBar.this.updateUI(); // causes flickering but works
         MainWindow.getInstance().validate();
     }
 }

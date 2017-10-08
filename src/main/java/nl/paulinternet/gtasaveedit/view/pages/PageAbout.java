@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
+import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
@@ -23,9 +24,12 @@ public class PageAbout extends Page {
     public PageAbout() {
         super("About", true);
         AboutWindow aboutWindow = new AboutWindow(false);
-        stopButton = aboutWindow.getStopButton();
-        stopButton.onClick().addHandler(this, "stop");
-
+        if(!Main.MAC) {
+            stopButton = aboutWindow.getStopButton();
+            stopButton.onClick().addHandler(this, "stop");
+        } else {
+            stopButton = new PButton("Stop");
+        }
         aboutWindow.getWebsiteButton().onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
         aboutWindow.getRepoButton().onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
 

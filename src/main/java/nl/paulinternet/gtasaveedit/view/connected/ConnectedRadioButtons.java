@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
+import nl.paulinternet.gtasaveedit.model.Util;
 import nl.paulinternet.gtasaveedit.model.event.Event;
 import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 import nl.paulinternet.gtasaveedit.model.variables.VariableInteger;
@@ -66,7 +67,7 @@ public class ConnectedRadioButtons
 	}
 	
 	public JRadioButton create (int value) {
-		return create(value, "");
+		return create(value, Util.EMPTYSTRING);
 	}
 	
 	public JRadioButton create (int value, String text) {

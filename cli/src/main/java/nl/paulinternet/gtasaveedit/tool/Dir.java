@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.tool;
 
+import nl.paulinternet.gtasaveedit.model.Util;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +18,7 @@ public class Dir
 	}
 
 	private Dir() {
-		String[] TEMP = {"", ""};
+		String[] TEMP = {Util.EMPTYSTRING, Util.EMPTYSTRING};
 		Properties prop = new Properties();
 		try (InputStream stream = Dir.class.getResourceAsStream("/application.properties")) {
 			prop.load(stream);
@@ -24,8 +26,8 @@ public class Dir
 			TEMP[1] = prop.getProperty("path.savegames");
 		} catch (IOException e) {
 			e.printStackTrace();
-			TEMP[0] ="";
-			TEMP[1] ="";
+			TEMP[0] =Util.EMPTYSTRING;
+			TEMP[1] =Util.EMPTYSTRING;
 		}
 		this.RESEARCH_PATH = TEMP[0];
 		this.SAVEGAME_PATH = TEMP[1];

@@ -26,6 +26,30 @@
         </launcher>
     </architect>
 
+    <version release="333" version="v3.3-beta.4">
+        <description>
+            This is the fourth beta for 3.3. It fixes design issues on first startup and save menu and audio playback issues on macOS.
+
+            Also, the project is now released under MIT License! 🎉
+
+            See the release notes of the previous release for an explanation of the different file types.
+
+            The next .app file with bundled JRE will be built for the release.
+        </description>
+        <!-- arch name="win32">
+            <file name="gtasaveedit.exe" sourcedir="0.2.0" destdir="${APPHOME}" size="1217834" compress="gzip"/>
+        </arch -->
+        <arch name="any">
+            <file name="gtasaveedit-3.3-SNAPSHOT-jar-with-dependencies.jar" sourcedir="releases/download/v3.3-beta.4" destdir="${APPHOME}" size="8593383"/>
+        </arch>
+        <arch name="mac">
+            <file name="GTA.SA.Savegame.Editor.app.zip" sourcedir="releases/download/v3.3-beta.4" size="8502390" destdir="${APPHOME}"/>
+        </arch>
+        <!-- arch name="all">
+            <file name="ReadMe.html" sourcedir="0.2.0" destdir="${APPHOME}/lib" size="4298" compress="gzip" />
+        </arch -->
+    </version>
+
     <version release="332" version="v3.3-beta.3">
         <description>
             This is the third beta for 3.3. It should fix the browser launch issues on Linux and brings automatic updates (beta).

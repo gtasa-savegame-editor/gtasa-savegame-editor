@@ -43,14 +43,14 @@ public class AboutWindow extends JFrame {
                         "<font size=+1>Version 3.3-beta.3 (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
-                        "The original source code is available online.<br />" +
-                        "The source code of <b>this</b> version can be accessed using the 'View Source' button. You can also report bugs there!<br />" +
                         "<br />" +
                         "Thanks to Tim Smith, OrionSR, Seemann, Pdescobar, hmvartak, Ryosuke, Steve M. and others for researching and programming.<br />" +
                         "Thanks to Konoko45 for his 100% complete savegame.<br />" +
                         "Thanks to Dennis L for donating and keeping me motivated.<br />" +
                         "<br />macOS tailored version and extended maintenance by Lukas Fülling.<br />" +
-                        "<br /><font color=red><b>Please don't spam the original author because of errors in this version!</b></font><br />" +
+                        "<br /><font color=red><b>Please report bugs in this version on GitHub!</b></font><br />" +
+                        "The original source code is available online.<br />" +
+                        "The source code of <b>this</b> version is available under MIT License. It can be accessed using the 'View Source' button.<br />" +
                         "</html>"
         );
         ybox = new YBox();

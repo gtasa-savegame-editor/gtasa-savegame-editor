@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
+import nl.paulinternet.gtasaveedit.model.Util;
 import nl.paulinternet.gtasaveedit.model.event.Event;
 import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 import nl.paulinternet.gtasaveedit.model.exceptions.InvalidValueException;
@@ -109,7 +110,7 @@ public class SelectableItemVariable implements TextFieldInterface, VariableBoole
 
 	@Override
 	public String getDefaultText () {
-		return "";
+		return Util.EMPTYSTRING;
 	}
 
 	@Override

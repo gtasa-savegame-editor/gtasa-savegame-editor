@@ -134,7 +134,7 @@ public class FileSystem {
         return getPlayerImageFile(getSanAndreasDirectory());
     }
 
-    public static File getPlayerImageFile(File saDir) {
+    private static File getPlayerImageFile(File saDir) {
         if (saDir == null) return null;
 
         File f = new File(saDir, "models/player.img");

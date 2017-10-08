@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.tool;
 
+import nl.paulinternet.gtasaveedit.model.Util;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class Table
 		// Copy the values to the array
 		String[] copied = new String[columns];
 		for (int i = 0; i < columns; i++) {
-			copied[i] = data.length > i && data[i] != null ? data[i] : "";
+			copied[i] = data.length > i && data[i] != null ? data[i] : Util.EMPTYSTRING;
 			if (copied[i].length() > maxSize[i])
 				maxSize[i] = copied[i].length();
 		}

@@ -17,7 +17,7 @@ public class Main {
 
     public static final boolean WINDOWS = System.getProperty("os.name").toLowerCase().startsWith("windows");
     public static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
-    private static final ApplicationInfo appinfo = new ApplicationInfo(0, null);
+    private static final ApplicationInfo appinfo = new ApplicationInfo(333, null);
     private static final String xmlurl = "https://raw.githubusercontent.com/lfuelling/gtasa-savegame-editor/master/updates.xml";
 
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class Main {
                 Application.getApplication().setDockIconImage(Images.readImage("icon-256.png"));
 
                 Application.getApplication().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
-                Application.getApplication().setAboutHandler(aboutEvent -> new AboutWindow(false).setVisible(true));
+                Application.getApplication().setAboutHandler(aboutEvent -> new AboutWindow(true).setVisible(true));
             }
 
             // Set the icons
