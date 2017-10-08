@@ -26,7 +26,7 @@
         </launcher>
     </architect>
 
-    <version release="333" version="v3.3-beta.4">
+    <version release="334" version="v3.3-beta.4">
         <description>
             This is the fourth beta for 3.3. It fixes design issues on first startup and save menu and audio playback issues on macOS.
 
