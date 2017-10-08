@@ -42,7 +42,7 @@
             <file name="gtasaveedit.exe" sourcedir="0.2.0" destdir="${APPHOME}" size="1217834" compress="gzip"/>
         </arch -->
         <arch name="any">
-            <file name="gtasaveedit-3.3-SNAPSHOT-jar-with-dependencies.jar" sourcedir="releases/download/v3.3-beta.4.2" destdir="${APPHOME}" size="8593383"/>
+            <file name="gtasaveedit-3.3-SNAPSHOT-jar-with-dependencies.jar" sourcedir="releases/download/v3.3-beta.4.2" destdir="${APPHOME}" size="8593387"/>
         </arch>
         <arch name="mac">
             <file name="GTA.SA.Savegame.Editor.app.zip" sourcedir="releases/download/v3.3-beta.4.2" size="8502390" destdir="${APPHOME}"/>
