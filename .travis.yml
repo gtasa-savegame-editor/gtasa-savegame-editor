@@ -23,6 +23,7 @@ deploy:
     secure: y38zGrJS8yPaATW7Zftm+ybyOA210N0flUSC+zqEo1nLUJe62KGSIx1nItiTm5iyVYt1YAkamM/q9UgDe2ojiJv4eoZ6gmU230aPlKEe3aKyze+LVF0QvvR3tQ/yZqaEs9bgLt5zpVEJnGrNuzVLugDkQefFAbwvcLhV+S6oKzycBlDq1QcnZLIYEvklK5ObQzrYxwi0AEWRXakPK2HRVadSzk159TfU2gh8NnRbaDmNNUViGCdnP+8FtF2VcRc5bEx0wrkDiyA1CJFJgXZaWrL5tANnYshsFcxaBmvf/KBpJmBsSHqeG2eXhlz4HdlLJiWmYZNekK4Umk0IFud+8KGg+NlvuEHupWdl+ZboC3DFLsVhzNJFKYOQDiORv4EYG0VqzHkoSvyHWZaW359m4c1qWwpsSmDn8UZHMMWwCsdEd1SkOjr97WWFNqA4qSGTdECMyQdQ6q/bsnbgmdrtNQe6WVq4yQ9TGHYiXm+7LRcxYCXx++0exFCKgdP+NjwDx2zqwOrlghRilbNSX3myOwq9ETB4VoNH1lv2vdijdaapix7ck+zhnAUe7zMSrUKLCeYhjgovgWygNz3D+qpolriPVMaz0zK78lw9CpIRGdAargtEMGlihQTkPQCzfbd5kCyO+r5Q1nZEFpRAcA8gSFScKI6ounJXARCzmS+C7dI=
   file_glob: true
   file: target/deploy/*
+  skip_cleanup: true
   on:
     repo: lfuelling/gtasa-savegame-editor
     tags: true

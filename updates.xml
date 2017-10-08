@@ -26,7 +26,7 @@
         </launcher>
     </architect>
 
-    <version release="334" version="v3.3-beta.4">
+    <version release="334" version="v3.3-beta.4.2">
         <description>
             This is the fourth beta for 3.3. It fixes design issues on first startup and save menu and audio playback issues on macOS.
 
@@ -35,6 +35,8 @@
             See the release notes of the previous release for an explanation of the different file types.
 
             The next .app file with bundled JRE will be built for the release.
+
+            (Had to be published again because of Travis)
         </description>
         <!-- arch name="win32">
             <file name="gtasaveedit.exe" sourcedir="0.2.0" destdir="${APPHOME}" size="1217834" compress="gzip"/>
