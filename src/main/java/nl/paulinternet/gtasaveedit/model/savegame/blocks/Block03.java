@@ -8,6 +8,7 @@ import nl.paulinternet.gtasaveedit.model.link.LinkArray;
 import nl.paulinternet.gtasaveedit.model.link.LinkFloat;
 import nl.paulinternet.gtasaveedit.model.link.LinkInt;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
+import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
 
 
 /**
@@ -79,8 +80,11 @@ public class Block03 extends LinkArray {
 
       final String iout = (i < 10) ? " " + i : String.valueOf(i);
 
+      final VehicleType vehicleType = VehicleType.getType(type);
+
       final String debugStr =
-          "Car: " + iout + " type: " + type + "  (" + xPos + "," + yPos + "," + zPos + ") has nitro: " + nitro
+          "Car: " + iout +
+              " type: " + vehicleType.getType() +" -> "+ vehicleType.getName() + "  (" + xPos + "," + yPos + "," + zPos + ") has nitro: " + nitro
               + " paintJob: " + paintJob + " radioStation: " + Integer.toHexString(radioStation) + " angle: (" + x + ","
               + y + "," + z + ") c1: " + color1 + " c2: " + color2;
 
@@ -100,6 +104,7 @@ public class Block03 extends LinkArray {
         }
       }
 
+      if(type != 0)
       System.out.println(debugStr + fString + modsString);
     }
 
@@ -116,8 +121,7 @@ public class Block03 extends LinkArray {
 
       final byte[] nameBytes = getBytes(68, 76, bytes);
 
-      System.out.println("Garage: " + i + " name: " new String(nameBytes));
-
+      //System.out.println("Garage: " + i + " name: "+ new String(nameBytes));
 
     }
 

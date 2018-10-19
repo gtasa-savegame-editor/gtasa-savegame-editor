@@ -35,6 +35,8 @@ public class VehicleType {
   static {
     types = new ArrayList<VehicleType>();
 
+    types.add(new VehicleType("None", "None", 0));
+
     types.add(new VehicleType("Bikes", "BF-400", 581));
     types.add(new VehicleType("Bikes", "Bike", 509));
     types.add(new VehicleType("Bikes", "BMX", 481));

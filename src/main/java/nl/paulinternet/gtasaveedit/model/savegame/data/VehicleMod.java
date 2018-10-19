@@ -35,7 +35,7 @@ public class VehicleMod {
   static {
     mods = new ArrayList<VehicleMod>();
 
-    mods.add(new VehicleMod("Car Stereo", "Bass Boost", 1086);
+    mods.add(new VehicleMod("Car Stereo", "Bass Boost", 1086));
 
     mods.add(new VehicleMod("Exhausts", "Alien", 1034));
     mods.add(new VehicleMod("Exhausts", "Chromer Exhaust", 1129));
