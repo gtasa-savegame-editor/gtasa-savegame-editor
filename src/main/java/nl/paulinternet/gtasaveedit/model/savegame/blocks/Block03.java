@@ -8,6 +8,8 @@ import nl.paulinternet.gtasaveedit.model.link.LinkArray;
 import nl.paulinternet.gtasaveedit.model.link.LinkFloat;
 import nl.paulinternet.gtasaveedit.model.link.LinkInt;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
+import nl.paulinternet.gtasaveedit.model.savegame.data.RadioStation;
+import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleMod;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
 
 
@@ -82,10 +84,12 @@ public class Block03 extends LinkArray {
 
       final VehicleType vehicleType = VehicleType.getType(type);
 
+      final RadioStation radioStation1 = RadioStation.getStation(radioStation);
+
       final String debugStr =
           "Car: " + iout +
               " type: " + vehicleType.getType() +" -> "+ vehicleType.getName() + "  (" + xPos + "," + yPos + "," + zPos + ") has nitro: " + nitro
-              + " paintJob: " + paintJob + " radioStation: " + Integer.toHexString(radioStation) + " angle: (" + x + ","
+              + " paintJob: " + paintJob + " radioStation: " + radioStation1.getName() + " angle: (" + x + ","
               + y + "," + z + ") c1: " + color1 + " c2: " + color2;
 
       String fString = "";
@@ -100,7 +104,10 @@ public class Block03 extends LinkArray {
       for (int j = 0; j < 15; j++) {
         final int mod = io.readInt(3, pos + 20 + j * 2, 2);
         if (mod != 65535 && mod != 0) {
-          modsString += "-> Mod_" + j + ": = " + mod;
+
+          final VehicleMod vehicleMod = VehicleMod.getMod(mod);
+          modsString += "-> Mod_" + j + ": = " + vehicleMod.getType()+" "+vehicleMod.getName();
+          //modsString += "-> Mod_" + j + ": = " + mod;
         }
       }
 

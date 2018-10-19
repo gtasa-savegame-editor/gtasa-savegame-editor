@@ -121,6 +121,9 @@ public class VehicleMod {
     mods.add(new VehicleMod("Wheels", "Virtual", 1097));
     mods.add(new VehicleMod("Wheels", "Wires", 1076));
 
+    mods.add(new VehicleMod("None", "None", 65535));
+    mods.add(new VehicleMod("None", "None", 0));
+
     mods = Collections.unmodifiableList(mods);
   }
 
@@ -130,7 +133,7 @@ public class VehicleMod {
   }
 
   public static VehicleMod getMod(int id) {
-    return mods.stream().filter(mod -> mod.id == id).findFirst().get();
+    return mods.stream().filter(mod -> mod.id == id).findFirst().orElse( new VehicleMod("NotKnown", "id: "+id, id) );
   }
 
 
