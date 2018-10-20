@@ -8,9 +8,12 @@ import nl.paulinternet.gtasaveedit.model.link.LinkArray;
 import nl.paulinternet.gtasaveedit.model.link.LinkFloat;
 import nl.paulinternet.gtasaveedit.model.link.LinkInt;
 import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Garage;
 import nl.paulinternet.gtasaveedit.model.savegame.data.RadioStation;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleMod;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
+
+import java.util.ArrayList;
 
 
 /**
@@ -19,11 +22,16 @@ import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
 public class Block03 extends LinkArray {
 
     public Block03() {
-        setLinks(new Link[]{
-                new LinkFloat(vars.health, 2, 0x20),
-                new LinkFloat(vars.armor, 2, 0x24),
-                new LinkInt(vars.weaponStartSlot, 2, 0x224, 1),
-        });
+        ArrayList<Link> links = new ArrayList<>();
+
+        for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
+            links.add(new LinkInt(vars.carIds.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
+            links.add(new LinkInt(vars.radioIds.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
+            links.add(new LinkInt(vars.color1Ids.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
+            links.add(new LinkInt(vars.color2Ids.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
+        }
+
+        setLinks((Link[]) links.toArray());
     }
 
     @Override
@@ -33,7 +41,7 @@ public class Block03 extends LinkArray {
         System.out.println("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS");
 
         // lets try something here
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
 
             int size = 64;
 
@@ -170,4 +178,5 @@ public class Block03 extends LinkArray {
         // Return
         return data;
     }
+
 }
