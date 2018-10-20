@@ -28,6 +28,7 @@ public class TabbedPane extends JTabbedPane {
                 new PageSkills(),
                 new PageLocation(),
                 new PageSchools(),
+                new PageGarages(),
                 new PageWeapons(),
                 new PageGangWeapons(),
                 new PageZones(),

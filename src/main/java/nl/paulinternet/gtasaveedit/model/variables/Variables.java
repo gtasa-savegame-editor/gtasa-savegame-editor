@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.model.variables;
 
 import nl.paulinternet.gtasaveedit.model.savegame.data.Cloth;
+import nl.paulinternet.gtasaveedit.model.savegame.data.Garage;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Jump;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Pickup;
 
@@ -122,7 +123,13 @@ public class Variables
 	public final VariableIntegerImpl lungCapacity = new VariableIntegerImpl();
 	public final VariableIntegerImpl bikeSkill = new VariableIntegerImpl();
 	public final VariableIntegerImpl cyclingSkill = new VariableIntegerImpl();
-	
+
+	// Garages / Cars
+	public final List<VariableIntegerImpl> carId =  intList(Garage.TOTAL_COUNT); // probably not enough as you can place more than one car into a single garage
+	public final List<VariableIntegerImpl> radioId = intList(Garage.TOTAL_COUNT); // probably not enough as you can place more than one car into a single garage
+	public final List<VariableIntegerImpl> color1Id = intList(Garage.TOTAL_COUNT); // probably not enough as you can place more than one car into a single garage
+	public final List<VariableIntegerImpl> color2Id = intList(Garage.TOTAL_COUNT); // probably not enough as you can place more than one car into a single garage
+
 	public Variables () {
 		currentIplVersion.onChange().addHandler(roadblockSF, "updateValue");
 		currentIplVersion.onChange().addHandler(roadblockLV, "updateValue");

@@ -33,7 +33,7 @@ public class VehicleType {
   private static List<VehicleType> types;
 
   static {
-    types = new ArrayList<VehicleType>();
+    types = new ArrayList<>();
 
     types.add(new VehicleType("None", "None", 0));
 

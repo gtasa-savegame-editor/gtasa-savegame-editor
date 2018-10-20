@@ -27,7 +27,7 @@ public class Block02 extends LinkArray
 	@Override
 	public void load (SavegameData io) throws FileFormatException {
 		super.load(io);
-		
+		new Block03().load(io);
 		// Load weapons
 		for (int i=0; i<13; i++) {
 			vars.weaponAmmo.get(i).setIntValue(io.readInt(2, 0x34 + 28 * i));
