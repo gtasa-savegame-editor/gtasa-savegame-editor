@@ -2,6 +2,7 @@ package nl.paulinternet.gtasaveedit.view.pages;
 
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.data.Garage;
+import nl.paulinternet.gtasaveedit.model.savegame.data.RadioStation;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleColor;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
 import nl.paulinternet.gtasaveedit.model.variables.VariableIntegerImpl;
@@ -32,10 +33,10 @@ public class PageGarages extends Page {
             } catch (IndexOutOfBoundsException e) {
                 table.add(new JLabel(String.valueOf("OutOfBounds/Missing")), 0, i + 1);
             }
-            table.add(new PageGarages.CarBox(Model.vars.carId.get(i)), 1, i + 1);
-            table.add(new PageGarages.RadioBox(Model.vars.radioId.get(i)), 2, i + 1);
-            table.add(new PageGarages.Color1Box(Model.vars.color1Id.get(i)), 3, i + 1);
-            table.add(new PageGarages.Color2Box(Model.vars.color2Id.get(i)), 4, i + 1);
+            table.add(new PageGarages.CarBox(Model.vars.carIds.get(i)), 1, i + 1);
+            table.add(new PageGarages.RadioBox(Model.vars.radioIds.get(i)), 2, i + 1);
+            table.add(new PageGarages.Color1Box(Model.vars.color1Ids.get(i)), 3, i + 1);
+            table.add(new PageGarages.Color2Box(Model.vars.color2Ids.get(i)), 4, i + 1);
         }
 
         Alignment alignment = new Alignment(table, 0.0f, 0.0f);
@@ -46,27 +47,14 @@ public class PageGarages extends Page {
     private static class CarBox extends ConnectedComboBox {
         CarBox(VariableIntegerImpl var) {
             super(var);
-            VehicleType.getTypes().forEach(t -> addItem(t.getId(), t.getName() + "(" + t.getType() + ")"));
+            VehicleType.getTypes().forEach(t -> addItem(t.getId(), t.getName() + " (" + t.getType() + ")"));
         }
     }
 
     private static class RadioBox extends ConnectedComboBox {
         RadioBox(VariableIntegerImpl var) {
             super(var);
-            addItem(0x00, "Radio Off");
-            addItem(0x01, "Playback FM");
-            addItem(0x02, "K Rose");
-            addItem(0x03, "K-DST");
-            addItem(0x04, "Bounce FM");
-            addItem(0x05, "SF-UR");
-            addItem(0x06, "Radio Los Santos");
-            addItem(0x07, "Radio X");
-            addItem(0x08, "CSR 103.9");
-            addItem(0x09, "K-Jah West");
-            addItem(0x0A, "Master Sounds 98.3");
-            addItem(0x0B, "WCTR");
-            addItem(0x0C, "User Track Player");
-            addItem(0x0D, "Vehicle has no radio");
+            RadioStation.getStations().forEach(s -> addItem(s.getId(), s.getName()));
         }
     }
 

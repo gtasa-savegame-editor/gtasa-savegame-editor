@@ -9,6 +9,7 @@ public class SavegameLink extends LinkArray
 			new Block00(),
 			new Block01(),
 			new Block02(),
+			new Block03(),
 			new Block04(),
 			new Block06(),
 			new Block10(),

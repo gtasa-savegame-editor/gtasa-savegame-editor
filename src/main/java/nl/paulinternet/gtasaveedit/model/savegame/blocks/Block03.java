@@ -83,48 +83,22 @@ public class Block03 extends LinkArray {
             final int y = io.readByte(3, pos + 61);
             final int z = io.readByte(3, pos + 62);
 
-            final String iout = (i < 10) ? " " + i : String.valueOf(i);
+
+            //TODO where to save `id`? What does it even mean? It's apparently neither the car id nor the garage id.
+            final String id = (i < 10) ? " " + i : String.valueOf(i);
 
             final VehicleType vehicleType = VehicleType.getType(type);
 
             final RadioStation radioStation1 = RadioStation.getStation(radioStation);
 
-
-            String debugStr = iout + ";" +
-                    vehicleType.getType() + ";" +
-                    vehicleType.getName() + ";" +
-                    xPos + ";" +
-                    yPos + ";" +
-                    zPos + ";" +
-                    nitro + ";" +
-                    paintJob + ";" +
-                    radioStation1.getName() + ";" +
-                    x + ";" +
-                    y + ";" +
-                    z + ";" +
-                    color1 + " ;" +
-                    color2 + ";";
-
-            StringBuilder fString = new StringBuilder();
-            for (int j = 0; j < 6; j++) {
-                final int fst = io.readByte(3, pos + 12 + j);
-                fString.append(fst).append(";");
+            if(type!=0) {
+                vars.carIds.get(i).setIntValue(vehicleType.getId());
+                vars.radioIds.get(i).setIntValue(radioStation);
+                vars.color1Ids.get(i).setIntValue(color1);
+                vars.color2Ids.get(i).setIntValue(color2);
             }
-            debugStr += fString;
 
-            StringBuilder modsString = new StringBuilder();
-            for (int j = 0; j < 15; j++) {
-                final int mod = io.readInt(3, pos + 20 + j * 2, 2);
-                if (mod != 65535 && mod != 0) {
-                    final VehicleMod vehicleMod = VehicleMod.getMod(mod);
-                    modsString.append(vehicleMod.getName()).append(" (").append(vehicleMod.getType()).append("), ");
-                }
-            }
-            debugStr += modsString;
-
-            if (type != 0) {
-                System.out.println(debugStr);
-            }
+            printDebugCsv(io, pos, xPos, yPos, zPos, type, color1, color2, paintJob, nitro, x, y, z, id, vehicleType, radioStation1);
         }
 
         //http://gta.wikia.com/wiki/Garage
@@ -140,10 +114,48 @@ public class Block03 extends LinkArray {
 
             final byte[] nameBytes = getBytes(68, 76, bytes);
 
-            //System.out.println("Garage: " + i + " name: "+ new String(nameBytes));
+            System.out.println("Garage: " + i + " name: "+ new String(nameBytes));
 
         }
 
+    }
+
+    private void printDebugCsv(SavegameData io, int pos, float xPos, float yPos, float zPos, int type, int color1, int color2, int paintJob, int nitro, int x, int y, int z, String id, VehicleType vehicleType, RadioStation radioStation1) {
+        String debugStr = id + ";" +
+                vehicleType.getType() + ";" +
+                vehicleType.getName() + ";" +
+                xPos + ";" +
+                yPos + ";" +
+                zPos + ";" +
+                nitro + ";" +
+                paintJob + ";" +
+                radioStation1.getName() + ";" +
+                x + ";" +
+                y + ";" +
+                z + ";" +
+                color1 + " ;" +
+                color2 + ";";
+
+        StringBuilder fString = new StringBuilder();
+        for (int j = 0; j < 6; j++) {
+            final int fst = io.readByte(3, pos + 12 + j);
+            fString.append(fst).append(";");
+        }
+        debugStr += fString;
+
+        StringBuilder modsString = new StringBuilder();
+        for (int j = 0; j < 15; j++) {
+            final int mod = io.readInt(3, pos + 20 + j * 2, 2);
+            if (mod != 65535 && mod != 0) {
+                final VehicleMod vehicleMod = VehicleMod.getMod(mod);
+                modsString.append(vehicleMod.getName()).append(" (").append(vehicleMod.getType()).append("), ");
+            }
+        }
+        debugStr += modsString;
+
+        if (type != 0) {
+            System.out.println(debugStr);
+        }
     }
 
     public byte[] getBytes(int begin, int end, byte[] array) {
