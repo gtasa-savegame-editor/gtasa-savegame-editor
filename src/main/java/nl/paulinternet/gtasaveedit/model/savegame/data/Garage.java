@@ -72,7 +72,7 @@ public class Garage {
         garages = new ArrayList<>();
 
         // Data taken from: http://gta.wikia.com/wiki/Garage
-        garages.add(new Garage(16, new Location(2502.31, -1699.36, 12.4323), "cjsafe", "Ganton garage"));
+        garages.add(new Garage(16, new Location(2502.31, -1699.36, 12.4323), "cjsafe", "Ganton garage (Grove St.)"));
         garages.add(new Garage(17, new Location(319.326, -1768.93, 3.35686), "beacsv", "Santa Maria Beach garage"));
         garages.add(new Garage(18, new Location(2449.5, 695.018, 10.4742), "vEsvgrg", "Rockshore West garage"));
         garages.add(new Garage(24, new Location(-364.439, 1194.37, 18.597), "cn2gar1", "Fort Carson garage"));

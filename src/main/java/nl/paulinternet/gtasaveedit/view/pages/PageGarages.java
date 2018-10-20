@@ -22,16 +22,23 @@ public class PageGarages extends Page {
         addHeaders(table);
 
         for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
+            Garage garage = null;
             try {
-                Garage garage = Garage.getGarages().get(i);
-                table.add(new JLabel("<html><body><p style=\"font-weight: 800;\">" + garage.getName() + "</p><p style=\"font-size: 9px;\">" + garage.getDescription() + "</p></body></html>"), 0, i + 1);
+                garage = Garage.getGarages().get(i);
             } catch (IndexOutOfBoundsException e) {
-                table.add(new JLabel(String.valueOf("<html><body><p style=\"font-weight: 800;\">OutOfBounds</p><p style=\"font-size: 9px;\">Missing / Not available</p></body></html>")), 0, i + 1);
+                System.err.println("WARN: no garage found at position '" + i + "'");
             }
-            table.add(new PageGarages.CarBox(Model.vars.garageCars.get(i).getCarId()), 1, i + 1);
-            table.add(new PageGarages.RadioBox(Model.vars.garageCars.get(i).getRadioId()), 2, i + 1);
-            table.add(new PageGarages.Color1Box(Model.vars.garageCars.get(i).getColor1()), 3, i + 1);
-            table.add(new PageGarages.Color2Box(Model.vars.garageCars.get(i).getColor2()), 4, i + 1);
+            if(garage != null) {
+                if(garage.getId() == 0) {
+                    System.err.println("WARN: no garageId set for garage at position '" + i + "' (" + garage.getDescription() + ")");
+                } else {
+                    table.add(new JLabel("<html><body><p style=\"font-weight: 800;\">" + garage.getName() + "</p><p style=\"font-size: 9px;\">" + garage.getDescription() + "</p></body></html>"), 0, i + 1);
+                    table.add(new PageGarages.CarBox(Model.vars.garageCars.get(i).getCarId()), 1, i + 1);
+                    table.add(new PageGarages.RadioBox(Model.vars.garageCars.get(i).getRadioId()), 2, i + 1);
+                    table.add(new PageGarages.Color1Box(Model.vars.garageCars.get(i).getColor1()), 3, i + 1);
+                    table.add(new PageGarages.Color2Box(Model.vars.garageCars.get(i).getColor2()), 4, i + 1);
+                }
+            }
         }
 
         Alignment alignment = new Alignment(table, 0.0f, 0.0f);
