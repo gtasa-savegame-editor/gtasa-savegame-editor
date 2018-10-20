@@ -125,10 +125,8 @@ public class Variables
 	public final VariableIntegerImpl cyclingSkill = new VariableIntegerImpl();
 
 	// Garages / Cars
-	public final List<VariableIntegerImpl> carIds =  intList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
-	public final List<VariableIntegerImpl> radioIds = intList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
-	public final List<VariableIntegerImpl> color1Ids = intList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
-	public final List<VariableIntegerImpl> color2Ids = intList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
+	public final List<Garage.Car> garageCars =  garageCarList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
+
 
 	public Variables () {
 		currentIplVersion.onChange().addHandler(roadblockSF, "updateValue");
@@ -142,11 +140,19 @@ public class Variables
 		}
 		return Collections.unmodifiableList(list);
 	}
+
+	private List<Garage.Car> garageCarList(int size) {
+		List<Garage.Car> list = new ArrayList<>(size);
+		for (int i=0; i<size; i++) {
+			list.add(new Garage.Car());
+		}
+		return Collections.unmodifiableList(list);
+	}
 	
 	private <E> List<Variable<E>> varList (int size) {
-		List<Variable<E>> list = new ArrayList<Variable<E>>(size);
+		List<Variable<E>> list = new ArrayList<>(size);
 		for (int i=0; i<size; i++) {
-			list.add(new Variable<E>());
+			list.add(new Variable<>());
 		}
 		return Collections.unmodifiableList(list);
 	}

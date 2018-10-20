@@ -17,31 +17,38 @@ public class PageGarages extends Page {
     public PageGarages() {
         super("Garages");
 
-        String[] garages = new String[Garage.TOTAL_COUNT];
-
         Table table = new Table();
-        table.setSpacing(10, 3);
-        table.add(new JLabel("Garage Name"), 0, 0);
-        table.add(new JLabel("Car"), 1, 0);
-        table.add(new JLabel("Radio"), 2, 0);
-        table.add(new JLabel("Color 1"), 3, 0);
-        table.add(new JLabel("Color 2"), 4, 0);
+        table.setSpacing(10, 10);
+        addHeaders(table);
 
-        for (int i = 0; i < garages.length; i++) {
+        for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
             try {
-                table.add(new JLabel(String.valueOf(Garage.getGarages().get(i).getName())), 0, i + 1);
+                Garage garage = Garage.getGarages().get(i);
+                table.add(new JLabel("<html><body><p style=\"font-weight: 800;\">" + garage.getName() + "</p><p style=\"font-size: 9px;\">" + garage.getDescription() + "</p></body></html>"), 0, i + 1);
             } catch (IndexOutOfBoundsException e) {
-                table.add(new JLabel(String.valueOf("OutOfBounds/Missing")), 0, i + 1);
+                table.add(new JLabel(String.valueOf("<html><body><p style=\"font-weight: 800;\">OutOfBounds</p><p style=\"font-size: 9px;\">Missing / Not available</p></body></html>")), 0, i + 1);
             }
-            table.add(new PageGarages.CarBox(Model.vars.carIds.get(i)), 1, i + 1);
-            table.add(new PageGarages.RadioBox(Model.vars.radioIds.get(i)), 2, i + 1);
-            table.add(new PageGarages.Color1Box(Model.vars.color1Ids.get(i)), 3, i + 1);
-            table.add(new PageGarages.Color2Box(Model.vars.color2Ids.get(i)), 4, i + 1);
+            table.add(new PageGarages.CarBox(Model.vars.garageCars.get(i).getCarId()), 1, i + 1);
+            table.add(new PageGarages.RadioBox(Model.vars.garageCars.get(i).getRadioId()), 2, i + 1);
+            table.add(new PageGarages.Color1Box(Model.vars.garageCars.get(i).getColor1()), 3, i + 1);
+            table.add(new PageGarages.Color2Box(Model.vars.garageCars.get(i).getColor2()), 4, i + 1);
         }
 
         Alignment alignment = new Alignment(table, 0.0f, 0.0f);
         alignment.setBorder(10);
         setComponent(alignment, true);
+    }
+
+    private void addHeaders(Table table) {
+        table.add(new JLabel(fatText("Garage Name")), 0, 0);
+        table.add(new JLabel(fatText("Car")), 1, 0);
+        table.add(new JLabel(fatText("Radio")), 2, 0);
+        table.add(new JLabel(fatText("Color 1")), 3, 0);
+        table.add(new JLabel(fatText("Color 2")), 4, 0);
+    }
+
+    private String fatText(String text) {
+        return "<html><body><span style=\"font-weight: 800;\">" + text + "</span></body></html>";
     }
 
     private static class CarBox extends ConnectedComboBox {

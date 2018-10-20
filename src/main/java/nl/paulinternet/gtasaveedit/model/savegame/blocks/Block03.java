@@ -14,6 +14,7 @@ import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleMod;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -22,31 +23,39 @@ import java.util.ArrayList;
 public class Block03 extends LinkArray {
 
     public Block03() {
-        ArrayList<Link> links = new ArrayList<>();
+        Link[] links = new Link[Garage.TOTAL_COUNT * (5 + Garage.Car.MOD_COUNT)]; // nGarages * (props + mods)
+        for (int i = 0; i < Garage.TOTAL_COUNT; i++) { // for each garage
+            int count = i * (5 + Garage.Car.MOD_COUNT); // each "step" has to raise by the number of properties per car/"parking space"
+            Garage.Car car = vars.garageCars.get(i); // get current garage
 
-        for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
-            links.add(new LinkInt(vars.carIds.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
-            links.add(new LinkInt(vars.radioIds.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
-            links.add(new LinkInt(vars.color1Ids.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
-            links.add(new LinkInt(vars.color2Ids.get(i), 3, 0, 0)); // TODO make sure `pos` and `size are correct`
+            int size = 64;
+            int pos = 0x27 + size * i;
+
+
+            links[count] = new LinkInt(car.getId(), 3, 0, 0);
+            links[count + 1] = new LinkInt(car.getCarId(), 3, pos + 18, 2);
+            links[count + 2] = new LinkInt(car.getRadioId(), 3, pos + 54);
+            links[count + 3] = new LinkInt(car.getColor1(), 3, pos + 50);
+            links[count + 4] = new LinkInt(car.getColor2(), 3, pos + 51);
+
+            for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
+                links[count + 5 + j] = (new LinkInt(car.getMods().get(j), 3, pos + 20 + j, 2)); // mods -> pos20 - pos48
+            }
         }
-
-        setLinks((Link[]) links.toArray());
+        setLinks(links);
     }
 
     @Override
     public void load(SavegameData io) throws FileFormatException {
         super.load(io);
 
-        System.out.println("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS");
+        System.out.println("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS"); //csvHeader
 
         // lets try something here
         for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
 
             int size = 64;
-
             int pos = 0x27 + size * i;
-
             byte[] bytes = io.getBlock(3).getBytes(pos, pos + size);
 
             //noinspection PointlessArithmeticExpression zero for clarity
@@ -63,21 +72,23 @@ public class Block03 extends LinkArray {
 
             final int type = io.readInt(3, pos + 18, 2);
 
-            final int mod1 = io.readInt(3, pos + 20, 2);
-            final int mod2 = io.readInt(3, pos + 22, 2);
-            final int mod3 = io.readInt(3, pos + 24, 2);
-            final int mod4 = io.readInt(3, pos + 26, 2);
-            final int mod5 = io.readInt(3, pos + 28, 2);
-            final int mod6 = io.readInt(3, pos + 30, 2);
-            final int mod7 = io.readInt(3, pos + 32, 2);
-            final int mod8 = io.readInt(3, pos + 34, 2);
-            final int mod9 = io.readInt(3, pos + 36, 2);
-            final int mod10 = io.readInt(3, pos + 38, 2);
-            final int mod11 = io.readInt(3, pos + 40, 2);
-            final int mod12 = io.readInt(3, pos + 42, 2);
-            final int mod13 = io.readInt(3, pos + 44, 2);
-            final int mod14 = io.readInt(3, pos + 46, 2);
-            final int mod15 = io.readInt(3, pos + 48, 2);
+            final int[] mods = new int[Garage.Car.MOD_COUNT];
+
+            mods[0] = io.readInt(3, pos + 20, 2);
+            mods[1] = io.readInt(3, pos + 22, 2);
+            mods[2] = io.readInt(3, pos + 24, 2);
+            mods[3] = io.readInt(3, pos + 26, 2);
+            mods[4] = io.readInt(3, pos + 28, 2);
+            mods[5] = io.readInt(3, pos + 30, 2);
+            mods[6] = io.readInt(3, pos + 32, 2);
+            mods[7] = io.readInt(3, pos + 34, 2);
+            mods[8] = io.readInt(3, pos + 36, 2);
+            mods[9] = io.readInt(3, pos + 38, 2);
+            mods[10] = io.readInt(3, pos + 40, 2);
+            mods[11] = io.readInt(3, pos + 42, 2);
+            mods[12] = io.readInt(3, pos + 44, 2);
+            mods[13] = io.readInt(3, pos + 46, 2);
+            mods[14] = io.readInt(3, pos + 48, 2);
 
             final int color1 = io.readByte(3, pos + 50);
             final int color2 = io.readByte(3, pos + 51);
@@ -99,11 +110,17 @@ public class Block03 extends LinkArray {
 
             final RadioStation radioStation1 = RadioStation.getStation(radioStation);
 
-            if(type!=0) {
-                vars.carIds.get(i).setIntValue(vehicleType.getId());
-                vars.radioIds.get(i).setIntValue(radioStation);
-                vars.color1Ids.get(i).setIntValue(color1);
-                vars.color2Ids.get(i).setIntValue(color2);
+            if (type != 0) {
+                Garage.Car car = vars.garageCars.get(i);
+                car.getId().setIntValue(Integer.parseInt(id.trim()));
+                car.getCarId().setIntValue(vehicleType.getId());
+                car.getRadioId().setIntValue(radioStation);
+                car.getColor1().setIntValue(color1);
+                car.getColor2().setIntValue(color2);
+
+                for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
+                    car.getMods().get(j).setIntValue(mods[j]);
+                }
             }
 
             printDebugCsv(io, pos, xPos, yPos, zPos, type, color1, color2, paintJob, nitro, x, y, z, id, vehicleType, radioStation1);
@@ -115,17 +132,19 @@ public class Block03 extends LinkArray {
 
         for (int i = 0; i < 50; i++) {
             int size = 80;
-
             int pos = garageOffset + size * i;
-
             byte[] bytes = io.getBlock(3).getBytes(pos, pos + size);
-
             final byte[] nameBytes = getBytes(68, 76, bytes);
-
-            System.out.println("Garage: " + i + " name: "+ new String(nameBytes));
-
+            System.out.println("Garage: " + i + " name: " + new String(nameBytes));
         }
 
+    }
+
+    @Override
+    public void save(SavegameData io) {
+        for (Link link : links) {
+            link.save(io);
+        }
     }
 
     private void printDebugCsv(SavegameData io, int pos, float xPos, float yPos, float zPos, int type, int color1, int color2, int paintJob, int nitro, int x, int y, int z, String id, VehicleType vehicleType, RadioStation radioStation1) {
