@@ -49,7 +49,7 @@ public class Block03 extends LinkArray {
     public void load(SavegameData io) throws FileFormatException {
         super.load(io);
 
-        System.out.println("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS"); //csvHeader
+        // System.out.println("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS"); //csvHeader
 
         // lets try something here
         for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
@@ -123,7 +123,7 @@ public class Block03 extends LinkArray {
                 }
             }
 
-            printDebugCsv(io, pos, xPos, yPos, zPos, type, color1, color2, paintJob, nitro, x, y, z, id, vehicleType, radioStation1);
+            printDebugCsv(io, pos, xPos, yPos, zPos, type, color1, color2, paintJob, nitro, x, y, z, id, vehicleType, radioStation1, mods);
         }
 
         //http://gta.wikia.com/wiki/Garage
@@ -135,7 +135,7 @@ public class Block03 extends LinkArray {
             int pos = garageOffset + size * i;
             byte[] bytes = io.getBlock(3).getBytes(pos, pos + size);
             final byte[] nameBytes = getBytes(68, 76, bytes);
-            System.out.println("Garage: " + i + " name: " + new String(nameBytes));
+            //System.out.println("Garage: " + i + " name: " + new String(nameBytes));
         }
 
     }
@@ -147,7 +147,7 @@ public class Block03 extends LinkArray {
         }
     }
 
-    private void printDebugCsv(SavegameData io, int pos, float xPos, float yPos, float zPos, int type, int color1, int color2, int paintJob, int nitro, int x, int y, int z, String id, VehicleType vehicleType, RadioStation radioStation1) {
+    private void printDebugCsv(SavegameData io, int pos, float xPos, float yPos, float zPos, int type, int color1, int color2, int paintJob, int nitro, int x, int y, int z, String id, VehicleType vehicleType, RadioStation radioStation1, int[] mods) {
         String debugStr = id + ";" +
                 vehicleType.getType() + ";" +
                 vehicleType.getName() + ";" +
@@ -171,17 +171,17 @@ public class Block03 extends LinkArray {
         debugStr += fString;
 
         StringBuilder modsString = new StringBuilder();
-        for (int j = 0; j < 15; j++) {
-            final int mod = io.readInt(3, pos + 20 + j * 2, 2);
+        for (int mod : mods) {
             if (mod != 65535 && mod != 0) {
                 final VehicleMod vehicleMod = VehicleMod.getMod(mod);
-                modsString.append(vehicleMod.getName()).append(" (").append(vehicleMod.getType()).append("), ");
+                modsString.append(vehicleMod.getName())
+                        .append(" (").append(vehicleMod.getType()).append(", id:'").append(mod).append("'), ");
             }
         }
         debugStr += modsString;
 
         if (type != 0) {
-            System.out.println(debugStr);
+            //System.out.println(debugStr);
         }
     }
 

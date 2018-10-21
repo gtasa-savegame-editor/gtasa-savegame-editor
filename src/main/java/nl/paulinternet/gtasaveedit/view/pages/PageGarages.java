@@ -1,10 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.gtasaveedit.model.savegame.data.Garage;
-import nl.paulinternet.gtasaveedit.model.savegame.data.RadioStation;
-import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleColor;
-import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
+import nl.paulinternet.gtasaveedit.model.savegame.data.*;
 import nl.paulinternet.gtasaveedit.model.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedComboBox;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
@@ -26,10 +23,10 @@ public class PageGarages extends Page {
             try {
                 garage = Garage.getGarages().get(i);
             } catch (IndexOutOfBoundsException e) {
-                System.err.println("WARN: no garage found at position '" + i + "'");
+                noop();
             }
-            if(garage != null) {
-                if(garage.getId() == 0) {
+            if (garage != null) {
+                if (garage.getId() == 0) {
                     System.err.println("WARN: no garageId set for garage at position '" + i + "' (" + garage.getDescription() + ")");
                 } else {
                     table.add(new JLabel("<html><body><p style=\"font-weight: 800;\">" + garage.getName() + "</p><p style=\"font-size: 9px;\">" + garage.getDescription() + "</p></body></html>"), 0, i + 1);
@@ -37,6 +34,9 @@ public class PageGarages extends Page {
                     table.add(new PageGarages.RadioBox(Model.vars.garageCars.get(i).getRadioId()), 2, i + 1);
                     table.add(new PageGarages.Color1Box(Model.vars.garageCars.get(i).getColor1()), 3, i + 1);
                     table.add(new PageGarages.Color2Box(Model.vars.garageCars.get(i).getColor2()), 4, i + 1);
+                    for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
+                        table.add(new PageGarages.ModsBox(Model.vars.garageCars.get(i).getMods().get(j)), 5 + j, i + 1);
+                    }
                 }
             }
         }
@@ -52,6 +52,9 @@ public class PageGarages extends Page {
         table.add(new JLabel(fatText("Radio")), 2, 0);
         table.add(new JLabel(fatText("Color 1")), 3, 0);
         table.add(new JLabel(fatText("Color 2")), 4, 0);
+        for (int i = 0; i < Garage.Car.MOD_COUNT; i++) {
+            table.add(new JLabel(fatText("Mod " + String.valueOf(i + 1))), 5 + i, 0);
+        }
     }
 
     private String fatText(String text) {
@@ -92,10 +95,13 @@ public class PageGarages extends Page {
         }
     }
 
-    /*private static class ModsBox extends ConnectedComboBox {//????????????
-        public ModsBox(VariableString var) { //????????????
-            super(var);//????????????
-            VehicleMod.getMods().forEach(m -> addItem(m.getId(), m.getName() + "(" + m.getType() + ")"));//????????????
+    private static class ModsBox extends ConnectedComboBox {
+        public ModsBox(VariableIntegerImpl var) {
+            super(var);
+            VehicleMod.getMods().forEach(m -> addItem(m.getId(), m.getName() + " (" + m.getType() + ")"));
         }
-    }*/
+    }
+
+    private void noop() {
+    }
 }
