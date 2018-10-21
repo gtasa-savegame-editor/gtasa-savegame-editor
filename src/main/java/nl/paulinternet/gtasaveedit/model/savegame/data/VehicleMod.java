@@ -33,7 +33,7 @@ public class VehicleMod {
   private static List<VehicleMod> mods;
 
   static {
-    mods = new ArrayList<VehicleMod>();
+    mods = new ArrayList<>();
 
     mods.add(new VehicleMod("Car Stereo", "Bass Boost", 1086));
 

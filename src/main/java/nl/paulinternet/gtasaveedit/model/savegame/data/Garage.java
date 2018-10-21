@@ -131,19 +131,23 @@ public class Garage {
     public static class Car {
         private final VariableIntegerImpl id;
         private final VariableIntegerImpl radioId;
+        private final VariableIntegerImpl paintJob;
         private final VariableIntegerImpl color1;
         private final VariableIntegerImpl color2;
         private final VariableIntegerImpl carId;
         private final List<VariableIntegerImpl> mods;
+        private final VariableIntegerImpl nitro;
 
         public static final int MOD_COUNT = 15;
 
         public Car() {
             this.id = new VariableIntegerImpl();
             this.radioId = new VariableIntegerImpl();
+            this.paintJob = new VariableIntegerImpl();
             this.color1 = new VariableIntegerImpl();
             this.color2 = new VariableIntegerImpl();
             this.carId = new VariableIntegerImpl();
+            this.nitro = new VariableIntegerImpl();
 
             List<VariableIntegerImpl> tMods = new ArrayList<>(MOD_COUNT);
             for (int i = 0; i < MOD_COUNT; i++) {
@@ -160,6 +164,10 @@ public class Garage {
             return radioId;
         }
 
+        public VariableIntegerImpl getPaintJob() {
+            return paintJob;
+        }
+
         public VariableIntegerImpl getColor1() {
             return color1;
         }
@@ -174,6 +182,10 @@ public class Garage {
 
         public List<VariableIntegerImpl> getMods() {
             return mods;
+        }
+
+        public VariableIntegerImpl getNitro() {
+            return nitro;
         }
     }
 }

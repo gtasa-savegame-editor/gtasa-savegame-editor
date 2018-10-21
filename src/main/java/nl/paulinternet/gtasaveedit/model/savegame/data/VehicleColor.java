@@ -19,7 +19,7 @@ public class VehicleColor {
 
     private VehicleColor(int id, int r, int g, int b) {
         this.id = id;
-        this.name = "Unnamed (r: " + r + " g: " + g + " b:" + b + ")";
+        this.name = "Unnamed rgb(" + r + ", " + g + ", " + b + ")";
         this.rgb = new int[]{g, r, b};
         System.err.println("WARN: no colorName set for color with id: '" + id + "'");
     }
