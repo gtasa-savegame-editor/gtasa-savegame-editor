@@ -1,0 +1,163 @@
+<div class="section">
+	<table>
+		<tr>
+			<td class="noborder" />
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+		</tr>
+		<tr>
+			<td class="posleft">0000</td>
+			<td class="struct" colspan="32">620 pickup structs</td>
+		</tr>
+		<tr>
+			<td class="posleft">4D80</td>
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+		</tr>
+		<tr>
+			<td class="posleft">4DA0</td>
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+		</tr>
+		<tr>
+			<td class="posleft">4DC0</td>
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td /><td /><td /><td /><td /><td /><td /><td />
+			<td /><td /><td /><td /><td />
+		</tr>
+	</table>
+	<ul>
+		<li>Some items in pickup array can't be moved.</li>
+	</ul>
+</div>
+<div class="section">
+	<h2>Pickup</h2>
+	<table>
+		<tr>
+			<td class="noborder" />
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+		</tr>
+		<tr>
+			<td class="posleft">0000</td>
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="int" colspan="4">Value</td>
+			<td class="unknown" /><td class="unknown" /><td class="unknown" /><td class="unknown" />
+			<td class="int" colspan="2">X</td><td class="int" colspan="2">Y</td><td class="int" colspan="2">Z</td>
+			<td class="unknown" /><td class="unknown" />
+			<td class="int" colspan="2">Object</td>
+			<td class="int" colspan="2">Ref</td>
+			<td class="int">T</td><td class="int">A</td>
+			<td class="unknown" /><td class="unknown" />
+		</tr>
+	</table>
+	<ul>
+		<li>
+			<b>Value</b> can be:<br />
+			<ul>
+				<li>The amount of ammo for a weapon (should be 1 for night vision and thermal gogs)</li>
+				<li>Price of a green house icon</li>
+				<li>The amount of cash for a $ symbol pickup</li>
+			</ul>
+		</li>
+		<li>
+			<b>X</b>, <b>Y</b> and <b>Z</b> are the coordinates multiplied by 8.<br />
+			Pickups with a Z location of around 1000 (GTASA co-ord) will only appear in the interior map.
+		</li>
+		<li>
+			<b>Object</b> is the ID of a pickup object.
+			<ul>
+				<li>Oyster = 953</li>
+				<li>Snapshot = 1253</li>
+				<li>Horseshoe = 954</li>
+			</ul>
+		</li>
+		<li><b>Ref</b> is when the object was added to the pool, don't need to edit, just use any number greater that 0.</li>
+		<li><b>Type</b> and <b>Availability</b> define the presence and re-spawning characteristics of the pickup.</li>
+	</ul>
+</div>
+<div class="section">
+	<h2>Type and availability examples</h2>
+	<table>
+		<tr><td class="header">Object</td><td class="header">Before pickup</td><td class="header">After pickup</td><td class="header">Notes</td></tr>
+		<tr><td>Weapons</td><td class="center">0F / 00</td><td class="center">0F / 01</td><td /></tr>
+		<tr><td>Weapons</td><td class="center">0F / 00</td><td class="center">0F / 05</td><td>Some weapons</td></tr>
+		<tr><td>Weapons</td><td class="center">02 / 00</td><td class="center">02 / 01</td><td>Some weapons</td></tr>
+		<tr><td>Oysters and horseshoes</td><td class="center">03 / 00</td><td class="center">00 / 09</td><td /></tr>
+		<tr><td>Snapshots</td><td class="center">14 / 00</td><td class="center">00 / 09</td><td /></tr>
+		<tr><td>Blue House</td><td class="center">11 / 20</td><td class="center">11 / 24</td><td /></tr>
+		<tr><td>Green House</td><td class="center">12 / 10</td><td class="center">00 / 09</td><td /></tr>
+		<tr><td>Info</td><td class="center">03 / 00</td><td class="center">00 / 09</td><td /></tr>
+		<tr><td>Disk</td><td class="center">03 / 00</td><td /><td /></tr>
+	</table>
+	<ul>
+		<li>Oysters, horseshoes and snapshots might disappear after they are collected.</li>
+	</ul>
+</div>
+<div class="section">
+	<h2>Types</h2>
+	<table>
+		<tr><td class="header center">Byte</td><td class="header">Replaceable</td><td class="header">Definition</td></tr>
+		<tr><td class="center">00</td><td class="center">Yes</td><td>Unused</td></tr>
+		<tr><td class="center">01</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">02</td><td /><td>Item pickup, respawn time 30s, respawn distance 15m</td></tr>
+		<tr><td class="center">03</td><td /><td>Item Pickup, does not respawn.</td></tr>
+		<tr><td class="center">04</td><td class="center">Yes</td><td>Item picked-up, does not respawn.</td></tr>
+		<tr><td class="center">05</td><td class="center">Yes</td><td>Item picked-up, does not respawn.</td></tr>
+		<tr><td class="center">06</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">07</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">08</td><td class="center">Yes</td><td>Item has been picked-up, will not respawn.</td></tr>
+		<tr><td class="center">09</td><td /><td>Proximity bomb?, selfdestruct when player driving in proximity 20m, explodes upon contact with vehs</td></tr>
+		<tr><td class="center">0A</td><td /><td>Proximity bomb?, selfdestruct when player driving in proximity 20m, explodes upon contact with vehs</td></tr>
+		<tr><td class="center">0B</td><td /><td>Proximity bomb?, selfdestruct when player driving in proximity 20m, explodes upon contact with vehs</td></tr>
+		<tr><td class="center">0C</td><td /><td>Proximity bomb?, selfdestruct when player in proximity 40m, explodes upon contact with vehs</td></tr>
+		<tr><td class="center">0D</td><td /><td>Item photo-op, fake pickup drops slowly down, real visible when photographed.</td></tr>
+		<tr><td class="center">0E</td><td /><td>Vehicle pickup, drive thru it to make it disappear, does not respawn.</td></tr>
+		<tr><td class="center">0F</td><td /><td>Item pickup that respawns after time.</td></tr>
+		<tr><td class="center">10</td><td /><td>Un-Pickable, (originally property)</td></tr>
+		<tr><td class="center">11</td><td /><td>Shows cancel popup. (originally property)</td></tr>
+		<tr><td class="center">12</td><td /><td>Pay-Cash pickup, pay amount to make it disappear. (originally property)</td></tr>
+		<tr><td class="center">13</td><td /><td>Get-Cash pickup, get amount to make it disappear.</td></tr>
+		<tr><td class="center">14</td><td /><td>Snapshot pickup, photograph it to make it disappear. Adds 1 snapshot collected.</td></tr>
+		<tr><td class="center">15</td><td /><td>2nd player pickup.</td></tr>
+		<tr><td class="center">16</td><td /><td>Invisible</td></tr>
+		<tr><td class="center">17</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">18</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">19</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">1A</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">1B</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">1C</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">1D</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">1E</td><td /><td>Un-Pickable</td></tr>
+		<tr><td class="center">1F</td><td /><td>Un-Pickable</td></tr>
+	</table>
+</div>

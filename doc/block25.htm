@@ -1,0 +1,66 @@
+<div class="section">
+	<p>
+		This block is about the yellow things you walk in and send you to somewhere else.
+	</p>
+	<table>
+		<tr>
+			<td class="noborder" />
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+		</tr>
+		<tr>
+			<td class="posleft">0000</td>
+			<td class="bool">In</td><td class="unknown">00</td><td class="unknown">00</td><td class="unknown">00</td>
+			<td class="int" colspan="2" style="border-width: 3px;">Loca</td>
+			<td class="struct middle" style="border-style: solid none solid none" colspan="24" rowspan="2">Teleports (no constant count)</td>
+			<td class="struct" style="border-left: none;" colspan="2" />
+		</tr>
+		<tr>
+			<td class="posleft">.</td>
+			<td class="struct" style="border-right: none;" colspan="6" />
+			<td class="unknown">FF</td><td class="unknown">FF</td>
+		</tr>
+	</table>
+	<ul>
+		<li><b>In</b> is true when saved inside.</li>
+		<li><b>Loca</b> is the location. These bytes don't exists when saved outside.</li>
+	</ul>
+</div>
+<div class="section">
+	<h2>Teleport</h2>
+	<table>
+		<tr>
+			<td class="noborder" />
+			<td class="postop">0</td><td class="postop">1</td><td class="postop">2</td><td class="postop">3</td>
+			<td class="postop">4</td><td class="postop">5</td><td class="postop">6</td><td class="postop">7</td>
+			<td class="postop">8</td><td class="postop">9</td><td class="postop">A</td><td class="postop">B</td>
+			<td class="postop">C</td><td class="postop">D</td><td class="postop">E</td><td class="postop">F</td>
+		</tr>
+		<tr>
+			<td class="posleft">0000</td>
+			<td class="int" colspan="2">Source</td><td class="int">A</td><td class="int">B</td>
+			<td class="int" colspan="2">Target</td>
+			<td /><td /><td /><td /><td /><td /><td /><td /><td /><td />
+		</tr>
+	</table>
+	<ul>
+		<li><b>Source</b> is the source <a href="?page=locations">location</a>. This starts with 0 and counts up.</li>
+		<li><b>A</b> is often 04, but it can be anything. It doesn't seem to affect anything.</li>
+		<li>If <b>B</b> has the 0x40 bit set, there is a yellow thing. Otherwise there is no teleport. Common values are 00, 20, 40 en 60.</li>
+		<li>The <b>target</b> is the location where it teleports to. -1 (FFFF) means teleport back to the previous location.</li>
+		<li>
+			You can here convert a location ID to an address in the block.<br />
+			The address is a hexidecimal offset.<br />
+			<br />
+			<input type="text" id="location" />
+			<input type="button" value="&gt;" onclick="convert();" />
+			<input type="text" id="address" />
+		</li>
+	</ul>
+</div>
