@@ -57,8 +57,11 @@ public class AboutWindow extends JFrame {
         ybox.add(label);
         ybox.addSpace(15, 0);
         ybox.add(repoButton);
+        ybox.addSpace(8, 0);
         ybox.add(websiteButton);
+        ybox.addSpace(8, 0);
         ybox.add(stopButton);
+        ybox.addSpace(8, 0);
         ybox.add(updateButton);
         ybox.setBorder(10);
         getContentPane().add(ybox, BorderLayout.CENTER);

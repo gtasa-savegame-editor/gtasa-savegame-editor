@@ -17,6 +17,7 @@ public class Main {
 
     public static final boolean WINDOWS = System.getProperty("os.name").toLowerCase().startsWith("windows");
     public static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
+    public static final boolean LINUX = System.getProperty("os.name").toLowerCase().startsWith("linux");
     private static final ApplicationInfo appinfo = new ApplicationInfo(0, null);
     private static final String xmlurl = "https://raw.githubusercontent.com/lfuelling/gtasa-savegame-editor/master/updates.xml";
 
@@ -46,8 +47,7 @@ public class Main {
             }
 
             // Set the icons
-            List<Image> images = new ArrayList<>();
-            images.addAll(Arrays.asList(Images.readImage("icon-16.png"),
+            List<Image> images = new ArrayList<>(Arrays.asList(Images.readImage("icon-16.png"),
                     Images.readImage("icon-32.png"),
                     Images.readImage("icon-48.png")));
             MainWindow.getInstance().setIconImages(images);

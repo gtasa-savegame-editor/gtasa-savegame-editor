@@ -9,13 +9,13 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.Objects;
 
-public class FileSystem {
-    private static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
+import static nl.paulinternet.gtasaveedit.view.Main.LINUX;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
+public class FileSystem {
     public static final File activeDir = new File(System.getProperty("user.dir"));
 
     private static boolean dllLoaded;
-    private static String EMPTYSTRING;
 
     static {
         try {
@@ -127,6 +127,11 @@ public class FileSystem {
             if (f.exists()) return f;
         }
 
+        if(LINUX) {
+            File steamDir = new File(System.getProperty("user.home"), ".steam/steam/steamapps/common/Grand Theft Auto San Andreas");
+            if (steamDir.exists()) return steamDir;
+        }
+
         return null;
     }
 
@@ -149,6 +154,8 @@ public class FileSystem {
     public static File getDefaultSavegameDirectory() {
         if (MAC) {
             return new File(System.getProperty("user.home"), "/Documents/Rockstar Games/GTA San Andreas User Files");
+        } else if(LINUX) {
+            return new File(System.getProperty("user.home"), "/.steam/steam/steamapps/compatdata/12120/pfx/drive_c/users/steamuser/My Documents/GTA San Andreas User Files");
         } else {
             return new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "GTA San Andreas User Files");
         }

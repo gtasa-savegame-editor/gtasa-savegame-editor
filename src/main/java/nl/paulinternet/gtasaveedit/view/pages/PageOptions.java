@@ -102,9 +102,7 @@ public class PageOptions extends Page {
      */
     private String getDetectedSaDirOrError() {
         String detectedSaDir;
-        if (!Main.MAC && !Main.WINDOWS) {
-            detectedSaDir = "Windows and Mac only";
-        } else if (Main.WINDOWS && !FileSystem.isDllLoaded()) {
+        if (Main.WINDOWS && !FileSystem.isDllLoaded()) {
             detectedSaDir = "Detection failed";
         } else if (FileSystem.detectedSaDir == null) {
             detectedSaDir = "Not found";

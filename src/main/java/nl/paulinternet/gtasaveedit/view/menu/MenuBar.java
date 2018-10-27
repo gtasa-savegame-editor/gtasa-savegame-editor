@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.Objects;
 
 public class MenuBar extends JMenuBar {
     private static class ExitMenuItem extends JMenuItem implements ActionListener {
@@ -103,15 +104,19 @@ public class MenuBar extends JMenuBar {
         public void actionPerformed(ActionEvent e) {
             try {
                 if (Main.MAC) {
-                    Desktop.getDesktop().open(FileSystem.getSanAndreasExecutable());
+                    Desktop.getDesktop().open(Objects.requireNonNull(FileSystem.getSanAndreasExecutable()));
+                } else if (Main.WINDOWS) {
+                    Runtime.getRuntime().exec(new String[]{Objects.requireNonNull(FileSystem.getSanAndreasExecutable()).getPath()}, null, FileSystem.getSanAndreasDirectory());
                 } else {
-                    Runtime.getRuntime().exec(new String[]{FileSystem.getSanAndreasExecutable().getPath()}, null, FileSystem.getSanAndreasDirectory());
+                    System.out.println("OS is not Windows or Mac, trying to launch via Steam. If this doesn't work, try putting 'steam' in your $PATH.");
+                    Runtime.getRuntime().exec("steam", new String[]{"steam://run/12120"});
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(MainWindow.getInstance(), "Failed to run GTA San Andreas.", "Run GTA San Andreas", JOptionPane.WARNING_MESSAGE);
             }
         }
 
+        @SuppressWarnings("WeakerAccess")
         public void settingsChanged() {
             setEnabled(FileSystem.getSanAndreasExecutable() != null);
         }
