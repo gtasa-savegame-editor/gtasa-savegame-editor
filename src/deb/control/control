@@ -1,0 +1,8 @@
+Package: gtasa-savegame-editor
+Version: [[version]]
+Section: misc
+Priority: optional
+Architecture: all
+Depends: openjdk-8-jre
+Maintainer: Lukas Fülling <lukas@k40s.net>
+Description: Savegame editor for GTA: San Andreas
