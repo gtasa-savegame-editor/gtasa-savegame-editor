@@ -2,7 +2,9 @@ package nl.paulinternet.gtasaveedit.extractor;
 
 import com.sun.net.httpserver.HttpServer;
 import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,8 +30,7 @@ public class ExtractorServer extends Thread {
             try {
                 startServer();
             } catch (IOException e) {
-                System.err.println("Unable to start savegame extractor server!");
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to start savegame extractor server!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             System.err.println("Server already running! " + server.getAddress().toString());
@@ -51,8 +52,7 @@ public class ExtractorServer extends Thread {
                         stream.write(f.data);
                         ExtractedSavegameHolder.addSavegame(new ExtractedSavegameFile(savegameFile, f.fileName), menu);
                     } catch (IOException e) {
-                        System.err.println("Unable to write temp file!");
-                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to write temp file!", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     System.out.println("Unknown part: {name: '" + f.name + "', value: '" + Arrays.toString(f.data) + "'}");
@@ -91,8 +91,7 @@ public class ExtractorServer extends Thread {
                     httpExchange.sendResponseHeaders(200, f.saveGame.length());
                     os.write(Files.readAllBytes(f.saveGame.toPath()));
                 } catch (IOException e) {
-                    System.err.println("Unable to send file!");
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to send file!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }));

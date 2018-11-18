@@ -13,6 +13,9 @@ import java.util.regex.Pattern;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+
+import javax.swing.*;
 
 public class FormDataHandler implements HttpHandler {
     private static final int MAX_SIZE = 1024 * 1024 * 5; // 5MB
@@ -113,7 +116,7 @@ public class FormDataHandler implements HttpHandler {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getClass().getName(), JOptionPane.ERROR_MESSAGE);
         } finally {
             sendResponse(exchange);
         }
@@ -125,7 +128,7 @@ public class FormDataHandler implements HttpHandler {
         try {
             file.data = readAll(is);
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getClass().getName(), JOptionPane.ERROR_MESSAGE);
         }
         if (file.data.length >= 0) {
             System.out.println(String.format("  Received: %d bytes", file.data.length));
@@ -145,8 +148,7 @@ public class FormDataHandler implements HttpHandler {
             exchange.getResponseBody().close();
             exchange.getRequestBody().close();
         } catch (IOException e) {
-            System.err.println("Unable to handle request!");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to handle Request", JOptionPane.ERROR_MESSAGE);
         }
     }
 
