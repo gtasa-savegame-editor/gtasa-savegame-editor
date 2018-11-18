@@ -141,9 +141,9 @@ public class FormDataHandler implements HttpHandler {
             } else {
                 exchange.sendResponseHeaders(200, 0); // OK
             }
+            handler.handle(files);
             exchange.getResponseBody().close();
             exchange.getRequestBody().close();
-            handler.handle(files);
         } catch (IOException e) {
             System.err.println("Unable to handle request!");
             e.printStackTrace();

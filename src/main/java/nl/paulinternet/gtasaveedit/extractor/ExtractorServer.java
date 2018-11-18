@@ -41,15 +41,15 @@ public class ExtractorServer extends Thread {
         tempDir = Files.createTempDirectory("gtasaseExtractor");
         server = HttpServer.create(new InetSocketAddress(8181), 0);
         server.createContext("/add", new FormDataHandler(d -> {
-            FormDataHandler.FileData[] fileData = (FormDataHandler.FileData[]) d.toArray();
+            Object[] fileData = d.toArray();
             for (int i = 0; i < fileData.length; i++) {
-                FormDataHandler.FileData f = fileData[i];
+                FormDataHandler.FileData f = (FormDataHandler.FileData) fileData[i];
                 if (f.contentType.equals("application/octet-stream")) {
                     File savegameFile = new File(tempDir.toFile().getAbsolutePath() + File.separator + f.fileName);
                     try (FileOutputStream stream = new FileOutputStream(savegameFile)) {
                         System.out.println("Writing file: '" + savegameFile.getAbsolutePath() + "'");
                         stream.write(f.data);
-                        ExtractedSavegameHolder.addSavegame(ExtractorMenu.EXTRACTED_SAVEGAMES_START_IDX + i, new ExtractedSavegameFile(savegameFile, f.fileName), menu);
+                        ExtractedSavegameHolder.addSavegame(new ExtractedSavegameFile(savegameFile, f.fileName), menu);
                     } catch (IOException e) {
                         System.err.println("Unable to write temp file!");
                         e.printStackTrace();
@@ -71,20 +71,31 @@ public class ExtractorServer extends Thread {
         });
         server.createContext("/list", httpExchange -> {
             StringBuilder builder = new StringBuilder("[");
-            ExtractedSavegameHolder.getSaveGameFiles().forEach((i, f) -> {
+            ExtractedSavegameHolder.getSaveGameFiles().forEach(f -> {
                 String saveGameUrl = server.getAddress().toString() + "/get/" + f.getFileName();
-                builder.append("{\"id\": \"").append(i)
-                        .append("\", \"name\": \"").append(f.fileName)
+                builder.append("{\"name\": \"").append(f.fileName)
                         .append("\", \"uri\": \"").append(saveGameUrl)
                         .append("\"},");
             });
             builder.append("]");
-            String response = builder.toString().replaceAll(",]", "");
+            String response = builder.toString().replaceAll(",]", "]");
             httpExchange.sendResponseHeaders(200, response.length());
             OutputStream os = httpExchange.getResponseBody();
             os.write(response.getBytes());
             os.close();
         });
+        server.createContext("/get", httpExchange -> ExtractedSavegameHolder.getSaveGameFiles().forEach(f -> {
+            String[] split = httpExchange.getRequestURI().toString().split("/");
+            if (f.fileName.equals(split[split.length - 1])) {
+                try (OutputStream os = httpExchange.getResponseBody()) {
+                    httpExchange.sendResponseHeaders(200, f.saveGame.length());
+                    os.write(Files.readAllBytes(f.saveGame.toPath()));
+                } catch (IOException e) {
+                    System.err.println("Unable to send file!");
+                    e.printStackTrace();
+                }
+            }
+        }));
         server.createContext("/version", httpExchange -> {
             String response = "1";
             httpExchange.sendResponseHeaders(200, response.length());

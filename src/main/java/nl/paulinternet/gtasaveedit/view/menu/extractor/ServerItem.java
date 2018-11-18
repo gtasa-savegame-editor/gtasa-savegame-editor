@@ -38,11 +38,7 @@ public class ServerItem extends JMenuItem implements ActionListener {
         this.setEnabled(!active);
         this.active = active;
         this.setText((active) ? "Server running..." : "Start server");
-        if(active) {
-            menu.add(stopServerItem, ExtractorMenu.STOP_ITEM_IDX);
-        } else {
-            menu.remove(stopServerItem);
-        }
+        stopServerItem.setEnabled(active);
     }
 
     public class StopServerItem extends JMenuItem implements ActionListener {
@@ -57,5 +53,9 @@ public class ServerItem extends JMenuItem implements ActionListener {
             serverThread.stopServer();
             toggleActive(false);
         }
+    }
+
+    public StopServerItem getStopServerItem() {
+        return stopServerItem;
     }
 }
