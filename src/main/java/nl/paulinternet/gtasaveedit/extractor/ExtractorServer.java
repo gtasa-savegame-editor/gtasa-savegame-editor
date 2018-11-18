@@ -17,6 +17,7 @@ import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class ExtractorServer extends Thread {
 
@@ -46,7 +47,7 @@ public class ExtractorServer extends Thread {
     private void startServer() throws IOException {
         System.out.println("Starting server...");
         tempDir = Files.createTempDirectory("gtasaseExtractor");
-        server = HttpServer.create(new InetSocketAddress(8181), 0);
+        server = HttpServer.create(new InetSocketAddress(0), 0);
         server.createContext("/add", new FormDataHandler(d -> {
             Object[] fileData = d.toArray();
             for (int i = 0; i < fileData.length; i++) {
@@ -113,7 +114,14 @@ public class ExtractorServer extends Thread {
         if(jmdns == null) {
             jmdns = JmDNS.create(InetAddress.getLocalHost());
         }
-        ServiceInfo serviceInfo = ServiceInfo.create("_gtasa-se._tcp.local.", "extractor", 8181, "version=" + PROTO_VERSION);
+        HashMap<String, String> props = new HashMap<>();
+        props.put("version", PROTO_VERSION);
+        try {
+            props.put("hostname", InetAddress.getLocalHost().getHostName());
+        } catch (UnknownHostException e) {
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to get hostname!", JOptionPane.ERROR_MESSAGE);
+        }
+        ServiceInfo serviceInfo = ServiceInfo.create("_gtasa-se._tcp.local.", "extractor", server.getAddress().getPort(), 0, 0, props);
         jmdns.registerService(serviceInfo);
     }
 
