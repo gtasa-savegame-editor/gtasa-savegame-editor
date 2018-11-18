@@ -78,12 +78,8 @@ public class ExtractorServer extends Thread {
         });
         server.createContext("/list", httpExchange -> {
             StringBuilder builder = new StringBuilder("[");
-            ExtractedSavegameHolder.getSaveGameFiles().forEach(f -> {
-                String saveGameUrl = server.getAddress().toString() + "/get/" + f.getFileName();
-                builder.append("{\"name\": \"").append(f.fileName)
-                        .append("\", \"uri\": \"").append(saveGameUrl)
-                        .append("\"},");
-            });
+            ExtractedSavegameHolder.getSaveGameFiles().forEach(f ->
+                    builder.append("{\"name\": \"").append(f.fileName).append("\"},"));
             builder.append("]");
             String response = builder.toString().replaceAll(",]", "]");
             httpExchange.sendResponseHeaders(200, response.length());
