@@ -36,21 +36,22 @@ class FileDelete extends JMenuItem implements ActionListener
 			File[] files = fileChooser.getSelectedFiles();
 			if (Settings.getWarnOverwriteFile() == Settings.YES) {
 				// Construct message
-				String message, title;
+				StringBuilder message;
+				String title;
 				if (files.length == 1) {
 					title = "Delete file?";
-					message = "Are you sure you want to delete the file \"" + files[0] + "\"?";
+					message = new StringBuilder("Are you sure you want to delete the file \"" + files[0] + "\"?");
 				}
 				else {
 					title = "Delete files?";
-					message = "Are you sure you want to delete the following files?";
-					for (File file : files) message += "\n" + file;
+					message = new StringBuilder("Are you sure you want to delete the following files?");
+					for (File file : files) message.append("\n").append(file);
 				}
 
 				// Show dialog
 				result = JOptionPane.showConfirmDialog(
 					MainWindow.getInstance(),
-					message,
+						message.toString(),
 					title,
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.WARNING_MESSAGE
