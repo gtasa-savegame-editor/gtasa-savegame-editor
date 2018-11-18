@@ -97,6 +97,11 @@
             <version>0.8.9.8</version>
             <classifier>full</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.jmdns</groupId>
+            <artifactId>jmdns</artifactId>
+            <version>3.5.4</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

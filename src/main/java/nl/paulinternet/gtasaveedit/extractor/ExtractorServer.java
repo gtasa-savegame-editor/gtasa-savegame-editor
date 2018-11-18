@@ -4,21 +4,27 @@ import com.sun.net.httpserver.HttpServer;
 import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 import javax.swing.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 
 public class ExtractorServer extends Thread {
 
+    public static final String PROTO_VERSION = "1";
     private static HttpServer server = null;
     private static Path tempDir = null;
     private ExtractorMenu menu;
+    private JmDNS jmdns;
 
     public ExtractorServer(ExtractorMenu menu) {
         this.menu = menu;
@@ -96,7 +102,7 @@ public class ExtractorServer extends Thread {
             }
         }));
         server.createContext("/version", httpExchange -> {
-            String response = "1";
+            String response = PROTO_VERSION;
             httpExchange.sendResponseHeaders(200, response.length());
             OutputStream os = httpExchange.getResponseBody();
             os.write(response.getBytes());
@@ -104,12 +110,18 @@ public class ExtractorServer extends Thread {
         });
         server.setExecutor(java.util.concurrent.Executors.newCachedThreadPool());
         server.start();
+        if(jmdns == null) {
+            jmdns = JmDNS.create(InetAddress.getLocalHost());
+        }
+        ServiceInfo serviceInfo = ServiceInfo.create("_gtasa-se._tcp.local.", "extractor", 8181, "version=" + PROTO_VERSION);
+        jmdns.registerService(serviceInfo);
     }
 
     public void stopServer() {
         if (server != null) {
             System.out.println("Stopping server...");
             server.stop(0);
+            jmdns.unregisterAllServices();
             server = null;
             tempDir = null;
         } else {
