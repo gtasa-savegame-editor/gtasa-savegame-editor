@@ -10,7 +10,7 @@ git:
 script:
   - mvn clean install -Dmaven.javadoc.skip=true -B -V
   - zip -r "target/GTA.SA.Savegame.Editor.app.zip" "target/gtasaveedit-3.3-SNAPSHOT/GTA SA Savegame Editor.app"
-  - sudo alien -r "target/gtasaveedit_3.3~SNAPSHOT_all.deb"
+  - sudo alien --scripts -r "target/gtasaveedit_3.3~SNAPSHOT_all.deb"
   - mkdir target/deploy
   - mv target/gtasaveedit-3.3-SNAPSHOT-jar-with-dependencies.jar target/deploy
   - mv "target/GTA.SA.Savegame.Editor.app.zip" target/deploy
@@ -33,5 +33,5 @@ deploy:
   file: target/deploy/*
   skip_cleanup: true
   on:
-    repo: lfuelling/gtasa-savegame-editor
+    repo: gtasa-savegame-editor/gtasa-savegame-editor
     tags: true

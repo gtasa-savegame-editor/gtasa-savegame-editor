@@ -24,6 +24,6 @@ You should now have the following files inside a newly created `target` folder:
     - This is the main executable. You can run it with `java -jar [jarfile]`.
 - `gtasaveedit_[version]_all.deb`
     - This is a Debian package. You can install it on Debian, Ubuntu and other Linux distros based on those.
-    - You can also run `alien <debfile>` to create a `.rpm` file that can be installed on Fedora based distros.
+    - You can also run `alien --scripts -r <debfile>` to create a `.rpm` file that can be installed on Fedora based distros.
 - `gtasaveedit-[version]/GTA SA Savegame Editor.app`
     - This is a `.app` file to be used with macOS.
