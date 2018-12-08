@@ -40,7 +40,7 @@ public class AboutWindow extends JFrame {
         JLabel label = new JLabel(
                 "<html>" +
                         "<font size=+2>GTA SA Savegame Editor</font><br />" +
-                        "<font size=+1>Version 3.3-beta.5 (without 3d)</font><br />" +
+                        "<font size=+1>Version 3.3-beta.6 (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
                         "<br />" +
