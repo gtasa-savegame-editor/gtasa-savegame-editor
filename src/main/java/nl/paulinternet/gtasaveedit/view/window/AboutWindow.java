@@ -40,7 +40,7 @@ public class AboutWindow extends JFrame {
         JLabel label = new JLabel(
                 "<html>" +
                         "<font size=+2>GTA SA Savegame Editor</font><br />" +
-                        "<font size=+1>Version 3.3-beta.3 (without 3d)</font><br />" +
+                        "<font size=+1>Version 3.3-beta.5 (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
                         "<br />" +
@@ -50,7 +50,7 @@ public class AboutWindow extends JFrame {
                         "<br />macOS tailored version and extended maintenance by Lukas Fülling.<br />" +
                         "<br /><font color=red><b>Please report bugs in this version on GitHub!</b></font><br />" +
                         "The original source code is available online.<br />" +
-                        "The source code of <b>this</b> version is available under MIT License. It can be accessed using the 'View Source' button.<br />" +
+                        "The source code of <b>this</b> version is available under MIT License. It can be accessed by using the 'View Source' button.<br />" +
                         "</html>"
         );
         ybox = new YBox();
