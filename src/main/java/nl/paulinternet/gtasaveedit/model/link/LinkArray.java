@@ -5,7 +5,7 @@ import nl.paulinternet.gtasaveedit.model.savegame.SavegameData;
 
 public class LinkArray implements Link
 {
-	private Link[] links;
+	protected Link[] links;
 
 	public void setLinks (Link[] links) {
 		this.links = links;
