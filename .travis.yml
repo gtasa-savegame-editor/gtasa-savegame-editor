@@ -16,7 +16,6 @@ script:
   - mv "target/GTA.SA.Savegame.Editor.app.zip" target/deploy
   - mv "target/gtasaveedit_3.3~SNAPSHOT_all.deb" target/deploy
   - mv "gtasa-savegame-editor-3.3~SNAPSHOT-2.noarch.rpm" target/deploy
-
 notifications:
   webhooks:
     urls:
@@ -24,11 +23,10 @@ notifications:
     on_success: change
     on_failure: always
     on_start: never
-
 deploy:
   provider: releases
   api_key:
-    secure: y38zGrJS8yPaATW7Zftm+ybyOA210N0flUSC+zqEo1nLUJe62KGSIx1nItiTm5iyVYt1YAkamM/q9UgDe2ojiJv4eoZ6gmU230aPlKEe3aKyze+LVF0QvvR3tQ/yZqaEs9bgLt5zpVEJnGrNuzVLugDkQefFAbwvcLhV+S6oKzycBlDq1QcnZLIYEvklK5ObQzrYxwi0AEWRXakPK2HRVadSzk159TfU2gh8NnRbaDmNNUViGCdnP+8FtF2VcRc5bEx0wrkDiyA1CJFJgXZaWrL5tANnYshsFcxaBmvf/KBpJmBsSHqeG2eXhlz4HdlLJiWmYZNekK4Umk0IFud+8KGg+NlvuEHupWdl+ZboC3DFLsVhzNJFKYOQDiORv4EYG0VqzHkoSvyHWZaW359m4c1qWwpsSmDn8UZHMMWwCsdEd1SkOjr97WWFNqA4qSGTdECMyQdQ6q/bsnbgmdrtNQe6WVq4yQ9TGHYiXm+7LRcxYCXx++0exFCKgdP+NjwDx2zqwOrlghRilbNSX3myOwq9ETB4VoNH1lv2vdijdaapix7ck+zhnAUe7zMSrUKLCeYhjgovgWygNz3D+qpolriPVMaz0zK78lw9CpIRGdAargtEMGlihQTkPQCzfbd5kCyO+r5Q1nZEFpRAcA8gSFScKI6ounJXARCzmS+C7dI=
+    secure: lsuKoTqqWkyjemQ9QvBNIou1yOZzhqQt9c+NGYF8FcREWyPuLiDOTwrQve8skrVzwwWZVlMfyj4oef4mftN+VAEAoXWamMs3Dd9gVSoSNbGghM3KIRvBmu7n7D0EtDF3MMwGTJ2p+CQgzKWYz5uvDr0FOO3rHnjT2xyH80EgJ5Oh6seZnTpiDM+OFC2lu4iiyvC9/CAl2t+fNktBOMPbCbrL6mVcbm+5fapJPXRRfRtZS5ZOCCZKcDpjgn1H+NvOGNjRz49sAhRIjbvxX6goTCVo1ieMh+N5/vOdQRySNonFehfRCWMhlqYpBBo1meZ2vnhRT3c2AqmiNC90IvIJYR4GDktlpJSgMxREuLLu5s+g20oPifkjylZOruipksPg/5gPI1x3iiER8r3p0rAdJcvhQ6MvuSCzNsPRdhu9Uicg++KxkkielshUiCF64Jsr/HjgYiyne/eUFTVo31VqdxAIokFzgcrHzQ0v38Ktsmfh7K3xuQt19e/GLvyRHHmFwfsuCxmRbMR33Oxav4a2FwIMu6BfitZQEmQDZQtgCA4wq8iJmFQ2UhvmjY+kfD41bKc+U+jBw2ueWp2qYqc/ZoTFR8GbyGmsY5d0LCU3i+UAApoWP4MGXXD1vLv2Fd9CVl7l/ScfnMhqUzC/IRaG8xliacURcLsIUomJiqKSvXo=
   file_glob: true
   file: target/deploy/*
   skip_cleanup: true
