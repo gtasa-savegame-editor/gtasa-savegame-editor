@@ -1,10 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>nl.paulinternet.gtasaveedit</groupId>
     <artifactId>gtasaveedit</artifactId>
-    <packaging>jar</packaging>
     <version>3.3-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <name>GTASA Savegame Editor</name>
+    <url>http://paulinternet.nl/?page=sa</url>
+
     <build>
         <plugins>
             <plugin>
@@ -70,31 +76,48 @@
                     </execution>
                 </executions>
             </plugin>
-	    <plugin>
-        	<artifactId>jdeb</artifactId>
-        	<groupId>org.vafer</groupId>
-        	<version>1.7</version>
-        	<executions>
-          	    <execution>
-            	    	<phase>package</phase>
-            	    	<goals>
-              		     <goal>jdeb</goal>
-            	    	</goals>
-            	    	<configuration>
-              			<dataSet>
-                	    	    <data>
-                  			<src>${project.build.directory}/${project.build.finalName}.jar</src>
-                  			<type>file</type>
-                	    	    </data>
-              			</dataSet>
-            	    	</configuration>
-          	    </execution>
-            	</executions>
-      	    </plugin>
+            <plugin>
+                <artifactId>jdeb</artifactId>
+                <groupId>org.vafer</groupId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jdeb</goal>
+                        </goals>
+                        <configuration>
+                            <dataSet>
+                                <data>
+                                    <src>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</src>
+                                    <type>file</type>
+                                    <mapper>
+                                        <type>perm</type>
+                                        <prefix>/usr/share/gtasa-savegame-editor/lib</prefix>
+                                    </mapper>
+                                </data>
+                                <data>
+                                    <type>link</type>
+                                    <linkName>/usr/share/gtasa-savegame-editor/lib/gtasa-savegame-editor.jar</linkName>
+                                    <linkTarget>/usr/share/gtasa-savegame-editor/lib/${project.artifactId}-${project.version}-jar-with-dependencies.jar</linkTarget>
+                                    <symlink>true</symlink>
+                                </data>
+                                <data>
+                                    <src>src/main/resources/icon-256.png</src>
+                                    <type>file</type>
+                                    <mapper>
+                                        <type>perm</type>
+                                        <prefix>/usr/share/gtasa-savegame-editor</prefix>
+                                    </mapper>
+                                </data>
+                            </dataSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-    <name>gtasaveedit</name>
-    <url>http://paulinternet.nl/?page=sa</url>
+
     <dependencies>
         <dependency>
             <groupId>javax.media.j3d</groupId>

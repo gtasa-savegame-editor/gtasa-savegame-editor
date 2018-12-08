@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+db_get gtasase/create_shell_shortcut
+if [ "$RET" = "true" ]; then
+    echo "You can start the editor by running: gtasa-savegame-editor"
+fi
+db_stop

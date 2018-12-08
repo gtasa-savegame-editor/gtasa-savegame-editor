@@ -1,0 +1,36 @@
+#!/bin/sh -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+# create desktop entry?
+db_input high gtasase/create_desktop_entry || false
+db_go
+db_get gtasase/create_desktop_entry
+if [ "$RET" = "true" ]; then
+echo "Creating desktop entry..."
+cat > /usr/share/applications/gtasa-savegame-editor.desktop <<EOF
+    [Desktop Entry]
+    Type=Application
+    Encoding=UTF-8
+    Name=GTASA Savegame Editor
+    Comment=GTA San Andreas Savegame Editor
+    Exec=java -jar /usr/share/gtasa-savegame-editor/lib/gtasa-savegame-editor.jar
+    Icon=/usr/share/gtasa-savegame-editor/icon-256.png
+    Terminal=false
+EOF
+fi
+
+
+# create shell shortcut?
+db_input high gtasase/create_shell_shortcut || false
+db_go
+db_get gtasase/create_shell_shortcut
+if [ "$RET" = "true" ]; then
+echo "Creating shell shortcut..."
+cat > /usr/bin/gtasa-savegame-editor <<EOF
+    #!/bin/bash
+    java -jar /usr/share/gtasa-savegame-editor/lib/gtasa-savegame-editor.jar
+EOF
+chmod +x /usr/bin/gtasa-savegame-editor
+fi

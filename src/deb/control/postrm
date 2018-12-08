@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
+    echo PURGE | debconf-communicate gtasa-savegame-editor
+fi
