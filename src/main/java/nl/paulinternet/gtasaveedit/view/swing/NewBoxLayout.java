@@ -30,7 +30,7 @@ public class NewBoxLayout implements LayoutManager2
 		}
 	}
 	
-	private class Item
+	private static class Item
 	{
 		private Component comp;
 		private int expand;

@@ -4,6 +4,7 @@ import nl.paulinternet.gtasaveedit.model.io.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
+import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 import javax.swing.*;
@@ -162,11 +163,15 @@ public class MenuBar extends JMenuBar {
             menuDelete.add(new QuickDelete(i));
         }
 
+        // Extractor menu
+        JMenu menuExtractor = new ExtractorMenu();
+
         // Add menus
         add(menuFile);
         add(menuLoad);
         add(menuSave);
         add(menuDelete);
+        add(menuExtractor);
 
         // set initial state
         menuSave.setEnabled(false);
