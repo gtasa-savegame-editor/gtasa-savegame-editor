@@ -10,7 +10,6 @@ This doesn't mean that you shouldn't run it on those systems! I heavily advise y
 
 Just go to the [Releases page](https://github.com/lfuelling/gtasa-savegame-editor/releases) and download the file you need.
 
-
 ## Building
 
 To build the application:
@@ -19,6 +18,12 @@ To build the application:
 $ mvn clean install -DskipTests=true
 ```
 
-You should now have a `.jar` file in the `target` folder. Run it.
+You should now have the following files inside a newly created `target` folder:
 
-If you use macOS, you should also have a `.app` file in `target/gtasaveedit-<version>-SNAPSHOT` that you can run.
+- `gtasaveedit-[version]-jar-with-dependencies.jar`
+    - This is the main executable. You can run it with `java -jar [jarfile]`.
+- `gtasaveedit_[version]_all.deb`
+    - This is a Debian package. You can install it on Debian, Ubuntu and other Linux distros based on those.
+    - You can also run `alien <debfile>` to create a `.rpm` file that can be installed on Fedora based distros.
+- `gtasaveedit-[version]/GTA SA Savegame Editor.app`
+    - This is a `.app` file to be used with macOS.

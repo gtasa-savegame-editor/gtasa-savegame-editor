@@ -13,7 +13,7 @@ cat > /usr/share/applications/gtasa-savegame-editor.desktop <<EOF
     [Desktop Entry]
     Type=Application
     Encoding=UTF-8
-    Name=GTASA Savegame Editor
+    Name=GTA San Andreas Savegame Editor
     Comment=GTA San Andreas Savegame Editor
     Exec=java -jar /usr/share/gtasa-savegame-editor/lib/gtasa-savegame-editor.jar
     Icon=/usr/share/gtasa-savegame-editor/icon-256.png
