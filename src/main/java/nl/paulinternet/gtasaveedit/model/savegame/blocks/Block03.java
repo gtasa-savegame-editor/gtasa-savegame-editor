@@ -13,6 +13,8 @@ import nl.paulinternet.gtasaveedit.model.savegame.data.Garage;
 import nl.paulinternet.gtasaveedit.model.savegame.data.RadioStation;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleMod;
 import nl.paulinternet.gtasaveedit.model.savegame.data.VehicleType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,6 +24,8 @@ import java.util.Collections;
  * @author Sebastian Hardt (s.hardt@micromata.de) Date: 19.10.18 Time: 17:07
  */
 public class Block03 extends LinkArray {
+
+    private static final Logger log = LoggerFactory.getLogger(Block03.class);
 
     public Block03() {
         Link[] links = new Link[Garage.TOTAL_COUNT * (7 + Garage.Car.MOD_COUNT)]; // nGarages * (props + mods)
@@ -47,7 +51,7 @@ public class Block03 extends LinkArray {
 
     @Override
     public void load(SavegameData io) throws FileFormatException {
-        System.out.println("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS"); //csvHeader
+        log.debug("ID;TYPE;NAME;XPOS;YPOS;ZPOS;NITRO;PAINTJOB;RADIO;ANGLX;ANGLY;ANGLZ;COL1;COL2;F1;F2;F3;F4;F5;F6;MODS"); //csvHeader
 
         // lets try something here
         for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
@@ -129,7 +133,7 @@ public class Block03 extends LinkArray {
             int pos = garageOffset + size * i;
             byte[] bytes = io.getBlock(3).getBytes(pos, pos + size);
             final byte[] nameBytes = getBytes(68, 76, bytes);
-            System.out.println("Garage: " + i + " name: " + new String(nameBytes));
+            log.debug("Garage: " + i + " name: " + new String(nameBytes));
         }
 
     }
@@ -182,7 +186,7 @@ public class Block03 extends LinkArray {
         debugStr += modsString;
 
         if (type != 0) {
-            System.out.println(debugStr);
+            log.debug(debugStr);
         }
     }
 

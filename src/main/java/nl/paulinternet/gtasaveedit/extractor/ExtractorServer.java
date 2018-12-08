@@ -63,7 +63,7 @@ public class ExtractorServer extends Thread {
                         JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to write temp file!", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    System.out.println("Unknown part: {name: '" + f.name + "', value: '" + Arrays.toString(f.data) + "'}");
+                    log.info("Unknown part: {name: '" + f.name + "', value: '" + Arrays.toString(f.data) + "'}");
                 }
             }
         }));

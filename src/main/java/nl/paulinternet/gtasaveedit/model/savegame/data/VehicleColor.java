@@ -1,10 +1,15 @@
 package nl.paulinternet.gtasaveedit.model.savegame.data;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class VehicleColor {
+
+    private static final Logger log = LoggerFactory.getLogger(VehicleColor.class);
 
     private final int id;
     private final String name;
@@ -21,7 +26,7 @@ public class VehicleColor {
         this.id = id;
         this.name = "Unnamed rgb(" + r + ", " + g + ", " + b + ")";
         this.rgb = new int[]{g, r, b};
-        System.err.println("WARN: no colorName set for color with id: '" + id + "'");
+        log.warn("WARN: no colorName set for color with id: '" + id + "'");
     }
 
     public int getId() {

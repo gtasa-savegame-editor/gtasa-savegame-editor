@@ -1,11 +1,11 @@
 package nl.paulinternet.gtasaveedit.view.window;
 
-import com.panayotis.jupidator.Updater;
 import nl.paulinternet.gtasaveedit.model.Settings;
 import nl.paulinternet.gtasaveedit.model.event.Event;
 import nl.paulinternet.gtasaveedit.model.event.EventHandler;
 import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.PlayThread;
+import nl.paulinternet.gtasaveedit.view.Updater;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 
@@ -35,7 +35,7 @@ public class AboutWindow extends JFrame {
         }
 
         PButton updateButton = new PButton("Check For Updates");
-        updateButton.onClick().addHandler(e -> Updater.start(Main.getXmlurl(), Main.getAppinfo(), null, null));
+        updateButton.onClick().addHandler(e -> Updater.start());
 
         JLabel label = new JLabel(
                 "<html>" +

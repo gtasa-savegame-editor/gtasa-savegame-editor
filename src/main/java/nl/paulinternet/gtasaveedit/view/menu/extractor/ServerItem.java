@@ -1,12 +1,16 @@
 package nl.paulinternet.gtasaveedit.view.menu.extractor;
 
 import nl.paulinternet.gtasaveedit.extractor.ExtractorServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ServerItem extends JMenuItem implements ActionListener {
+
+    private static final Logger log = LoggerFactory.getLogger(ServerItem.class);
 
     private boolean active = false;
     private ExtractorServer serverThread = null;
@@ -25,10 +29,7 @@ public class ServerItem extends JMenuItem implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (!active) {
             serverThread = new ExtractorServer(menu);
-            serverThread.setUncaughtExceptionHandler((t, ex) -> {
-                System.err.println("Uncaught exception in thread '" + t.getName() + "'");
-                ex.printStackTrace();
-            });
+            serverThread.setUncaughtExceptionHandler((t, ex) -> log.error("Uncaught exception in thread '" + t.getName() + "'", ex));
             serverThread.start();
             toggleActive(true);
         }

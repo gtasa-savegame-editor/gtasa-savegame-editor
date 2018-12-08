@@ -7,6 +7,8 @@ import nl.paulinternet.gtasaveedit.view.connected.ConnectedComboBox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,6 +20,8 @@ import java.util.List;
  * @author Lukas Fülling (lukas@k40s.net)
  */
 public class PageGarages extends Page {
+
+    private static final Logger log = LoggerFactory.getLogger(PageGarages.class);
 
     public PageGarages() {
         super("Garages");
@@ -47,7 +51,7 @@ public class PageGarages extends Page {
         }
         if (garage != null) {
             if (garage.getId() == 0) {
-                System.err.println("WARN: no garageId set for garage at position '" + i + "' (" + garage.getDescription() + ")");
+                log.error("WARN: no garageId set for garage at position '" + i + "' (" + garage.getDescription() + ")");
             } else {
                 JLabel nameLabel = new JLabel("<html><body><p style=\"font-weight: 800;\">" + garage.getName() + "</p><p style=\"font-size: 9px;\">" + garage.getDescription() + "</p></body></html>");
                 CarBox carBox = new CarBox(Model.vars.garageCars.get(i).getCarId());

@@ -6,6 +6,7 @@ import nl.paulinternet.gtasaveedit.model.savegame.Savegame;
 import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -109,7 +110,7 @@ public class MenuBar extends JMenuBar {
                 } else if (Main.WINDOWS) {
                     Runtime.getRuntime().exec(new String[]{Objects.requireNonNull(FileSystem.getSanAndreasExecutable()).getPath()}, null, FileSystem.getSanAndreasDirectory());
                 } else {
-                    System.out.println("OS is not Windows or Mac, trying to launch via Steam. If this doesn't work, try putting 'steam' in your $PATH.");
+                    LoggerFactory.getLogger(RunSaMenuItem.class).info("OS is not Windows or Mac, trying to launch via Steam. If this doesn't work, try putting 'steam' in your $PATH.");
                     Runtime.getRuntime().exec("steam", new String[]{"steam://run/12120"});
                 }
             } catch (Exception ex) {

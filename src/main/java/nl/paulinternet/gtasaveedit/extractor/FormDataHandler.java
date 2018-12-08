@@ -14,10 +14,13 @@ import java.util.regex.Pattern;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 
 public class FormDataHandler implements HttpHandler {
+    private static final Logger log = LoggerFactory.getLogger(FormDataHandler.class);
     private static final int MAX_SIZE = 1024 * 1024 * 5; // 5MB
     private Pattern namePattern = Pattern.compile("[^e]name=\"(.+?)\"");
     private Pattern fileNamePattern = Pattern.compile("filename=\"(.+?)\"");
@@ -38,13 +41,13 @@ public class FormDataHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
 
-        System.out.println("--- Parsing form submission.");
+        log.info("--- Parsing form submission.");
         part = 0;
         allRead = false;
         sizeExceeded = false;
         files = new HashSet<>();
         String path = exchange.getRequestURI().getPath();
-        System.out.println(String.format("Requested URI: %s", path));
+        log.info(String.format("Requested URI: %s", path));
 
         // Get content type.
         // e.g.
@@ -58,7 +61,7 @@ public class FormDataHandler implements HttpHandler {
                 String[] params = contentType.split("boundary=");
                 boundary = params[params.length - 1];
             }
-            System.out.println(String.format("Content type: %s", contentType));
+            log.info(String.format("Content type: %s", contentType));
         }
 
         // Handle single image post.
@@ -73,7 +76,7 @@ public class FormDataHandler implements HttpHandler {
                 || boundary == null) {
             exchange.sendResponseHeaders(400, 0); // Bad request
             exchange.getResponseBody().close();
-            System.err.println("Bad request.");
+            log.error("Bad request.");
             return;
         }
 
@@ -100,13 +103,13 @@ public class FormDataHandler implements HttpHandler {
 
                 // Get content type and wait for a blank line.
                 readContentType(is, file);
-                System.out.println(String.format("  Content type: %s", file.contentType));
+                log.info(String.format("  Content type: %s", file.contentType));
 
                 // Get file contents.
                 byte[] boundaryBytes = ("\r\n" + boundaryLine).getBytes(StandardCharsets.UTF_8);
                 file.data = readUntil(is, boundaryBytes);
                 if (file.data.length >= 0) {
-                    System.out.println(String.format("  Received: %d bytes", file.data.length));
+                    log.info(String.format("  Received: %d bytes", file.data.length));
                     currentLine = readLine(is);
 
                     // Check if this is the last part.
@@ -131,7 +134,7 @@ public class FormDataHandler implements HttpHandler {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getClass().getName(), JOptionPane.ERROR_MESSAGE);
         }
         if (file.data.length >= 0) {
-            System.out.println(String.format("  Received: %d bytes", file.data.length));
+            log.info(String.format("  Received: %d bytes", file.data.length));
             files.add(file);
         }
         sendResponse(exchange);
@@ -210,9 +213,9 @@ public class FormDataHandler implements HttpHandler {
             }
         }
 
-        System.out.println(String.format("Part.%d", ++part));
-        System.out.println(String.format("  Name: %s", data.name));
-        System.out.println(String.format("  File name: %s", data.fileName));
+        log.info(String.format("Part.%d", ++part));
+        log.info(String.format("  Name: %s", data.name));
+        log.info(String.format("  File name: %s", data.fileName));
     }
 
     private String readLine(InputStream is) throws IOException {

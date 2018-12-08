@@ -6,6 +6,8 @@ import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -15,6 +17,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TabbedPane extends JTabbedPane {
+
+    private static final Logger log = LoggerFactory.getLogger(TabbedPane.class);
+
     private static Boolean loaded = Boolean.FALSE;
     private final PageAbout pageAbout;
     private List<Page> pages;
@@ -74,7 +79,7 @@ public class TabbedPane extends JTabbedPane {
             if (menubar != null) {
                 menubar.onSavegameStateChange(true);
             } else {
-                System.err.println("Unable to get menuBar: " + MainWindow.getInstance().getJMenuBar());
+                log.error("Unable to get menuBar: " + MainWindow.getInstance().getJMenuBar());
             }
             MainWindow.getInstance().validate();
         }
@@ -93,7 +98,7 @@ public class TabbedPane extends JTabbedPane {
         if (menubar != null) {
             menubar.onSavegameStateChange(false);
         } else {
-            System.err.println("Unable to get menuBar: " + MainWindow.getInstance().getJMenuBar());
+            log.error("Unable to get menuBar: " + MainWindow.getInstance().getJMenuBar());
         }
         MainWindow.getInstance().validate();
     }
