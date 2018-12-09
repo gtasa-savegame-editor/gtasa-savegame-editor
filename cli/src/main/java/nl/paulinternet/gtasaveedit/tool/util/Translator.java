@@ -1,4 +1,4 @@
-package test;
+package nl.paulinternet.gtasaveedit.tool.util;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

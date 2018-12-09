@@ -107,6 +107,7 @@ public class Version implements Comparable<Version> {
 
     /**
      * Getter for tag value.
+     *
      * @return the original tag value of this version.
      */
     public String getTag() {
@@ -114,23 +115,53 @@ public class Version implements Comparable<Version> {
     }
 
     /**
-     * {@inheritDoc}
+     * Simple {@link Comparable#compareTo(Object)} that checks {@link #major}, {@link #minor}, {@link #patch}.
+     * When the numbers are equal the output of {@link #compareFlags(Flag)} is returned.
+     *
+     * @param o the version to compare to.
+     * @return 1 if greater, 0 if equal, -1 if smaller.
      */
     @Override
     public int compareTo(Version o) {
         if (major == o.major &&
                 minor == o.minor &&
-                patch == o.patch &&
-                flag.equals(o.flag)) {
-            return 0;
-        } else if ((major > o.major ||
-                (major >= o.major && minor > o.minor) ||
-                (major >= o.major && patch > o.patch)) &&
-                (o.flag.equals(Flag.RELEASE) || flag.equals(o.flag))) { //FIXME this is broken
+                patch == o.patch) {
+            return compareFlags(o.flag);
+        } else if ((major > o.major) ||
+                ((major == o.major) && (minor > o.minor)) ||
+                ((major == o.major) && (minor == o.minor) && (patch > o.patch))) {
             return 1;
         } else {
             return -1;
         }
+    }
+
+    /**
+     * Compares version flags according to {@link Comparable#compareTo(Object)} logic.
+     *
+     * @param otherFlag the flag to compare to.
+     * @return 1 if the other flag is "smaller", 0 if the flags are equal, -1 if the other flag is greater.
+     * @see Flag
+     */
+    private int compareFlags(Flag otherFlag) {
+        if (flag.equals(otherFlag)) {
+            return 0;
+        } else if ((flag.equals(Flag.BETA))) {
+            if (otherFlag.equals(Flag.RC) || otherFlag.equals(Flag.RELEASE)) {
+                return -1;
+            }
+        } else if ((flag.equals(Flag.RC))) {
+            if (otherFlag.equals(Flag.BETA)) {
+                return 1;
+            } else if (otherFlag.equals(Flag.RELEASE)) {
+                return -1;
+            }
+        } else if (flag.equals(Flag.RELEASE)) {
+            if (otherFlag.equals(Flag.RC) || otherFlag.equals(Flag.BETA)) {
+                return 1;
+            }
+        }
+        throw new IllegalStateException("Unknown flag: " + otherFlag);
     }
 
     /**
@@ -141,16 +172,19 @@ public class Version implements Comparable<Version> {
 
         /**
          * Beta release.
+         * This is the "smallest" value.
          */
         BETA("beta"),
 
         /**
          * Release candidate.
+         * This is "greater" than {@link #BETA} but "smaller" than {@link #RELEASE}.
          */
         RC("rc"),
 
         /**
          * Stable release.
+         * This is the "highest" value.
          */
         RELEASE("");
 
