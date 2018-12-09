@@ -1,11 +1,8 @@
 package nl.paulinternet.gtasaveedit.view.window;
 
 import nl.paulinternet.gtasaveedit.model.Settings;
-import nl.paulinternet.gtasaveedit.model.event.Event;
-import nl.paulinternet.gtasaveedit.model.event.EventHandler;
-import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.PlayThread;
-import nl.paulinternet.gtasaveedit.view.Updater;
+import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 
@@ -40,7 +37,7 @@ public class AboutWindow extends JFrame {
         JLabel label = new JLabel(
                 "<html>" +
                         "<font size=+2>GTA SA Savegame Editor</font><br />" +
-                        "<font size=+1>Version 3.3-beta.6 (without 3d)</font><br />" +
+                        "<font size=+1>Version " + Updater.CURRENT_TAG + " (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
                         "<br />" +
@@ -49,7 +46,7 @@ public class AboutWindow extends JFrame {
                         "Thanks to Dennis L for donating and keeping me motivated.<br />" +
                         "<br />macOS tailored version and extended maintenance by Lukas Fülling.<br />" +
                         "<br /><font color=red><b>Please report bugs in this version on GitHub!</b></font><br />" +
-                        "The original source code is available online.<br />" +
+                        "The original (pre 3.3) source code is available online.<br />" +
                         "The source code of <b>this</b> version is available under MIT License. It can be accessed by using the 'View Source' button.<br />" +
                         "</html>"
         );

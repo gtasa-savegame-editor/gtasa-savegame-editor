@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.view;
 
 import com.apple.eawt.Application;
+import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
