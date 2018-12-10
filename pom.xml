@@ -163,10 +163,10 @@
             <version>1.7.25</version>
         </dependency>
     </dependencies>
-    <!-- repositories>
+    <repositories>
         <repository>
             <id>k40s-public</id>
             <url>https://nexus.k40s.net/repository/maven-public/</url>
         </repository>
-    </repositories -->
+    </repositories>
 </project>
