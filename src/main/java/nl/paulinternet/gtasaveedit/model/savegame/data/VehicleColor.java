@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class VehicleColor {
 
@@ -72,7 +73,7 @@ public class VehicleColor {
         colors.add(new VehicleColor(23, 150, 145, 140, "Winning Silver Poly"));
         colors.add(new VehicleColor(24, 81, 84, 89, "Steel Gray Poly"));
         colors.add(new VehicleColor(25, 63, 62, 69, "Shadow Silver Poly"));
-        colors.add(new VehicleColor(26, 165, 169, 167, "Silver Stone Poly"));
+        colors.add(new VehicleColor(26, 165, 169, 167, "Silver Stone Poly (brighter)"));
         colors.add(new VehicleColor(27, 99, 92, 90, "Warm Grey Mica"));
         colors.add(new VehicleColor(28, 61, 74, 104, "Harbor Blue Poly"));
         colors.add(new VehicleColor(29, 151, 149, 146, "Porcelain Silver Poly"));
@@ -90,7 +91,7 @@ public class VehicleColor {
         colors.add(new VehicleColor(41, 111, 103, 95, "Desert Taupe Poly"));
         colors.add(new VehicleColor(42, 124, 28, 42, "Garnet Red Poly"));
         colors.add(new VehicleColor(43, 95, 10, 21, "Desert Red"));
-        colors.add(new VehicleColor(44, 25, 56, 38, "Green"));
+        colors.add(new VehicleColor(44, 25, 56, 38, "Green (darker)"));
         colors.add(new VehicleColor(45, 93, 27, 32, "Cabernet Red Poly"));
         colors.add(new VehicleColor(46, 157, 152, 114, "Light Ivory"));
         colors.add(new VehicleColor(47, 122, 117, 96, "Pueblo Beige"));
@@ -131,37 +132,37 @@ public class VehicleColor {
         colors.add(new VehicleColor(82, 116, 29, 40, "Medium Red Solid"));
         colors.add(new VehicleColor(83, 30, 46, 50, "Deep Jewel Green"));
         colors.add(new VehicleColor(84, 77, 50, 47, "Medium Woodrose Poly"));
-        colors.add(new VehicleColor(85, 124, 27, 68, "Vermilion Solid"));
+        colors.add(new VehicleColor(85, 124, 27, 68, "Vermilion Solid (brighter)"));
         colors.add(new VehicleColor(86, 46, 91, 32, "Green"));
         colors.add(new VehicleColor(87, 57, 90, 131, "Bright Blue Poly"));
         colors.add(new VehicleColor(88, 109, 40, 55, "Bright Red"));
         colors.add(new VehicleColor(89, 167, 162, 143, "Light Champagne Poly"));
-        colors.add(new VehicleColor(90, 175, 177, 177, "Silver Poly"));
+        colors.add(new VehicleColor(90, 175, 177, 177, "Silver Poly (brighter)"));
         colors.add(new VehicleColor(91, 54, 65, 85, "Steel Blue Poly"));
         colors.add(new VehicleColor(92, 109, 108, 110, "Medium Gray Poly"));
         colors.add(new VehicleColor(93, 15, 106, 137, "Arctic Pearl"));
         colors.add(new VehicleColor(94, 32, 75, 107, "Nassau Blue Poly"));
         colors.add(new VehicleColor(95, 43, 62, 87, "Medium Sapphire Blue Poly"));
-        colors.add(new VehicleColor(96, 155, 159, 157, "Silver Poly"));
+        colors.add(new VehicleColor(96, 155, 159, 157, "Silver Poly (darker)"));
         colors.add(new VehicleColor(97, 108, 132, 149, "Light Sapphire Blue Poly"));
         colors.add(new VehicleColor(98, 77, 93, 96, "Malachite Poly"));
         colors.add(new VehicleColor(99, 174, 155, 127, "Flax"));
         colors.add(new VehicleColor(100, 64, 108, 143, "Medium Maui Blue Poly"));
         colors.add(new VehicleColor(101, 31, 37, 59, "Dark Sapphire Blue Poly"));
         colors.add(new VehicleColor(102, 171, 146, 118, "Copper Beige"));
-        colors.add(new VehicleColor(103, 19, 69, 115, "Bright Blue Poly"));
+        colors.add(new VehicleColor(103, 19, 69, 115, "Bright Blue Poly (darker)"));
         colors.add(new VehicleColor(104, 150, 129, 108, "Medium Flax"));
-        colors.add(new VehicleColor(105, 100, 104, 106, "Medium Gray Poly"));
-        colors.add(new VehicleColor(106, 16, 80, 130, "Bright Blue Poly"));
+        colors.add(new VehicleColor(105, 100, 104, 106, "Medium Gray Poly (darker)"));
+        colors.add(new VehicleColor(106, 16, 80, 130, "Bright Blue Poly (more intense)"));
         colors.add(new VehicleColor(107, 161, 153, 131, "Light Driftwood Poly"));
         colors.add(new VehicleColor(108, 56, 86, 148, "Blue"));
-        colors.add(new VehicleColor(109, 82, 86, 97, "Steel Gray Poly"));
+        colors.add(new VehicleColor(109, 82, 86, 97, "Steel Gray Poly (brighter)"));
         colors.add(new VehicleColor(110, 127, 105, 86, "Light Beechwood Poly"));
         colors.add(new VehicleColor(111, 140, 146, 154, "Slate Gray"));
-        colors.add(new VehicleColor(112, 89, 110, 135, "Light Sapphire Blue Poly"));
+        colors.add(new VehicleColor(112, 89, 110, 135, "Light Sapphire Blue Poly (darker)"));
         colors.add(new VehicleColor(113, 71, 53, 50, "Dark Beechwood Poly"));
         colors.add(new VehicleColor(114, 68, 98, 79, "Torch Red"));
-        colors.add(new VehicleColor(115, 115, 10, 39, "Bright Red"));
+        colors.add(new VehicleColor(115, 115, 10, 39, "Bright Red (more red)"));
         colors.add(new VehicleColor(116, 34, 52, 87, "Medium Sapphire Blue Firemist"));
         colors.add(new VehicleColor(117, 100, 13, 27, "Medium Garnet Red Poly"));
         colors.add(new VehicleColor(118, 163, 173, 198, "White Diamond Pearl"));
@@ -170,8 +171,8 @@ public class VehicleColor {
         colors.add(new VehicleColor(121, 98, 11, 28, "Brilliant Red Poly"));
         colors.add(new VehicleColor(122, 91, 93, 94, "Gun metal Poly"));
         colors.add(new VehicleColor(123, 98, 68, 40, "Medium Beechwood Poly"));
-        colors.add(new VehicleColor(124, 115, 24, 39, "Brilliant Red Poly"));
-        colors.add(new VehicleColor(125, 27, 55, 109, "Bright Blue Poly"));
+        colors.add(new VehicleColor(124, 115, 24, 39, "Brilliant Red Poly (brighter)"));
+        colors.add(new VehicleColor(125, 27, 55, 109, "Bright Blue Poly (even darker)"));
         colors.add(new VehicleColor(126, 236, 106, 174, "Pink"));
 
         colors = Collections.unmodifiableList(colors);
@@ -182,13 +183,18 @@ public class VehicleColor {
     }
 
     public static VehicleColor getColor(int id) {
-        return colors.stream().filter(color -> color.id == id).findFirst().get();
+        Optional<VehicleColor> result = colors.stream().filter(color -> color.id == id).findFirst();
+        if(result.isPresent()) {
+            return result.get();
+        } else {
+            throw new RuntimeException("Invalid colorId: '" + id + "'");
+        }
     }
 
     public static class ColorPair {
         private final Integer firstColor, secondColor;
 
-        public ColorPair(Integer firstColor, Integer secondColor)
+        ColorPair(Integer firstColor, Integer secondColor)
         {
             this.firstColor = firstColor;
             this.secondColor = secondColor;
