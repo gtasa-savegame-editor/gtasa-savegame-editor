@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class VehicleType {
+public class VehicleType
+{
 
   private int id;
   private String type;
@@ -13,26 +14,30 @@ public class VehicleType {
   private ArrayList<VehicleColor.ColorPair> validColors;
 
 
-  private VehicleType(String type, String name, int id, VehicleColor.ColorPair... validColors) {
+  private VehicleType(String type, String name, int id, VehicleColor.ColorPair... validColors)
+  {
     this.id = id;
     this.type = type;
     this.name = name;
-    if(validColors != null) {
+    if (validColors != null) {
       this.validColors = new ArrayList<>(Arrays.asList(validColors));
     } else {
       this.validColors = new ArrayList<>();
     }
   }
 
-  public int getId() {
+  public int getId()
+  {
     return id;
   }
 
-  public String getType() {
+  public String getType()
+  {
     return type;
   }
 
-  public String getName() {
+  public String getName()
+  {
     return name;
   }
 
@@ -161,13 +166,61 @@ public class VehicleType {
       new VehicleColor.ColorPair(27, 1),
       new VehicleColor.ColorPair(32, 1)));
 
-    types.add(new VehicleType("Cars", "Admiral", 445));
-    types.add(new VehicleType("Cars", "Alpha", 602));
-    types.add(new VehicleType("Cars", "Ambulance", 416));
-    types.add(new VehicleType("Cars", "Baggage", 485));
-    types.add(new VehicleType("Cars", "Bandito", 568));
-    types.add(new VehicleType("Cars", "Banshee", 429));
-    types.add(new VehicleType("Cars", "Barracks", 433));
+    types.add(new VehicleType("Cars", "Admiral", 445,
+      new VehicleColor.ColorPair(34, 34),
+      new VehicleColor.ColorPair(35, 35),
+      new VehicleColor.ColorPair(37, 37),
+      new VehicleColor.ColorPair(39, 39),
+      new VehicleColor.ColorPair(41, 41),
+      new VehicleColor.ColorPair(43, 43),
+      new VehicleColor.ColorPair(45, 45),
+      new VehicleColor.ColorPair(47, 47)));
+
+    types.add(new VehicleType("Cars", "Alpha", 602,
+      new VehicleColor.ColorPair(58, 1),
+      new VehicleColor.ColorPair(69, 1),
+      new VehicleColor.ColorPair(75, 77),
+      new VehicleColor.ColorPair(18, 1),
+      new VehicleColor.ColorPair(32, 1),
+      new VehicleColor.ColorPair(45, 45),
+      new VehicleColor.ColorPair(13, 1),
+      new VehicleColor.ColorPair(34, 1)));
+
+    types.add(new VehicleType("Cars", "Ambulance", 416,
+      new VehicleColor.ColorPair(1, 3)));
+
+    types.add(new VehicleType("Cars", "Baggage", 485,
+      new VehicleColor.ColorPair(1, 73),
+      new VehicleColor.ColorPair(1, 74),
+      new VehicleColor.ColorPair(1, 75),
+      new VehicleColor.ColorPair(1, 76),
+      new VehicleColor.ColorPair(1, 77),
+      new VehicleColor.ColorPair(1, 78),
+      new VehicleColor.ColorPair(1, 79)));
+
+    types.add(new VehicleType("Cars", "Bandito", 568,
+      new VehicleColor.ColorPair(2, 39),
+      new VehicleColor.ColorPair(9, 39),
+      new VehicleColor.ColorPair(17, 1),
+      new VehicleColor.ColorPair(21, 1),
+      new VehicleColor.ColorPair(33, 0),
+      new VehicleColor.ColorPair(37, 0),
+      new VehicleColor.ColorPair(41, 29),
+      new VehicleColor.ColorPair(56, 29)));
+
+    types.add(new VehicleType("Cars", "Banshee", 429,
+      new VehicleColor.ColorPair(12, 12),
+      new VehicleColor.ColorPair(13, 13),
+      new VehicleColor.ColorPair(14, 14),
+      new VehicleColor.ColorPair(1, 2),
+      new VehicleColor.ColorPair(2, 1),
+      new VehicleColor.ColorPair(1, 3),
+      new VehicleColor.ColorPair(3, 1),
+      new VehicleColor.ColorPair(10, 10)));
+
+    types.add(new VehicleType("Cars", "Barracks", 433,
+      new VehicleColor.ColorPair(43, 0)));
+
     types.add(new VehicleType("Cars", "Benson", 499));
     types.add(new VehicleType("Cars", "BF Injection", 424));
     types.add(new VehicleType("Cars", "Blade", 536));
@@ -341,11 +394,47 @@ public class VehicleType {
     types.add(new VehicleType("Helicopters", "Seasparrow", 447));
     types.add(new VehicleType("Helicopters", "Sparrow", 469));
 
-    types.add(new VehicleType("Planes", "Andromada", 592));
-    types.add(new VehicleType("Planes", "AT-400", 577));
-    types.add(new VehicleType("Planes", "Beagle", 511));
-    types.add(new VehicleType("Planes", "Cropduster", 512));
-    types.add(new VehicleType("Planes", "Dodo", 593));
+    types.add(new VehicleType("Planes", "Andromada", 592,
+      new VehicleColor.ColorPair(1, 1)));
+
+    types.add(new VehicleType("Planes", "AT-400", 577,
+      new VehicleColor.ColorPair(1, 3),
+      new VehicleColor.ColorPair(8, 7),
+      new VehicleColor.ColorPair(8, 10),
+      new VehicleColor.ColorPair(8, 16),
+      new VehicleColor.ColorPair(23, 31),
+      new VehicleColor.ColorPair(40, 44)));
+
+    types.add(new VehicleType("Planes", "Beagle", 511,
+      new VehicleColor.ColorPair(3, 90),
+      new VehicleColor.ColorPair(4, 90),
+      new VehicleColor.ColorPair(7, 68),
+      new VehicleColor.ColorPair(8, 66),
+      new VehicleColor.ColorPair(12, 60),
+      new VehicleColor.ColorPair(27, 97),
+      new VehicleColor.ColorPair(34, 51),
+      new VehicleColor.ColorPair(37, 51)));
+
+    types.add(new VehicleType("Planes", "Cropduster", 512,
+      new VehicleColor.ColorPair(17, 39),
+      new VehicleColor.ColorPair(15, 123),
+      new VehicleColor.ColorPair(32, 112),
+      new VehicleColor.ColorPair(45, 88),
+      new VehicleColor.ColorPair(52, 71),
+      new VehicleColor.ColorPair(57, 67),
+      new VehicleColor.ColorPair(61, 96),
+      new VehicleColor.ColorPair(96, 96)));
+
+    types.add(new VehicleType("Planes", "Dodo", 593,
+      new VehicleColor.ColorPair(51, 1),
+      new VehicleColor.ColorPair(58, 8),
+      new VehicleColor.ColorPair(60, 1),
+      new VehicleColor.ColorPair(68, 8),
+      new VehicleColor.ColorPair(2, 1),
+      new VehicleColor.ColorPair(13, 8),
+      new VehicleColor.ColorPair(22, 1),
+      new VehicleColor.ColorPair(38, 8)));
+
     types.add(new VehicleType("Planes", "Hydra", 520));
     types.add(new VehicleType("Planes", "Nevada", 553));
     types.add(new VehicleType("Planes", "Rustler", 476));
@@ -354,30 +443,40 @@ public class VehicleType {
     types.add(new VehicleType("Planes", "Stunt Plane", 513));
 
     types.add(new VehicleType("RC", "RC Cam (drivable)", 594));
-    types.add(new VehicleType("RC", "RC Bandit", 441));
-    types.add(new VehicleType("RC", "RC Baron", 464));
-    types.add(new VehicleType("RC", "RC Goblin", 501));
-    types.add(new VehicleType("RC", "RC Raider", 465));
+    types.add(new VehicleType("RC", "RC Bandit", 441,
+      new VehicleColor.ColorPair(2, 96),
+      new VehicleColor.ColorPair(79, 42),
+      new VehicleColor.ColorPair(82, 54),
+      new VehicleColor.ColorPair(67, 86),
+      new VehicleColor.ColorPair(126, 96),
+      new VehicleColor.ColorPair(70, 96),
+      new VehicleColor.ColorPair(110, 54),
+      new VehicleColor.ColorPair(67, 98)));
+
+    types.add(new VehicleType("RC", "RC Baron", 464, new VehicleColor.ColorPair(14, 75)));
+    types.add(new VehicleType("RC", "RC Goblin", 501, new VehicleColor.ColorPair(14, 75)));
+    types.add(new VehicleType("RC", "RC Raider", 465, new VehicleColor.ColorPair(14, 75)));
     types.add(new VehicleType("RC", "RC Tiger", 564));
 
-    types.add(new VehicleType("Tram", "Tram", 449));
+    types.add(new VehicleType("Tram", "Tram", 449, new VehicleColor.ColorPair(1, 74)));
+    types.add(new VehicleType("Train", "Freight", 537, new VehicleColor.ColorPair(1, 1)));
+    types.add(new VehicleType("Train", "Brown Streak", 538, new VehicleColor.ColorPair(1, 1)));
 
-    types.add(new VehicleType("Train", "Freight", 537));
-    types.add(new VehicleType("Train", "Brown Streak", 538));
-
-    types.add(new VehicleType("?", "freiflat", 569));
-    types.add(new VehicleType("?", "streakc", 570));
-    types.add(new VehicleType("?", "freibox", 590));
+    types.add(new VehicleType("Waggons", "streakc", 570, new VehicleColor.ColorPair(1, 1)));
+    types.add(new VehicleType("Waggons", "freiflat", 569));
+    types.add(new VehicleType("Waggons", "freibox", 590));
 
     types = Collections.unmodifiableList(types);
   }
 
 
-  public static List<VehicleType> getTypes() {
+  public static List<VehicleType> getTypes()
+  {
     return types;
   }
 
-  public static VehicleType getType(int id) {
+  public static VehicleType getType(int id)
+  {
     return types.stream().filter(type -> type.id == id).findFirst().get();
   }
 
