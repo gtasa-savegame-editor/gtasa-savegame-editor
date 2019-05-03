@@ -137,8 +137,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.media.j3d</groupId>
-            <artifactId>core</artifactId>
+            <groupId>java3d</groupId>
+            <artifactId>j3d-core</artifactId>
             <version>1.3.1</version>
         </dependency>
         <dependency>
