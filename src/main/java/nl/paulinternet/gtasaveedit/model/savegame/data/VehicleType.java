@@ -221,43 +221,291 @@ public class VehicleType
     types.add(new VehicleType("Cars", "Barracks", 433,
       new VehicleColor.ColorPair(43, 0)));
 
-    types.add(new VehicleType("Cars", "Benson", 499));
-    types.add(new VehicleType("Cars", "BF Injection", 424));
-    types.add(new VehicleType("Cars", "Blade", 536));
-    types.add(new VehicleType("Cars", "Blista Compact", 496));
-    types.add(new VehicleType("Cars", "Bloodra", 504));
-    types.add(new VehicleType("Cars", "Bobcat", 422));
-    types.add(new VehicleType("Cars", "Boxville", 498));
-    types.add(new VehicleType("Cars", "Boxville (exactly the same as other)", 609));
-    types.add(new VehicleType("Cars", "Bravura", 401));
-    types.add(new VehicleType("Cars", "Broadway", 575));
-    types.add(new VehicleType("Cars", "Buccaneer", 518));
-    types.add(new VehicleType("Cars", "Buffalo", 402));
-    types.add(new VehicleType("Cars", "Bullet", 541));
-    types.add(new VehicleType("Cars", "Burrito", 482));
-    types.add(new VehicleType("Cars", "Bus", 431));
-    types.add(new VehicleType("Cars", "Cabbie", 438));
-    types.add(new VehicleType("Cars", "Caddy", 457));
-    types.add(new VehicleType("Cars", "Cadrona", 527));
+    types.add(new VehicleType("Cars", "Benson", 499,
+      new VehicleColor.ColorPair(109, 25),
+      new VehicleColor.ColorPair(109, 32),
+      new VehicleColor.ColorPair(112, 32),
+      new VehicleColor.ColorPair(10, 32),
+      new VehicleColor.ColorPair(30, 44),
+      new VehicleColor.ColorPair(32, 52),
+      new VehicleColor.ColorPair(84, 66),
+      new VehicleColor.ColorPair(84, 69)));
+
+    types.add(new VehicleType("Cars", "BF Injection", 424,
+      new VehicleColor.ColorPair(1, 0),
+      new VehicleColor.ColorPair(2, 2),
+      new VehicleColor.ColorPair(3, 2),
+      new VehicleColor.ColorPair(3, 6),
+      new VehicleColor.ColorPair(6, 16),
+      new VehicleColor.ColorPair(15, 30),
+      new VehicleColor.ColorPair(24, 53),
+      new VehicleColor.ColorPair(35, 61)));
+
+    types.add(new VehicleType("Cars", "Blade", 536,
+      new VehicleColor.ColorPair(9, 1),
+      new VehicleColor.ColorPair(12, 1),
+      new VehicleColor.ColorPair(26, 96),
+      new VehicleColor.ColorPair(30, 96),
+      new VehicleColor.ColorPair(32, 1),
+      new VehicleColor.ColorPair(37, 1),
+      new VehicleColor.ColorPair(57, 96),
+      new VehicleColor.ColorPair(71, 96)));
+
+    types.add(new VehicleType("Cars", "Blista Compact", 496,
+      new VehicleColor.ColorPair(74, 72),
+      new VehicleColor.ColorPair(66, 72),
+      new VehicleColor.ColorPair(53, 56),
+      new VehicleColor.ColorPair(37, 19),
+      new VehicleColor.ColorPair(22, 22),
+      new VehicleColor.ColorPair(20, 20),
+      new VehicleColor.ColorPair(9, 14),
+      new VehicleColor.ColorPair(0, 0)));
+
+    types.add(new VehicleType("Cars", "Bloodra", 504,
+      new VehicleColor.ColorPair(51, 39),
+      new VehicleColor.ColorPair(57, 38),
+      new VehicleColor.ColorPair(45, 29),
+      new VehicleColor.ColorPair(34, 9),
+      new VehicleColor.ColorPair(65, 9),
+      new VehicleColor.ColorPair(14, 1),
+      new VehicleColor.ColorPair(12, 9),
+      new VehicleColor.ColorPair(26, 1)));
+
+    types.add(new VehicleType("Cars", "Bobcat", 422,
+      new VehicleColor.ColorPair(96, 25),
+      new VehicleColor.ColorPair(97, 25),
+      new VehicleColor.ColorPair(101, 25),
+      new VehicleColor.ColorPair(111, 31),
+      new VehicleColor.ColorPair(113, 36),
+      new VehicleColor.ColorPair(83, 57),
+      new VehicleColor.ColorPair(67, 59)));
+
+    types.add(new VehicleType("Cars", "Boxville", 498,
+      new VehicleColor.ColorPair(11, 123),
+      new VehicleColor.ColorPair(13, 120),
+      new VehicleColor.ColorPair(20, 117),
+      new VehicleColor.ColorPair(24, 112),
+      new VehicleColor.ColorPair(27, 107),
+      new VehicleColor.ColorPair(36, 105),
+      new VehicleColor.ColorPair(37, 107),
+      new VehicleColor.ColorPair(43, 93)));
+
+    types.add(new VehicleType("Cars", "Boxville (Boxburg)", 609, new VehicleColor.ColorPair(36, 36)));
+
+    types.add(new VehicleType("Cars", "Bravura", 401,
+      new VehicleColor.ColorPair(41, 41),
+      new VehicleColor.ColorPair(47, 47),
+      new VehicleColor.ColorPair(52, 52),
+      new VehicleColor.ColorPair(66, 66),
+      new VehicleColor.ColorPair(74, 74),
+      new VehicleColor.ColorPair(87, 87),
+      new VehicleColor.ColorPair(91, 91),
+      new VehicleColor.ColorPair(113, 113)));
+
+    types.add(new VehicleType("Cars", "Broadway", 575,
+      new VehicleColor.ColorPair(12, 1),
+      new VehicleColor.ColorPair(19, 96),
+      new VehicleColor.ColorPair(31, 64),
+      new VehicleColor.ColorPair(25, 96),
+      new VehicleColor.ColorPair(38, 1),
+      new VehicleColor.ColorPair(51, 96),
+      new VehicleColor.ColorPair(57, 1),
+      new VehicleColor.ColorPair(66, 96)));
+
+    types.add(new VehicleType("Cars", "Buccaneer", 518,
+      new VehicleColor.ColorPair(2, 39),
+      new VehicleColor.ColorPair(9, 39),
+      new VehicleColor.ColorPair(17, 1),
+      new VehicleColor.ColorPair(21, 1),
+      new VehicleColor.ColorPair(33, 0),
+      new VehicleColor.ColorPair(37, 0),
+      new VehicleColor.ColorPair(41, 29),
+      new VehicleColor.ColorPair(56, 29)));
+
+    types.add(new VehicleType("Cars", "Buffalo", 402,
+      new VehicleColor.ColorPair(10, 10),
+      new VehicleColor.ColorPair(13, 13),
+      new VehicleColor.ColorPair(22, 22),
+      new VehicleColor.ColorPair(30, 30),
+      new VehicleColor.ColorPair(39, 39),
+      new VehicleColor.ColorPair(90, 90),
+      new VehicleColor.ColorPair(98, 98),
+      new VehicleColor.ColorPair(110, 110)));
+
+    types.add(new VehicleType("Cars", "Bullet", 541,
+      new VehicleColor.ColorPair(51, 1),
+      new VehicleColor.ColorPair(58, 8),
+      new VehicleColor.ColorPair(60, 1),
+      new VehicleColor.ColorPair(68, 8),
+      new VehicleColor.ColorPair(2, 1),
+      new VehicleColor.ColorPair(13, 8),
+      new VehicleColor.ColorPair(22, 1),
+      new VehicleColor.ColorPair(36, 8)));
+
+    types.add(new VehicleType("Cars", "Burrito", 482,
+      new VehicleColor.ColorPair(41, 41),
+      new VehicleColor.ColorPair(48, 48),
+      new VehicleColor.ColorPair(52, 52),
+      new VehicleColor.ColorPair(64, 64),
+      new VehicleColor.ColorPair(71, 71),
+      new VehicleColor.ColorPair(85, 85),
+      new VehicleColor.ColorPair(10, 10),
+      new VehicleColor.ColorPair(62, 62)));
+
+    types.add(new VehicleType("Cars", "Bus", 431,
+      new VehicleColor.ColorPair(71, 59),
+      new VehicleColor.ColorPair(75, 59),
+      new VehicleColor.ColorPair(92, 72),
+      new VehicleColor.ColorPair(47, 74),
+      new VehicleColor.ColorPair(55, 83),
+      new VehicleColor.ColorPair(59, 83),
+      new VehicleColor.ColorPair(71, 87),
+      new VehicleColor.ColorPair(82, 87)));
+
+    types.add(new VehicleType("Cars", "Cabbie", 438, new VehicleColor.ColorPair(6, 76)));
+
+    types.add(new VehicleType("Cars", "Caddy", 457,
+      new VehicleColor.ColorPair(58, 1),
+      new VehicleColor.ColorPair(2, 1),
+      new VehicleColor.ColorPair(63, 1),
+      new VehicleColor.ColorPair(18, 1),
+      new VehicleColor.ColorPair(32, 1),
+      new VehicleColor.ColorPair(45, 1),
+      new VehicleColor.ColorPair(13, 1),
+      new VehicleColor.ColorPair(34, 1)));
+
+    types.add(new VehicleType("Cars", "Cadrona", 527,
+      new VehicleColor.ColorPair(52, 1),
+      new VehicleColor.ColorPair(53, 1),
+      new VehicleColor.ColorPair(66, 1),
+      new VehicleColor.ColorPair(75, 1),
+      new VehicleColor.ColorPair(76, 1),
+      new VehicleColor.ColorPair(81, 1),
+      new VehicleColor.ColorPair(95, 1),
+      new VehicleColor.ColorPair(109, 1)));
+
     types.add(new VehicleType("Cars", "Camper", 483));
     types.add(new VehicleType("Cars", "Cement", 524));
-    types.add(new VehicleType("Cars", "Cheetah", 415));
-    types.add(new VehicleType("Cars", "Clover", 542));
-    types.add(new VehicleType("Cars", "Club", 589));
-    types.add(new VehicleType("Cars", "Coach", 437));
+
+    types.add(new VehicleType("Cars", "Cheetah", 415,
+      new VehicleColor.ColorPair(20, 1),
+      new VehicleColor.ColorPair(25, 1),
+      new VehicleColor.ColorPair(36, 1),
+      new VehicleColor.ColorPair(40, 1),
+      new VehicleColor.ColorPair(62, 1),
+      new VehicleColor.ColorPair(75, 1),
+      new VehicleColor.ColorPair(92, 1),
+      new VehicleColor.ColorPair(0, 1)));
+
+    types.add(new VehicleType("Cars", "Clover", 542,
+      new VehicleColor.ColorPair(13, 118),
+      new VehicleColor.ColorPair(24, 118),
+      new VehicleColor.ColorPair(31, 93),
+      new VehicleColor.ColorPair(32, 92),
+      new VehicleColor.ColorPair(45, 92),
+      new VehicleColor.ColorPair(113, 92),
+      new VehicleColor.ColorPair(119, 113),
+      new VehicleColor.ColorPair(122, 113)));
+
+    types.add(new VehicleType("Cars", "Club", 589,
+      new VehicleColor.ColorPair(37, 37),
+      new VehicleColor.ColorPair(31, 31),
+      new VehicleColor.ColorPair(23, 23),
+      new VehicleColor.ColorPair(22, 22),
+      new VehicleColor.ColorPair(7, 7),
+      new VehicleColor.ColorPair(124, 124),
+      new VehicleColor.ColorPair(114, 114),
+      new VehicleColor.ColorPair(112, 112)));
+
+    types.add(new VehicleType("Cars", "Coach", 437,
+      new VehicleColor.ColorPair(54, 7),
+      new VehicleColor.ColorPair(79, 7),
+      new VehicleColor.ColorPair(87, 7),
+      new VehicleColor.ColorPair(95, 16),
+      new VehicleColor.ColorPair(98, 20),
+      new VehicleColor.ColorPair(105, 20),
+      new VehicleColor.ColorPair(123, 20),
+      new VehicleColor.ColorPair(125, 21)));
+
     types.add(new VehicleType("Cars", "Combine Harvester", 532));
-    types.add(new VehicleType("Cars", "Comet", 480));
-    types.add(new VehicleType("Cars", "DFT-30", 578));
-    types.add(new VehicleType("Cars", "Dozer", 486));
-    types.add(new VehicleType("Cars", "Dumper", 406));
-    types.add(new VehicleType("Cars", "Dune Rider", 573));
-    types.add(new VehicleType("Cars", "Elegant", 507));
-    types.add(new VehicleType("Cars", "Elegy", 562));
-    types.add(new VehicleType("Cars", "Emperor", 585));
-    types.add(new VehicleType("Cars", "Enforcer", 427));
-    types.add(new VehicleType("Cars", "Esperanto", 419));
-    types.add(new VehicleType("Cars", "Euros", 587));
-    types.add(new VehicleType("Cars", "FBI Rancher", 490));
+
+    types.add(new VehicleType("Cars", "Comet", 480,
+      new VehicleColor.ColorPair(73, 45),
+      new VehicleColor.ColorPair(12, 12),
+      new VehicleColor.ColorPair(2, 2),
+      new VehicleColor.ColorPair(6, 6),
+      new VehicleColor.ColorPair(4, 4),
+      new VehicleColor.ColorPair(46, 46),
+      new VehicleColor.ColorPair(53, 53)));
+
+    types.add(new VehicleType("Cars", "DFT-30", 578, new VehicleColor.ColorPair(1, 1)));
+    types.add(new VehicleType("Cars", "Dozer", 486, new VehicleColor.ColorPair(1, 1)));
+    types.add(new VehicleType("Cars", "Dumper", 406, new VehicleColor.ColorPair(1, 1)));
+
+    types.add(new VehicleType("Cars", "Dune Rider", 573,
+      new VehicleColor.ColorPair(91, 38),
+      new VehicleColor.ColorPair(115, 43),
+      new VehicleColor.ColorPair(85, 6),
+      new VehicleColor.ColorPair(79, 7),
+      new VehicleColor.ColorPair(78, 8),
+      new VehicleColor.ColorPair(77, 18),
+      new VehicleColor.ColorPair(79, 18),
+      new VehicleColor.ColorPair(86, 24)));
+
+    types.add(new VehicleType("Cars", "Elegant", 507,
+      new VehicleColor.ColorPair(37, 37),
+      new VehicleColor.ColorPair(42, 42),
+      new VehicleColor.ColorPair(53, 53),
+      new VehicleColor.ColorPair(62, 62),
+      new VehicleColor.ColorPair(7, 7),
+      new VehicleColor.ColorPair(10, 10),
+      new VehicleColor.ColorPair(11, 11),
+      new VehicleColor.ColorPair(15, 15)));
+
+    types.add(new VehicleType("Cars", "Elegy", 562,
+      new VehicleColor.ColorPair(36, 1),
+      new VehicleColor.ColorPair(35, 1),
+      new VehicleColor.ColorPair(17, 1),
+      new VehicleColor.ColorPair(11, 1),
+      new VehicleColor.ColorPair(116, 1),
+      new VehicleColor.ColorPair(113, 1),
+      new VehicleColor.ColorPair(101, 1),
+      new VehicleColor.ColorPair(92, 1)));
+
+    types.add(new VehicleType("Cars", "Emperor", 585,
+      new VehicleColor.ColorPair(37, 37),
+      new VehicleColor.ColorPair(42, 42),
+      new VehicleColor.ColorPair(53, 53),
+      new VehicleColor.ColorPair(62, 62),
+      new VehicleColor.ColorPair(7, 7),
+      new VehicleColor.ColorPair(10, 10),
+      new VehicleColor.ColorPair(11, 11),
+      new VehicleColor.ColorPair(15, 15)));
+
+    types.add(new VehicleType("Cars", "Enforcer", 427, new VehicleColor.ColorPair(0, 1)));
+
+    types.add(new VehicleType("Cars", "Esperanto", 419,
+      new VehicleColor.ColorPair(45, 75),
+      new VehicleColor.ColorPair(47, 76),
+      new VehicleColor.ColorPair(33, 75),
+      new VehicleColor.ColorPair(13, 76),
+      new VehicleColor.ColorPair(54, 75),
+      new VehicleColor.ColorPair(69, 76),
+      new VehicleColor.ColorPair(59, 75),
+      new VehicleColor.ColorPair(87, 76)));
+
+    types.add(new VehicleType("Cars", "Euros", 587,
+      new VehicleColor.ColorPair(36, 1),
+      new VehicleColor.ColorPair(40, 1),
+      new VehicleColor.ColorPair(43, 1),
+      new VehicleColor.ColorPair(53, 1),
+      new VehicleColor.ColorPair(72, 1),
+      new VehicleColor.ColorPair(75, 1),
+      new VehicleColor.ColorPair(95, 1),
+      new VehicleColor.ColorPair(101, 1)));
+
+    types.add(new VehicleType("Cars", "FBI Rancher", 490, new VehicleColor.ColorPair(0, 0)));
+    
     types.add(new VehicleType("Cars", "FBI Truck", 528));
     types.add(new VehicleType("Cars", "Feltzer", 533));
     types.add(new VehicleType("Cars", "Fire Truck", 407));
