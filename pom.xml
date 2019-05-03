@@ -165,8 +165,8 @@
     </dependencies>
     <repositories>
         <repository>
-            <id>k40s-public</id>
-            <url>https://nexus.k40s.net/repository/maven-public/</url>
+            <id>gammelcloud-public</id>
+            <url>https://nexus.gammel.cloud/repository/maven-public/</url>
         </repository>
     </repositories>
 </project>
