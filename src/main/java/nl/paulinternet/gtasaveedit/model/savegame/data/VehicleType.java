@@ -10,10 +10,10 @@ public class VehicleType {
   private int id;
   private String type;
   private String name;
-  private ArrayList<Integer> validColors;
+  private ArrayList<VehicleColor.ColorPair> validColors;
 
 
-  private VehicleType(String type, String name, int id, Integer... validColors) {
+  private VehicleType(String type, String name, int id, VehicleColor.ColorPair... validColors) {
     this.id = id;
     this.type = type;
     this.name = name;
@@ -36,7 +36,7 @@ public class VehicleType {
     return name;
   }
 
-  public ArrayList<Integer> getValidColors()
+  public ArrayList<VehicleColor.ColorPair> getValidColors()
   {
     return validColors;
   }
@@ -46,21 +46,120 @@ public class VehicleType {
   static {
     types = new ArrayList<>();
 
-    types.add(new VehicleType("None", "None", 0, 0));
+    types.add(new VehicleType("None", "None", 0,
+      new VehicleColor.ColorPair(0, 0)));
 
-    types.add(new VehicleType("Bikes", "BF-400", 581));
-    types.add(new VehicleType("Bikes", "Bike", 509));
-    types.add(new VehicleType("Bikes", "BMX", 481));
-    types.add(new VehicleType("Bikes", "Faggio", 462));
-    types.add(new VehicleType("Bikes", "FCR-900", 521));
-    types.add(new VehicleType("Bikes", "Freeway", 463));
-    types.add(new VehicleType("Bikes", "HPV1000 (cop bike)", 523));
-    types.add(new VehicleType("Bikes", "Mountain Bike", 510));
-    types.add(new VehicleType("Bikes", "NRG-500", 522));
-    types.add(new VehicleType("Bikes", "PCJ-600", 461));
-    types.add(new VehicleType("Bikes", "Pizzaboy", 448));
-    types.add(new VehicleType("Bikes", "Sanchez", 468));
-    types.add(new VehicleType("Bikes", "Wayfarer", 586));
+    types.add(new VehicleType("Bikes", "BF-400", 581,
+      new VehicleColor.ColorPair(54, 1),
+      new VehicleColor.ColorPair(58, 1),
+      new VehicleColor.ColorPair(66, 1),
+      new VehicleColor.ColorPair(72, 1),
+      new VehicleColor.ColorPair(75, 1),
+      new VehicleColor.ColorPair(87, 1),
+      new VehicleColor.ColorPair(101, 1),
+      new VehicleColor.ColorPair(36, 1)));
+
+    types.add(new VehicleType("Bikes", "Bike", 509,
+      new VehicleColor.ColorPair(7, 1),
+      new VehicleColor.ColorPair(74, 1),
+      new VehicleColor.ColorPair(61, 1),
+      new VehicleColor.ColorPair(16, 1),
+      new VehicleColor.ColorPair(25, 1),
+      new VehicleColor.ColorPair(30, 1),
+      new VehicleColor.ColorPair(36, 1),
+      new VehicleColor.ColorPair(53, 1)));
+
+    types.add(new VehicleType("Bikes", "BMX", 481,
+      new VehicleColor.ColorPair(1, 1),
+      new VehicleColor.ColorPair(3, 3),
+      new VehicleColor.ColorPair(6, 6),
+      new VehicleColor.ColorPair(46, 46),
+      new VehicleColor.ColorPair(65, 9),
+      new VehicleColor.ColorPair(14, 1),
+      new VehicleColor.ColorPair(12, 9),
+      new VehicleColor.ColorPair(26, 1)));
+
+    types.add(new VehicleType("Bikes", "Faggio", 462,
+      new VehicleColor.ColorPair(12, 12),
+      new VehicleColor.ColorPair(13, 13),
+      new VehicleColor.ColorPair(14, 14),
+      new VehicleColor.ColorPair(1, 2),
+      new VehicleColor.ColorPair(2, 1),
+      new VehicleColor.ColorPair(1, 3),
+      new VehicleColor.ColorPair(3, 1),
+      new VehicleColor.ColorPair(10, 10)));
+
+    types.add(new VehicleType("Bikes", "FCR-900", 521,
+      new VehicleColor.ColorPair(74, 74),
+      new VehicleColor.ColorPair(75, 13),
+      new VehicleColor.ColorPair(87, 118),
+      new VehicleColor.ColorPair(92, 3),
+      new VehicleColor.ColorPair(115, 118),
+      new VehicleColor.ColorPair(25, 118),
+      new VehicleColor.ColorPair(36, 0),
+      new VehicleColor.ColorPair(118, 118)));
+
+    types.add(new VehicleType("Bikes", "Freeway", 463,
+      new VehicleColor.ColorPair(79, 79),
+      new VehicleColor.ColorPair(84, 84),
+      new VehicleColor.ColorPair(7, 7),
+      new VehicleColor.ColorPair(11, 11),
+      new VehicleColor.ColorPair(19, 19),
+      new VehicleColor.ColorPair(22, 22),
+      new VehicleColor.ColorPair(36, 36),
+      new VehicleColor.ColorPair(53, 53)));
+
+    types.add(new VehicleType("Bikes", "HPV1000 (cop bike)", 523,
+      new VehicleColor.ColorPair(0, 1)));
+
+    types.add(new VehicleType("Bikes", "Mountain Bike", 510,
+      new VehicleColor.ColorPair(43, 43),
+      new VehicleColor.ColorPair(46, 46),
+      new VehicleColor.ColorPair(39, 39),
+      new VehicleColor.ColorPair(28, 28),
+      new VehicleColor.ColorPair(16, 16),
+      new VehicleColor.ColorPair(6, 6),
+      new VehicleColor.ColorPair(5, 5),
+      new VehicleColor.ColorPair(2, 2)));
+
+    types.add(new VehicleType("Bikes", "NRG-500", 522,
+      new VehicleColor.ColorPair(3, 3),
+      new VehicleColor.ColorPair(3, 8),
+      new VehicleColor.ColorPair(6, 25),
+      new VehicleColor.ColorPair(7, 79),
+      new VehicleColor.ColorPair(8, 82),
+      new VehicleColor.ColorPair(36, 105),
+      new VehicleColor.ColorPair(39, 106),
+      new VehicleColor.ColorPair(51, 118)));
+
+    types.add(new VehicleType("Bikes", "PCJ-600", 461,
+      new VehicleColor.ColorPair(36, 1),
+      new VehicleColor.ColorPair(37, 1),
+      new VehicleColor.ColorPair(43, 1),
+      new VehicleColor.ColorPair(53, 1),
+      new VehicleColor.ColorPair(61, 1),
+      new VehicleColor.ColorPair(75, 1),
+      new VehicleColor.ColorPair(79, 1),
+      new VehicleColor.ColorPair(88, 1)));
+
+    types.add(new VehicleType("Bikes", "Pizzaboy", 448,
+      new VehicleColor.ColorPair(3, 6)));
+
+    types.add(new VehicleType("Bikes", "Sanchez", 468,
+      new VehicleColor.ColorPair(6, 6),
+      new VehicleColor.ColorPair(46, 46),
+      new VehicleColor.ColorPair(53, 53),
+      new VehicleColor.ColorPair(3, 3)));
+
+    types.add(new VehicleType("Bikes", "Wayfarer", 586,
+      new VehicleColor.ColorPair(119, 1),
+      new VehicleColor.ColorPair(122, 1),
+      new VehicleColor.ColorPair(8, 1),
+      new VehicleColor.ColorPair(10, 1),
+      new VehicleColor.ColorPair(13, 1),
+      new VehicleColor.ColorPair(25, 1),
+      new VehicleColor.ColorPair(27, 1),
+      new VehicleColor.ColorPair(32, 1)));
 
     types.add(new VehicleType("Cars", "Admiral", 445));
     types.add(new VehicleType("Cars", "Alpha", 602));
@@ -281,6 +380,5 @@ public class VehicleType {
   public static VehicleType getType(int id) {
     return types.stream().filter(type -> type.id == id).findFirst().get();
   }
-
 
 }

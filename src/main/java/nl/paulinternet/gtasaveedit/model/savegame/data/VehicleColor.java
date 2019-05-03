@@ -177,12 +177,51 @@ public class VehicleColor {
         colors = Collections.unmodifiableList(colors);
     }
 
-
     public static List<VehicleColor> getColors() {
         return colors;
     }
 
     public static VehicleColor getColor(int id) {
         return colors.stream().filter(color -> color.id == id).findFirst().get();
+    }
+
+    public static class ColorPair {
+        private final Integer firstColor, secondColor;
+
+        public ColorPair(Integer firstColor, Integer secondColor)
+        {
+            this.firstColor = firstColor;
+            this.secondColor = secondColor;
+        }
+
+        public Integer getFirstColor()
+        {
+            return firstColor;
+        }
+
+        public VehicleColor getFirstVehicleColor() {
+            final VehicleColor[] result = { null };
+            colors.forEach(c -> {
+                if (firstColor.equals(c.id)) {
+                    result[0] = c;
+                }
+            });
+            return result[0];
+        }
+
+        public Integer getSecondColor()
+        {
+            return secondColor;
+        }
+
+        public VehicleColor getSecondVehicleColor() {
+            final VehicleColor[] result = { null };
+            colors.forEach(c -> {
+                if (secondColor.equals(c.id)) {
+                    result[0] = c;
+                }
+            });
+            return result[0];
+        }
     }
 }
