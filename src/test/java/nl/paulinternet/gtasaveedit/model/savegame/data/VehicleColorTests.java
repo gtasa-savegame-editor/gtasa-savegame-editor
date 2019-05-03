@@ -29,7 +29,7 @@ public class VehicleColorTests extends TestCase
       ArrayList<Integer> duplicates = duplicatesFound.get(name);
       if (duplicates.size() > 1) {
         successful.set(false);
-        System.err.print("Duplicates found for color '" + name + "': [");
+        System.err.print("Duplicated names found for color '" + name + "': [");
         AtomicBoolean first = new AtomicBoolean(true);
         duplicates.forEach(c -> {
           System.err.print(((first.get()) ? "" : ", ") + c);

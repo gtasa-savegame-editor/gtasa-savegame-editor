@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.model.savegame.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,12 +10,18 @@ public class VehicleType {
   private int id;
   private String type;
   private String name;
+  private ArrayList<Integer> validColors;
 
 
-  private VehicleType(String type, String name, int id) {
+  private VehicleType(String type, String name, int id, Integer... validColors) {
     this.id = id;
     this.type = type;
     this.name = name;
+    if(validColors != null) {
+      this.validColors = new ArrayList<>(Arrays.asList(validColors));
+    } else {
+      this.validColors = new ArrayList<>();
+    }
   }
 
   public int getId() {
@@ -29,13 +36,17 @@ public class VehicleType {
     return name;
   }
 
+  public ArrayList<Integer> getValidColors()
+  {
+    return validColors;
+  }
 
   private static List<VehicleType> types;
 
   static {
     types = new ArrayList<>();
 
-    types.add(new VehicleType("None", "None", 0));
+    types.add(new VehicleType("None", "None", 0, 0));
 
     types.add(new VehicleType("Bikes", "BF-400", 581));
     types.add(new VehicleType("Bikes", "Bike", 509));
