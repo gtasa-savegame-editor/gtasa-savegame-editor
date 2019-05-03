@@ -1205,22 +1205,139 @@ public class VehicleType
       new VehicleColor.ColorPair(44,51),
       new VehicleColor.ColorPair(52,54)));
 
-    types.add(new VehicleType("Cars", "Tractor", 531));
-    types.add(new VehicleType("Cars", "Trashmaster", 408));
-    types.add(new VehicleType("Cars", "Tug", 583));
-    types.add(new VehicleType("Cars", "Turismo", 451));
-    types.add(new VehicleType("Cars", "Uranus", 558));
-    types.add(new VehicleType("Cars", "Utility Van", 552));
-    types.add(new VehicleType("Cars", "Vincent", 540));
-    types.add(new VehicleType("Cars", "Virgo", 491));
-    types.add(new VehicleType("Cars", "Voodoo", 412));
-    types.add(new VehicleType("Cars", "Walton", 478));
-    types.add(new VehicleType("Cars", "Washing", 421));
-    types.add(new VehicleType("Cars", "Willard", 529));
-    types.add(new VehicleType("Cars", "Windsor", 555));
-    types.add(new VehicleType("Cars", "Yankee", 456));
-    types.add(new VehicleType("Cars", "Yosemite", 554));
-    types.add(new VehicleType("Cars", "ZR-350", 477));
+    types.add(new VehicleType("Cars", "Tractor", 531,
+      new VehicleColor.ColorPair(2,35),
+      new VehicleColor.ColorPair(36,2),
+      new VehicleColor.ColorPair(51,53),
+      new VehicleColor.ColorPair(91,2),
+      new VehicleColor.ColorPair(11,22),
+      new VehicleColor.ColorPair(40,35)));
+
+    types.add(new VehicleType("Cars", "Trashmaster", 408, new VehicleColor.ColorPair(26,26)));
+    types.add(new VehicleType("Cars", "Tug", 583, new VehicleColor.ColorPair(1, 1)));
+
+    types.add(new VehicleType("Cars", "Turismo", 451,
+      new VehicleColor.ColorPair(123,123),
+      new VehicleColor.ColorPair(125,125),
+      new VehicleColor.ColorPair(36,36),
+      new VehicleColor.ColorPair(16,16),
+      new VehicleColor.ColorPair(18,18),
+      new VehicleColor.ColorPair(46,46),
+      new VehicleColor.ColorPair(61,61),
+      new VehicleColor.ColorPair(75,75)));
+
+    types.add(new VehicleType("Cars", "Uranus", 558,
+      new VehicleColor.ColorPair(112,1),
+      new VehicleColor.ColorPair(116,1),
+      new VehicleColor.ColorPair(117,1),
+      new VehicleColor.ColorPair(24,1),
+      new VehicleColor.ColorPair(30,1),
+      new VehicleColor.ColorPair(35,1),
+      new VehicleColor.ColorPair(36,1),
+      new VehicleColor.ColorPair(40,1)));
+
+    types.add(new VehicleType("Cars", "Utility Van", 552,
+      new VehicleColor.ColorPair(56,56),
+      new VehicleColor.ColorPair(49,49),
+      new VehicleColor.ColorPair(26,124)));
+
+    types.add(new VehicleType("Cars", "Vincent", 540,
+      new VehicleColor.ColorPair(37,37),
+      new VehicleColor.ColorPair(42,42),
+      new VehicleColor.ColorPair(53,53),
+      new VehicleColor.ColorPair(62,62),
+      new VehicleColor.ColorPair(7,7),
+      new VehicleColor.ColorPair(10,10),
+      new VehicleColor.ColorPair(11,11),
+      new VehicleColor.ColorPair(15,15)));
+
+    types.add(new VehicleType("Cars", "Virgo", 491,
+      new VehicleColor.ColorPair(40,65),
+      new VehicleColor.ColorPair(71,72),
+      new VehicleColor.ColorPair(52,66),
+      new VehicleColor.ColorPair(64,72),
+      new VehicleColor.ColorPair(30,72),
+      new VehicleColor.ColorPair(60,72)));
+
+    types.add(new VehicleType("Cars", "Voodoo", 412,
+      new VehicleColor.ColorPair(9,1),
+      new VehicleColor.ColorPair(10,8),
+      new VehicleColor.ColorPair(11,1),
+      new VehicleColor.ColorPair(25,8),
+      new VehicleColor.ColorPair(27,1),
+      new VehicleColor.ColorPair(29,8),
+      new VehicleColor.ColorPair(30,1),
+      new VehicleColor.ColorPair(37,8)));
+
+    types.add(new VehicleType("Cars", "Walton", 478,
+      new VehicleColor.ColorPair(72,1),
+      new VehicleColor.ColorPair(66,1),
+      new VehicleColor.ColorPair(59,1),
+      new VehicleColor.ColorPair(45,1),
+      new VehicleColor.ColorPair(40,1),
+      new VehicleColor.ColorPair(39,1),
+      new VehicleColor.ColorPair(35,1),
+      new VehicleColor.ColorPair(20,1)));
+
+    types.add(new VehicleType("Cars", "Washing", 421,
+      new VehicleColor.ColorPair(4,1),
+      new VehicleColor.ColorPair(13,1),
+      new VehicleColor.ColorPair(25,1),
+      new VehicleColor.ColorPair(30,1),
+      new VehicleColor.ColorPair(36,1),
+      new VehicleColor.ColorPair(40,1),
+      new VehicleColor.ColorPair(75,1),
+      new VehicleColor.ColorPair(95,1)));
+
+    types.add(new VehicleType("Cars", "Willard", 529,
+      new VehicleColor.ColorPair(37,37),
+      new VehicleColor.ColorPair(42,42),
+      new VehicleColor.ColorPair(53,53),
+      new VehicleColor.ColorPair(62,62),
+      new VehicleColor.ColorPair(7,7),
+      new VehicleColor.ColorPair(10,10),
+      new VehicleColor.ColorPair(11,11),
+      new VehicleColor.ColorPair(15,15)));
+
+    types.add(new VehicleType("Cars", "Windsor", 555,
+      new VehicleColor.ColorPair(51,1),
+      new VehicleColor.ColorPair(58,1),
+      new VehicleColor.ColorPair(60,1),
+      new VehicleColor.ColorPair(68,1),
+      new VehicleColor.ColorPair(2,1),
+      new VehicleColor.ColorPair(13,1),
+      new VehicleColor.ColorPair(22,1),
+      new VehicleColor.ColorPair(36,1)));
+
+    types.add(new VehicleType("Cars", "Yankee", 456,
+      new VehicleColor.ColorPair(84,63),
+      new VehicleColor.ColorPair(91,63),
+      new VehicleColor.ColorPair(102,65),
+      new VehicleColor.ColorPair(105,72),
+      new VehicleColor.ColorPair(110,92),
+      new VehicleColor.ColorPair(121,93),
+      new VehicleColor.ColorPair(12,95),
+      new VehicleColor.ColorPair(23,1)));
+
+    types.add(new VehicleType("Cars", "Yosemite", 554,
+      new VehicleColor.ColorPair(53,32),
+      new VehicleColor.ColorPair(15,32),
+      new VehicleColor.ColorPair(45,32),
+      new VehicleColor.ColorPair(34,30),
+      new VehicleColor.ColorPair(65,32),
+      new VehicleColor.ColorPair(14,32),
+      new VehicleColor.ColorPair(12,32),
+      new VehicleColor.ColorPair(43,32)));
+
+    types.add(new VehicleType("Cars", "ZR-350", 477,
+      new VehicleColor.ColorPair(92,1),
+      new VehicleColor.ColorPair(94,1),
+      new VehicleColor.ColorPair(101,1),
+      new VehicleColor.ColorPair(121,1),
+      new VehicleColor.ColorPair(0,1),
+      new VehicleColor.ColorPair(22,1),
+      new VehicleColor.ColorPair(36,1),
+      new VehicleColor.ColorPair(75,1)));
 
     types.add(new VehicleType("Trailers", "Airplain Stairs", 608));
     types.add(new VehicleType("Trailers", "Baggage A", 606));
