@@ -35,7 +35,7 @@ jobs:
         on:
           repo: gtasa-savegame-editor/gtasa-savegame-editor
           tags: true
-    - stage: macOS
+    - stage: mac
       os: osx
       osx_image: xcode9.3
       language: java
