@@ -65,7 +65,7 @@ public class VehicleColor {
         colors.add(new VehicleColor(15, 156, 161, 163, "Silver Stone Poly"));
         colors.add(new VehicleColor(16, 51, 95, 63, "Rio Red"));
         colors.add(new VehicleColor(17, 115, 14, 26, "Torino Red Pearl"));
-        colors.add(new VehicleColor(18, 123, 10, 42, "Formula Rot"));
+        colors.add(new VehicleColor(18, 123, 10, 42, "Formula Red"));
         colors.add(new VehicleColor(19, 159, 157, 148, "Honey Beige Poly"));
         colors.add(new VehicleColor(20, 59, 78, 120, "Mariner Blue"));
         colors.add(new VehicleColor(21, 115, 46, 62, "Blaze Red"));
