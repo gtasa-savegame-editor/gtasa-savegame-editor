@@ -7,12 +7,14 @@ public class VehicleType {
     private int id;
     private String type;
     private String name;
+    private final String[] validMods;
     private ArrayList<VehicleColor.ColorPair> validColors;
 
     private VehicleType(String type, String name, int id, String[] validMods, VehicleColor.ColorPair... validColors) {
         this.id = id;
         this.type = type;
         this.name = name;
+        this.validMods = validMods;
         if (validColors != null) {
             this.validColors = new ArrayList<>(Arrays.asList(validColors));
         } else {
@@ -36,6 +38,10 @@ public class VehicleType {
         return validColors;
     }
 
+    public String[] getValidMods() {
+        return validMods;
+    }
+
     private static List<VehicleType> types;
 
     public static List<VehicleType> getTypes() {
@@ -46,7 +52,7 @@ public class VehicleType {
         return types.stream().filter(type -> type.id == id).findFirst().orElse(null);
     }
 
-    public static VehicleType getType(String name) {
+    public static VehicleType getTypeByName(String name) {
         return types.stream().filter(type -> type.name.equals(name)).findFirst().orElse(null);
     }
 

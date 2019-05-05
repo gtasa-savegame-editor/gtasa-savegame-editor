@@ -103,7 +103,7 @@ public class Block03 extends LinkArray {
 
             //TODO where to save `id`? What does it even mean? It's apparently neither the car id nor the garage id.
             final String id = (i < 10) ? " " + i : String.valueOf(i);
-            
+
             final VehicleType vehicleType = VehicleType.getType(type);
             final RadioStation radioStation1 = RadioStation.getStation(radioStation);
 
@@ -146,7 +146,7 @@ public class Block03 extends LinkArray {
     @Override
     public void save(SavegameData io) {
         for (Link link : links) {
-            if(link !=null) {
+            if (link != null) {
                 link.save(io);
             }
         }
@@ -179,8 +179,8 @@ public class Block03 extends LinkArray {
         for (int mod : mods) {
             if (mod != 65535 && mod != 0) {
                 final VehicleMod vehicleMod = VehicleMod.getMod(mod);
-                modsString.append(vehicleMod.getName())
-                        .append(" (").append(vehicleMod.getType()).append(", id:'").append(mod).append("'), ");
+                    modsString.append(vehicleMod.getName())
+                            .append(" (").append(vehicleMod.getType()).append(", id:'").append(mod).append("'), ");
             }
         }
         debugStr += modsString;

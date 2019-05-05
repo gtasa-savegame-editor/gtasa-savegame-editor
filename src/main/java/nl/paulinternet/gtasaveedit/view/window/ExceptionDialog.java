@@ -14,9 +14,14 @@ import javax.swing.JTextArea;
 
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ExceptionDialog extends JDialog
 {
+
+	private static final Logger log = LoggerFactory.getLogger(ExceptionDialog.class);
+
 	private static class QuitButton extends JButton implements ActionListener
 	{
 		public QuitButton () {
@@ -52,7 +57,9 @@ public class ExceptionDialog extends JDialog
 		StringWriter writer = new StringWriter();
 		t.printStackTrace(new PrintWriter(writer));
 		String stackTrace = writer.toString();
-		
+
+		log.error(stackTrace);
+
 		JTextArea textArea = new JTextArea(stackTrace);
 		textArea.setEditable(false);
 		

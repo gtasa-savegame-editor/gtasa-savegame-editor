@@ -18,10 +18,9 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * @author Lukas Fülling (lukas@k40s.net)
@@ -72,7 +71,7 @@ public class PageGarages extends Page {
                 List<ModsBox> modsBoxes = new ArrayList<>();
 
                 for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                    ModsBox modsBox = new ModsBox(Model.vars.garageCars.get(i).getMods().get(j));
+                    ModsBox modsBox = new ModsBox(Model.vars.garageCars.get(i).getMods().get(j), i);
                     modsBoxes.add(j, modsBox);
                 }
 
@@ -153,8 +152,8 @@ public class PageGarages extends Page {
     private static class ColorBox extends ConnectedComboBox {
         public ColorBox(VariableIntegerImpl color1, VariableIntegerImpl color2, int garageCount) {
             super(new VariableIntegerImpl(0, 7));
-            updateView(color1, color2, garageCount);
             setPrototypeDisplayValue("--------------"); // this determines dropdown width
+            updateView(color1, color2, garageCount);
             Model.vars.garageCars.get(garageCount).getCarId().onChange().addHandler(e -> updateView(color1, color2, garageCount));
         }
 
@@ -184,12 +183,22 @@ public class PageGarages extends Page {
     }
 
     private static class ModsBox extends ConnectedComboBox {
-        ModsBox(VariableIntegerImpl var) {
+        ModsBox(VariableIntegerImpl var, int garageCount) {
             super(var);
             setPrototypeDisplayValue("--------------"); // this determines dropdown width
+            updateView(garageCount);
+            Model.vars.garageCars.get(garageCount).getCarId().onChange().addHandler(e -> updateView(garageCount));
+        }
+
+        private void updateView(int garageCount) {
+            removeAllItems(); // remove current contents
             VehicleMod.getMods().stream() // stream mods
                     .sorted(Comparator.comparingInt(VehicleMod::getId)) // sort by id
-                    .forEach(m -> addItem(m.getId(), m.getName() + " (" + m.getType() + ")")); // add all to dropdown
+                    .forEach(m -> addItem(m.getId(), // add [INVALID] if vehicle can not use that mod
+                            ((Arrays.asList(VehicleType.getType(Model.vars.garageCars.get(garageCount)
+                                    .getCarId().getIntValue()).getValidMods()).contains(m.getDffName()))
+                                    ? "" : "[INVALID] ") +
+                                    m.getName() + " (" + m.getType() + ")")); // add all to dropdown
         }
     }
 
