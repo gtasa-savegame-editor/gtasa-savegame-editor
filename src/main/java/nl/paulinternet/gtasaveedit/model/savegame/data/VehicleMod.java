@@ -138,12 +138,11 @@ public class VehicleMod {
     }
 
     public static VehicleMod getMod(int id) {
-        Optional<VehicleMod> first = mods.stream().filter(mod -> mod.id == id).findFirst();
-        if (first.isPresent()) {
-            return first.get();
-        } else {
-            throw new RuntimeException("Invalid modID: '" + id + "'!");
-        }
+        return mods.stream().filter(mod -> mod.id == id).findFirst().orElse(null);
+    }
+
+    public static VehicleMod getMod(String name) {
+        return mods.stream().filter(mod -> mod.name.equals(name)).findFirst().orElse(null);
     }
 
 }
