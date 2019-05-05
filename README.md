@@ -2,9 +2,21 @@
 
 This is a modified version of the software that can be found on [paulinternet.nl](http://paulinternet.nl/?page=sa).
 
-This version contains mostly macOS specific fixes and requires Java > 8. That said, if you try to run it on Windows or Linux it may crash or be missing some features.
-
-This doesn't mean that you shouldn't run it on those systems! I heavily advise you to do this and report any bugs you find as issue.
+This version contains the following features (additionally to the ones found in the original version):
+- requires Java >= 8
+- macOS specific fixes
+- support for german/european steam versions of the game
+- support for macOS Steam version of the game
+- support for Linux Steam version of the game (SteamPlay/Proton)
+- support for editing garages and cars in them
+- support for transferring savegames from Android
+    - support for *reading* Android savegames without crashing is still in development
+- notifications about new versions
+- different download options (additionally to `.jar`):
+    - a `.exe` for windows
+    - a `.app` (and `.dmg`) for macOS
+    - a `.deb` for Debian/Ubuntu
+    - a `.rpm` for Fedora/CentOS
 
 ## Downloading
 
