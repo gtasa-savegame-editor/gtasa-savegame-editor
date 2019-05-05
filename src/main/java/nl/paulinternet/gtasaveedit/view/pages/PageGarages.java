@@ -91,7 +91,7 @@ public class PageGarages extends Page {
                 clearModsBtn.setToolTipText("Clicking this button will set all mods to 'None'.");
                 clearModsBtn.addActionListener(e -> {
                     for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                        Model.vars.garageCars.get(i).getMods().get(j).setIntValue(0);
+                        Model.vars.garageCars.get(i).getMods().get(j).setIntValue(65535);
                     }
                 });
                 table.add(clearModsBtn, 6, i + 2);
