@@ -22,8 +22,16 @@ You should now have the following files inside a newly created `target` folder:
 
 - `gtasaveedit-[version]-jar-with-dependencies.jar`
     - This is the main executable. You can run it with `java -jar [jarfile]`.
-- `gtasaveedit_[version]_all.deb`
-    - This is a Debian package. You can install it on Debian, Ubuntu and other Linux distros based on those.
-    - You can also run `alien --scripts -r <debfile>` to create a `.rpm` file that can be installed on Fedora based distros.
-- `gtasaveedit-[version]/GTA SA Savegame Editor.app`
-    - This is a `.app` file to be used with macOS.
+
+### Profiles
+
+You can also build specific application formats. For example: `mvn clean package -Pwindows` will create a `.exe` file.
+
+Available profiles:
+- `macOS`
+    - builds a `.dmg` and `.app` file
+- `deb`
+    - builds a `.deb` file
+    - You can run `alien --scripts -r <debfile>` afterwards to create a `.rpm` file that can be installed on Fedora based distros.
+- `windows`
+    - builds a `.exe`
