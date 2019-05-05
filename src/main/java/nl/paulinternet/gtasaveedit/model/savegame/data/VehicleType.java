@@ -1,9 +1,6 @@
 package nl.paulinternet.gtasaveedit.model.savegame.data;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class VehicleType
 {
@@ -1535,7 +1532,8 @@ public class VehicleType
 
   public static VehicleType getType(int id)
   {
-    return types.stream().filter(type -> type.id == id).findFirst().get();
+    Optional<VehicleType> first = types.stream().filter(type -> type.id == id).findFirst();
+    return first.orElse(null);
   }
 
 }

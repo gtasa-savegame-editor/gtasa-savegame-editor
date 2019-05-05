@@ -46,7 +46,7 @@ public class ConnectedComboBox extends PComboBox
 		}
 	}
 
-	private VariableIntegerImpl var;
+	protected VariableIntegerImpl var;
 	private List<Integer> values;
 	
 	public ConnectedComboBox (VariableIntegerImpl var) {
