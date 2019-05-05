@@ -36,7 +36,7 @@ public class PageGarages extends Page {
         Table table = new Table();
         table.setSpacing(10, 10);
         table.setCellWeight(1.0, 0.0);
-        table.setCellExpand(0.0f, 0.0f);
+        table.setCellExpand(1.0f, 0.0f);
         table.setCellAlignment(0.5f, 0.5f);
         addHeaders(table);
 
@@ -81,23 +81,24 @@ public class PageGarages extends Page {
                 setPropertyEnabledState(carBox, radioBox, paintJobBox, colorBox, nitroTextField, modsBoxes);
                 carBox.addActionListener(a -> setPropertyEnabledState(carBox, radioBox, paintJobBox, colorBox, nitroTextField, modsBoxes));
 
-                table.add(nameLabel, 0, i + 1);
-                table.add(carBox, 1, i + 1);
-                table.add(radioBox, 2, i + 1);
-                table.add(paintJobBox, 3, i + 1);
-                table.add(colorBox, 4, i + 1);
-                table.add(nitroTextField, 5, i + 1);
+                table.add(nameLabel, 0, i + 2);
+                table.add(carBox, 1, i + 2);
+                table.add(radioBox, 2, i + 2);
+                table.add(paintJobBox, 3, i + 2);
+                table.add(colorBox, 4, i + 2);
+                table.add(nitroTextField, 5, i + 2);
 
                 JButton clearModsBtn = new JButton("Clear Mods");
+                clearModsBtn.setToolTipText("Clicking this button will set all mods to 'None'.");
                 clearModsBtn.addActionListener(e -> {
                     for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
                         Model.vars.garageCars.get(i).getMods().get(j).setIntValue(0);
                     }
                 });
-                table.add(clearModsBtn, 6, i + 1);
+                table.add(clearModsBtn, 6, i + 2);
 
                 for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                    table.add(modsBoxes.get(j), 7 + j, i + 1);
+                    table.add(modsBoxes.get(j), 7 + j, i + 2);
                 }
 
             }
@@ -116,14 +117,16 @@ public class PageGarages extends Page {
     }
 
     private void addHeaders(Table table) {
-        table.add(new JLabel(fatText("Garage Name")), 0, 0);
-        table.add(new JLabel(fatText("Car")), 1, 0);
-        table.add(new JLabel(fatText("Radio")), 2, 0);
-        table.add(new JLabel(fatText("Paintjob")), 3, 0);
-        table.add(new JLabel(fatText("Color")), 4, 0);
-        table.add(new JLabel(fatText("Nitro")), 5, 0);
+        table.add(new JLabel("<html><body><span style=\"font-weight: 800;\">Warning:</span> This feature is very likely to cause crashes. Don't overwrite important saves when changing things here.</body></html>"), 0, 0, 8, 1);
+        table.add(new JLabel(fatText("Garage Name")), 0, 1);
+        table.add(new JLabel(fatText("Car")), 1, 1);
+        table.add(new JLabel(fatText("Radio")), 2, 1);
+        table.add(new JLabel(fatText("Paintjob")), 3, 1);
+        table.add(new JLabel(fatText("Color")), 4, 1);
+        table.add(new JLabel(fatText("Nitro")), 5, 1);
+        table.add(new JLabel(fatText("Clear Mods")), 6, 1);
         for (int i = 0; i < Garage.Car.MOD_COUNT; i++) {
-            table.add(new JLabel(fatText("Mod " + (i + 1))), 6 + i, 0);
+            table.add(new JLabel(fatText("Mod " + (i + 1))), 7 + i, 1);
         }
     }
 
