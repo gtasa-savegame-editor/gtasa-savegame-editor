@@ -63,49 +63,61 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <artifactId>jdeb</artifactId>
-                <groupId>org.vafer</groupId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jdeb</goal>
-                        </goals>
-                        <configuration>
-                            <dataSet>
-                                <data>
-                                    <src>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>/usr/share/gtasa-savegame-editor/lib</prefix>
-                                    </mapper>
-                                </data>
-                                <data>
-                                    <type>link</type>
-                                    <linkName>/usr/share/gtasa-savegame-editor/lib/gtasa-savegame-editor.jar</linkName>
-                                    <linkTarget>/usr/share/gtasa-savegame-editor/lib/${project.artifactId}-${project.version}-jar-with-dependencies.jar</linkTarget>
-                                    <symlink>true</symlink>
-                                </data>
-                                <data>
-                                    <src>src/main/resources/icon-256.png</src>
-                                    <type>file</type>
-                                    <mapper>
-                                        <type>perm</type>
-                                        <prefix>/usr/share/gtasa-savegame-editor</prefix>
-                                    </mapper>
-                                </data>
-                            </dataSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
+        <profile>
+            <id>deb</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>jdeb</artifactId>
+                        <groupId>org.vafer</groupId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jdeb</goal>
+                                </goals>
+                                <configuration>
+                                    <dataSet>
+                                        <data>
+                                            <src>
+                                                ${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar
+                                            </src>
+                                            <type>file</type>
+                                            <mapper>
+                                                <type>perm</type>
+                                                <prefix>/usr/share/gtasa-savegame-editor/lib</prefix>
+                                            </mapper>
+                                        </data>
+                                        <data>
+                                            <type>link</type>
+                                            <linkName>/usr/share/gtasa-savegame-editor/lib/gtasa-savegame-editor.jar
+                                            </linkName>
+                                            <linkTarget>
+                                                /usr/share/gtasa-savegame-editor/lib/${project.artifactId}-${project.version}-jar-with-dependencies.jar
+                                            </linkTarget>
+                                            <symlink>true</symlink>
+                                        </data>
+                                        <data>
+                                            <src>src/main/resources/icon-256.png</src>
+                                            <type>file</type>
+                                            <mapper>
+                                                <type>perm</type>
+                                                <prefix>/usr/share/gtasa-savegame-editor</prefix>
+                                            </mapper>
+                                        </data>
+                                    </dataSet>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>macOS</id>
             <build>
@@ -127,6 +139,54 @@
                                 <goals>
                                     <goal>bundle</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>windows</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                        <version>1.7.25</version>
+                        <executions>
+                            <execution>
+                                <id>l4j-clui</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>launch4j</goal>
+                                </goals>
+                                <configuration>
+                                    <headerType>gui</headerType>
+                                    <jar>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</jar>
+                                    <outfile>${project.build.directory}/gtasa-savegame-editor.exe</outfile>
+                                    <downloadUrl>http://java.com/download</downloadUrl>
+                                    <classPath>
+                                        <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
+                                        <preCp>anything</preCp>
+                                    </classPath>
+                                    <icon>src/main/resources/icon.ico</icon>
+                                    <jre>
+                                        <minVersion>1.8.0</minVersion>
+                                        <jdkPreference>preferJre</jdkPreference>
+                                    </jre>
+                                    <versionInfo>
+                                        <fileVersion>1.0.0.0</fileVersion>
+                                        <txtFileVersion>${project.version}</txtFileVersion>
+                                        <fileDescription>${project.name}</fileDescription>
+                                        <copyright>2019 GTASASE Contributors</copyright>
+                                        <productVersion>1.0.0.0</productVersion>
+                                        <txtProductVersion>1.0.0.0</txtProductVersion>
+                                        <productName>${project.name}</productName>
+                                        <companyName>${project.name}</companyName>
+                                        <internalName>${project.name}</internalName>
+                                        <originalFilename>gtasa-savegame-editor.exe</originalFilename>
+                                    </versionInfo>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -169,4 +229,5 @@
             <url>https://nexus.gammel.cloud/repository/maven-public/</url>
         </repository>
     </repositories>
+
 </project>

@@ -12,7 +12,7 @@ jobs:
         depth: 3
       script:
         - jdk_switcher use openjdk8
-        - mvn clean install -Dmaven.javadoc.skip=true -B -V
+        - mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V
         - sudo alien --scripts -r "target/gtasaveedit_3.3~SNAPSHOT_all.deb"
         - mkdir target/deploy
         - cp -v "target/$(ls target | grep jar-with-dependencies)" target/deploy
@@ -47,6 +47,35 @@ jobs:
         - zip -r "target/GTA.SA.Savegame.Editor.app.zip" "$(find target -type d | grep .app | head -n 1)"
         - cp -v "target/$(ls target | grep .dmg)" target/deploy
         - cp -v "target/GTA.SA.Savegame.Editor.app.zip" target/deploy
+      notifications:
+        webhooks:
+          urls:
+            - https://webhooks.gitter.im/e/826be7a4e8dce59091ef
+          on_success: change
+          on_failure: always
+          on_start: never
+      deploy:
+        provider: releases
+        api_key:
+          secure: lsuKoTqqWkyjemQ9QvBNIou1yOZzhqQt9c+NGYF8FcREWyPuLiDOTwrQve8skrVzwwWZVlMfyj4oef4mftN+VAEAoXWamMs3Dd9gVSoSNbGghM3KIRvBmu7n7D0EtDF3MMwGTJ2p+CQgzKWYz5uvDr0FOO3rHnjT2xyH80EgJ5Oh6seZnTpiDM+OFC2lu4iiyvC9/CAl2t+fNktBOMPbCbrL6mVcbm+5fapJPXRRfRtZS5ZOCCZKcDpjgn1H+NvOGNjRz49sAhRIjbvxX6goTCVo1ieMh+N5/vOdQRySNonFehfRCWMhlqYpBBo1meZ2vnhRT3c2AqmiNC90IvIJYR4GDktlpJSgMxREuLLu5s+g20oPifkjylZOruipksPg/5gPI1x3iiER8r3p0rAdJcvhQ6MvuSCzNsPRdhu9Uicg++KxkkielshUiCF64Jsr/HjgYiyne/eUFTVo31VqdxAIokFzgcrHzQ0v38Ktsmfh7K3xuQt19e/GLvyRHHmFwfsuCxmRbMR33Oxav4a2FwIMu6BfitZQEmQDZQtgCA4wq8iJmFQ2UhvmjY+kfD41bKc+U+jBw2ueWp2qYqc/ZoTFR8GbyGmsY5d0LCU3i+UAApoWP4MGXXD1vLv2Fd9CVl7l/ScfnMhqUzC/IRaG8xliacURcLsIUomJiqKSvXo=
+        file_glob: true
+        file: target/deploy/*
+        skip_cleanup: true
+        on:
+          repo: gtasa-savegame-editor/gtasa-savegame-editor
+          tags: true
+    - stage: windows
+      os: windows
+      language: shell
+      git:
+        depth: 3
+      script:
+        - choco install -y jdk8 maven
+        - export PATH=$PATH:"/c/Program Files/Java/jdk1.8.0_211/bin"
+        - java -version
+        - mvn clean package -Dmaven.javadoc.skip=true -B -V -Pwindows
+        - mkdir target/deploy
+        - cp -v "target/$(ls target | grep .exe)" target/deploy
       notifications:
         webhooks:
           urls:
