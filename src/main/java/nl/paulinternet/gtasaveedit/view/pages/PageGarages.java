@@ -19,6 +19,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -87,8 +88,16 @@ public class PageGarages extends Page {
                 table.add(colorBox, 4, i + 1);
                 table.add(nitroTextField, 5, i + 1);
 
+                JButton clearModsBtn = new JButton("Clear Mods");
+                clearModsBtn.addActionListener(e -> {
+                    for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
+                        Model.vars.garageCars.get(i).getMods().get(j).setIntValue(0);
+                    }
+                });
+                table.add(clearModsBtn, 6, i + 1);
+
                 for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                    table.add(modsBoxes.get(j), 6 + j, i + 1);
+                    table.add(modsBoxes.get(j), 7 + j, i + 1);
                 }
 
             }
@@ -175,7 +184,9 @@ public class PageGarages extends Page {
         ModsBox(VariableIntegerImpl var) {
             super(var);
             setPrototypeDisplayValue("--------------"); // this determines dropdown width
-            VehicleMod.getMods().forEach(m -> addItem(m.getId(), m.getName() + " (" + m.getType() + ")"));
+            VehicleMod.getMods().stream() // stream mods
+                    .sorted(Comparator.comparingInt(VehicleMod::getId)) // sort by id
+                    .forEach(m -> addItem(m.getId(), m.getName() + " (" + m.getType() + ")")); // add all to dropdown
         }
     }
 
