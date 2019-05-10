@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class VehicleColorTests extends TestCase
 {
-  public void testVehicleColorsNoDuplicateNames()
+  public void testNoDuplicateNames()
   {
     HashMap<String, ArrayList<Integer>> duplicatesFound = new HashMap<>();
     AtomicBoolean successful = new AtomicBoolean(true);
