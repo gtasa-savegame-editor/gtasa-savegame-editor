@@ -179,8 +179,12 @@ public class Block03 extends LinkArray {
         for (int mod : mods) {
             if (mod != 65535 && mod != 0) {
                 final VehicleMod vehicleMod = VehicleMod.getMod(mod);
+                if (vehicleMod != null) {
                     modsString.append(vehicleMod.getName())
                             .append(" (").append(vehicleMod.getType()).append(", id:'").append(mod).append("'), ");
+                } else {
+                    modsString.append("Invalid (id:'").append(mod).append("'), ");
+                }
             }
         }
         debugStr += modsString;

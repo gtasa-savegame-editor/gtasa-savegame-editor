@@ -297,7 +297,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(35, 61)));
 
         types.add(new VehicleType("Cars", "Blade", 536,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_lr_bl1", "exh_lr_bl2",
@@ -313,7 +313,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(71, 96)));
 
         types.add(new VehicleType("Cars", "Blista Compact", 496,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "rf_b_sc_r", "wg_l_b_ssk",
@@ -343,7 +343,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(26, 1)));
 
         types.add(new VehicleType("Cars", "Bobcat", 422,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m", "exh_b_t",
@@ -378,7 +378,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(36, 36)));
 
         types.add(new VehicleType("Cars", "Bravura", 401,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -395,7 +395,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(113, 113)));
 
         types.add(new VehicleType("Cars", "Broadway", 575,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_lr_br1", "exh_lr_br2",
@@ -411,7 +411,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(66, 96)));
 
         types.add(new VehicleType("Cars", "Buccaneer", 518,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bntl_b_ov",
@@ -505,7 +505,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(34, 1)));
 
         types.add(new VehicleType("Cars", "Cadrona", 527,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_m", "exh_b_l",
@@ -533,7 +533,7 @@ public class VehicleType {
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5"}));
 
         types.add(new VehicleType("Cars", "Cheetah", 415,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_t", "exh_b_ts",
@@ -549,7 +549,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(0, 1)));
 
         types.add(new VehicleType("Cars", "Clover", 542,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bntl_b_sq", "bntr_b_sq",
@@ -565,7 +565,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(122, 113)));
 
         types.add(new VehicleType("Cars", "Club", 589,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -664,7 +664,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(15, 15)));
 
         types.add(new VehicleType("Cars", "Elegy", 562,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_a_l", "exh_c_l",
@@ -681,7 +681,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(92, 1)));
 
         types.add(new VehicleType("Cars", "Emperor", 585,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bntl_b_ov", "bntr_b_ov",
@@ -774,7 +774,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(3, 1)));
 
         types.add(new VehicleType("Cars", "Flash", 565,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_a_f", "exh_c_f",
@@ -873,7 +873,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(40, 35)));
 
         types.add(new VehicleType("Cars", "Greenwood", 492,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -1006,7 +1006,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(75, 1)));
 
         types.add(new VehicleType("Cars", "Intruder", 546,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_m", "bntl_b_ov", "bntr_b_ov",
@@ -1022,13 +1022,13 @@ public class VehicleType {
                 new VehicleColor.ColorPair(7, 78)));
 
         types.add(new VehicleType("Cars", "Jester", 559,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_a_j", "exh_c_j",
                         "fbmp_a_j", "fbmp_c_j", "nto_b_l", "nto_b_s", "nto_b_tw", "rbmp_a_j", "rbmp_c_j",
                         "spl_a_j_b", "spl_c_j_b", "rf_a_j", "rf_c_j", "wg_l_a_j", "wg_r_a_j", "wg_l_c_j",
-                        "wg_r_c_j", "nto_b_s"},
+                        "wg_r_c_j"},
                 new VehicleColor.ColorPair(51, 1),
                 new VehicleColor.ColorPair(58, 8),
                 new VehicleColor.ColorPair(60, 1),
@@ -1046,7 +1046,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(1, 1)));
 
         types.add(new VehicleType("Cars", "Landstalker", 400,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m", "exh_b_t",
@@ -1089,7 +1089,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(113, 1)));
 
         types.add(new VehicleType("Cars", "Majestic", 517,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bntl_b_ov", "bntr_b_ov",
@@ -1106,7 +1106,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(55, 84)));
 
         types.add(new VehicleType("Cars", "Manana", 410,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_t", "exh_b_m",
@@ -1122,7 +1122,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(84, 1)));
 
         types.add(new VehicleType("Cars", "Merit", 551,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "exh_b_l",
@@ -1138,7 +1138,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(20, 1)));
 
         types.add(new VehicleType("Cars", "Mesa", 500,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m",
@@ -1179,7 +1179,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(32, 32)));
 
         types.add(new VehicleType("Cars", "Moonbeam", 418,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m",
@@ -1220,7 +1220,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(24, 1)));
 
         types.add(new VehicleType("Cars", "Nebula", 516,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_m", "exh_b_l",
@@ -1285,7 +1285,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(43, 0)));
 
         types.add(new VehicleType("Cars", "Perenial", 404,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m",
@@ -1301,7 +1301,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(66, 25)));
 
         types.add(new VehicleType("Cars", "Phoenix", 603,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bntl_b_sq", "bntr_b_sq",
@@ -1318,7 +1318,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(34, 1)));
 
         types.add(new VehicleType("Cars", "Picador", 600,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -1369,7 +1369,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(25, 1)));
 
         types.add(new VehicleType("Cars", "Premier", 426,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -1385,7 +1385,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(15, 15)));
 
         types.add(new VehicleType("Cars", "Previon", 436,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m",
@@ -1400,7 +1400,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(11, 1)));
 
         types.add(new VehicleType("Cars", "Primo", 547,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bntl_b_ov", "bntr_b_ov",
@@ -1430,7 +1430,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(66, 71)));
 
         types.add(new VehicleType("Cars", "Rancher", 489,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -1477,7 +1477,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(40, 29)));
 
         types.add(new VehicleType("Cars", "Remington", 534,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_lr_rem1", "exh_lr_rem2",
@@ -1606,7 +1606,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(5, 6)));
 
         types.add(new VehicleType("Cars", "Savanna", 567,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_lr_sv1", "exh_lr_sv2",
@@ -1629,7 +1629,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(4, 75)));
 
         types.add(new VehicleType("Cars", "Sentinel", 405,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m",
@@ -1645,7 +1645,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(4, 1)));
 
         types.add(new VehicleType("Cars", "Slamvan", 535,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bbb_lr_slv1", "bbb_lr_slv2",
@@ -1675,7 +1675,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(36, 1)));
 
         types.add(new VehicleType("Cars", "Stafford", 580,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_ts",
@@ -1692,7 +1692,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(43, 43)));
 
         types.add(new VehicleType("Cars", "Stallion", 439,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "spl_b_mab_m", "spl_b_bbb_m",
@@ -1708,7 +1708,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(25, 78)));
 
         types.add(new VehicleType("Cars", "Stratum", 561,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_a_st", "exh_c_st",
@@ -1725,14 +1725,14 @@ public class VehicleType {
                 new VehicleColor.ColorPair(25, 78)));
 
         types.add(new VehicleType("Cars", "Stretch", 409,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_tw", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "nto_b_s"},
                 new VehicleColor.ColorPair(1, 1)));
 
         types.add(new VehicleType("Cars", "Sultan", 560,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_a_s", "exh_c_s",
@@ -1749,7 +1749,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(56, 29)));
 
         types.add(new VehicleType("Cars", "Sunrise", 550,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -1766,7 +1766,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(15, 15)));
 
         types.add(new VehicleType("Cars", "Super GT", 506,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "nto_b_s"},
@@ -1798,7 +1798,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(52, 8)));
 
         types.add(new VehicleType("Cars", "Tampa", 549,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_p_l", "bnt_b_sc_p_m",
@@ -1829,7 +1829,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(113, 1)));
 
         types.add(new VehicleType("Cars", "Taxi", 420,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -1852,7 +1852,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(112, 112)));
 
         types.add(new VehicleType("Cars", "Tornado", 576,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_lr_t1", "exh_lr_t2",
@@ -1921,7 +1921,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(75, 75)));
 
         types.add(new VehicleType("Cars", "Uranus", 558,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_a_u", "exh_c_u",
@@ -1947,7 +1947,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(26, 124)));
 
         types.add(new VehicleType("Cars", "Vincent", 540,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_m", "bntl_b_ov",
@@ -1964,7 +1964,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(15, 15)));
 
         types.add(new VehicleType("Cars", "Virgo", 491,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bntl_b_ov", "bntr_b_ov",
@@ -1993,7 +1993,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(37, 8)));
 
         types.add(new VehicleType("Cars", "Walton", 478,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_l", "bnt_b_sc_m",
@@ -2009,7 +2009,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(20, 1)));
 
         types.add(new VehicleType("Cars", "Washing", 421,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m", "exh_b_t",
@@ -2025,7 +2025,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(95, 1)));
 
         types.add(new VehicleType("Cars", "Willard", 529,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "bnt_b_sc_p_l", "bnt_b_sc_p_m",
@@ -2083,7 +2083,7 @@ public class VehicleType {
                 new VehicleColor.ColorPair(43, 32)));
 
         types.add(new VehicleType("Cars", "ZR-350", 477,
-                new String[]{"none", "stereo", "hydralics", "nto_b_l", "nto_b_s", "nto_b_tw", "wheel_or1",
+                new String[]{"none", "stereo", "hydralics", "wheel_or1",
                         "wheel_sr6", "wheel_sr3", "wheel_sr2", "wheel_lr4", "wheel_lr1", "wheel_lr3",
                         "wheel_sr1", "wheel_sr5", "wheel_sr4", "wheel_gn1", "wheel_lr2", "wheel_lr5",
                         "wheel_gn2", "wheel_gn3", "wheel_gn4", "wheel_gn5", "exh_b_l", "exh_b_m",
