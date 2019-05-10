@@ -100,6 +100,7 @@ public class VehicleMod {
         mods.add(new VehicleMod("Hood", "Jester Scoop", "bnt_b_sc_p_l", 1012));
 
         mods.add(new VehicleMod("Hydraulics", "Hydraulics", "hydralics", 1087));
+        mods.add(new VehicleMod("Hydraulics", "Hydraulics (Scripted)", "unknown_hydr_1", 65343));
 
         mods.add(new VehicleMod("Lights", "Round Fog Lamp", "lgt_b_rspt", 1013));
         mods.add(new VehicleMod("Lights", "Square Fog Lamp 2", "wg_l_a_s", 1026));
