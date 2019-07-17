@@ -8,7 +8,7 @@ import javax.swing.UIManager;
 import nl.paulinternet.gtasaveedit.model.event.Event;
 import nl.paulinternet.gtasaveedit.model.event.ReportableEvent;
 
-public class PComboBox extends JComboBox
+public class PComboBox<T> extends JComboBox<T>
 {
 	private ReportableEvent onChange;	
 	
