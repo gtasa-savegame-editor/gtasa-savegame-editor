@@ -8,7 +8,7 @@
 
     <packaging>jar</packaging>
 
-    <name>GTASA Savegame Editor</name>
+    <name>GTA:SA Savegame Editor</name>
     <url>http://paulinternet.nl/?page=sa</url>
 
     <properties>

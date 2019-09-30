@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
+import javax.jmdns.impl.DNSRecord;
 import javax.swing.*;
 import java.io.*;
 import java.net.*;
@@ -20,10 +21,12 @@ public class ExtractorServer extends Thread {
 
     private static final Logger log = LoggerFactory.getLogger(ExtractorServer.class);
     private static final String PROTO_VERSION = "1";
+    public static final String FALLBACK_IP = "0.0.0.0";
     private static HttpServer server = null;
     private static Path tempDir = null;
     private ExtractorMenu menu;
     private JmDNS jmdns;
+    private ServiceInfo serviceInfo;
 
     public ExtractorServer(ExtractorMenu menu) {
         this.menu = menu;
@@ -42,11 +45,22 @@ public class ExtractorServer extends Thread {
         }
     }
 
+    private String getPreferredNetworkAddress() {
+        try (final DatagramSocket socket = new DatagramSocket()) {
+            socket.setSoTimeout(1); // no need to connect, we only want the interface
+            socket.connect(InetAddress.getByName("8.8.8.8"), 666);
+            return socket.getLocalAddress().getHostAddress();
+        } catch (SocketException | UnknownHostException e) {
+            log.warn("Unable to get preferred network. Using " + FALLBACK_IP + " as server address!", e);
+            return FALLBACK_IP;
+        }
+    }
+
     private void startServer() throws IOException {
-        String hostAddress = InetAddress.getLocalHost().getHostAddress();
+        String hostAddress = getPreferredNetworkAddress();
         log.info("Starting server on '" + hostAddress + "'");
         tempDir = Files.createTempDirectory("gtasaseExtractor");
-        server = HttpServer.create(new InetSocketAddress(hostAddress,0), 0);
+        server = HttpServer.create(new InetSocketAddress(hostAddress, 0), 0);
         server.createContext("/add", new FormDataHandler(d -> {
             Object[] fileData = d.toArray();
             //noinspection ForLoopReplaceableByForEach it's prettier this way
@@ -109,19 +123,25 @@ public class ExtractorServer extends Thread {
         server.setExecutor(java.util.concurrent.Executors.newCachedThreadPool());
         server.start();
 
+        String hostName;
+        try {
+            hostName = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to get hostname!", JOptionPane.ERROR_MESSAGE);
+            hostName = null;
+        }
         if (jmdns == null) {
-            jmdns = JmDNS.create(hostAddress);
+            jmdns = JmDNS.create(InetAddress.getByName(hostAddress), (hostName != null) ? hostName : "GTA:SA Savegame Editor");
+            log.info("Started mDNS as '" + hostName + "' on '" + hostAddress + "'");
         }
         HashMap<String, String> props = new HashMap<>();
         props.put("version", PROTO_VERSION);
         props.put("ip", hostAddress);
         props.put("port", String.valueOf(server.getAddress().getPort()));
-        try {
-            props.put("hostname", InetAddress.getLocalHost().getHostName());
-        } catch (UnknownHostException e) {
-            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to get hostname!", JOptionPane.ERROR_MESSAGE);
+        if (hostName != null) {
+            props.put("hostname", hostName);
         }
-        ServiceInfo serviceInfo = ServiceInfo.create("_gtasa-se._tcp.local.", hostAddress.replaceAll("\\.","-"), server.getAddress().getPort(), 0, 0, props);
+        serviceInfo = ServiceInfo.create("_gtasa-se._tcp.local.", hostAddress.replaceAll("\\.", "-"), server.getAddress().getPort(), 0, 0, props);
         jmdns.registerService(serviceInfo);
     }
 
@@ -129,9 +149,14 @@ public class ExtractorServer extends Thread {
         if (server != null) {
             log.info("Stopping server...");
             server.stop(0);
+            if(serviceInfo != null) {
+                jmdns.unregisterService(serviceInfo);
+                serviceInfo = null;
+            }
             jmdns.unregisterAllServices();
             server = null;
             tempDir = null;
+            jmdns = null;
         } else {
             log.warn("Server already stopped!");
         }
