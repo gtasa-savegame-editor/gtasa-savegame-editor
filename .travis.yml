@@ -4,6 +4,8 @@ jobs:
       os: linux
       dist: bionic
       language: java
+      jdk:
+        - openjdk11
       sudo: true
       addons:
         apt:
@@ -13,7 +15,6 @@ jobs:
       git:
         depth: 3
       script:
-        - jdk_switcher use openjdk11
         - mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V
         - sudo alien --scripts -r "gui/target/$(ls gui/target | grep .deb)"
         - mkdir deploy
