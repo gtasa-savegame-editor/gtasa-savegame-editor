@@ -74,7 +74,7 @@ jobs:
         depth: 3
       script:
         - choco install -y adoptopenjdk11 maven
-        - refreshenv
+        - source ~/.bashrc || source /etc/bash.bashrc
         - java -version
         - mvn clean package -Dmaven.javadoc.skip=true -B -V -Pwindows
         - mkdir deploy
