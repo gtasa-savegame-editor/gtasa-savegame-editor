@@ -44,6 +44,7 @@ Available profiles:
     - builds a `.dmg` and `.app` file
 - `deb`
     - builds a `.deb` file
-    - You can run `alien --scripts -r <debfile>` afterwards to create a `.rpm` file that can be installed on Fedora based distros.
+- `rpm`
+    - builds a `.rpm` file
 - `windows`
     - builds a `.exe`
