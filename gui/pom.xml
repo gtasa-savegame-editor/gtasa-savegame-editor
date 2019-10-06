@@ -151,7 +151,7 @@
                         <version>1.2.0</version>
                         <configuration>
                             <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
-                            <jrePath>${osx.jrePath}</jrePath>
+                            <jrePath>${osx.jrePath}/../../</jrePath>
                             <generateDiskImageFile>true</generateDiskImageFile>
                             <bundleName>GTA SA Savegame Editor</bundleName>
                             <iconFile>icon-dock.icns</iconFile>
