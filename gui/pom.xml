@@ -16,7 +16,8 @@
     <name>GTA:SA Savegame Editor GUI</name>
 
     <properties>
-        <osx.jrePath>${env.JAVA_HOME}</osx.jrePath>
+        <osx.fix.twoUp>../../</osx.fix.twoUp>
+        <osx.jrePath>${env.JAVA_HOME}${osx.fix.twoUp}</osx.jrePath>
         <windows.version.pre>1.</windows.version.pre>
     </properties>
 
@@ -151,7 +152,7 @@
                         <version>1.2.0</version>
                         <configuration>
                             <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
-                            <jrePath>${osx.jrePath}/../../</jrePath>
+                            <jrePath>${osx.jrePath}</jrePath>
                             <generateDiskImageFile>true</generateDiskImageFile>
                             <bundleName>GTA SA Savegame Editor</bundleName>
                             <iconFile>icon-dock.icns</iconFile>
@@ -185,9 +186,12 @@
                                 </goals>
                                 <configuration>
                                     <headerType>gui</headerType>
-                                    <jar>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</jar>
+                                    <jar>
+                                        ${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar
+                                    </jar>
                                     <outfile>${project.build.directory}/gtasa-savegame-editor.exe</outfile>
-                                    <downloadUrl><![CDATA[https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot]]></downloadUrl>
+                                    <downloadUrl>
+                                        <![CDATA[https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot]]></downloadUrl>
                                     <classPath>
                                         <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
                                         <preCp>anything</preCp>
