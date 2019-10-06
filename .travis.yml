@@ -1,6 +1,8 @@
 jobs:
   include:
     - stage: linux
+      os: linux
+      dist: bionic
       language: java
       sudo: true
       addons:
@@ -11,12 +13,12 @@ jobs:
       git:
         depth: 3
       script:
-        - jdk_switcher use openjdk8
+        - jdk_switcher use openjdk11
         - mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V
-        - sudo alien --scripts -r "target/gtasaveedit_3.3~SNAPSHOT_all.deb"
+        - sudo alien --scripts -r "gui/target/$(ls gui/target | grep .deb)"
         - mkdir target/deploy
-        - cp -v "target/$(ls target | grep jar-with-dependencies)" target/deploy
-        - cp -v "target/$(ls target | grep .deb)" target/deploy
+        - cp -v "target/$(ls gui/target | grep jar-with-dependencies)" target/deploy
+        - cp -v "target/$(ls gui/target | grep .deb)" target/deploy
         - cp -v "$(ls | grep .rpm)" target/deploy
       notifications:
         webhooks:
@@ -37,15 +39,15 @@ jobs:
           tags: true
     - stage: mac
       os: osx
-      osx_image: xcode9.3
+      osx_image: xcode10.1
       language: java
       git:
         depth: 3
       script:
         - mvn clean install -Dmaven.javadoc.skip=true -B -V -PmacOS -Dosx.jrePath=/Library/Java/JavaVirtualMachines/$(ls /Library/Java/JavaVirtualMachines/ | grep 1.8)
         - mkdir target/deploy
-        - zip -r "target/GTA.SA.Savegame.Editor.app.zip" "$(find target -type d | grep .app | head -n 1)"
-        - cp -v "target/$(ls target | grep .dmg)" target/deploy
+        - zip -r "target/GTA.SA.Savegame.Editor.app.zip" "$(find gui/target -type d | grep .app | head -n 1)"
+        - cp -v "target/$(ls gui/target | grep .dmg)" target/deploy
         - cp -v "target/GTA.SA.Savegame.Editor.app.zip" target/deploy
       notifications:
         webhooks:
@@ -70,12 +72,12 @@ jobs:
       git:
         depth: 3
       script:
-        - choco install -y jdk8 maven
+        - choco install -y adoptopenjdk11 maven
         - export PATH=$PATH:"/c/Program Files/Java/jdk1.8.0_211/bin"
         - java -version
         - mvn clean package -Dmaven.javadoc.skip=true -B -V -Pwindows
         - mkdir target/deploy
-        - cp -v "target/$(ls target | grep .exe)" target/deploy
+        - cp -v "target/$(ls gui/target | grep .exe)" target/deploy
       notifications:
         webhooks:
           urls:
