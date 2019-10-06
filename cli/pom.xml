@@ -45,11 +45,6 @@
     <dependencies>
         <dependency>
             <groupId>nl.paulinternet.gtasaveedit</groupId>
-            <artifactId>gtasaveedit</artifactId>
-            <version>3.3-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>nl.paulinternet.gtasaveedit</groupId>
             <artifactId>libsavegame</artifactId>
             <version>${parent.version}</version>
         </dependency>
