@@ -68,16 +68,22 @@ jobs:
         on:
           repo: gtasa-savegame-editor/gtasa-savegame-editor
           tags: true
-    - stage: windows
-      os: windows
-      language: shell
+    - stage: linux
+      os: linux
+      dist: bionic
+      language: java
+      jdk:
+        - openjdk11
+      sudo: true
+      addons:
+        apt:
+          packages:
+            - alien
+          update: true
       git:
         depth: 3
       script:
-        - choco install -y adoptopenjdk11 maven
-        - source ~/.bashrc || source /etc/bash.bashrc
-        - java -version
-        - mvn clean package -Dmaven.javadoc.skip=true -B -V -Pwindows
+        - mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V -Pwindows
         - mkdir deploy
         - cp -v "gui/target/$(ls gui/target | grep .exe)" deploy
       notifications:
