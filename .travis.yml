@@ -48,7 +48,7 @@ jobs:
         - mvn clean install -Dmaven.javadoc.skip=true -B -V -PmacOS
         - mkdir deploy
         - zip -r "gui/target/GTA.SA.Savegame.Editor.app.zip" "$(find gui/target -type d | grep .app | head -n 1)"
-        - cp -v "$(find . -type d | grep .dmg | head -n 1)" deploy
+        # - cp -v "$(find . -type d | grep .dmg | head -n 1)" deploy
         - cp -v "gui/target/GTA.SA.Savegame.Editor.app.zip" deploy
       notifications:
         webhooks:
