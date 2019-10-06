@@ -8,7 +8,7 @@
 
     <packaging>pom</packaging>
 
-    <name>GTA:SA Savegame Editor Parent</name>
+    <name>GTA:SA Savegame Editor</name>
     <url>http://paulinternet.nl/?page=sa</url>
 
     <properties>

@@ -16,8 +16,6 @@
     <name>GTA:SA Savegame Editor GUI</name>
 
     <properties>
-        <osx.fix.twoUp>../../</osx.fix.twoUp>
-        <osx.jrePath>${env.JAVA_HOME}${osx.fix.twoUp}</osx.jrePath>
         <windows.version.pre>1.</windows.version.pre>
     </properties>
 
@@ -147,15 +145,19 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>sh.tak.appbundler</groupId>
-                        <artifactId>appbundle-maven-plugin</artifactId>
-                        <version>1.2.0</version>
+                        <groupId>de.perdian.maven.plugins</groupId>
+                        <artifactId>macosappbundler-maven-plugin</artifactId>
+                        <version>1.1.0</version>
                         <configuration>
-                            <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
-                            <jrePath>${osx.jrePath}</jrePath>
-                            <generateDiskImageFile>true</generateDiskImageFile>
-                            <bundleName>GTA SA Savegame Editor</bundleName>
-                            <iconFile>icon-dock.icns</iconFile>
+                            <plist>
+                                <CFBundleIconFile>icon-dock.icns</CFBundleIconFile>
+                                <CFBundleDisplayName>${parent.name}</CFBundleDisplayName>
+                                <JVMMainClassName>nl.paulinternet.gtasaveedit.view.Main</JVMMainClassName>
+                                <JVMVersion>11+</JVMVersion>
+                            </plist>
+                            <dmg>
+                                <generate>true</generate>
+                            </dmg>
                         </configuration>
                         <executions>
                             <execution>
