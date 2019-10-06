@@ -45,7 +45,7 @@ jobs:
       git:
         depth: 3
       script:
-        - mvn clean install -Dmaven.javadoc.skip=true -B -V -PmacOS -Dosx.jrePath=/Library/Java/JavaVirtualMachines/$(ls /Library/Java/JavaVirtualMachines/ | grep 1.8)
+        - mvn clean install -Dmaven.javadoc.skip=true -B -V -PmacOS
         - mkdir deploy
         - zip -r "gui/target/GTA.SA.Savegame.Editor.app.zip" "$(find gui/target -type d | grep .app | head -n 1)"
         - cp -v "gui/target/$(ls gui/target | grep .dmg)" deploy
