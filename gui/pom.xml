@@ -208,7 +208,7 @@
                                         <txtFileVersion>${project.version}</txtFileVersion>
                                         <fileDescription>${project.name}</fileDescription>
                                         <copyright>${current.year} GTA:SA Savegame Editor Contributors</copyright>
-                                        <productVersion>${windows.version.pre}${project.version}</productVersion>
+                                        <productVersion>1.0.0.0</productVersion>
                                         <txtProductVersion>${project.version}</txtProductVersion>
                                         <productName>${project.name}</productName>
                                         <companyName>${project.name}</companyName>
