@@ -21,7 +21,7 @@ public class Updater {
     /**
      * The current version! This has to be manually lifted each release 👀
      */
-    public static final String CURRENT_TAG = "v3.3-rc.7";
+    public static final String CURRENT_TAG = "v3.3-rc.8";
 
     /**
      * Logger.

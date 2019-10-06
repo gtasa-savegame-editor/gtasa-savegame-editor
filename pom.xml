@@ -11,6 +11,11 @@
     <name>GTA:SA Savegame Editor</name>
     <url>http://paulinternet.nl/?page=sa</url>
 
+    <organization>
+        <name>${project.name} Contributors</name>
+        <url>http://paulinternet.nl/?page=sa</url>
+    </organization>
+
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,9 +24,39 @@
 
     <modules>
         <module>libsavegame</module>
-        <module>gui</module>
+        <module>savegame-editor</module>
         <module>cli</module>
     </modules>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>timestamp-property</id>
+                        <goals>
+                            <goal>timestamp-property</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <name>current.year</name>
+                            <pattern>yyyy</pattern>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

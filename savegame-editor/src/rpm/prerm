@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+echo "Removing desktop entry..."
+rm -f /usr/share/applications/gtasa-savegame-editor.desktop
+
+echo "Removing shell shortcut..."
+rm -f /usr/bin/gtasa-savegame-editor
