@@ -3,7 +3,7 @@
 This is a modified version of the software that can be found on [paulinternet.nl](http://paulinternet.nl/?page=sa).
 
 This version contains the following features (additionally to the ones found in the original version):
-- requires Java >= 8
+- requires Java >= 11
 - macOS specific fixes
 - support for german/european steam versions of the game
 - support for macOS Steam version of the game
