@@ -204,7 +204,7 @@
                                         <jdkPreference>preferJre</jdkPreference>
                                     </jre>
                                     <versionInfo>
-                                        <fileVersion>${windows.version.pre}${project.version}</fileVersion>
+                                        <fileVersion>1.0.0.0</fileVersion>
                                         <txtFileVersion>${project.version}</txtFileVersion>
                                         <fileDescription>${project.name}</fileDescription>
                                         <copyright>${current.year} GTA:SA Savegame Editor Contributors</copyright>
