@@ -1,4 +1,15 @@
-# GTA SA savegame editor [![Build Status](https://api.travis-ci.org/gtasa-savegame-editor/gtasa-savegame-editor.svg?branch=master)](https://travis-ci.org/gtasa-savegame-editor) [![Join the chat at https://gitter.im/gtasa-savegame-editor/Lobby](https://badges.gitter.im/gtasa-savegame-editor/Lobby.svg)](https://gitter.im/gtasa-savegame-editor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![GitHub Pages Badge](https://img.shields.io/badge/docs-gh--pages-70dcf4.svg)](https://gtasa-savegame-editor.github.io/docs/#/)
+# GTA SA Savegame Editor 
+![Version Badge](https://img.shields.io/github/v/release/gtasa-savegame-editor/gtasa-savegame-editor?include_prereleases)
+[![Build Status](https://api.travis-ci.org/gtasa-savegame-editor/gtasa-savegame-editor.svg?branch=master)](https://travis-ci.org/gtasa-savegame-editor)
+[![Join the chat at https://gitter.im/gtasa-savegame-editor/Lobby](https://badges.gitter.im/gtasa-savegame-editor/Lobby.svg)](https://gitter.im/gtasa-savegame-editor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
+[![GitHub Pages Badge](https://img.shields.io/badge/docs-gh--pages-70dcf4.svg)](https://gtasa-savegame-editor.github.io/docs/#/)
+![License Badge](https://img.shields.io/github/license/gtasa-savegame-editor/gtasa-savegame-editor)
+![Languages Badge](https://img.shields.io/github/languages/count/gtasa-savegame-editor/gtasa-savegame-editor)
+![Repo Size Badge](https://img.shields.io/github/repo-size/gtasa-savegame-editor/gtasa-savegame-editor)
+![Top Language Badge](https://img.shields.io/github/languages/top/gtasa-savegame-editor/gtasa-savegame-editor)
+![Codeclimate Maintainability](https://img.shields.io/codeclimate/maintainability/gtasa-savegame-editor/gtasa-savegame-editor)
+![Codeclimate Issues](https://img.shields.io/codeclimate/issues/gtasa-savegame-editor/gtasa-savegame-editor)
+![Codeclimate Technical Debt](https://img.shields.io/codeclimate/tech-debt/gtasa-savegame-editor/gtasa-savegame-editor)
 
 This is a modified version of the software that can be found on [paulinternet.nl](http://paulinternet.nl/?page=sa).
 
