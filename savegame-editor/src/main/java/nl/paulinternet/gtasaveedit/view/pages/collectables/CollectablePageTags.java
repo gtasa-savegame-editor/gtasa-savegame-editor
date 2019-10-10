@@ -181,6 +181,6 @@ public class CollectablePageTags extends Page {
         tags.add(new SelectableTag(i++, 482.625f, -1761.585938f));
         tags.add(new SelectableTag(i++, 399.0078125f, -2066.882813f));
         tags.add(new SelectableTag(i++, 466.9765625f, -1283.023438f));
-        tags.add(new SelectableTag(i++, 583.4609375f, -1502.109375f));
+        tags.add(new SelectableTag(i, 583.4609375f, -1502.109375f));
     }
 }

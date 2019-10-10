@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.extractor;
 
+import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
@@ -63,58 +64,10 @@ public class ExtractorServer extends Thread {
         log.info("Starting server on '" + hostAddress + "'");
         tempDir = Files.createTempDirectory("gtasaseExtractor");
         server = HttpServer.create(new InetSocketAddress(hostAddress, 0), 0);
-        server.createContext("/add", new FormDataHandler(d -> {
-            Object[] fileData = d.toArray();
-            //noinspection ForLoopReplaceableByForEach it's prettier this way
-            for (int i = 0; i < fileData.length; i++) {
-                FormDataHandler.FileData f = (FormDataHandler.FileData) fileData[i];
-                if (f.contentType.equals("application/octet-stream")) {
-                    File savegameFile = new File(tempDir.toFile().getAbsolutePath() + File.separator + f.fileName);
-                    try (FileOutputStream stream = new FileOutputStream(savegameFile)) {
-                        log.info("Writing file: '" + savegameFile.getAbsolutePath() + "'");
-                        stream.write(f.data);
-                        ExtractedSavegameHolder.addSavegame(new ExtractedSavegameFile(savegameFile, f.fileName), menu);
-                        JOptionPane.showMessageDialog(MainWindow.getInstance(), "Received file: '" + savegameFile.getName() + "' successfully.", "Savegame Received", JOptionPane.INFORMATION_MESSAGE);
-                    } catch (IOException e) {
-                        JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to write temp file!", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    log.info("Unknown part: {name: '" + f.name + "', value: '" + Arrays.toString(f.data) + "'}");
-                }
-            }
-        }));
-        server.createContext("/upload", httpExchange -> {
-            String response = "<html><head><title>GTASASE Uploader</title></head><body><form action=\"/add\" " +
-                    "method=\"POST\"enctype=\"multipart/form-data\">Select savegame to add:<input type=\"file\" " +
-                    "name=\"savegame\" id=\"savegame\"><input type=\"submit\" value=\"Upload\" name=\"submit\"> " +
-                    "</form></body></html>";
-            httpExchange.sendResponseHeaders(200, response.length());
-            OutputStream os = httpExchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
-        });
-        server.createContext("/list", httpExchange -> {
-            StringBuilder builder = new StringBuilder("[");
-            ExtractedSavegameHolder.getSaveGameFiles().forEach(f ->
-                    builder.append("{\"name\": \"").append(f.fileName).append("\"},"));
-            builder.append("]");
-            String response = builder.toString().replaceAll(",]", "]");
-            httpExchange.sendResponseHeaders(200, response.length());
-            OutputStream os = httpExchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
-        });
-        server.createContext("/get", httpExchange -> ExtractedSavegameHolder.getSaveGameFiles().forEach(f -> {
-            String[] split = httpExchange.getRequestURI().toString().split("/");
-            if (f.fileName.equals(split[split.length - 1])) {
-                try (OutputStream os = httpExchange.getResponseBody()) {
-                    httpExchange.sendResponseHeaders(200, f.saveGame.length());
-                    os.write(Files.readAllBytes(f.saveGame.toPath()));
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to send file!", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }));
+        server.createContext("/add", addHandler());
+        server.createContext("/upload", uploadHandler());
+        server.createContext("/list", listHandler());
+        server.createContext("/get", downloadHandler());
         server.createContext("/version", httpExchange -> {
             String response = PROTO_VERSION;
             httpExchange.sendResponseHeaders(200, response.length());
@@ -147,6 +100,70 @@ public class ExtractorServer extends Thread {
         jmdns.registerService(serviceInfo);
     }
 
+    private FormDataHandler addHandler() {
+        return new FormDataHandler(d -> {
+            Object[] fileData = d.toArray();
+            //noinspection ForLoopReplaceableByForEach it's prettier this way
+            for (int i = 0; i < fileData.length; i++) {
+                FormDataHandler.FileData f = (FormDataHandler.FileData) fileData[i];
+                if (f.contentType.equals("application/octet-stream")) {
+                    File savegameFile = new File(tempDir.toFile().getAbsolutePath() + File.separator + f.fileName);
+                    try (FileOutputStream stream = new FileOutputStream(savegameFile)) {
+                        log.info("Writing file: '" + savegameFile.getAbsolutePath() + "'");
+                        stream.write(f.data);
+                        ExtractedSavegameHolder.addSavegame(new ExtractedSavegameFile(savegameFile, f.fileName), menu);
+                        JOptionPane.showMessageDialog(MainWindow.getInstance(), "Received file: '" + savegameFile.getName() + "' successfully.", "Savegame Received", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to write temp file!", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    log.info("Unknown part: {name: '" + f.name + "', value: '" + Arrays.toString(f.data) + "'}");
+                }
+            }
+        });
+    }
+
+    private HttpHandler uploadHandler() {
+        return httpExchange -> {
+            String response = "<html><head><title>GTASASE Uploader</title></head><body><form action=\"/add\" " +
+                    "method=\"POST\"enctype=\"multipart/form-data\">Select savegame to add:<input type=\"file\" " +
+                    "name=\"savegame\" id=\"savegame\"><input type=\"submit\" value=\"Upload\" name=\"submit\"> " +
+                    "</form></body></html>";
+            httpExchange.sendResponseHeaders(200, response.length());
+            OutputStream os = httpExchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        };
+    }
+
+    private HttpHandler downloadHandler() {
+        return httpExchange -> ExtractedSavegameHolder.getSaveGameFiles().forEach(f -> {
+            String[] split = httpExchange.getRequestURI().toString().split("/");
+            if (f.fileName.equals(split[split.length - 1])) {
+                try (OutputStream os = httpExchange.getResponseBody()) {
+                    httpExchange.sendResponseHeaders(200, f.saveGame.length());
+                    os.write(Files.readAllBytes(f.saveGame.toPath()));
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to send file!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+    }
+
+    private HttpHandler listHandler() {
+        return httpExchange -> {
+            StringBuilder builder = new StringBuilder("[");
+            ExtractedSavegameHolder.getSaveGameFiles().forEach(f ->
+                    builder.append("{\"name\": \"").append(f.fileName).append("\"},"));
+            builder.append("]");
+            String response = builder.toString().replaceAll(",]", "]");
+            httpExchange.sendResponseHeaders(200, response.length());
+            OutputStream os = httpExchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        };
+    }
+
     public void stopServer() {
         if (server != null) {
             log.info("Stopping server...");
@@ -164,20 +181,20 @@ public class ExtractorServer extends Thread {
         }
     }
 
-    public static class ExtractedSavegameFile {
+    static class ExtractedSavegameFile {
         private final File saveGame;
         private final String fileName;
 
-        public ExtractedSavegameFile(File saveGame, String fileName) {
+        ExtractedSavegameFile(File saveGame, String fileName) {
             this.saveGame = saveGame;
             this.fileName = fileName;
         }
 
-        public File getSaveGame() {
+        File getSaveGame() {
             return saveGame;
         }
 
-        public String getFileName() {
+        String getFileName() {
             return fileName;
         }
     }

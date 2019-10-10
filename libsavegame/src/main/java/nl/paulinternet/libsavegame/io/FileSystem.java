@@ -86,51 +86,69 @@ public class FileSystem {
     private static File detectSanAndreasDirectory() {
         // Windows
         if (dllLoaded) {
-            // Try steam
-            byte[] data = getSteamDir();
-            if (data != null) {
-                File steamDir = getFile(data);
-                SteamConfigNode node = SteamConfigReader.readSteamConfig(steamDir);
-                if (node != null) {
-                    String installDir = node.getString("InstallConfigStore", "Software", "Valve", "Steam", "apps", "12120", "installdir");
-                    if (installDir != null) {
-                        File f = new File(installDir);
-                        if (f.exists()) return f;
-                    }
-
-                }
-            }
-
-            // Try not-steam
-            data = getSaDir();
-            if (data != null) {
-                return getFile(data).getParentFile();
-            }
-        }
-
-        // Mac
-        if (MAC) {
-            // Try steam
-            File steamDir = new File(System.getProperty("user.home"), "Library/Application Support/Steam");
-            SteamConfigNode node = SteamConfigReader.readSteamConfig(steamDir);
-            if (node != null) {
-                String installDir = node.getString("InstallConfigStore", "Software", "Valve", "Steam", "apps", "12250", "installdir");
-                if (installDir != null) {
-                    File f = new File(installDir, "Grand Theft Auto - San Andreas.app");
-                    if (f.exists()) return f;
-                }
-            }
-
-            // Try not-steam
-            File f = new File("/Applications/Grand Theft Auto - San Andreas.app");
-            if (f.exists()) return f;
-        }
-
-        if (LINUX) {
+            return getWindowsGameDirOrNull();
+        } else if (MAC) {
+            return getMacOSGameDirOrNull();
+        } else if (LINUX) {
             File steamDir = new File(System.getProperty("user.home"), ".steam/steam/steamapps/common/Grand Theft Auto San Andreas");
             if (steamDir.exists()) return steamDir;
         }
+        return null;
+    }
 
+    private static File getMacOSGameDirOrNull() {
+        // Try steam
+        File f1 = getMacOSSteamGameDirOrNull();
+        if (f1 != null) return f1;
+
+        // Try not-steam
+        File f = new File("/Applications/Grand Theft Auto - San Andreas.app");
+        if (f.exists()) return f;
+
+        return null;
+    }
+
+    private static File getMacOSSteamGameDirOrNull() {
+        File steamDir = new File(System.getProperty("user.home"), "Library/Application Support/Steam");
+        SteamConfigNode node = SteamConfigReader.readSteamConfig(steamDir);
+        if (node != null) {
+            String installDir = node.getString("InstallConfigStore", "Software", "Valve", "Steam", "apps", "12250", "installdir");
+            if (installDir != null) {
+                File f = new File(installDir, "Grand Theft Auto - San Andreas.app");
+                if (f.exists()) return f;
+            }
+        }
+        return null;
+    }
+
+    private static File getWindowsGameDirOrNull() {
+        // Try steam
+        File f = getWindowsSteamGameDirOrNull();
+        if (f != null) return f;
+
+        // Try not-steam
+        byte[] data = getSaDir();
+        if (data != null) {
+            return getFile(data).getParentFile();
+        }
+
+        return null;
+    }
+
+    private static File getWindowsSteamGameDirOrNull() {
+        byte[] data = getSteamDir();
+        if (data != null) {
+            File steamDir = getFile(data);
+            SteamConfigNode node = SteamConfigReader.readSteamConfig(steamDir);
+            if (node != null) {
+                String installDir = node.getString("InstallConfigStore", "Software", "Valve", "Steam", "apps", "12120", "installdir");
+                if (installDir != null) {
+                    File f = new File(installDir);
+                    if (f.exists()) return f;
+                }
+
+            }
+        }
         return null;
     }
 

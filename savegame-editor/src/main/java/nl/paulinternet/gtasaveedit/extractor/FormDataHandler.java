@@ -63,12 +63,6 @@ public class FormDataHandler implements HttpHandler {
             log.info(String.format("Content type: %s", contentType));
         }
 
-        // Handle single image post.
-        if (contentType != null && contentType.startsWith("image/")) {
-            handlePostedSingleImage(contentType, exchange);
-            return;
-        }
-
         // Return error 400.
         if (!"post".equalsIgnoreCase(exchange.getRequestMethod())
                 || contentType == null
