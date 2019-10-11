@@ -26,7 +26,18 @@ public class ExtractorServer extends Thread {
     private static final String PROTO_VERSION = "1";
     public static final String FALLBACK_IP = "0.0.0.0";
     private static HttpServer server = null;
-    private static Path tempDir = null;
+    private static final Path tempDir;
+
+    static {
+        try {
+            tempDir = Files.createTempDirectory("gtasaseExtractor");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(),
+                    "Unable to create temporary directory!", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Unable to create tempDir!", e);
+        }
+    }
+
     private ExtractorMenu menu;
     private JmDNS jmdns;
     private ServiceInfo serviceInfo;
@@ -62,7 +73,6 @@ public class ExtractorServer extends Thread {
     private void startServer() throws IOException {
         String hostAddress = getPreferredNetworkAddress();
         log.info("Starting server on '" + hostAddress + "'");
-        tempDir = Files.createTempDirectory("gtasaseExtractor");
         server = HttpServer.create(new InetSocketAddress(hostAddress, 0), 0);
         server.createContext("/add", addHandler());
         server.createContext("/upload", uploadHandler());
@@ -174,7 +184,6 @@ public class ExtractorServer extends Thread {
             }
             jmdns.unregisterAllServices();
             server = null;
-            tempDir = null;
             jmdns = null;
         } else {
             log.warn("Server already stopped!");
@@ -197,5 +206,9 @@ public class ExtractorServer extends Thread {
         String getFileName() {
             return fileName;
         }
+    }
+
+    public static Path getTempDir() {
+        return tempDir;
     }
 }
