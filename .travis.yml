@@ -22,8 +22,8 @@ jobs:
       notifications:
         webhooks:
           urls:
-            - https://webhooks.gitter.im/e/826be7a4e8dce59091ef
-          on_success: change
+            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
+          on_success: always
           on_failure: always
           on_start: never
       deploy:
@@ -57,8 +57,8 @@ jobs:
       notifications:
         webhooks:
           urls:
-            - https://webhooks.gitter.im/e/826be7a4e8dce59091ef
-          on_success: change
+            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
+          on_success: always
           on_failure: always
           on_start: never
       deploy:
@@ -88,8 +88,8 @@ jobs:
       notifications:
         webhooks:
           urls:
-            - https://webhooks.gitter.im/e/826be7a4e8dce59091ef
-          on_success: change
+            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
+          on_success: always
           on_failure: always
           on_start: never
       deploy:
@@ -124,8 +124,8 @@ jobs:
       notifications:
         webhooks:
           urls:
-            - https://webhooks.gitter.im/e/826be7a4e8dce59091ef
-          on_success: change
+            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
+          on_success: always
           on_failure: always
           on_start: never
       deploy:
