@@ -27,6 +27,7 @@ public class ExtractedSavegameHolder {
 
     public static void addSavegame(ExtractorServer.ExtractedSavegameFile file, ExtractorMenu menu) {
         getSaveGameFiles().add(file);
+        menu.remove(menu.getNoSavegamesItem());
         menu.add(new ExtractedSavegameSubmenu(file.getSaveGame(), file.getFileName()));
     }
 
