@@ -1,10 +1,12 @@
 package nl.paulinternet.gtasaveedit.view;
 
 import com.apple.eawt.Application;
+import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import nl.paulinternet.libsavegame.Settings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +15,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static nl.paulinternet.libsavegame.Util.MAC;
 
@@ -25,14 +29,14 @@ public class Main {
 
             // setup look and feel
             try {
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                     if ("GTK+".equals(info.getName()) || "Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        UIManager.setLookAndFeel(info.getClassName());
                         break;
                     }
                 }
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-                log.error("Unable to launch main!", ex);
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                log.error("Unable to set theme!", ex);
             }
 
             // OS X specific
@@ -54,7 +58,7 @@ public class Main {
             // Create GUI
             GUICreator guiCreator = new GUICreator();
             SwingUtilities.invokeAndWait(guiCreator);
-            SwingUtilities.invokeAndWait(guiCreator);
+            SwingUtilities.invokeAndWait(guiCreator); // not a typo, it has to be invoked twice.
 
             // Load images
             Images.loadImages();
