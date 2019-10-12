@@ -33,7 +33,7 @@ public class PageAbout extends Page {
             stopButton = new PButton("Stop");
         }
         aboutWindow.getWebsiteButton().onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
-        aboutWindow.getRepoButton().onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
+        aboutWindow.getRepoButton().onClick().addHandler(this, "openWebsite", "github.com/gtasa-savegame-editor/gtasa-savegame-editor");
 
         setComponent(aboutWindow.getYbox(), false);
     }
@@ -41,7 +41,7 @@ public class PageAbout extends Page {
     @SuppressWarnings("unused") // used as onClick
     public void openWebsite(String website) {
         try {
-            Desktop.getDesktop().browse(new URI("http://" + website));
+            Desktop.getDesktop().browse(new URI("https://" + website));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
         }
