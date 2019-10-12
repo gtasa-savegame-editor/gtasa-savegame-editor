@@ -1,4 +1,4 @@
-# GTA SA Savegame Editor 
+# GTA:SA Savegame Editor 
 ![Version Badge](https://img.shields.io/github/v/release/gtasa-savegame-editor/gtasa-savegame-editor?include_prereleases)
 [![Build Status](https://api.travis-ci.org/gtasa-savegame-editor/gtasa-savegame-editor.svg?branch=master)](https://travis-ci.org/gtasa-savegame-editor)
 [![Join the chat at https://gitter.im/gtasa-savegame-editor/Lobby](https://badges.gitter.im/gtasa-savegame-editor/Lobby.svg)](https://gitter.im/gtasa-savegame-editor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
