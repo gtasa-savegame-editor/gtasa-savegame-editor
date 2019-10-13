@@ -16,6 +16,7 @@ import nl.paulinternet.libsavegame.Settings;
 import nl.paulinternet.libsavegame.io.FileSystem;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 import static nl.paulinternet.libsavegame.Util.MAC;
@@ -318,9 +319,9 @@ public class PageOptions extends Page {
 
         if (MAC) {
             if (changes) {
-                com.apple.eawt.Application.getApplication().setDockIconBadge("❕"); // emojis work 😱
+                Taskbar.getTaskbar().setIconBadge("❕"); // emojis work 😱
             } else {
-                com.apple.eawt.Application.getApplication().setDockIconBadge(null);
+                Taskbar.getTaskbar().setIconBadge(null);
             }
         }
     }
