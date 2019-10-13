@@ -1,6 +1,5 @@
 package nl.paulinternet.gtasaveedit.view;
 
-import com.apple.eawt.Application;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
@@ -43,10 +42,10 @@ public class Main {
             if (MAC) {
                 System.setProperty("apple.laf.useScreenMenuBar", "true");
                 System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
-                Application.getApplication().setDockIconImage(Images.readImage("icon-256.png"));
+                Taskbar.getTaskbar().setIconImage(Images.readImage("icon-256.png"));
 
-                Application.getApplication().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
-                Application.getApplication().setAboutHandler(aboutEvent -> new AboutWindow(true).setVisible(true));
+                Desktop.getDesktop().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
+                Desktop.getDesktop().setAboutHandler(aboutEvent -> new AboutWindow(true).setVisible(true));
             }
 
             // Set the icons
