@@ -22,6 +22,22 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <scm>
+        <connection>scm:git:https://github.com/gtasa-savegame-editor/gtasa-savegame-editor.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/gtasa-savegame-editor/gtasa-savegame-editor.git
+        </developerConnection>
+        <url>https://github.com/gtasa-savegame-editor/gtasa-savegame-editor</url>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/issues/</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Travis-CI</system>
+        <url>https://travis-ci.org/gtasa-savegame-editor/gtasa-savegame-editor</url>
+    </ciManagement>
+
     <modules>
         <module>libsavegame</module>
         <module>savegame-editor</module>
