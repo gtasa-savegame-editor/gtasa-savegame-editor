@@ -64,7 +64,11 @@ public class SavegameData {
         for (int i = 0; i < 34; i++) {
             blockPos[i] = Util.indexOf(bytes, BLOCK, pos);
             if (blockPos[i] == -1) {
-                throw new FileFormatException();
+                if(i == 31) {
+                    break; // android savegame
+                } else {
+                    throw new FileFormatException();
+                }
             }
             pos = blockPos[i] + BLOCK.length;
         }
