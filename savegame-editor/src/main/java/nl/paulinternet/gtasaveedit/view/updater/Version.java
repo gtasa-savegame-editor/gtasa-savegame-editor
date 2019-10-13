@@ -219,4 +219,16 @@ public class Version implements Comparable<Version> {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Version)) {
+            return false;
+        } else {
+            Version o = (Version) obj;
+            return major == o.major &&
+                    minor == o.minor &&
+                    patch == o.patch &&
+                    flag.equals(o.flag);
+        }
+    }
 }

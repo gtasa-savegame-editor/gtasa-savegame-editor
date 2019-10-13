@@ -14,6 +14,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Updater {
@@ -21,7 +23,7 @@ public class Updater {
     /**
      * The current version! This has to be manually lifted each release 👀
      */
-    public static final String CURRENT_TAG = "v3.3-rc.8";
+    public static final String CURRENT_TAG = "v3.3-rc.10";
 
     /**
      * Logger.
@@ -77,11 +79,13 @@ public class Updater {
      */
     private void notifyLatestVersion() throws Exception {
         final Version current = new Version(CURRENT_TAG);
-        List<Version> newerReleases = tags.stream().filter(v -> current.compareTo(v) < 0).collect(Collectors.toList());
+        List<Version> newerReleasesWithDuplicates = tags.stream().filter(v -> current.compareTo(v) < 0).distinct().collect(Collectors.toList());
+        ArrayList<Version> newerReleases = getDeduplicatedVersions(newerReleasesWithDuplicates);
+
         if (newerReleases.size() > 0) {
             String message = "There " + ((newerReleases.size() > 1) ? "are new releases" : "is a new release") + " available: ";
             final StringBuilder appendix = new StringBuilder();
-            newerReleases.forEach(v -> appendix.append("\n    • ").append(v.getTag()));
+            newerReleases.forEach(v -> appendix.append("\n    - ").append(v.getTag()));
             appendix.append("\n\nDo you want to open the download page now?");
             int chosen = JOptionPane.showConfirmDialog(MainWindow.getInstance(), message + appendix, "New Version available!", JOptionPane.YES_NO_OPTION);
             if (chosen == 0) {
@@ -95,6 +99,22 @@ public class Updater {
                 }
             }
         }
+    }
+
+    private ArrayList<Version> getDeduplicatedVersions(List<Version> newerReleasesWithDuplicates) {
+        ArrayList<Version> newerReleases = new ArrayList<>();
+        newerReleasesWithDuplicates.forEach(v -> {
+            AtomicBoolean duplicate = new AtomicBoolean(false);
+            newerReleases.forEach(n -> {
+                if(v.equals(n)) {
+                    duplicate.set(true);
+                }
+            });
+            if(!duplicate.get()) {
+                newerReleases.add(v);
+            }
+        });
+        return newerReleases;
     }
 
     /**
