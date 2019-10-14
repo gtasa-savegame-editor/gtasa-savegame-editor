@@ -115,29 +115,28 @@ public class Version implements Comparable<Version> {
     }
 
     /**
-     * Simple {@link Comparable#compareTo(Object)} that checks {@link #major}, {@link #minor}, {@link #patch}.
-     * When the numbers are equal the output of {@link #compareFlags(Flag)} is returned.
+     * Compares the two Version objects. First the {@link #major} and {@link #minor} versions are compared,
+     * then the {@link #flag} version using {@link #compareFlags(Flag)}, and finally the {@link #patch} version.
      *
      * @param o the version to compare to.
      * @return 1 if greater, 0 if equal, -1 if smaller.
      */
     @Override
     public int compareTo(Version o) {
-        if (major == o.major &&
-                minor == o.minor &&
-                patch == o.patch) {
+        if (major != o.major) {
+            return Integer.compare(major, o.major);
+        } else if (minor != o.minor) {
+            return Integer.compare(minor, o.minor);
+        } else if (compareFlags(o.flag) != 0) {
             return compareFlags(o.flag);
-        } else if ((major > o.major) ||
-                ((major == o.major) && (minor > o.minor)) ||
-                ((major == o.major) && (minor == o.minor) && (patch > o.patch))) {
-            return 1;
-        } else {
-            return -1;
+        } else if (patch != o.patch) {
+            return Integer.compare(patch, o.patch);
         }
+        return 0;
     }
 
     /**
-     * Compares version flags according to {@link Comparable#compareTo(Object)} logic.
+     * Compares version flags in the following order from lowest to highest: beta, rc, release.
      *
      * @param otherFlag the flag to compare to.
      * @return 1 if the other flag is "smaller", 0 if the flags are equal, -1 if the other flag is greater.
@@ -146,11 +145,11 @@ public class Version implements Comparable<Version> {
     private int compareFlags(Flag otherFlag) {
         if (flag.equals(otherFlag)) {
             return 0;
-        } else if ((flag.equals(Flag.BETA))) {
+        } else if (flag.equals(Flag.BETA)) {
             if (otherFlag.equals(Flag.RC) || otherFlag.equals(Flag.RELEASE)) {
                 return -1;
             }
-        } else if ((flag.equals(Flag.RC))) {
+        } else if (flag.equals(Flag.RC)) {
             if (otherFlag.equals(Flag.BETA)) {
                 return 1;
             } else if (otherFlag.equals(Flag.RELEASE)) {
@@ -225,10 +224,7 @@ public class Version implements Comparable<Version> {
             return false;
         } else {
             Version o = (Version) obj;
-            return major == o.major &&
-                    minor == o.minor &&
-                    patch == o.patch &&
-                    flag.equals(o.flag);
+            return compareTo(o) == 0;
         }
     }
 }

@@ -41,22 +41,51 @@ public class VersionTests extends TestCase {
     }
 
     public void testCompareTo() throws Exception {
-        Version stableVersion = new Version("v1.0.0");
         Version betaVersion = new Version("v1.0-beta.1");
-        Version rcVersion = new Version("v1.0-rc.1");
         Version newerBetaVersion = new Version("v1.0-beta.2");
+        Version rcVersion = new Version("v1.0-rc.1");
+        Version newerRcVersion = new Version("v1.0-rc.10");
+        Version stableVersion = new Version("v1.0.0");
         Version newerStableVersion = new Version("v1.1.0");
+        Version newerMajorVersion = new Version("v2.0.0");
 
-        assertTrue(stableVersion.compareTo(betaVersion) < 0);
-        assertTrue(betaVersion.compareTo(rcVersion) < 0);
+        assertEquals(0, betaVersion.compareTo(betaVersion));
+        assertEquals(0, rcVersion.compareTo(rcVersion));
+        assertEquals(0, stableVersion.compareTo(stableVersion));
         assertTrue(betaVersion.compareTo(newerBetaVersion) < 0);
-        assertTrue(stableVersion.compareTo(newerBetaVersion) < 0);
+        assertTrue(betaVersion.compareTo(rcVersion) < 0);
+        assertTrue(betaVersion.compareTo(newerRcVersion) < 0);
+        assertTrue(betaVersion.compareTo(stableVersion) < 0);
+        assertTrue(betaVersion.compareTo(newerStableVersion) < 0);
+        assertTrue(betaVersion.compareTo(newerMajorVersion) < 0);
+        assertTrue(newerBetaVersion.compareTo(rcVersion) < 0);
+        assertTrue(newerBetaVersion.compareTo(newerRcVersion) < 0);
+        assertTrue(newerBetaVersion.compareTo(stableVersion) < 0);
+        assertTrue(newerBetaVersion.compareTo(newerStableVersion) < 0);
+        assertTrue(newerBetaVersion.compareTo(newerMajorVersion) < 0);
+        assertTrue(rcVersion.compareTo(newerRcVersion) < 0);
+        assertTrue(rcVersion.compareTo(stableVersion) < 0);
+        assertTrue(rcVersion.compareTo(newerStableVersion) < 0);
+        assertTrue(rcVersion.compareTo(newerMajorVersion) < 0);
         assertTrue(stableVersion.compareTo(newerStableVersion) < 0);
+        assertTrue(stableVersion.compareTo(newerMajorVersion) < 0);
+        assertTrue(newerStableVersion.compareTo(newerMajorVersion) < 0);
+    }
+
+    public void testEquals() throws Exception {
+        Version stableVersion = new Version("v1.0.0");
+        Version stableVersion1 = new Version("v1.0.0");
+        Version betaVersion = new Version("v1.0-beta.1");
+        Object otherObject = new Object();
+
+        assertEquals(stableVersion, stableVersion1);
+        assertNotSame(stableVersion, betaVersion);
+        assertNotSame(stableVersion, otherObject);
     }
 
     private void expectException(Handler handler) {
         Exception ex = null;
-        try{
+        try {
             handler.handle();
         } catch (Exception e) {
             ex = e;
