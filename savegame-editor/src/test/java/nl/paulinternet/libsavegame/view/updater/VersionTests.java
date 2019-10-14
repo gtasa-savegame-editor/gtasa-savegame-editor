@@ -72,6 +72,17 @@ public class VersionTests extends TestCase {
         assertTrue(newerStableVersion.compareTo(newerMajorVersion) < 0);
     }
 
+    public void testEquals() throws Exception {
+        Version stableVersion = new Version("v1.0.0");
+        Version stableVersion1 = new Version("v1.0.0");
+        Version betaVersion = new Version("v1.0-beta.1");
+        Object otherObject = new Object();
+
+        assertEquals(stableVersion, stableVersion1);
+        assertNotSame(stableVersion, betaVersion);
+        assertNotSame(stableVersion, otherObject);
+    }
+
     private void expectException(Handler handler) {
         Exception ex = null;
         try {
