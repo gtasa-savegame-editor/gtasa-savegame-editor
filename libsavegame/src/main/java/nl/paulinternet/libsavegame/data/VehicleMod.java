@@ -196,8 +196,8 @@ public class VehicleMod {
 
         mods.add(new VehicleMod("Misc", "Remington Lights Chrome Parts", "misc_c_lr_rem3", 1125));
 
-        mods.add(new VehicleMod("None", "None (Max)", "enon", 65535));
-        mods.add(new VehicleMod("None", "None (Min)", "none", 0));
+        mods.add(new VehicleMod("None", "None", "noneMaxValue", 65535));
+        mods.add(new VehicleMod("None", "None", "noneMinValue", 0));
 
         mods = Collections.unmodifiableList(mods);
     }

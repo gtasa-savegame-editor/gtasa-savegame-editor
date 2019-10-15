@@ -27,7 +27,7 @@ public class PageGarages extends Page {
     /**
      * Template string used for the initial size the dropdowns.
      */
-    public static final String PROTOTYPE_DISPLAY_VALUE = "------------------";
+    public static final String PROTOTYPE_DISPLAY_VALUE = "---------------------------";
 
     public PageGarages() {
         super("Garages");
