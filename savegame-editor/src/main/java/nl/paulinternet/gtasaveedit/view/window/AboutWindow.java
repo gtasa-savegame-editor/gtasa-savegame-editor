@@ -1,10 +1,10 @@
 package nl.paulinternet.gtasaveedit.view.window;
 
-import nl.paulinternet.libsavegame.Settings;
 import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
+import nl.paulinternet.libsavegame.Settings;
 
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -36,7 +36,7 @@ public class AboutWindow extends JFrame {
 
         JLabel label = new JLabel(
                 "<html>" +
-                        "<font size=+2>GTA SA Savegame Editor</font><br />" +
+                        "<font size=+2>GTA:SA Savegame Editor</font><br />" +
                         "<font size=+1>Version " + Updater.CURRENT_TAG + " (without 3d)</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
@@ -73,16 +73,15 @@ public class AboutWindow extends JFrame {
         return ybox;
     }
 
-    @SuppressWarnings("unused") // used as onClick
+    @SuppressWarnings("unused") // onClick handler
     public void openWebsite(String website) {
         try {
-            Desktop.getDesktop().browse(new URI("http://" + website));
+            Desktop.getDesktop().browse(new URI("https://" + website));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), "Go to " + website, "Website", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    @SuppressWarnings({"unused", "WeakerAccess"}) // used as onClick
     public void stop() {
         if (playThread != null) {
             playThread.setStopPlayback(true);
@@ -99,8 +98,7 @@ public class AboutWindow extends JFrame {
         }
     }
 
-    private void play() {
-        // TODO: duplicate
+    public void play() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream("/gta-sa-intro.wav")));
             AudioFormat audioFormat = audioInputStream.getFormat();
