@@ -23,6 +23,10 @@ import java.util.List;
 public class PageGarages extends Page {
 
     private static final Logger log = LoggerFactory.getLogger(PageGarages.class);
+
+    /**
+     * Template string used for the initial size the dropdowns.
+     */
     public static final String PROTOTYPE_DISPLAY_VALUE = "------------------";
 
     public PageGarages() {
@@ -188,13 +192,30 @@ public class PageGarages extends Page {
 
         private void updateView(int garageCount) {
             removeAllItems(); // remove current contents
+            Integer carId = SavegameModel.vars.garageCars.get(garageCount).getCarId().getIntValue();
+            List<String> validMods = Arrays.asList(VehicleType.getType(carId).getValidMods());
             VehicleMod.getMods().stream() // stream mods
                     .sorted(Comparator.comparingInt(VehicleMod::getId)) // sort by id
-                    .forEach(m -> addItem(m.getId(), // add [INVALID] if vehicle can not use that mod
-                            ((Arrays.asList(VehicleType.getType(SavegameModel.vars.garageCars.get(garageCount)
-                                    .getCarId().getIntValue()).getValidMods()).contains(m.getDffName()))
-                                    ? "" : "[INVALID] ") +
-                                    m.getName() + " (" + m.getType() + ")")); // add all to dropdown
+                    .forEach(m -> addItem(m.getId(), buildDisplayName(validMods, m))); // add all to dropdown
+        }
+
+        /**
+         * Builds the display name for mods in a dropdown.
+         * When the vehicle inside the supplied garage does not support the given mod,
+         * the String <pre>[INVALID]</pre> is prepended. Since "None" is not recognized
+         * as a valid mod by any vehicle, the <pre>[INVALID]</pre> is not prepended in this case.
+         *
+         * @param validMods a list of valid mods for a given vehicle
+         * @param m         the mod that the display name should be build for
+         * @return the display name of this mod
+         */
+        private String buildDisplayName(List<String> validMods, VehicleMod m) {
+            String invalidModString = (validMods.contains(m.getDffName())) ? "" : "[INVALID] ";
+            String displayName = m.getName() + " (" + m.getType() + ")";
+            if (!m.getType().equals("None")) { // prevent [INVALID] when no mod is selected
+                displayName = invalidModString + displayName;
+            }
+            return displayName;
         }
     }
 

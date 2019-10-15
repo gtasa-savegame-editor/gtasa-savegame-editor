@@ -4,6 +4,7 @@ import nl.paulinternet.libsavegame.io.IOUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class SteamConfigReader {
     /* Tries to read the steam configuration file.
@@ -12,7 +13,7 @@ public class SteamConfigReader {
     public static SteamConfigNode readSteamConfig(File steamDir) {
         try {
             File configFile = new File(steamDir, "config/config.vdf");
-            SteamConfigReader reader = new SteamConfigReader(new String(IOUtil.readFile(configFile), "utf-8"));
+            SteamConfigReader reader = new SteamConfigReader(new String(IOUtil.readFile(configFile), StandardCharsets.UTF_8));
             return reader.read(true);
         } catch (IOException e) {
             return null;
