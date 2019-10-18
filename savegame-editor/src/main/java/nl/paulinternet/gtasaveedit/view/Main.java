@@ -1,11 +1,9 @@
 package nl.paulinternet.gtasaveedit.view;
 
-import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
-import nl.paulinternet.libsavegame.Settings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +12,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static nl.paulinternet.libsavegame.Util.MAC;
 
@@ -41,11 +37,12 @@ public class Main {
             // OS X specific
             if (MAC) {
                 System.setProperty("apple.laf.useScreenMenuBar", "true");
-                System.setProperty("apple.awt.application.name", "GTA SA Savegame Editor");
+                System.setProperty("apple.awt.application.name", "GTA:SA Savegame Editor");
+                System.setProperty("com.apple.mrj.application.apple.menu.about.name", "GTA:SA Savegame Editor");
                 Taskbar.getTaskbar().setIconImage(Images.readImage("icon-256.png"));
 
                 Desktop.getDesktop().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
-                Desktop.getDesktop().setAboutHandler(aboutEvent -> new AboutWindow(true).setVisible(true));
+                Desktop.getDesktop().setAboutHandler(aboutEvent -> new AboutWindow().setVisible(true));
             }
 
             // Set the icons

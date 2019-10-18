@@ -2,8 +2,6 @@ package nl.paulinternet.gtasaveedit.view.pages;
 
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
-
 /**
  * @author Lukas Fülling (lukas@k40s.net)
  */
@@ -13,15 +11,7 @@ public class PageAbout extends Page {
 
     public PageAbout() {
         super("About", true);
-        aboutWindow = new AboutWindow(false);
-        if (!MAC) {
-            aboutWindow.getStopButton().onClick()
-                    .addHandler(aboutWindow, "stop");
-        }
-        aboutWindow.getWebsiteButton().onClick()
-                .addHandler(aboutWindow, "openWebsite", "www.paulinternet.nl/sa");
-        aboutWindow.getRepoButton().onClick()
-                .addHandler(aboutWindow, "openWebsite", "github.com/gtasa-savegame-editor/gtasa-savegame-editor");
+        aboutWindow = new AboutWindow();
 
         setComponent(aboutWindow.getYbox(), false);
     }
