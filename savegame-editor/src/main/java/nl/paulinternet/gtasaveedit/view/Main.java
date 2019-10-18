@@ -42,7 +42,7 @@ public class Main {
                 Taskbar.getTaskbar().setIconImage(Images.readImage("icon-256.png"));
 
                 Desktop.getDesktop().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
-                Desktop.getDesktop().setAboutHandler(aboutEvent -> new AboutWindow().setVisible(true));
+                Desktop.getDesktop().setAboutHandler(aboutEvent -> AboutWindow.get().setVisible(true));
             }
 
             // Set the icons

@@ -17,9 +17,9 @@ public class AboutWindow extends JFrame {
     private final PButton stopButton, repoButton, websiteButton;
     private final YBox ybox;
     private PlayThread playThread;
-    private AboutWindow INSTANCE = null;
+    private static AboutWindow INSTANCE = null;
 
-    public AboutWindow() {
+    private AboutWindow() {
 
         websiteButton = new PButton("Website");
         repoButton = new PButton("View Source / Downloads");
@@ -130,7 +130,7 @@ public class AboutWindow extends JFrame {
         return websiteButton;
     }
 
-    public AboutWindow get()
+    public static AboutWindow get()
     {
         if (INSTANCE == null) {
             INSTANCE = new AboutWindow();
