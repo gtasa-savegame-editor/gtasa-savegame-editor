@@ -17,19 +17,18 @@ public class AboutWindow extends JFrame {
     private final PButton stopButton, repoButton, websiteButton;
     private final YBox ybox;
     private PlayThread playThread;
+    private AboutWindow INSTANCE = null;
 
-    public AboutWindow(boolean addHandlers) {
+    public AboutWindow() {
 
         websiteButton = new PButton("Website");
         repoButton = new PButton("View Source / Downloads");
         stopButton = new PButton("Stop Audio");
         stopButton.setEnabled(false);
 
-        if (addHandlers) {
-            websiteButton.onClick().addHandler(this, "openWebsite", "www.paulinternet.nl/sa");
-            repoButton.onClick().addHandler(this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
-            stopButton.onClick().addHandler(this, "stop");
-        }
+        websiteButton.onClick().addHandler(AboutWindow.this, "openWebsite", "www.paulinternet.nl/sa");
+        repoButton.onClick().addHandler(AboutWindow.this, "openWebsite", "github.com/lfuelling/gtasa-savegame-editor");
+        stopButton.onClick().addHandler(AboutWindow.this, "stop");
 
         PButton updateButton = new PButton("Check For Updates");
         updateButton.onClick().addHandler(e -> Updater.start());
@@ -129,5 +128,13 @@ public class AboutWindow extends JFrame {
 
     public PButton getWebsiteButton() {
         return websiteButton;
+    }
+
+    public AboutWindow get()
+    {
+        if (INSTANCE == null) {
+            INSTANCE = new AboutWindow();
+        }
+        return INSTANCE;
     }
 }
