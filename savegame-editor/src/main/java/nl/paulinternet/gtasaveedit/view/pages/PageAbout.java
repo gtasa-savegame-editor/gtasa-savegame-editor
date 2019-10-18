@@ -11,7 +11,7 @@ public class PageAbout extends Page {
 
     public PageAbout() {
         super("About", true);
-        aboutWindow = new AboutWindow();
+        aboutWindow = AboutWindow.get();
 
         setComponent(aboutWindow.getYbox(), false);
     }
