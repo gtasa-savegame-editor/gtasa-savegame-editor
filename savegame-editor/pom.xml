@@ -179,7 +179,7 @@
                     <plugin>
                         <groupId>de.perdian.maven.plugins</groupId>
                         <artifactId>macosappbundler-maven-plugin</artifactId>
-                        <version>1.5.0</version>
+                        <version>1.5.1</version>
                         <configuration>
                             <plist>
                                 <CFBundleIconFile>icon-dock.icns</CFBundleIconFile>
