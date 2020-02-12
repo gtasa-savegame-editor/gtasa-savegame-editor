@@ -1,15 +1,25 @@
 package nl.paulinternet.libsavegame;
 
+import com.sun.jna.platform.win32.Shell32;
+import com.sun.jna.platform.win32.ShlObj;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.io.*;
+import java.nio.channels.FileChannel;
 
 public class Settings implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private static final Logger log = LoggerFactory.getLogger(Settings.class);
+
     public static final int UNKNOWN = 0, NO = 1, YES = 2;
     public static final int DIR_DEFAULT = 1, DIR_ACTIVE = 2, DIR_CUSTOM = 3;
 
-    private static final File settingsFile = new File(System.getProperty("user.home"), ".gta_sa_savegame_editor");
+    private static final File settingsFile = getSettingsFile();
+    private static String configDir;
+
     private static final Settings instance = loadSettings();
 
     private int savegameDirectoryType;
@@ -24,6 +34,50 @@ public class Settings implements Serializable {
     private int soundOnAboutPage;
 
     private Settings() {
+        if (new File(configDir).mkdirs()) {
+            log.info("Config directory created!");
+        }
+        migrateOldConfig();
+    }
+
+    private void migrateOldConfig() {
+        File oldSettingsFile = new File(System.getProperty("user.home"), ".gta_sa_savegame_editor");
+        if (oldSettingsFile.exists()) {
+            try {
+                if (settingsFile.createNewFile()) {
+                    log.info("New config file created!");
+                }
+                FileChannel srcStream = new FileInputStream(oldSettingsFile).getChannel();
+                new FileOutputStream(settingsFile).getChannel().transferFrom(srcStream, 0, srcStream.size());
+            } catch (IOException e) {
+                log.warn("Error migrating config!", e);
+            }
+            if (oldSettingsFile.delete()) {
+                log.info("Old config file deleted!");
+            } else {
+                log.warn("Unable to delete old config file!");
+            }
+        }
+    }
+
+    private static File getSettingsFile() {
+        if (Util.WINDOWS) {
+            char[] path = new char[]{};
+            if (Shell32.INSTANCE.SHGetSpecialFolderPath(null, path, ShlObj.CSIDL_LOCAL_APPDATA, false)) {
+                configDir = String.valueOf(path) + File.separator + "gta-sa_savegame_editor";
+            } else {
+                log.warn("Unable to determine appdata folder! Falling back to old config dir!");
+                return new File(System.getProperty("user.home"), ".gta_sa_savegame_editor");
+            }
+        } else {
+            String xdgConfigHome = System.getenv("XDG_CONFIG_HOME");
+            if (xdgConfigHome == null || xdgConfigHome.isBlank() || xdgConfigHome.isEmpty()) {
+                configDir = System.getProperty("user.home") + File.separator + ".config" + File.separator + "gta-sa_savegame_editor";
+            } else {
+                configDir = xdgConfigHome + File.separator + "gta-sa_savegame_editor";
+            }
+        }
+        return new File(configDir, "config");
     }
 
     public static int getSavegameDirectoryType() {

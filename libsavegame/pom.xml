@@ -41,5 +41,11 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.29</version>
         </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.5.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>
