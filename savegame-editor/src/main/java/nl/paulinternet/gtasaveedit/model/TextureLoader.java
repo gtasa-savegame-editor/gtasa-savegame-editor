@@ -3,7 +3,6 @@ package nl.paulinternet.gtasaveedit.model;
 import nl.paulinternet.libsavegame.io.ArchiveReader;
 import nl.paulinternet.libsavegame.io.LittleEndianRandomAccessFile;
 import nl.paulinternet.libsavegame.io.RWFile;
-import nl.paulinternet.libsavegame.SavegameModel;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;

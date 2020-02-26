@@ -1,9 +1,10 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
 import nl.paulinternet.gtasaveedit.model.LoadableImage;
-import nl.paulinternet.libsavegame.MethodInvoker;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.event.MethodInvoker;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.Images;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Saveplace;
 
 import java.awt.*;
@@ -33,7 +34,7 @@ public class LocationChooser extends ImageComponent implements MouseListener {
         g.setColor(overlay);
         g.fillRect(0, 0, 620, 620);
 
-        Integer value = SavegameModel.vars.savePlace.getIntValue();
+        Integer value = SavegameVars.vars.savePlace.getValue();
 
         for (Saveplace place : Saveplace.getPlaces()) {
             LoadableImage loadableImage = value != null && value == place.getId() ? circleGreen : circleWhite;
@@ -65,7 +66,7 @@ public class LocationChooser extends ImageComponent implements MouseListener {
             }
 
             if (minDistance < 300) {
-                SavegameModel.vars.savePlace.setIntValue(closest.getId());
+                SavegameVars.vars.savePlace.setValue(closest.getId());
                 repaint();
             }
         }

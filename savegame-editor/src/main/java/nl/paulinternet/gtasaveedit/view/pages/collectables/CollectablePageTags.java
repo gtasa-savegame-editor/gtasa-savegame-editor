@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.component.ValueButton;
@@ -24,7 +25,7 @@ public class CollectablePageTags extends Page {
         public void updateText() {
             int sprayed = 0;
 
-            for (int tag : SavegameModel.vars.tags) {
+            for (int tag : SavegameVars.vars.tags) {
                 if (tag >= 0x35) sprayed++;
             }
 
@@ -40,7 +41,7 @@ public class CollectablePageTags extends Page {
         SelectableItems<SelectableTag> tags = new SelectableItems<SelectableTag>(tagList);
 
         // Create xbox
-        TextFieldInterface var = new SelectableItemVariable(tags, 0, 0, 255);
+        TextFieldInterface var = new SelectableItemVariable<Integer>(tags, 0, 0, 255);
 
         XBox xbox = new XBox();
         xbox.add(new JLabel("Value:"));

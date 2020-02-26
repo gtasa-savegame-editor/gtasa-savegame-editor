@@ -1,14 +1,14 @@
 package nl.paulinternet.gtasaveedit.model;
 
-import nl.paulinternet.libsavegame.Settings;
+import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.io.ArchiveReader;
-import nl.paulinternet.libsavegame.io.FileSystem;
+import nl.paulinternet.gtasaveedit.FileSystem;
 
 import java.io.File;
 import java.io.IOException;
 
-import static nl.paulinternet.libsavegame.SavegameModel.playerImg;
+import static nl.paulinternet.gtasaveedit.model.SavegameModel.playerImg;
 
 public class Model {
     public static final SettingVariables editSettings = new SettingVariables();

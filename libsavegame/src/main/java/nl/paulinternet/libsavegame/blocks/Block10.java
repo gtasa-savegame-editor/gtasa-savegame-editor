@@ -1,7 +1,7 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Zone;
 import nl.paulinternet.libsavegame.data.Zones;
 import nl.paulinternet.libsavegame.link.Link;
@@ -34,7 +34,7 @@ public class Block10 implements Link {
             if (io.readBoolean(10, 0x4964 + i)) discovered++;
         }
 
-        SavegameModel.vars.zoneGlitch.setBooleanValue(io.readInt(10, 0x49c8) != discovered);
+        SavegameVars.vars.zoneGlitch.setValue(io.readInt(10, 0x49c8) != discovered);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.Settings;
-import nl.paulinternet.libsavegame.io.FileSystem;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.Settings;
+import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 
 import javax.swing.*;
@@ -58,7 +58,7 @@ class FileDelete extends JMenuItem implements ActionListener {
                         //noinspection ResultOfMethodCallIgnored
                         file.delete();
                     }
-                    SavegameModel.updateQuickLoad();
+                    SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();
                 }
             } else {
                 // Delete files
@@ -66,7 +66,7 @@ class FileDelete extends JMenuItem implements ActionListener {
                     //noinspection ResultOfMethodCallIgnored
                     file.delete();
                 }
-                SavegameModel.updateQuickLoad();
+                SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();
             }
         }
     }

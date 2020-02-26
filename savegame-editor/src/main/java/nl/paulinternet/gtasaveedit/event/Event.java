@@ -1,6 +1,4 @@
-package nl.paulinternet.libsavegame.event;
-
-import nl.paulinternet.libsavegame.MethodInvoker;
+package nl.paulinternet.gtasaveedit.event;
 
 public abstract class Event {
     public abstract void addHandler(EventHandler h);

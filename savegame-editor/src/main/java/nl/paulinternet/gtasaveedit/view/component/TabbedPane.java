@@ -1,8 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.Settings;
-import nl.paulinternet.gtasaveedit.view.Main;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;

@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.cloth;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.libsavegame.variables.Variable;
 import nl.paulinternet.gtasaveedit.view.swing.PRadioButton;
 import nl.paulinternet.libsavegame.data.Cloth;

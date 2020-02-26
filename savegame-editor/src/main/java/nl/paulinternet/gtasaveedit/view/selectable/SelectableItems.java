@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 
 import java.util.List;
 

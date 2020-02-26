@@ -10,7 +10,7 @@ import nl.paulinternet.libsavegame.link.LinkFloat;
 import nl.paulinternet.libsavegame.link.LinkInt;
 import nl.paulinternet.libsavegame.variables.Variable;
 
-import static nl.paulinternet.libsavegame.SavegameModel.vars;
+import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class Block02 extends LinkArray {
     private static final int[] CLOTH_TEXTURE = new int[]{0x1d4, 0x1d8, 0x1dc, 0x1e0, 0x208, 0x20c, 0x210, 0x214, 0x218};
@@ -29,12 +29,12 @@ public class Block02 extends LinkArray {
         super.load(io);
         // Load weapons
         for (int i = 0; i < 13; i++) {
-            vars.weaponAmmo.get(i).setIntValue(io.readInt(2, 0x34 + 28 * i));
+            vars.weaponAmmo.get(i).setValue(io.readInt(2, 0x34 + 28 * i));
 
-            if (i > 10 && vars.weaponAmmo.get(i).getIntValue() == 0) {
-                vars.weaponType.get(i).setIntValue(0);
+            if (i > 10 && vars.weaponAmmo.get(i).getValue() == 0) {
+                vars.weaponType.get(i).setValue(0);
             } else {
-                vars.weaponType.get(i).setIntValue(io.readInt(2, 0x28 + 28 * i));
+                vars.weaponType.get(i).setValue(io.readInt(2, 0x28 + 28 * i));
             }
             vars.weaponType.get(i).resetChangedState();
         }
@@ -59,20 +59,20 @@ public class Block02 extends LinkArray {
         super.save(io);
 
         // Save weapons
-        io.writeInt(2, 0x195, 1, vars.weaponStartSlot.getIntValue());
+        io.writeInt(2, 0x195, 1, vars.weaponStartSlot.getValue());
 
         for (int i = 0; i < 13; i++) {
             if (vars.weaponType.get(i).hasChanged()) {
                 // Set ammo to 1
-                if (i > 10 && vars.weaponType.get(i).getIntValue() != 0 && vars.weaponAmmo.get(i).getIntValue() == 0) {
-                    vars.weaponAmmo.get(i).setIntValue(1);
+                if (i > 10 && vars.weaponType.get(i).getValue() != 0 && vars.weaponAmmo.get(i).getValue() == 0) {
+                    vars.weaponAmmo.get(i).setValue(1);
                 }
 
                 // Write weapons type
-                io.writeInt(2, 0x28 + 28 * i, vars.weaponType.get(i).getIntValue());
+                io.writeInt(2, 0x28 + 28 * i, vars.weaponType.get(i).getValue());
                 vars.weaponType.get(i).resetChangedState();
             }
-            io.writeInt(2, 0x34 + 28 * i, vars.weaponAmmo.get(i).getIntValue());
+            io.writeInt(2, 0x34 + 28 * i, vars.weaponAmmo.get(i).getValue());
         }
 
         // Save clothes

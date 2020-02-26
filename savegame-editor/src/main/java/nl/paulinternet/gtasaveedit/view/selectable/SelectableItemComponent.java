@@ -1,9 +1,9 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
 import nl.paulinternet.gtasaveedit.model.LoadableImage;
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.EventHandler;
-import nl.paulinternet.libsavegame.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.event.Event;
+import nl.paulinternet.gtasaveedit.event.EventHandler;
+import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.component.ImageComponent;
 

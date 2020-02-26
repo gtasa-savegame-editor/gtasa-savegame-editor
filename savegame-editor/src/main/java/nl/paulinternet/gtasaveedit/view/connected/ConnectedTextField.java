@@ -18,7 +18,7 @@ public class ConnectedTextField extends PTextField {
         this.model = model;
 
         // Observe
-        model.onChange().addHandler(this, "updateFromModel");
+        model.setOnTextChange(s -> updateFromModel());
         onFocusLost().addHandler(this, "updateFromModel");
         onChange().addHandler(this, "updateToModel");
 

@@ -12,7 +12,7 @@ public class GlitchFix {
     private static final Logger log = LoggerFactory.getLogger(GlitchFix.class);
 
     public static void fixTrafficGlitch() {
-        SavegameData data = Savegame.getData();
+        SavegameData data = Savegame.get().getData();
         int time = data.readInt(0, 0x94);
 
         // Weather timer
@@ -72,7 +72,7 @@ public class GlitchFix {
     }
 
     public static void moveSaveDisk() {
-        SavegameData data = Savegame.getData();
+        SavegameData data = Savegame.get().getData();
         data.writeFloat(1, 886 * 4 + 8, 1291.8f);
         data.writeFloat(1, 904 * 4 + 8, -797.8284f);
         data.writeFloat(1, 922 * 4 + 8, 1089.5f);
@@ -83,7 +83,7 @@ public class GlitchFix {
     }
 
     public static void fixGymGlitch() {
-        SavegameData data = Savegame.getData();
+        SavegameData data = Savegame.get().getData();
         data.writeInt(1, 0x5388, -1);
         data.writeInt(1, 0x538c, -1);
         data.writeInt(1, 0x5390, -1);
@@ -110,7 +110,7 @@ public class GlitchFix {
             zoneinfo2 = readResourceAsBytes(224, "/zoneinfo2.dat");
         }
 
-        SavegameData data = Savegame.getData();
+        SavegameData data = Savegame.get().getData();
 
         // Overwrite data
         data.getBlock(10).overwrite(zoneinfo1, 0x4);

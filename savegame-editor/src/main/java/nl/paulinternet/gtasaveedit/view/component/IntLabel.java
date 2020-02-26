@@ -1,21 +1,21 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
-import nl.paulinternet.libsavegame.variables.VariableIntegerImpl;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.*;
 
 public class IntLabel extends JLabel {
     private String text;
-    private VariableIntegerImpl var;
+    private Variable<Integer> var;
 
-    public IntLabel(String text, VariableIntegerImpl var) {
+    public IntLabel(String text, Variable<Integer> var) {
         this.text = text;
         this.var = var;
-        var.onChange().addHandler(this, "updateText");
         updateText();
+        var.setOnChange(i -> updateText());
     }
 
     public void updateText() {
-        setText(text.replace("?", var.getText()));
+        setText(text.replace("?", String.valueOf(var.getValue())));
     }
 }

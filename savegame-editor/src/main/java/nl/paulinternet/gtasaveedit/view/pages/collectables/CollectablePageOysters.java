@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.component.IntLabel;
 import nl.paulinternet.gtasaveedit.view.component.PickupCollectButton;
@@ -12,6 +12,7 @@ import nl.paulinternet.gtasaveedit.view.selectable.SelectionSizeLabel;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Pickup;
 
 import javax.swing.*;
@@ -30,14 +31,14 @@ public class CollectablePageOysters extends Page {
         SelectableItemComponent select = new SelectableItemComponent(MapImage.SAN_ANDREAS, items, SelectableItemComponent.MULTIPLE);
 
         XBox xbox = new XBox();
-        xbox.add(new IntLabel("? / 50 oysters collected", SavegameModel.vars.oystersCollected));
+        xbox.add(new IntLabel("? / 50 oysters collected", SavegameVars.vars.oystersCollected));
         xbox.addSpace(10, 1);
         xbox.add(new SelectionSizeLabel(items, "oysters"));
 
         YBox ybox = new YBox();
         ybox.add(new JLabel("<html>Click or drag the mouse to select oysters.<br />Hold shift or alt to respectively grow or shrink the selection.<br>Only the oysters that you didn't collect are displayed."));
         ybox.addSpace(10);
-        ybox.add(new PickupCollectButton("Collect selected oysters", items, SavegameModel.vars.oystersCollected), 0, 0.5f, 0.0f);
+        ybox.add(new PickupCollectButton("Collect selected oysters", items, SavegameVars.vars.oystersCollected), 0, 0.5f, 0.0f);
         ybox.addSpace(5);
         ybox.add(select);
         ybox.addSpace(5);
@@ -54,7 +55,7 @@ public class CollectablePageOysters extends Page {
         List<SelectablePickup> oysters = items.getItems();
 
         oysters.clear();
-        for (Pickup oyster : SavegameModel.vars.oysters) {
+        for (Pickup oyster : SavegameVars.vars.oysters) {
             oysters.add(new SelectablePickup(oyster, MapImage.SAN_ANDREAS));
         }
 

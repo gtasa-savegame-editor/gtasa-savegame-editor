@@ -1,15 +1,15 @@
 package nl.paulinternet.libsavegame.link;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.variables.VariableFloat;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 public class LinkFloat implements Link
 {
-	private VariableFloat var;
+	private Variable<Float> var;
 	private int block;
 	private int pos;
 	
-	public LinkFloat (VariableFloat var, int block, int pos) {
+	public LinkFloat (Variable<Float> var, int block, int pos) {
 		this.var = var;
 		this.block = block;
 		this.pos = pos;

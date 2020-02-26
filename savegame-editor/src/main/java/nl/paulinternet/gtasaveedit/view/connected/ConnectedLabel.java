@@ -1,19 +1,17 @@
 package nl.paulinternet.gtasaveedit.view.connected;
 
-import nl.paulinternet.libsavegame.variables.VariableInteger;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.*;
 
 public class ConnectedLabel extends JLabel {
-    private VariableInteger var;
 
-    public ConnectedLabel(VariableInteger var) {
-        this.var = var;
-        var.onChange().addHandler(this, "update");
-        update();
+    public ConnectedLabel(Variable<Integer> var) {
+        var.setOnChange(this::update);
+        update(var.getValue());
     }
 
-    public void update() {
-        setText(String.valueOf(var.getIntValue()));
+    public void update(Integer value) {
+        setText(String.valueOf(value));
     }
 }

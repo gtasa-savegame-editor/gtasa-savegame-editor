@@ -1,7 +1,8 @@
-package nl.paulinternet.libsavegame;
+package nl.paulinternet.gtasaveedit;
 
 import com.sun.jna.platform.win32.Shell32;
 import com.sun.jna.platform.win32.ShlObj;
+import nl.paulinternet.libsavegame.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

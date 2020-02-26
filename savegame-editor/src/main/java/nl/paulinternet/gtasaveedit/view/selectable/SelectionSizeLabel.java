@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.EventHandler;
+import nl.paulinternet.gtasaveedit.event.Event;
+import nl.paulinternet.gtasaveedit.event.EventHandler;
 
 import javax.swing.*;
 

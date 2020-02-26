@@ -1,7 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.menu.extractor;
 
 import nl.paulinternet.gtasaveedit.extractor.ExtractedSavegameHolder;
-import nl.paulinternet.libsavegame.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.Savegame;
 import nl.paulinternet.libsavegame.exceptions.ErrorMessageException;
@@ -40,7 +39,7 @@ public class ExtractedSavegameSubmenu extends JMenu {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                Savegame.save(savegameFile);
+                Savegame.get().save(savegameFile);
             } catch (ErrorMessageException ex) {
                 JOptionPane.showMessageDialog(MainWindow.getInstance(), ex.getMessage(), ex.getTitle(), JOptionPane.ERROR_MESSAGE);
             }
@@ -60,7 +59,7 @@ public class ExtractedSavegameSubmenu extends JMenu {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                Savegame.load(savegameFile);
+                Savegame.get().load(savegameFile);
                 ExtractedSavegameHolder.getInstance().setSelectedSavegame(savegameName);
             } catch (ErrorMessageException ex) {
                 JOptionPane.showMessageDialog(MainWindow.getInstance(), ex.getMessage(), ex.getTitle(), JOptionPane.ERROR_MESSAGE);

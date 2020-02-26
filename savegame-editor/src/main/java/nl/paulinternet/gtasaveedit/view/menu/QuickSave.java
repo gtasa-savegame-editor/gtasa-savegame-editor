@@ -1,10 +1,11 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
+import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.Savegame;
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.Settings;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.libsavegame.exceptions.ErrorMessageException;
 
 import javax.swing.*;
@@ -31,7 +32,7 @@ public class QuickSave extends PMenuItem {
 
     @SuppressWarnings("WeakerAccess") //used in handler
     public void updateText() {
-        String title = SavegameModel.quickLoad.get(number).getValue();
+        String title = SavegameModel.get(FileSystem.getSavegameDirectory()).quickLoad.get(number).getValue();
         if (title == null) {
             setText(number + ".");
         } else {
@@ -43,7 +44,7 @@ public class QuickSave extends PMenuItem {
     @SuppressWarnings("unused") //used in handler
     public void saveFile() {
         try {
-            File file = SavegameModel.getSavegameFile(number);
+            File file = SavegameModel.get(FileSystem.getSavegameDirectory()).getSavegameFile(number);
             if (Settings.getWarnOverwriteFile() == Settings.YES && file.exists()) {
                 int result = JOptionPane.showConfirmDialog(
                         MainWindow.getInstance(),
@@ -53,9 +54,9 @@ public class QuickSave extends PMenuItem {
                         JOptionPane.WARNING_MESSAGE
                 );
 
-                if (result == JOptionPane.YES_OPTION) Savegame.save(file);
+                if (result == JOptionPane.YES_OPTION) Savegame.get().save(file);
             } else {
-                Savegame.save(file);
+                Savegame.get().save(file);
             }
         } catch (ErrorMessageException e) {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);

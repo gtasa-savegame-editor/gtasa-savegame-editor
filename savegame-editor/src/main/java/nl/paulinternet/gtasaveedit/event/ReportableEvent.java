@@ -1,4 +1,4 @@
-package nl.paulinternet.libsavegame.event;
+package nl.paulinternet.gtasaveedit.event;
 
 import java.util.ArrayList;
 import java.util.List;

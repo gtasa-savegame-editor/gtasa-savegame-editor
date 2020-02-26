@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
@@ -9,6 +9,7 @@ import nl.paulinternet.gtasaveedit.view.selectable.*;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Jump;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ public class CollectablePageJumps extends Page {
         public void updateText() {
             int found = 0, completed = 0;
 
-            for (Jump jump : SavegameModel.vars.jumps) {
+            for (Jump jump : SavegameVars.vars.jumps) {
                 if (jump.found) found++;
                 if (jump.completed) completed++;
             }
@@ -43,7 +44,7 @@ public class CollectablePageJumps extends Page {
         items = new SelectableItems<SelectableJump>(jumps);
         SelectableItemComponent select = new SelectableItemComponent(MapImage.SAN_ANDREAS, items, SelectableItemComponent.MULTIPLE);
 
-        ConnectedRadioButtons buttons = new ConnectedRadioButtons(new SelectableItemVariable(items, SelectableJump.COMPLETED));
+        ConnectedRadioButtons buttons = new ConnectedRadioButtons(new SelectableItemVariable<>(items, SelectableJump.COMPLETED));
         YBox yboxButtons = new YBox();
         yboxButtons.add(buttons.create(0, "Not found"));
         yboxButtons.add(buttons.create(1, "Found"));
@@ -52,7 +53,7 @@ public class CollectablePageJumps extends Page {
         XBox boxReward = new XBox();
         boxReward.add(new JLabel("Reward: $"));
         boxReward.addSpace(5);
-        boxReward.add(new ConnectedTextField(new SelectableItemVariable(items, SelectableJump.REWARD)));
+        boxReward.add(new ConnectedTextField(new SelectableItemVariable<String>(items, SelectableJump.REWARD)));
 
         XBox xbox = new XBox();
         xbox.add(yboxButtons, 1);
@@ -82,7 +83,7 @@ public class CollectablePageJumps extends Page {
 
     public void onGameLoad() {
         jumps.clear();
-        for (Jump jump : SavegameModel.vars.jumps) {
+        for (Jump jump : SavegameVars.vars.jumps) {
             jumps.add(new SelectableJump(jump));
         }
         items.onSelectionChange().report();

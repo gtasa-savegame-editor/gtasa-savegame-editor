@@ -1,23 +1,21 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
 import nl.paulinternet.libsavegame.link.LinkArray;
 import nl.paulinternet.libsavegame.link.LinkBoolean;
 import nl.paulinternet.libsavegame.link.LinkInt;
-import nl.paulinternet.libsavegame.variables.VariableIntegerImpl;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import java.util.List;
 
-import static nl.paulinternet.libsavegame.SavegameModel.vars;
+import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class Block01 extends LinkArray {
     private static final int[] DRIVING = new int[]{1, 2, 4, 5, 7, 9, 10, 11, 13, 14, 15, 16};
     private static final int[] FLYING = new int[]{1, 2, 4, 6, 7, 8, 9, 10, 11, 12};
-
-    private boolean drivingEditable;
 
     public Block01() {
         setLinks(new Link[]{
@@ -84,12 +82,12 @@ public class Block01 extends LinkArray {
                 version = 0;
         }
 
-        SavegameModel.vars.scriptVersion.setIntValue(version);
-        SavegameModel.vars.scriptVersion.setEnabled(version != 0);
-        SavegameModel.vars.scriptVersion.resetChangedState();
+        SavegameVars.vars.scriptVersion.setValue(version);
+        SavegameVars.vars.scriptVersion.setEnabled(version != 0);
+        SavegameVars.vars.scriptVersion.resetChangedState();
 
         // Driving
-        drivingEditable = io.readInt(1, 0xd8) != 0;
+        boolean drivingEditable = io.readInt(1, 0xd8) != 0;
         for (int i = 0; i < 11; i++) {
             vars.schoolDriving.get(i).setEnabled(drivingEditable);
         }
@@ -103,7 +101,7 @@ public class Block01 extends LinkArray {
 
         // Two timing date
         int value = io.readInt(1, 1236 * 4 + 4);
-        vars.twoTimingDate.setBooleanValue(value >= 0);
+        vars.twoTimingDate.setValue(value >= 0);
         vars.twoTimingDate.setEnabled(value <= 0);
         vars.twoTimingDate.resetChangedState();
     }
@@ -111,8 +109,8 @@ public class Block01 extends LinkArray {
     @Override
     public void save(SavegameData io) {
         // Script version
-        if (SavegameModel.vars.scriptVersion.hasChanged()) {
-            int version = SavegameModel.vars.scriptVersion.getIntValue();
+        if (SavegameVars.vars.scriptVersion.hasChanged()) {
+            int version = SavegameVars.vars.scriptVersion.getValue();
 
             // Write scm size
             int afterGlobalVars = 0x4 + io.readInt(1, 0);
@@ -152,7 +150,7 @@ public class Block01 extends LinkArray {
         if (hasChanged(vars.schoolDriving)) {
             int i;
             //noinspection StatementWithEmptyBody
-            for (i = 11; i >= 0 && vars.schoolDriving.get(i).getIntValue() < 70; i--) ;
+            for (i = 11; i >= 0 && vars.schoolDriving.get(i).getValue() < 70; i--) ;
             if (i != 11) i++;
             io.writeInt(1, 0xd8, DRIVING[i]);
         }
@@ -161,7 +159,7 @@ public class Block01 extends LinkArray {
         if (hasChanged(vars.schoolFlying)) {
             int i;
             //noinspection StatementWithEmptyBody
-            for (i = 9; i >= 0 && vars.schoolFlying.get(i).getIntValue() < 70; i--) ;
+            for (i = 9; i >= 0 && vars.schoolFlying.get(i).getValue() < 70; i--) ;
             if (i != 9) i++;
             io.writeInt(1, 0x1e84, FLYING[i]);
             io.writeInt(1, 0x1e88, FLYING[i]);
@@ -170,10 +168,10 @@ public class Block01 extends LinkArray {
         // Boat
         if (hasChanged(vars.schoolBoat)) {
             int i;
-            if (vars.schoolBoat.get(4).getIntValue() < 180000 || vars.schoolBoat.get(3).getIntValue() > 55) i = 5;
-            else if (vars.schoolBoat.get(2).getIntValue() < 120000) i = 4;
-            else if (vars.schoolBoat.get(1).getIntValue() < 40000) i = 3;
-            else if (vars.schoolBoat.get(0).getIntValue() < 12000) i = 2;
+            if (vars.schoolBoat.get(4).getValue() < 180000 || vars.schoolBoat.get(3).getValue() > 55) i = 5;
+            else if (vars.schoolBoat.get(2).getValue() < 120000) i = 4;
+            else if (vars.schoolBoat.get(1).getValue() < 40000) i = 3;
+            else if (vars.schoolBoat.get(0).getValue() < 12000) i = 2;
             else i = 1;
             io.writeInt(1, 0x1eac, i);
         }
@@ -182,14 +180,14 @@ public class Block01 extends LinkArray {
         if (hasChanged(vars.schoolBike)) {
             int i;
             //noinspection StatementWithEmptyBody
-            for (i = 5; i >= 0 && vars.schoolBike.get(i).getIntValue() < 70; i--) ;
+            for (i = 5; i >= 0 && vars.schoolBike.get(i).getValue() < 70; i--) ;
             if (i != 5) i++;
             io.writeInt(1, 0x21cc, i + 1);
         }
 
         // Two timing date
         if (vars.twoTimingDate.hasChanged()) {
-            io.writeInt(1, 1236 * 4 + 4, vars.twoTimingDate.getBooleanValue() ? 0 : -1);
+            io.writeInt(1, 1236 * 4 + 4, vars.twoTimingDate.getValue() ? 0 : -1);
             vars.twoTimingDate.resetChangedState();
         }
 
@@ -197,8 +195,8 @@ public class Block01 extends LinkArray {
         super.save(io);
     }
 
-    private boolean hasChanged(List<VariableIntegerImpl> list) {
-        for (VariableIntegerImpl item : list) {
+    private boolean hasChanged(List<Variable<Integer>> list) {
+        for (Variable<Integer> item : list) {
             if (item.hasChanged()) return true;
         }
         return false;

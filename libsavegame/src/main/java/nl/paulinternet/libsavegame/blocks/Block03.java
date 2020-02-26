@@ -12,7 +12,7 @@ import nl.paulinternet.libsavegame.link.LinkInt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static nl.paulinternet.libsavegame.SavegameModel.vars;
+import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 
 /**
@@ -104,15 +104,15 @@ public class Block03 extends LinkArray {
 
             if (type != 0) {
                 Garage.Car car = vars.garageCars.get(i);
-                car.getId().setIntValue(Integer.parseInt(id.trim()));
-                car.getCarId().setIntValue(vehicleType.getId());
-                car.getRadioId().setIntValue(radioStation);
-                car.getColor1().setIntValue(color1);
-                car.getColor2().setIntValue(color2);
-                car.getPaintJob().setIntValue(paintJob);
-                car.getNitro().setIntValue(nitro);
+                car.getId().setValue(Integer.parseInt(id.trim()));
+                car.getCarId().setValue(vehicleType.getId());
+                car.getRadioId().setValue(radioStation);
+                car.getColor1().setValue(color1);
+                car.getColor2().setValue(color2);
+                car.getPaintJob().setValue(paintJob);
+                car.getNitro().setValue(nitro);
                 for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                    car.getMods().get(j).setIntValue(mods[j]);
+                    car.getMods().get(j).setValue(mods[j]);
                 }
             }
 

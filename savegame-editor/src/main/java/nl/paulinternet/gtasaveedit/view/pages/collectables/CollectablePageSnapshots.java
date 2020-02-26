@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.component.IntLabel;
 import nl.paulinternet.gtasaveedit.view.component.PickupCollectButton;
@@ -12,6 +12,7 @@ import nl.paulinternet.gtasaveedit.view.selectable.SelectionSizeLabel;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Pickup;
 
 import javax.swing.*;
@@ -30,14 +31,14 @@ public class CollectablePageSnapshots extends Page {
         SelectableItemComponent select = new SelectableItemComponent(MapImage.SAN_FIERRO, items, SelectableItemComponent.MULTIPLE);
 
         XBox xbox = new XBox();
-        xbox.add(new IntLabel("? / 50 snapshots taken", SavegameModel.vars.snapshotsCollected));
+        xbox.add(new IntLabel("? / 50 snapshots taken", SavegameVars.vars.snapshotsCollected));
         xbox.addSpace(10, 1);
         xbox.add(new SelectionSizeLabel(items, "snapshots"));
 
         YBox ybox = new YBox();
         ybox.add(new JLabel("<html>Click or drag the mouse to select snapshots.<br />Hold shift or alt to respectively grow or shrink the selection.<br>Only the snapshots that you didn't take are displayed."));
         ybox.addSpace(10);
-        ybox.add(new PickupCollectButton("Take selected snapshots", items, SavegameModel.vars.snapshotsCollected), 0, 0.5f, 0.0f);
+        ybox.add(new PickupCollectButton("Take selected snapshots", items, SavegameVars.vars.snapshotsCollected), 0, 0.5f, 0.0f);
         ybox.addSpace(5);
         ybox.add(select);
         ybox.addSpace(5);
@@ -54,7 +55,7 @@ public class CollectablePageSnapshots extends Page {
         List<SelectablePickup> snapshots = items.getItems();
 
         snapshots.clear();
-        for (Pickup shot : SavegameModel.vars.snapshots) {
+        for (Pickup shot : SavegameVars.vars.snapshots) {
             snapshots.add(new SelectablePickup(shot, MapImage.SAN_FIERRO));
         }
 

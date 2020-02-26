@@ -9,15 +9,33 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class Savegame {
     public static final int FILESIZE = 202752;
     public static final byte[] BLOCK = new byte[]{66, 76, 79, 67, 75};
 
-    private static Link link = new SavegameLink();
-    private static SavegameData data;
+    private static Savegame instance;
 
-    public static void load(File filename) throws ErrorMessageException {
+    private Link link = new SavegameLink();
+    private SavegameData data;
+
+    private ArrayList<CallbackHandler<Void>>
+            onGameLoaded,
+            onUpdateQuickload,
+            onGameClosed;
+
+    private Savegame() {
+    }
+
+    public static Savegame get() {
+        if (instance == null) {
+            instance = new Savegame();
+        }
+        return instance;
+    }
+
+    public void load(File filename) throws ErrorMessageException {
         try {
             // Read data
             SavegameData newData = new SavegameData(filename);
@@ -27,7 +45,9 @@ public class Savegame {
             data = newData;
 
             //report success
-            SavegameModel.gameLoaded.report();
+            if (onGameLoaded != null && !onGameLoaded.isEmpty()) {
+                onGameLoaded.forEach(h -> h.handle(null));
+            }
         } catch (FileFormatException e) {
             try {
                 if (data != null) link.load(data);
@@ -40,21 +60,25 @@ public class Savegame {
         } catch (IOException e) {
             throw new ErrorMessageException("Loading failed", "An error occurred while trying to read the file.");
         } finally {
-            SavegameModel.updateQuickLoad();
+            if (onUpdateQuickload != null && !onUpdateQuickload.isEmpty()) {
+                onUpdateQuickload.forEach(h -> h.handle(null));
+            }
         }
     }
 
-    public static void load(URL url) {
+    public void load(URL url) {
         data = new SavegameData(url);
         try {
             link.load(data);
         } catch (FileFormatException e) {
             throw new RuntimeException(e);
         }
-        SavegameModel.gameLoaded.report();
+        if (onGameLoaded != null && !onGameLoaded.isEmpty()) {
+            onGameLoaded.forEach(h -> h.handle(null));
+        }
     }
 
-    public static void save(File file) throws ErrorMessageException {
+    public void save(File file) throws ErrorMessageException {
         // Write settings
         link.save(data);
 
@@ -66,17 +90,42 @@ public class Savegame {
         } catch (IOException e) {
             throw new ErrorMessageException("Saving failed", "An error occurred while writing the file.");
         } finally {
-            SavegameModel.updateQuickLoad();
+            if (onUpdateQuickload != null && !onUpdateQuickload.isEmpty()) {
+                onUpdateQuickload.forEach(h -> h.handle(null));
+            }
         }
     }
 
-    public static void close() {
+    public void close() {
         // Remove data
         data = null;
-        SavegameModel.gameClosed.report();
+        if (onGameClosed != null && !onGameClosed.isEmpty()) {
+            onGameClosed.forEach(h -> h.handle(null));
+        }
     }
 
-    public static SavegameData getData() {
+    public SavegameData getData() {
         return data;
+    }
+
+    public void addOnGameClosedHandler(CallbackHandler<Void> onGameClosedHandler) {
+        if (onGameClosed == null) {
+            onGameClosed = new ArrayList<>();
+        }
+        onGameClosed.add(onGameClosedHandler);
+    }
+
+    public void addOnUpdateQuickloadHandler(CallbackHandler<Void> onUpdateQuickloadHandler) {
+        if (onUpdateQuickload == null) {
+            onUpdateQuickload = new ArrayList<>();
+        }
+        onUpdateQuickload.add(onUpdateQuickloadHandler);
+    }
+
+    public void addOnGameLoadedHandler(CallbackHandler<Void> onGameLoadedHandler) {
+        if (onGameLoaded == null) {
+            onGameLoaded = new ArrayList<>();
+        }
+        onGameLoaded.add(onGameLoadedHandler);
     }
 }

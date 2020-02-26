@@ -4,9 +4,9 @@ import nl.paulinternet.gtasaveedit.view.connected.ConnectedComboBox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.*;
-import nl.paulinternet.libsavegame.variables.VariableIntegerImpl;
+import nl.paulinternet.libsavegame.variables.Variable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,17 +61,17 @@ public class PageGarages extends Page {
             } else {
                 JLabel nameLabel = new JLabel("<html><body><p style=\"font-weight: 800;\">" + garage.getName() + "</p><p style=\"font-size: 9px;\">" + garage.getDescription() + "</p></body></html>");
 
-                CarBox carBox = new CarBox(SavegameModel.vars.garageCars.get(i).getCarId());
-                RadioBox radioBox = new RadioBox(SavegameModel.vars.garageCars.get(i).getRadioId());
-                PaintJobBox paintJobBox = new PaintJobBox(SavegameModel.vars.garageCars.get(i).getPaintJob());
-                ColorBox colorBox = new ColorBox(SavegameModel.vars.garageCars.get(i).getColor1(),
-                        SavegameModel.vars.garageCars.get(i).getColor2(), i);
-                ConnectedTextField nitroTextField = new ConnectedTextField(SavegameModel.vars.garageCars.get(i).getNitro());
+                CarBox carBox = new CarBox(SavegameVars.vars.garageCars.get(i).getCarId());
+                RadioBox radioBox = new RadioBox(SavegameVars.vars.garageCars.get(i).getRadioId());
+                PaintJobBox paintJobBox = new PaintJobBox(SavegameVars.vars.garageCars.get(i).getPaintJob());
+                ColorBox colorBox = new ColorBox(SavegameVars.vars.garageCars.get(i).getColor1(),
+                        SavegameVars.vars.garageCars.get(i).getColor2(), i);
+                ConnectedTextField nitroTextField = new ConnectedTextField(SavegameVars.vars.garageCars.get(i).getNitro());
 
                 List<ModsBox> modsBoxes = new ArrayList<>();
 
                 for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                    ModsBox modsBox = new ModsBox(SavegameModel.vars.garageCars.get(i).getMods().get(j), i);
+                    ModsBox modsBox = new ModsBox(SavegameVars.vars.garageCars.get(i).getMods().get(j), i);
                     modsBoxes.add(j, modsBox);
                 }
 
@@ -91,7 +91,7 @@ public class PageGarages extends Page {
                 clearModsBtn.setToolTipText("Clicking this button will set all mods to 'None'.");
                 clearModsBtn.addActionListener(e -> {
                     for (int j = 0; j < Garage.Car.MOD_COUNT; j++) {
-                        SavegameModel.vars.garageCars.get(i).getMods().get(j).setIntValue(65535);
+                        SavegameVars.vars.garageCars.get(i).getMods().get(j).setValue(65535);
                     }
                 });
                 table.add(clearModsBtn, 6, i + 2);
@@ -134,7 +134,7 @@ public class PageGarages extends Page {
     }
 
     private static class CarBox extends ConnectedComboBox<String> {
-        CarBox(VariableIntegerImpl var) {
+        CarBox(Variable<Integer> var) {
             super(var);
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             VehicleType.getTypes().forEach(t -> addItem(t.getId(), t.getName() + " (" + t.getType() + ")"));
@@ -142,7 +142,7 @@ public class PageGarages extends Page {
     }
 
     private static class RadioBox extends ConnectedComboBox<String> {
-        RadioBox(VariableIntegerImpl var) {
+        RadioBox(Variable<Integer> var) {
             super(var);
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             RadioStation.getStations().forEach(s -> addItem(s.getId(), s.getName()));
@@ -150,27 +150,26 @@ public class PageGarages extends Page {
     }
 
     private static class ColorBox extends ConnectedComboBox<String> {
-        public ColorBox(VariableIntegerImpl color1, VariableIntegerImpl color2, int garageCount) {
-            super(new VariableIntegerImpl(0, 7));
+        public ColorBox(Variable<Integer> color1, Variable<Integer> color2, int garageCount) {
+            super(new Variable<>());
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             updateView(color1, color2, garageCount);
-            SavegameModel.vars.garageCars.get(garageCount).getCarId().onChange().addHandler(e -> updateView(color1, color2, garageCount));
+            SavegameVars.vars.garageCars.get(garageCount).getCarId().setOnChange(i -> updateView(color1, color2, garageCount));
         }
 
-        private void updateView(VariableIntegerImpl color1, VariableIntegerImpl color2, int garageCount) {
+        private void updateView(Variable<Integer> color1, Variable<Integer> color2, int garageCount) {
             removeAllItems();
-            Garage.Car car = SavegameModel.vars.garageCars.get(garageCount);
-            VehicleType type = VehicleType.getType(car.getCarId().getIntValue());
+            Garage.Car car = SavegameVars.vars.garageCars.get(garageCount);
+            VehicleType type = VehicleType.getType(car.getCarId().getValue());
             if (type != null) {
                 ArrayList<VehicleColor.ColorPair> validColors = type.getValidColors();
 
                 log.debug("Vehicle '" + type.getName() + "' has " + validColors.size() + " valid colors");
 
-                var.onChange().removeAllHandlers();
-                var.onChange().addHandler(e -> {
-                    VehicleColor.ColorPair selectedColor = validColors.get(var.getIntValue());
-                    color1.setIntValue(selectedColor.getFirstColor());
-                    color2.setIntValue(selectedColor.getSecondColor());
+                var.setOnChange(i -> {
+                    VehicleColor.ColorPair selectedColor = validColors.get(var.getValue());
+                    color1.setValue(selectedColor.getFirstColor());
+                    color2.setValue(selectedColor.getSecondColor());
                 });
 
                 for (int i = 0; i < validColors.size(); i++) {
@@ -183,16 +182,16 @@ public class PageGarages extends Page {
     }
 
     private static class ModsBox extends ConnectedComboBox<String> {
-        ModsBox(VariableIntegerImpl var, int garageCount) {
+        ModsBox(Variable<Integer> var, int garageCount) {
             super(var);
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             updateView(garageCount);
-            SavegameModel.vars.garageCars.get(garageCount).getCarId().onChange().addHandler(e -> updateView(garageCount));
+            SavegameVars.vars.garageCars.get(garageCount).getCarId().setOnChange(i -> updateView(garageCount));
         }
 
         private void updateView(int garageCount) {
             removeAllItems(); // remove current contents
-            Integer carId = SavegameModel.vars.garageCars.get(garageCount).getCarId().getIntValue();
+            Integer carId = SavegameVars.vars.garageCars.get(garageCount).getCarId().getValue();
             List<String> validMods = Arrays.asList(VehicleType.getType(carId).getValidMods());
             VehicleMod.getMods().stream() // stream mods
                     .sorted(Comparator.comparingInt(VehicleMod::getId)) // sort by id
@@ -220,7 +219,7 @@ public class PageGarages extends Page {
     }
 
     private static class PaintJobBox extends ConnectedComboBox<String> {
-        PaintJobBox(VariableIntegerImpl var) {
+        PaintJobBox(Variable<Integer> var) {
             super(var);
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             VehiclePaintJob.getPaintJobs().forEach(pj -> addItem(pj.getId(), pj.getName()));

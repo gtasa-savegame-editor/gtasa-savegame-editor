@@ -1,6 +1,5 @@
 package nl.paulinternet.libsavegame;
 
-import nl.paulinternet.libsavegame.event.Event;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 
 public interface TextFieldInterface {
@@ -14,7 +13,7 @@ public interface TextFieldInterface {
 
     int getMaximumLength();
 
-    Event onChange();
+    void setOnTextChange(CallbackHandler<String> onChange);
 
     boolean isEnabled();
 }

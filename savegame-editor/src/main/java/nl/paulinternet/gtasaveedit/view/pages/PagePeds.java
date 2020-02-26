@@ -1,9 +1,10 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.MethodInvoker;
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.event.EventHandler;
+import nl.paulinternet.gtasaveedit.event.MethodInvoker;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.event.EventHandler;
 import nl.paulinternet.gtasaveedit.view.swing.*;
+import nl.paulinternet.libsavegame.SavegameVars;
 
 import javax.swing.*;
 
@@ -118,9 +119,9 @@ public class PagePeds extends Page {
         for (int type = 0; type < 4; type++) {
             for (int other = 0; other < 32; other++) {
                 if (swap)
-                    checkboxes[type][other].setSelected(SavegameModel.vars.pedAcq[type][other][selected]);
+                    checkboxes[type][other].setSelected(SavegameVars.vars.pedAcq[type][other][selected]);
                 else
-                    checkboxes[type][other].setSelected(SavegameModel.vars.pedAcq[type][selected][other]);
+                    checkboxes[type][other].setSelected(SavegameVars.vars.pedAcq[type][selected][other]);
             }
         }
     }
@@ -136,9 +137,9 @@ public class PagePeds extends Page {
         for (int type = 0; type < 4; type++) {
             for (int other = 0; other < 32; other++) {
                 if (swap)
-                    SavegameModel.vars.pedAcq[type][other][selected] = checkboxes[type][other].isSelected();
+                    SavegameVars.vars.pedAcq[type][other][selected] = checkboxes[type][other].isSelected();
                 else
-                    SavegameModel.vars.pedAcq[type][selected][other] = checkboxes[type][other].isSelected();
+                    SavegameVars.vars.pedAcq[type][selected][other] = checkboxes[type][other].isSelected();
             }
         }
     }

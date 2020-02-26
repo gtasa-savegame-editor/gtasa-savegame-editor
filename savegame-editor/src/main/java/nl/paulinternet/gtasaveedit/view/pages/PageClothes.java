@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothCheckBox;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;

@@ -1,8 +1,5 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.variables.VariableTime;
-import nl.paulinternet.libsavegame.variables.Variables;
 import nl.paulinternet.gtasaveedit.view.component.DisabledCheckbox;
 import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedCheckbox;
@@ -12,6 +9,9 @@ import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.SavegameVars;
+import nl.paulinternet.libsavegame.variables.VariableTime;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 
@@ -19,9 +19,9 @@ public class PageGeneral extends Page {
     public PageGeneral() {
         super("General");
 
-        Variables vars = SavegameModel.vars;
+        Variables vars = SavegameVars.vars;
 
-        ConnectedComboBox versionBox = new ConnectedComboBox(SavegameModel.vars.version);
+        ConnectedComboBox<String> versionBox = new ConnectedComboBox<>(SavegameVars.vars.version);
         versionBox.addItem(0x35da8175, "Version 1.00 Unmodified EXE");
         versionBox.addItem(0x65f3e583, "Version 1.00 Modified EXE");
         versionBox.addItem(0x9a6ebe58, "Version 1.01 Unmodified EXE");
@@ -30,9 +30,9 @@ public class PageGeneral extends Page {
         versionBox.addItem(0xfd148df6, "Version 2.00 Unmodified EXE");
         versionBox.addItem(0x5d31cc22, "Version 2.00 (German)");
 
-        ConnectedRadioButtons buttonsScriptVersion = new ConnectedRadioButtons(SavegameModel.vars.scriptVersion);
-        ConnectedRadioButtons buttonsCurrentIpl = new ConnectedRadioButtons(SavegameModel.vars.currentIplVersion);
-        ConnectedRadioButtons buttonsConvertIpl = new ConnectedRadioButtons(SavegameModel.vars.convertIplVersion);
+        ConnectedRadioButtons buttonsScriptVersion = new ConnectedRadioButtons(SavegameVars.vars.scriptVersion);
+        ConnectedRadioButtons buttonsCurrentIpl = new ConnectedRadioButtons(SavegameVars.vars.currentIplVersion);
+        ConnectedRadioButtons buttonsConvertIpl = new ConnectedRadioButtons(SavegameVars.vars.convertIplVersion);
 
         Table versionTable = new Table();
         versionTable.setSpacing(10, 3);
@@ -54,7 +54,7 @@ public class PageGeneral extends Page {
         XBox titlePanel = new XBox();
         titlePanel.add(new JLabel("Title:"));
         titlePanel.addSpace(10);
-        titlePanel.add(new ConnectedTextField(SavegameModel.vars.title), 1);
+        titlePanel.add(new ConnectedTextField(SavegameVars.vars.title), 1);
 
         Table tableMoney = new Table();
         tableMoney.setSpacing(10, 3);
@@ -81,7 +81,7 @@ public class PageGeneral extends Page {
         tableTime.add(new JLabel("Time:"), 0, 2);
         tableTime.add(new JLabel("Minute length:"), 0, 3);
 
-        ConnectedComboBox dayOfWeek = new ConnectedComboBox(vars.timeDayOfWeek);
+        ConnectedComboBox<String> dayOfWeek = new ConnectedComboBox<>(vars.timeDayOfWeek);
         dayOfWeek.addItem(2, "Monday");
         dayOfWeek.addItem(3, "Tuesday");
         dayOfWeek.addItem(4, "Wednesday");

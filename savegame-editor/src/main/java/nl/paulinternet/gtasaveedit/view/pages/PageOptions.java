@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
+import nl.paulinternet.gtasaveedit.FileSystem;
+import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.SettingVariables;
 import nl.paulinternet.gtasaveedit.view.Images;
@@ -12,8 +14,6 @@ import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
-import nl.paulinternet.libsavegame.Settings;
-import nl.paulinternet.libsavegame.io.FileSystem;
 
 import javax.swing.*;
 import java.awt.*;
@@ -87,15 +87,19 @@ public class PageOptions extends Page {
      * @param settings the settings.
      */
     private void initEvents(SettingVariables settings) {
-        settings.savegameDirectoryType.onChange().addHandler(this, "checkSavegameDir");
-        settings.customSavegameDirectory.onChange().addHandler(this, "checkSavegameDir");
-        settings.customSavegameDirectory.onChange().addHandler(this, "customSavegameDirectoryChanged");
-        settings.sanAndreasDirectoryType.onChange().addHandler(this, "checkSaDir");
-        settings.customSanAndreasDirectory.onChange().addHandler(this, "checkSaDir");
-        settings.customSanAndreasDirectory.onChange().addHandler(this, "customSanAndreasDirectoryChanged");
-        settings.windowWidth.onChange().addHandler(this, "windowSizeChanged");
-        settings.windowHeight.onChange().addHandler(this, "windowSizeChanged");
-        settings.changesMade.onChange().addHandler(this, "changesMadeChanged");
+        settings.savegameDirectoryType.setOnChange(i -> checkSavegameDir());
+        settings.sanAndreasDirectoryType.setOnChange(i -> checkSaDir());
+        settings.windowWidth.setOnChange(i -> windowSizeChanged());
+        settings.windowHeight.setOnChange(i -> windowSizeChanged());
+        settings.changesMade.setOnChange(b -> changesMadeChanged());
+        settings.customSavegameDirectory.setOnChange(i -> {
+            checkSavegameDir();
+            customSavegameDirectoryChanged();
+        });
+        settings.customSanAndreasDirectory.setOnChange(s -> {
+            checkSaDir();
+            customSanAndreasDirectoryChanged();
+        });
     }
 
     /**
@@ -261,10 +265,10 @@ public class PageOptions extends Page {
     @SuppressWarnings("unused") // Used as onClick
     public void currentWindowSize() {
         boolean maximized = (MainWindow.getInstance().getExtendedState() & JFrame.MAXIMIZED_BOTH) != 0;
-        Model.editSettings.windowMaximized.setIntValue(maximized ? Settings.YES : Settings.NO);
+        Model.editSettings.windowMaximized.setValue(maximized ? Settings.YES : Settings.NO);
         if (!maximized) {
-            Model.editSettings.windowWidth.setIntValue(MainWindow.getInstance().getWidth());
-            Model.editSettings.windowHeight.setIntValue(MainWindow.getInstance().getHeight());
+            Model.editSettings.windowWidth.setValue(MainWindow.getInstance().getWidth());
+            Model.editSettings.windowHeight.setValue(MainWindow.getInstance().getHeight());
         }
     }
 
@@ -272,7 +276,7 @@ public class PageOptions extends Page {
     public void checkSavegameDir() {
         File dir = null;
 
-        switch (Model.editSettings.savegameDirectoryType.getIntValue()) {
+        switch (Model.editSettings.savegameDirectoryType.getValue()) {
             case Settings.DIR_DEFAULT:
                 dir = FileSystem.getDefaultSavegameDirectory();
                 break;
@@ -293,7 +297,7 @@ public class PageOptions extends Page {
     public void checkSaDir() {
         File dir = null;
 
-        switch (Model.editSettings.sanAndreasDirectoryType.getIntValue()) {
+        switch (Model.editSettings.sanAndreasDirectoryType.getValue()) {
             case Settings.DIR_DEFAULT:
                 dir = FileSystem.detectedSaDir;
                 break;
@@ -313,7 +317,7 @@ public class PageOptions extends Page {
 
     @SuppressWarnings("WeakerAccess") // used in event
     public void changesMadeChanged() {
-        boolean changes = Model.editSettings.changesMade.getBooleanValue();
+        boolean changes = Model.editSettings.changesMade.getValue();
         buttonCancel.setEnabled(changes);
         buttonApply.setEnabled(changes);
 
@@ -328,17 +332,17 @@ public class PageOptions extends Page {
 
     @SuppressWarnings("unused") // used in event
     public void customSavegameDirectoryChanged() {
-        Model.editSettings.savegameDirectoryType.setIntValue(Settings.DIR_CUSTOM);
+        Model.editSettings.savegameDirectoryType.setValue(Settings.DIR_CUSTOM);
     }
 
     @SuppressWarnings("unused") // used in event
     public void customSanAndreasDirectoryChanged() {
-        Model.editSettings.sanAndreasDirectoryType.setIntValue(Settings.DIR_CUSTOM);
+        Model.editSettings.sanAndreasDirectoryType.setValue(Settings.DIR_CUSTOM);
     }
 
     @SuppressWarnings("unused") // used in event
     public void windowSizeChanged() {
-        Model.editSettings.windowMaximized.setIntValue(Settings.NO);
+        Model.editSettings.windowMaximized.setValue(Settings.NO);
     }
 
     @SuppressWarnings("unused") // used in event

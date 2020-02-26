@@ -1,17 +1,17 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
-import nl.paulinternet.libsavegame.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectableItems;
 import nl.paulinternet.gtasaveedit.view.selectable.SelectablePickup;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import java.util.List;
 
 public class PickupCollectButton extends PButton {
     private SelectableItems<SelectablePickup> pickups;
-    private VariableIntegerImpl total;
+    private Variable<Integer> total;
 
-    public PickupCollectButton(String title, SelectableItems<SelectablePickup> pickups, VariableIntegerImpl total) {
+    public PickupCollectButton(String title, SelectableItems<SelectablePickup> pickups, Variable<Integer> total) {
         super(title);
         this.pickups = pickups;
         this.total = total;
@@ -39,7 +39,7 @@ public class PickupCollectButton extends PButton {
             }
         }
 
-        total.setIntValue(total.getIntValue() + add);
+        total.setValue(total.getValue() + add);
 
         pickups.onDataChange().report();
         pickups.onSelectionChange().report();

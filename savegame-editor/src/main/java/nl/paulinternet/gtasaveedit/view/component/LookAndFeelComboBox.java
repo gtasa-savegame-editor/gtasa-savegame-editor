@@ -1,7 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
 import nl.paulinternet.gtasaveedit.model.Model;
-import nl.paulinternet.libsavegame.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
 
 import javax.swing.*;
@@ -30,7 +29,7 @@ public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
 
         // Register Events
         onChange().addHandler(this, "copyToModel");
-        Model.editSettings.lookAndFeelClassName.onChange().addHandler(this, "copyFromModel");
+        Model.editSettings.lookAndFeelClassName.setOnTextChange(s -> copyFromModel());
     }
 
     /**

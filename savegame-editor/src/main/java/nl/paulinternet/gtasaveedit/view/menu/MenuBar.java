@@ -4,8 +4,8 @@ import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.Savegame;
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.io.FileSystem;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.FileSystem;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
@@ -42,7 +42,7 @@ public class MenuBar extends JMenuBar {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Savegame.close();
+            Savegame.get().close();
         }
     }
 
@@ -55,7 +55,7 @@ public class MenuBar extends JMenuBar {
 
         @Override
         public void actionPerformed(ActionEvent ev) {
-            Savegame.load(MenuBar.class.getResource("/savegame.b"));
+            Savegame.get().load(MenuBar.class.getResource("/savegame.b"));
         }
     }
 
@@ -92,7 +92,7 @@ public class MenuBar extends JMenuBar {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            SavegameModel.updateQuickLoad();
+            SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();
         }
     }
 

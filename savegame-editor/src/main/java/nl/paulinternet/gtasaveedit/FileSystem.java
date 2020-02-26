@@ -1,6 +1,5 @@
-package nl.paulinternet.libsavegame.io;
+package nl.paulinternet.gtasaveedit;
 
-import nl.paulinternet.libsavegame.Settings;
 import nl.paulinternet.libsavegame.Util;
 import nl.paulinternet.libsavegame.steam.SteamConfigNode;
 import nl.paulinternet.libsavegame.steam.SteamConfigReader;

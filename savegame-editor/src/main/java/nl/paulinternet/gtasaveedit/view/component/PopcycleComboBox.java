@@ -5,15 +5,16 @@ import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class PopcycleComboBox extends PComboBox {
-    private SelectableItemVariable var;
+public class PopcycleComboBox extends PComboBox<String> {
+    private SelectableItemVariable<Integer> var;
     private List<Integer> values;
     private boolean disabled;
 
-    public PopcycleComboBox(SelectableItemVariable var) {
+    public PopcycleComboBox(SelectableItemVariable<Integer> var) {
         this.var = var;
-        values = new ArrayList<Integer>();
+        values = new ArrayList<>();
 
         // Add items
         addItem(0x10, "Airport");
@@ -38,7 +39,8 @@ public class PopcycleComboBox extends PComboBox {
         addItem(0x0e, "Shopping posh");
 
         // Observe
-        var.onChange().addHandler(this, "updateView");
+        var.setOnChange(b -> updateView());
+
         onChange().addHandler(this, "updateModel");
         updateView();
     }
@@ -49,11 +51,11 @@ public class PopcycleComboBox extends PComboBox {
 
         setEnabled(var.isEnabled());
 
-        Integer value = var.getIntValue();
+        Integer value = var.getValue();
         if (value != null) {
             int i;
             for (i = 0; i < values.size(); i++) {
-                if (value == values.get(i)) {
+                if (Objects.equals(value, values.get(i))) {
                     setSelectedIndex(i);
                     break;
                 }
@@ -70,7 +72,7 @@ public class PopcycleComboBox extends PComboBox {
     public void updateModel() {
         if (disabled) return;
         disabled = true;
-        var.setIntValue(values.get(getSelectedIndex()));
+        var.setSelectedValue(values.get(getSelectedIndex()));
         disabled = false;
     }
 

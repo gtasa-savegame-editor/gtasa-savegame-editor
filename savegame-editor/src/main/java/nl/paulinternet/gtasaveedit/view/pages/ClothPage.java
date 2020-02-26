@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.variables.Variable;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothButton;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothCheckBox;
@@ -93,7 +94,7 @@ public class ClothPage extends Page {
         y++;
 
         // Vars
-        Variable<Cloth> var = tattoo ? SavegameModel.vars.tattoos.get(type) : SavegameModel.vars.clothes.get(type);
+        Variable<Cloth> var = tattoo ? SavegameVars.vars.tattoos.get(type) : SavegameVars.vars.clothes.get(type);
         ButtonGroup buttonGroup = tattoo ? PageClothes.tattooButtonGroup[type] : PageClothes.clothButtonGroup[type];
         Cloth[] clothes = tattoo ? Clothes.tattoos[type] : Clothes.clothes[type][shop];
 

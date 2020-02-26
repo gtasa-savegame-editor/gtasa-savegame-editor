@@ -4,7 +4,7 @@ import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
-import nl.paulinternet.libsavegame.Settings;
+import nl.paulinternet.gtasaveedit.Settings;
 
 import javax.sound.sampled.*;
 import javax.swing.*;

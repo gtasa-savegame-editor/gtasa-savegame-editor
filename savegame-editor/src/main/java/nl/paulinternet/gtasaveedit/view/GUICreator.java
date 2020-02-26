@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.view;
 
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
-import nl.paulinternet.libsavegame.Settings;
+import nl.paulinternet.gtasaveedit.Settings;
 
 import javax.swing.*;
 import java.awt.*;

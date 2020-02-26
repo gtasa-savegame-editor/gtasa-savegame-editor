@@ -4,7 +4,7 @@ import nl.paulinternet.libsavegame.link.Link;
 import nl.paulinternet.libsavegame.link.LinkArray;
 import nl.paulinternet.libsavegame.link.LinkBoolean;
 
-import static nl.paulinternet.libsavegame.SavegameModel.vars;
+import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class Block23 extends LinkArray {
     public Block23() {

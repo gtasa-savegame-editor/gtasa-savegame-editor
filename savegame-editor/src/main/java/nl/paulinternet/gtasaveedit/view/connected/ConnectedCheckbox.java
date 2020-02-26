@@ -1,20 +1,20 @@
 package nl.paulinternet.gtasaveedit.view.connected;
 
-import nl.paulinternet.libsavegame.variables.VariableBoolean;
 import nl.paulinternet.gtasaveedit.view.swing.PCheckBox;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 public class ConnectedCheckbox extends PCheckBox {
     private boolean disabled;
-    private VariableBoolean var;
+    private Variable<Boolean> var;
     private String text;
 
-    public ConnectedCheckbox(VariableBoolean var, String text) {
+    public ConnectedCheckbox(Variable<Boolean> var, String text) {
         this.text = text;
         this.var = var;
 
         // Observe
         onChange().addHandler(this, "updateToModel");
-        var.onChange().addHandler(this, "updateFromModel");
+        var.setOnChange(b -> updateFromModel());
         updateFromModel();
     }
 
@@ -22,7 +22,7 @@ public class ConnectedCheckbox extends PCheckBox {
         if (!disabled) {
             disabled = true;
 
-            Boolean value = var.getBooleanValue();
+            Boolean value = var.getValue();
             boolean varEnabled = var.isEnabled();
             boolean inbetweenValue;
 
@@ -30,7 +30,7 @@ public class ConnectedCheckbox extends PCheckBox {
                 setSelected(false);
                 inbetweenValue = varEnabled;
             } else {
-                setSelected(var.getBooleanValue());
+                setSelected(var.getValue());
                 inbetweenValue = false;
             }
 
@@ -44,7 +44,7 @@ public class ConnectedCheckbox extends PCheckBox {
     public void updateToModel() {
         if (!disabled) {
             disabled = true;
-            var.setBooleanValue(isSelected());
+            var.setValue(isSelected());
             setText(text);
             disabled = false;
         }

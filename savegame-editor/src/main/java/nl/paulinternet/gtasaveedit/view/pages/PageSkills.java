@@ -1,13 +1,13 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.TextFieldInterface;
-import nl.paulinternet.libsavegame.variables.Variables;
 import nl.paulinternet.gtasaveedit.view.component.FullHealthButton;
 import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
+import nl.paulinternet.libsavegame.SavegameVars;
+import nl.paulinternet.libsavegame.TextFieldInterface;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 
@@ -24,7 +24,7 @@ public class PageSkills extends Page {
         table.add(new ConnectedTextField(var), 1, row);
         table.add(new ValueButton(var, String.valueOf(min)), 2, row);
 
-        if (var == SavegameModel.vars.health) {
+        if (var == SavegameVars.vars.health) {
             table.add(new FullHealthButton(), 3, row);
         } else {
             table.add(new ValueButton(var, String.valueOf(max)), 3, row);
@@ -51,7 +51,7 @@ public class PageSkills extends Page {
         table.setSpacing(5, 3);
 
         // Get variables
-        Variables vars = SavegameModel.vars;
+        Variables vars = SavegameVars.vars;
 
         // Add rows
         addRow("Health", vars.health, 0, 176, true);

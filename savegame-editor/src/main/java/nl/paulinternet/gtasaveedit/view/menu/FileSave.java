@@ -1,9 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.Settings;
-import nl.paulinternet.libsavegame.io.FileSystem;
-import nl.paulinternet.gtasaveedit.view.Main;
+import nl.paulinternet.gtasaveedit.Settings;
+import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.Savegame;
 import nl.paulinternet.libsavegame.exceptions.ErrorMessageException;
@@ -47,9 +45,9 @@ class FileSave extends JMenuItem implements ActionListener {
                             JOptionPane.WARNING_MESSAGE
                     );
 
-                    if (result == JOptionPane.YES_OPTION) Savegame.save(file);
+                    if (result == JOptionPane.YES_OPTION) Savegame.get().save(file);
                 } else {
-                    Savegame.save(file);
+                    Savegame.get().save(file);
                 }
             } catch (ErrorMessageException e) {
                 JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);

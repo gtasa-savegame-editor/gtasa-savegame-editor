@@ -1,9 +1,9 @@
 package nl.paulinternet.gtasaveedit.view.connected;
 
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.EventHandler;
-import nl.paulinternet.libsavegame.variables.VariableInteger;
+import nl.paulinternet.gtasaveedit.event.Event;
+import nl.paulinternet.gtasaveedit.event.EventHandler;
 import nl.paulinternet.libsavegame.Util;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +15,7 @@ public class ConnectedRadioButtons {
     private class Handler implements EventHandler {
         @Override
         public void handleEvent(Event e) {
-            Integer value = var.getIntValue();
+            Integer value = var.getValue();
             boolean enabled = var.isEnabled();
 
             group.clearSelection();
@@ -38,7 +38,7 @@ public class ConnectedRadioButtons {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (!disabled && isSelected()) {
-                var.setIntValue(value);
+                var.setValue(value);
             }
         }
 
@@ -50,15 +50,15 @@ public class ConnectedRadioButtons {
         }
     }
 
-    private VariableInteger var;
+    private Variable<Integer> var;
     private List<Button> buttons;
     private ButtonGroup group;
 
-    public ConnectedRadioButtons(VariableInteger var) {
+    public ConnectedRadioButtons(Variable<Integer> var) {
         this.var = var;
-        buttons = new ArrayList<Button>();
+        buttons = new ArrayList<>();
         group = new ButtonGroup();
-        var.onChange().addHandler(new Handler());
+        var.setOnChange(i -> new Handler().handleEvent(null));
     }
 
     public JRadioButton create(int value) {
@@ -69,7 +69,7 @@ public class ConnectedRadioButtons {
         Button button = new Button(value, text);
         buttons.add(button);
         group.add(button);
-        button.updateView(var.getIntValue(), var.isEnabled());
+        button.updateView(var.getValue(), var.isEnabled());
         return button;
     }
 }

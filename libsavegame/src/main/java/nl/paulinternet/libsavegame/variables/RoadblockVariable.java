@@ -1,27 +1,17 @@
 package nl.paulinternet.libsavegame.variables;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.ReportableEvent;
 import nl.paulinternet.libsavegame.Savegame;
+import nl.paulinternet.libsavegame.SavegameVars;
 
-public class RoadblockVariable implements VariableBoolean {
+public class RoadblockVariable extends Variable<Boolean> {
     public static final int SAN_FIERRO = 0, LAS_VENTURAS = 1;
 
     private int type;
     private boolean value;
-    private ReportableEvent onChange;
 
     public RoadblockVariable(int type) {
         this.type = type;
-        onChange = new ReportableEvent();
-
-        SavegameModel.gameLoaded.addHandler(this, "updateValue");
-    }
-
-    @Override
-    public Boolean getBooleanValue() {
-        return value;
+        Savegame.get().addOnGameLoadedHandler(o -> updateValue());
     }
 
     @Override
@@ -30,26 +20,23 @@ public class RoadblockVariable implements VariableBoolean {
     }
 
     @Override
-    public Event onChange() {
-        return onChange;
-    }
-
-    @Override
-    public void setBooleanValue(boolean value) {
+    public void setValue(Boolean value) {
         if (this.value != value) {
             this.value = value;
 
-            int ipl = SavegameModel.vars.currentIplVersion.getIntValue();
+            int ipl = SavegameVars.vars.currentIplVersion.getValue();
             switch (type) {
                 case SAN_FIERRO:
-                    Savegame.getData().writeBoolean(21, ipl == 1 ? 0x5 : 0x3f, value);
+                    Savegame.get().getData().writeBoolean(21, ipl == 1 ? 0x5 : 0x3f, value);
                     break;
                 case LAS_VENTURAS:
-                    Savegame.getData().writeBoolean(21, ipl == 1 ? 0x6 : 0x40, value);
+                    Savegame.get().getData().writeBoolean(21, ipl == 1 ? 0x6 : 0x40, value);
                     break;
             }
 
-            onChange.report();
+            if (onChange != null) {
+                onChange.handle(value);
+            }
         }
     }
 
@@ -58,24 +45,25 @@ public class RoadblockVariable implements VariableBoolean {
      * @deprecated
      */
     public void updateValue() {
-
-        if (Savegame.getData() != null) {
-            int ipl = SavegameModel.vars.currentIplVersion.getIntValue();
+        if (Savegame.get().getData() != null) {
+            int ipl = SavegameVars.vars.currentIplVersion.getValue();
 
             boolean newValue = false;
 
             switch (type) {
                 case SAN_FIERRO:
-                    newValue = Savegame.getData().readBoolean(21, ipl == 1 ? 0x5 : 0x3f);
+                    newValue = Savegame.get().getData().readBoolean(21, ipl == 1 ? 0x5 : 0x3f);
                     break;
                 case LAS_VENTURAS:
-                    newValue = Savegame.getData().readBoolean(21, ipl == 1 ? 0x6 : 0x40);
+                    newValue = Savegame.get().getData().readBoolean(21, ipl == 1 ? 0x6 : 0x40);
                     break;
             }
 
             if (newValue != value) {
                 value = newValue;
-                onChange.report();
+                if (onChange != null) {
+                    onChange.handle(value);
+                }
             }
         }
     }

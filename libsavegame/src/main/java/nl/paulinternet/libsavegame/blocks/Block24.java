@@ -1,7 +1,7 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Jump;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
@@ -28,12 +28,12 @@ public class Block24 implements Link {
             jumps[i].found = io.readBoolean(24, start + 0x41);
         }
 
-        SavegameModel.vars.jumps = jumps;
+        SavegameVars.vars.jumps = jumps;
     }
 
     @Override
     public void save(SavegameData io) {
-        Jump[] jumps = SavegameModel.vars.jumps;
+        Jump[] jumps = SavegameVars.vars.jumps;
 
         for (int i = 0; i < jumps.length; i++) {
             int start = 0x4 + 0x44 * i;

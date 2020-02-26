@@ -1,7 +1,7 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
 import nl.paulinternet.libsavegame.link.LinkArray;
@@ -11,7 +11,7 @@ import nl.paulinternet.libsavegame.variables.Variables;
 
 public class Block00 extends LinkArray {
     public Block00() {
-        Variables vars = SavegameModel.vars;
+        Variables vars = SavegameVars.vars;
 
         setLinks(new Link[]{
                 new LinkInt(vars.version, 0, 0),
@@ -39,25 +39,25 @@ public class Block00 extends LinkArray {
         for (i = 0; i < data.length && data[i] != 0; i++) ;
         String text = new String(data, 0, i);
         text = text.replace(']', '*').replace('(', '[').replace(')', ']');
-        SavegameModel.vars.title.setText(text);
+        SavegameVars.vars.title.setText(text);
 
-        SavegameModel.vars.title.resetChangedState();
+        SavegameVars.vars.title.resetChangedState();
     }
 
     @Override
     public void save(SavegameData io) {
         // Save title
-        if (SavegameModel.vars.title.hasChanged()) {
-            String text = SavegameModel.vars.title.getText();
+        if (SavegameVars.vars.title.hasChanged()) {
+            String text = SavegameVars.vars.title.getText();
             text = text.replace(']', ')').replace('[', '(').replace('*', ']');
             byte[] data = (text + "\0").getBytes();
             io.getBlock(0).overwrite(data, 4);
 
-            SavegameModel.vars.title.resetChangedState();
+            SavegameVars.vars.title.resetChangedState();
         }
 
         // Save times cheated
-        io.writeBoolean(0, 0x90, SavegameModel.vars.timesCheated.getIntValue() != 0);
+        io.writeBoolean(0, 0x90, SavegameVars.vars.timesCheated.getValue() != 0);
 
         // Save other vars
         super.save(io);

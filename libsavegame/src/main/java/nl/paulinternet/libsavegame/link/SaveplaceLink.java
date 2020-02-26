@@ -1,6 +1,6 @@
 package nl.paulinternet.libsavegame.link;
 
-import static nl.paulinternet.libsavegame.SavegameModel.vars;
+import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 import nl.paulinternet.libsavegame.ByteSequence;
 import nl.paulinternet.libsavegame.SavegameData;
@@ -16,14 +16,14 @@ public class SaveplaceLink implements Link
 		int location = inside ? io.readShort(25, 0x4) : -1;
 
 		Saveplace saveplace = Saveplace.detect(inside, house, location);
-		vars.savePlace.setIntValue(saveplace == null ? -1 : saveplace.getId());
+		vars.savePlace.setValue(saveplace == null ? -1 : saveplace.getId());
 		vars.savePlace.resetChangedState();
 	}
 
 	@Override
 	public void save (SavegameData io) {
 		if (vars.savePlace.hasChanged()) {
-			Saveplace place = Saveplace.getPlace(vars.savePlace.getIntValue());
+			Saveplace place = Saveplace.getPlace(vars.savePlace.getValue());
 			
 			// Get values
 			Savehouse house = place.getHouse();

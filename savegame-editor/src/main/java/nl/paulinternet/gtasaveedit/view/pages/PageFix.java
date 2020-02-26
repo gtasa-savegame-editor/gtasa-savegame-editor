@@ -1,10 +1,11 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
 import nl.paulinternet.gtasaveedit.model.GlitchFix;
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.SavegameVars;
 
 import javax.swing.*;
 
@@ -88,7 +89,7 @@ public class PageFix extends Page {
     }
 
     public void fixBasketballGlitch() {
-        SavegameModel.vars.basketballGlitch.setBooleanValue(false);
+        SavegameVars.vars.basketballGlitch.setValue(false);
         buttonBasketball.setEnabled(false);
         labelBasketball.setText("No");
     }
@@ -99,7 +100,7 @@ public class PageFix extends Page {
     }
 
     public void fixPoolPlayerGlitch() {
-        SavegameModel.vars.poolPlayerGlitch.setBooleanValue(false);
+        SavegameVars.vars.poolPlayerGlitch.setValue(false);
         buttonPoolPlayer.setEnabled(false);
         labelPoolPlayer.setText("No");
     }
@@ -123,17 +124,17 @@ public class PageFix extends Page {
     }
 
     public void onGameLoaded() {
-        buttonBasketball.setEnabled(SavegameModel.vars.basketballGlitch.getBooleanValue());
+        buttonBasketball.setEnabled(SavegameVars.vars.basketballGlitch.getValue());
         buttonSaveDisk.setEnabled(true);
-        buttonPoolPlayer.setEnabled(SavegameModel.vars.poolPlayerGlitch.getBooleanValue());
+        buttonPoolPlayer.setEnabled(SavegameVars.vars.poolPlayerGlitch.getValue());
         buttonTraffic.setEnabled(true);
         buttonGym.setEnabled(true);
-        buttonZone.setEnabled(SavegameModel.vars.zoneGlitch.getBooleanValue());
+        buttonZone.setEnabled(SavegameVars.vars.zoneGlitch.getValue());
 
-        labelBasketball.setText(SavegameModel.vars.basketballGlitch.getBooleanValue() ? "Yes" : "No");
-        labelPoolPlayer.setText(SavegameModel.vars.poolPlayerGlitch.getBooleanValue() ? "Yes" : "No");
+        labelBasketball.setText(SavegameVars.vars.basketballGlitch.getValue() ? "Yes" : "No");
+        labelPoolPlayer.setText(SavegameVars.vars.poolPlayerGlitch.getValue() ? "Yes" : "No");
         labelTraffic.setText("Unknown");
         labelGym.setText("Unknown");
-        labelZone.setText(SavegameModel.vars.zoneGlitch.getBooleanValue() ? "Yes" : "No");
+        labelZone.setText(SavegameVars.vars.zoneGlitch.getValue() ? "Yes" : "No");
     }
 }

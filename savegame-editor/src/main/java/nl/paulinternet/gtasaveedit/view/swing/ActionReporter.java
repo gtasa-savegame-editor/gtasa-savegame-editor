@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.swing;
 
-import nl.paulinternet.libsavegame.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

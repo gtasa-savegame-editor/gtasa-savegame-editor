@@ -1,10 +1,11 @@
 package nl.paulinternet.gtasaveedit.view.window;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.Settings;
+import nl.paulinternet.gtasaveedit.Settings;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.component.TabbedPane;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
+import nl.paulinternet.libsavegame.SavegameVars;
 
 import javax.swing.*;
 
@@ -49,7 +50,7 @@ public class MainWindow extends JFrame {
         // Observe
         SavegameModel.gameClosed.addHandler(this, "onGameClose");
         SavegameModel.gameLoaded.addHandler(this, "onTitleChange");
-        SavegameModel.vars.title.onChange().addHandler(this, "onTitleChange");
+        SavegameVars.vars.title.setOnTextChange(s -> onTitleChange());
 
         invalidate();
         validate();
@@ -64,9 +65,8 @@ public class MainWindow extends JFrame {
         setTitle("GTA SA Savegame Editor");
     }
 
-    @SuppressWarnings("unused") //used as handler
     public void onTitleChange() {
-        setTitle(SavegameModel.vars.title.getText() + " - GTA SA Savegame Editor");
+        setTitle(SavegameVars.vars.title.getText() + " - GTA SA Savegame Editor");
     }
 
 }

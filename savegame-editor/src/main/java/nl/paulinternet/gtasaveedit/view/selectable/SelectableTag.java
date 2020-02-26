@@ -1,11 +1,12 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
+import nl.paulinternet.libsavegame.SavegameVars;
 
 import java.awt.*;
 
-import static nl.paulinternet.libsavegame.SavegameModel.vars;
+import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class SelectableTag implements SelectableItemValue {
     private Rectangle bounds;
@@ -44,11 +45,11 @@ public class SelectableTag implements SelectableItemValue {
 
     @Override
     public int getValue(int var) {
-        return SavegameModel.vars.tags[id];
+        return SavegameVars.vars.tags[id];
     }
 
     @Override
     public void setValue(int var, int value) {
-        SavegameModel.vars.tags[id] = value;
+        SavegameVars.vars.tags[id] = value;
     }
 }

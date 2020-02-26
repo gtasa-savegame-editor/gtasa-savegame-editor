@@ -1,51 +1,19 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
+import nl.paulinternet.gtasaveedit.event.Event;
+import nl.paulinternet.gtasaveedit.event.EventHandler;
+import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.TextFieldInterface;
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.EventHandler;
-import nl.paulinternet.libsavegame.event.ReportableEvent;
-import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
-import nl.paulinternet.libsavegame.variables.VariableBoolean;
-import nl.paulinternet.libsavegame.variables.VariableInteger;
 import nl.paulinternet.libsavegame.Util;
+import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
+import nl.paulinternet.libsavegame.variables.Variable;
 
-public class SelectableItemVariable implements TextFieldInterface, VariableBoolean, VariableInteger {
-    private class Updater implements EventHandler {
-        @Override
-        public void handleEvent(Event e) {
-            // Search
-            boolean valueFound = false;
-            boolean foundDifferent = false;
-            int lastValue = 0;
+import java.util.Objects;
 
-            for (SelectableItemValue item : items) {
-                int value = item.getValue(parameter);
-                if (!valueFound) {
-                    valueFound = true;
-                    lastValue = value;
-                } else {
-                    if (lastValue != value) {
-                        foundDifferent = true;
-                        break;
-                    }
-                }
-            }
+public class SelectableItemVariable<T> extends Variable<T> implements TextFieldInterface {
 
-            // Get new values
-            Integer newValue = valueFound && !foundDifferent ? lastValue : null;
-            boolean newDisabled = !valueFound;
-
-            // Change variables and report change event
-            if ((value == null ? newValue != null : !value.equals(newValue)) || newDisabled != disabled) {
-                value = newValue;
-                disabled = newDisabled;
-                onChange.report();
-            }
-        }
-    }
-
-    private ReportableEvent onChange;
-    private ReportableEvent onDataChange;
+    private CallbackHandler<Integer> onChange;
+    private CallbackHandler<Integer> onDataChange;
     private Iterable<? extends SelectableItemValue> items;
     private int parameter;
     private boolean disabled;
@@ -55,8 +23,6 @@ public class SelectableItemVariable implements TextFieldInterface, VariableBoole
     public SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter, int min, int max) {
         this.items = items.getSelectedItems();
         this.parameter = parameter;
-        onChange = new ReportableEvent();
-        onDataChange = items.onDataChange();
         this.min = min;
         this.max = max;
 
@@ -70,11 +36,7 @@ public class SelectableItemVariable implements TextFieldInterface, VariableBoole
         this(items, parameter, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    public Integer getIntValue() {
-        return value;
-    }
-
-    public void setIntValue(Integer value) {
+    public void setSelectedValue(Integer value) {
         if (value == null) throw new NullPointerException();
         if (value < min || value > max) throw new InvalidValueException();
 
@@ -83,8 +45,12 @@ public class SelectableItemVariable implements TextFieldInterface, VariableBoole
             for (SelectableItemValue item : items) {
                 item.setValue(parameter, value);
             }
-            onChange.report();
-            onDataChange.report();
+            if (onChange != null) {
+                onChange.handle(value);
+            }
+            if (onDataChange != null) {
+                onDataChange.handle(value);
+            }
         }
     }
 
@@ -92,7 +58,7 @@ public class SelectableItemVariable implements TextFieldInterface, VariableBoole
     public void setText(String text) throws InvalidValueException {
         if (!text.isEmpty()) {
             try {
-                setIntValue(Integer.parseInt(text));
+                setSelectedValue(Integer.parseInt(text));
             } catch (NumberFormatException e) {
                 throw new InvalidValueException();
             }
@@ -120,22 +86,53 @@ public class SelectableItemVariable implements TextFieldInterface, VariableBoole
     }
 
     @Override
-    public Event onChange() {
-        return onChange;
-    }
-
-    @Override
-    public Boolean getBooleanValue() {
-        return value == null ? null : value != 0;
-    }
-
-    @Override
-    public void setBooleanValue(boolean value) {
-        setIntValue(value ? 1 : 0);
-    }
-
-    @Override
     public boolean isEnabled() {
         return !disabled;
     }
+
+    @Override
+    public void setOnTextChange(CallbackHandler<String> onChange) {
+        this.onChange = i -> onChange.handle(String.valueOf(i));
+    }
+
+    public void setOnDataChange(CallbackHandler<Integer> onDataChange) {
+        this.onDataChange = onDataChange;
+    }
+
+    private class Updater implements EventHandler {
+        @Override
+        public void handleEvent(Event e) {
+            // Search
+            boolean valueFound = false;
+            boolean foundDifferent = false;
+            int lastValue = 0;
+
+            for (SelectableItemValue item : items) {
+                int value = item.getValue(parameter);
+                if (!valueFound) {
+                    valueFound = true;
+                    lastValue = value;
+                } else {
+                    if (lastValue != value) {
+                        foundDifferent = true;
+                        break;
+                    }
+                }
+            }
+
+            // Get new values
+            Integer newValue = valueFound && !foundDifferent ? lastValue : null;
+            boolean newDisabled = !valueFound;
+
+            // Change variables and report change event
+            if ((!Objects.equals(value, newValue)) || newDisabled != disabled) {
+                value = newValue;
+                disabled = newDisabled;
+                if (onChange != null) {
+                    onChange.handle(value);
+                }
+            }
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 package nl.paulinternet.libsavegame.data;
 
-import nl.paulinternet.libsavegame.variables.VariableIntegerImpl;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -129,62 +129,62 @@ public class Garage {
     }
 
     public static class Car {
-        private final VariableIntegerImpl id;
-        private final VariableIntegerImpl radioId;
-        private final VariableIntegerImpl paintJob;
-        private final VariableIntegerImpl color1;
-        private final VariableIntegerImpl color2;
-        private final VariableIntegerImpl carId;
-        private final List<VariableIntegerImpl> mods;
-        private final VariableIntegerImpl nitro;
+        private final Variable<Integer> id;
+        private final Variable<Integer> radioId;
+        private final Variable<Integer> paintJob;
+        private final Variable<Integer> color1;
+        private final Variable<Integer> color2;
+        private final Variable<Integer> carId;
+        private final List<Variable<Integer>> mods;
+        private final Variable<Integer> nitro;
 
         public static final int MOD_COUNT = 15;
 
         public Car() {
-            this.id = new VariableIntegerImpl();
-            this.radioId = new VariableIntegerImpl();
-            this.paintJob = new VariableIntegerImpl();
-            this.color1 = new VariableIntegerImpl();
-            this.color2 = new VariableIntegerImpl();
-            this.carId = new VariableIntegerImpl();
-            this.nitro = new VariableIntegerImpl();
+            this.id = new Variable<>();
+            this.radioId = new Variable<>();
+            this.paintJob = new Variable<>();
+            this.color1 = new Variable<>();
+            this.color2 = new Variable<>();
+            this.carId = new Variable<>();
+            this.nitro = new Variable<>();
 
-            List<VariableIntegerImpl> tMods = new ArrayList<>(MOD_COUNT);
+            List<Variable<Integer>> tMods = new ArrayList<>(MOD_COUNT);
             for (int i = 0; i < MOD_COUNT; i++) {
-                tMods.add(i, new VariableIntegerImpl());
+                tMods.add(i, new Variable<>());
             }
             mods = Collections.unmodifiableList(tMods);
         }
 
-        public VariableIntegerImpl getId() {
+        public Variable<Integer> getId() {
             return id;
         }
 
-        public VariableIntegerImpl getRadioId() {
+        public Variable<Integer> getRadioId() {
             return radioId;
         }
 
-        public VariableIntegerImpl getPaintJob() {
+        public Variable<Integer> getPaintJob() {
             return paintJob;
         }
 
-        public VariableIntegerImpl getColor1() {
+        public Variable<Integer> getColor1() {
             return color1;
         }
 
-        public VariableIntegerImpl getColor2() {
+        public Variable<Integer> getColor2() {
             return color2;
         }
 
-        public VariableIntegerImpl getCarId() {
+        public Variable<Integer> getCarId() {
             return carId;
         }
 
-        public List<VariableIntegerImpl> getMods() {
+        public List<Variable<Integer>> getMods() {
             return mods;
         }
 
-        public VariableIntegerImpl getNitro() {
+        public Variable<Integer> getNitro() {
             return nitro;
         }
     }

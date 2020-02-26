@@ -11,46 +11,46 @@ import java.util.List;
 
 public class Variables {
     // Version
-    public final VariableIntegerImpl version = new VariableIntegerImpl();
-    public final VariableIntegerImpl scriptVersion = new VariableIntegerImpl();
-    public final VariableIntegerImpl currentIplVersion = new VariableIntegerImpl();
-    public final VariableIntegerImpl convertIplVersion = new VariableIntegerImpl();
+    public final Variable<Integer> version = new Variable<>();
+    public final Variable<Integer> scriptVersion = new Variable<>();
+    public final Variable<Integer> currentIplVersion = new Variable<>();
+    public final Variable<Integer> convertIplVersion = new Variable<>();
 
     public final VariableTitle title = new VariableTitle();
-    public final VariableIntegerImpl storyLine = new VariableIntegerImpl();
-    public final VariableBoolean roadblockSF = new RoadblockVariable(RoadblockVariable.SAN_FIERRO);
-    public final VariableBoolean roadblockLV = new RoadblockVariable(RoadblockVariable.LAS_VENTURAS);
-    public final VariableBooleanImpl gangWars = new VariableBooleanImpl();
-    public final VariableBooleanImpl riots = new VariableBooleanImpl();
-    public final VariableBooleanImpl hotCoffee = new VariableBooleanImpl();
-    public final VariableBooleanImpl taxiNitro = new VariableBooleanImpl();
-    public final VariableBooleanImpl prostitutesPay = new VariableBooleanImpl();
-    public final VariableBooleanImpl loseStuffWasted = new VariableBooleanImpl();
-    public final VariableBooleanImpl loseStuffBusted = new VariableBooleanImpl();
-    public final VariableBooleanImpl basketballGlitch = new VariableBooleanImpl();
-    public final VariableBooleanImpl poolPlayerGlitch = new VariableBooleanImpl();
-    public final VariableBooleanImpl zoneGlitch = new VariableBooleanImpl();
-    public final VariableBooleanImpl uncensored = new VariableBooleanImpl();
-    public final VariableBooleanImpl twoTimingDate = new VariableBooleanImpl();
-    public final VariableIntegerImpl timesCheated = new VariableIntegerImpl();
-    public final VariableIntegerImpl timesBusted = new VariableIntegerImpl();
-    public final VariableIntegerImpl timesWasted = new VariableIntegerImpl();
+    public final Variable<Integer> storyLine = new Variable<>();
+    public final RoadblockVariable roadblockSF = new RoadblockVariable(RoadblockVariable.SAN_FIERRO);
+    public final RoadblockVariable roadblockLV = new RoadblockVariable(RoadblockVariable.LAS_VENTURAS);
+    public final Variable<Boolean> gangWars = new Variable<>();
+    public final Variable<Boolean> riots = new Variable<>();
+    public final Variable<Boolean> hotCoffee = new Variable<>();
+    public final Variable<Boolean> taxiNitro = new Variable<>();
+    public final Variable<Boolean> prostitutesPay = new Variable<>();
+    public final Variable<Boolean> loseStuffWasted = new Variable<>();
+    public final Variable<Boolean> loseStuffBusted = new Variable<>();
+    public final Variable<Boolean> basketballGlitch = new Variable<>();
+    public final Variable<Boolean> poolPlayerGlitch = new Variable<>();
+    public final Variable<Boolean> zoneGlitch = new Variable<>();
+    public final Variable<Boolean> uncensored = new Variable<>();
+    public final Variable<Boolean> twoTimingDate = new Variable<>();
+    public final Variable<Integer> timesCheated = new Variable<>();
+    public final Variable<Integer> timesBusted = new Variable<>();
+    public final Variable<Integer> timesWasted = new Variable<>();
 
     // Schools
-    public final List<VariableIntegerImpl> schoolDriving = intList(12);
-    public final List<VariableIntegerImpl> schoolFlying = intList(10);
-    public final List<VariableIntegerImpl> schoolBoat = intList(5);
-    public final List<VariableIntegerImpl> schoolBike = intList(6);
+    public final List<Variable<Integer>> schoolDriving = intList(12);
+    public final List<Variable<Integer>> schoolFlying = intList(10);
+    public final List<Variable<Integer>> schoolBoat = intList(5);
+    public final List<Variable<Integer>> schoolBike = intList(6);
 
     // Player data (block 15)
-    public final VariableIntegerImpl money = new VariableIntegerImpl();
-    public final VariableIntegerImpl moneyOnScreen = new VariableIntegerImpl();
-    public final VariableBooleanImpl infiniteRun = new VariableBooleanImpl();
-    public final VariableBooleanImpl fastReload = new VariableBooleanImpl();
-    public final VariableBooleanImpl fireProof = new VariableBooleanImpl();
-    public final VariableBooleanImpl freeBustedOnce = new VariableBooleanImpl();
-    public final VariableBooleanImpl freeWastedOnce = new VariableBooleanImpl();
-    public final VariableBooleanImpl enableDriveby = new VariableBooleanImpl();
+    public final Variable<Integer> money = new Variable<>();
+    public final Variable<Integer> moneyOnScreen = new Variable<>();
+    public final Variable<Boolean> infiniteRun = new Variable<>();
+    public final Variable<Boolean> fastReload = new Variable<>();
+    public final Variable<Boolean> fireProof = new Variable<>();
+    public final Variable<Boolean> freeBustedOnce = new Variable<>();
+    public final Variable<Boolean> freeWastedOnce = new Variable<>();
+    public final Variable<Boolean> enableDriveby = new Variable<>();
 
     // Ped Acquaintances
     public final boolean[][][] pedAcq = new boolean[4][32][32]; // respect, like, dislike, hate
@@ -66,76 +66,75 @@ public class Variables {
     public Jump[] jumps;
 
     // Pickups
-    public final VariableIntegerImpl oystersCollected = new VariableIntegerImpl();
-    public final VariableIntegerImpl snapshotsCollected = new VariableIntegerImpl();
-    public final VariableIntegerImpl horseshoesCollected = new VariableIntegerImpl();
+    public final Variable<Integer> oystersCollected = new Variable<>();
+    public final Variable<Integer> snapshotsCollected = new Variable<>();
+    public final Variable<Integer> horseshoesCollected = new Variable<>();
 
     public List<Pickup> oysters, snapshots, horseshoes;
 
     // Help messages
-    public final VariableBooleanImpl helpCar = new VariableBooleanImpl();
-    public final VariableBooleanImpl helpWasted = new VariableBooleanImpl();
-    public final VariableBooleanImpl helpBusted = new VariableBooleanImpl();
-    public final VariableBooleanImpl helpSwimming = new VariableBooleanImpl();
-    public final VariableBooleanImpl helpGym = new VariableBooleanImpl();
-    public final VariableBooleanImpl helpStealVehicle = new VariableBooleanImpl();
-    public final VariableIntegerImpl helpReplaceWeapon = new VariableIntegerImpl(0, 255);
+    public final Variable<Boolean> helpCar = new Variable<>();
+    public final Variable<Boolean> helpWasted = new Variable<>();
+    public final Variable<Boolean> helpBusted = new Variable<>();
+    public final Variable<Boolean> helpSwimming = new Variable<>();
+    public final Variable<Boolean> helpGym = new Variable<>();
+    public final Variable<Boolean> helpStealVehicle = new Variable<>();
+    public final Variable<Integer> helpReplaceWeapon = new Variable<>();
 
     // Save location
-    public final VariableIntegerImpl savePlace = new VariableIntegerImpl();
+    public final Variable<Integer> savePlace = new Variable<>();
 
     // Time
-    public final VariableIntegerImpl timeHour = new VariableIntegerImpl();
-    public final VariableIntegerImpl timeMinute = new VariableIntegerImpl();
-    public final VariableIntegerImpl daysPassed = new VariableIntegerImpl();
-    public final VariableIntegerImpl minuteLength = new VariableIntegerImpl();
-    public final VariableIntegerImpl timeDayOfWeek = new VariableIntegerImpl();
+    public final Variable<Integer> timeHour = new Variable<>();
+    public final Variable<Integer> timeMinute = new Variable<>();
+    public final Variable<Integer> daysPassed = new Variable<>();
+    public final Variable<Integer> minuteLength = new Variable<>();
+    public final Variable<Integer> timeDayOfWeek = new Variable<>();
 
     // Weapons
-    public final VariableIntegerImpl weaponStartSlot = new VariableIntegerImpl();
-    public final List<VariableIntegerImpl> weaponType = intList(13);
-    public final List<VariableIntegerImpl> weaponAmmo = intList(13);
-    public final List<VariableIntegerImpl> gangWeapon = intList(30);
+    public final Variable<Integer> weaponStartSlot = new Variable<>();
+    public final List<Variable<Integer>> weaponType = intList(13);
+    public final List<Variable<Integer>> weaponAmmo = intList(13);
+    public final List<Variable<Integer>> gangWeapon = intList(30);
 
     // Body / Skills
-    public final VariableFloat health = new VariableFloat();
-    public final VariableFloat armor = new VariableFloat();
-    public final VariableFloat fat = new VariableFloat();
-    public final VariableFloat stamina = new VariableFloat();
-    public final VariableFloat muscle = new VariableFloat();
-    public final VariableFloat maxHealth = new VariableFloat();
-    public final VariableFloat respect = new VariableFloat();
-    public final VariableFloat weaponPistol = new VariableFloat();
-    public final VariableFloat weaponSilencedPistol = new VariableFloat();
-    public final VariableFloat weaponDesertEagle = new VariableFloat();
-    public final VariableFloat weaponShotgun = new VariableFloat();
-    public final VariableFloat weaponSawnoffShotgun = new VariableFloat();
-    public final VariableFloat weaponCombatShotgun = new VariableFloat();
-    public final VariableFloat weaponMachinePistol = new VariableFloat();
-    public final VariableFloat weaponSmg = new VariableFloat();
-    public final VariableFloat weaponAk47 = new VariableFloat();
-    public final VariableFloat weaponM4 = new VariableFloat();
-    public final VariableFloat sexAppeal = new VariableFloat();
-    public final VariableFloat gamblingSkill = new VariableFloat();
-    public final VariableIntegerImpl drivingSkill = new VariableIntegerImpl();
-    public final VariableIntegerImpl flyingSkill = new VariableIntegerImpl();
-    public final VariableIntegerImpl lungCapacity = new VariableIntegerImpl();
-    public final VariableIntegerImpl bikeSkill = new VariableIntegerImpl();
-    public final VariableIntegerImpl cyclingSkill = new VariableIntegerImpl();
+    public final Variable<Float> health = new Variable<>();
+    public final Variable<Float> armor = new Variable<>();
+    public final Variable<Float> fat = new Variable<>();
+    public final Variable<Float> stamina = new Variable<>();
+    public final Variable<Float> muscle = new Variable<>();
+    public final Variable<Float> maxHealth = new Variable<>();
+    public final Variable<Float> respect = new Variable<>();
+    public final Variable<Float> weaponPistol = new Variable<>();
+    public final Variable<Float> weaponSilencedPistol = new Variable<>();
+    public final Variable<Float> weaponDesertEagle = new Variable<>();
+    public final Variable<Float> weaponShotgun = new Variable<>();
+    public final Variable<Float> weaponSawnoffShotgun = new Variable<>();
+    public final Variable<Float> weaponCombatShotgun = new Variable<>();
+    public final Variable<Float> weaponMachinePistol = new Variable<>();
+    public final Variable<Float> weaponSmg = new Variable<>();
+    public final Variable<Float> weaponAk47 = new Variable<>();
+    public final Variable<Float> weaponM4 = new Variable<>();
+    public final Variable<Float> sexAppeal = new Variable<>();
+    public final Variable<Float> gamblingSkill = new Variable<>();
+    public final Variable<Integer> drivingSkill = new Variable<>();
+    public final Variable<Integer> flyingSkill = new Variable<>();
+    public final Variable<Integer> lungCapacity = new Variable<>();
+    public final Variable<Integer> bikeSkill = new Variable<>();
+    public final Variable<Integer> cyclingSkill = new Variable<>();
 
     // Garages / Cars
     public final List<Garage.Car> garageCars = garageCarList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
 
-
     public Variables() {
-        currentIplVersion.onChange().addHandler(roadblockSF, "updateValue");
-        currentIplVersion.onChange().addHandler(roadblockLV, "updateValue");
+        currentIplVersion.setOnChange(i -> roadblockLV.updateValue());
+        currentIplVersion.setOnChange(i -> roadblockSF.updateValue());
     }
 
-    private List<VariableIntegerImpl> intList(int size) {
-        List<VariableIntegerImpl> list = new ArrayList<VariableIntegerImpl>(size);
+    private List<Variable<Integer>> intList(int size) {
+        List<Variable<Integer>> list = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            list.add(new VariableIntegerImpl());
+            list.add(new Variable<>());
         }
         return Collections.unmodifiableList(list);
     }

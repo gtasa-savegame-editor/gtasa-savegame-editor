@@ -1,6 +1,6 @@
 package nl.paulinternet.libsavegame.blocks;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.link.Link;
 import nl.paulinternet.libsavegame.link.LinkArray;
 import nl.paulinternet.libsavegame.link.LinkBoolean;
@@ -9,7 +9,7 @@ import nl.paulinternet.libsavegame.variables.Variables;
 
 public class Block15 extends LinkArray {
     public Block15() {
-        Variables vars = SavegameModel.vars;
+        Variables vars = SavegameVars.vars;
 
         setLinks(new Link[]{
                 new LinkInt(vars.money, 15, 0x4),

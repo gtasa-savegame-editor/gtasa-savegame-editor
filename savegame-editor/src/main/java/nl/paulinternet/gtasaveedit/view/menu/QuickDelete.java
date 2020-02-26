@@ -1,14 +1,19 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
-import nl.paulinternet.libsavegame.SavegameModel;
-import nl.paulinternet.libsavegame.Settings;
+import nl.paulinternet.gtasaveedit.FileSystem;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.io.File;
 
 public class QuickDelete extends PMenuItem {
+    private static Logger log = LoggerFactory.getLogger(QuickDelete.class);
+
     private int number;
 
     public QuickDelete(int number) {
@@ -24,7 +29,7 @@ public class QuickDelete extends PMenuItem {
 
     @SuppressWarnings({"WeakerAccess", "Duplicates"}) //used in handler
     public void updateText() {
-        String title = SavegameModel.quickLoad.get(number).getValue();
+        String title = SavegameModel.get(FileSystem.getSavegameDirectory()).quickLoad.get(number).getValue();
         if (title == null) {
             setEnabled(false);
             setText(number + ".");
@@ -36,7 +41,7 @@ public class QuickDelete extends PMenuItem {
 
     @SuppressWarnings("unused") //used in handler
     public void deleteSavegame() {
-        File file = SavegameModel.getSavegameFile(number);
+        File file = SavegameModel.get(FileSystem.getSavegameDirectory()).getSavegameFile(number);
         if (Settings.getWarnDeleteFile() == Settings.YES) {
             int result = JOptionPane.showConfirmDialog(
                     MainWindow.getInstance(),
@@ -47,12 +52,16 @@ public class QuickDelete extends PMenuItem {
             );
 
             if (result == JOptionPane.YES_OPTION) {
-                file.delete();
-                SavegameModel.updateQuickLoad();
+                if(!file.delete()) {
+                    log.warn("Error deleting file: '" + file.getAbsolutePath() + "'!");
+                }
+                SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();
             }
         } else {
-            file.delete();
-            SavegameModel.updateQuickLoad();
+            if(!file.delete()) {
+                log.warn("Error deleting file: '" + file.getAbsolutePath() + "'!");
+            }
+            SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();
         }
     }
 }

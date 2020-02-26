@@ -1,9 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.SavegameModel;
+import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.TextFieldInterface;
-import nl.paulinternet.libsavegame.variables.VariableFloat;
-import nl.paulinternet.libsavegame.variables.VariableIntegerImpl;
 import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
@@ -11,6 +9,7 @@ import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.*;
 import java.util.List;
@@ -33,7 +32,7 @@ public class PageWeapons extends Page {
         table.add(new JSeparator(), 0, 1, 4, 1);
 
         // Start slot
-        ConnectedRadioButtons startSlot = new ConnectedRadioButtons(SavegameModel.vars.weaponStartSlot);
+        ConnectedRadioButtons startSlot = new ConnectedRadioButtons(SavegameVars.vars.weaponStartSlot);
 
         table.setCellWeight(0.0, 0.0);
         table.setCellExpand(0.0f, 1.0f);
@@ -56,7 +55,7 @@ public class PageWeapons extends Page {
         // Weapons
         table.setCellExpand(1.0f, 1.0f);
 
-        List<VariableIntegerImpl> weaponType = SavegameModel.vars.weaponType;
+        List<Variable<Integer>> weaponType = SavegameVars.vars.weaponType;
 
         ConnectedRadioButtons weapon = new ConnectedRadioButtons(weaponType.get(0));
         table.add(weapon.create(0x00, "Unarmed"), 1, 2);
@@ -167,16 +166,16 @@ public class PageWeapons extends Page {
         // Skills
         table.setCellWeight(0.0, 0.0);
         table.add(new JLabel("Skill"), 3, 0);
-        table.add(createSkillBox(SavegameModel.vars.weaponPistol), 3, 16);
-        table.add(createSkillBox(SavegameModel.vars.weaponSilencedPistol), 3, 17);
-        table.add(createSkillBox(SavegameModel.vars.weaponDesertEagle), 3, 18);
-        table.add(createSkillBox(SavegameModel.vars.weaponShotgun), 3, 21);
-        table.add(createSkillBox(SavegameModel.vars.weaponSawnoffShotgun), 3, 22);
-        table.add(createSkillBox(SavegameModel.vars.weaponCombatShotgun), 3, 23);
-        table.add(createSkillBox(SavegameModel.vars.weaponMachinePistol), 3, 26, 1, 2);
-        table.add(createSkillBox(SavegameModel.vars.weaponSmg), 3, 28);
-        table.add(createSkillBox(SavegameModel.vars.weaponAk47), 3, 31);
-        table.add(createSkillBox(SavegameModel.vars.weaponM4), 3, 32);
+        table.add(createSkillBox(SavegameVars.vars.weaponPistol), 3, 16);
+        table.add(createSkillBox(SavegameVars.vars.weaponSilencedPistol), 3, 17);
+        table.add(createSkillBox(SavegameVars.vars.weaponDesertEagle), 3, 18);
+        table.add(createSkillBox(SavegameVars.vars.weaponShotgun), 3, 21);
+        table.add(createSkillBox(SavegameVars.vars.weaponSawnoffShotgun), 3, 22);
+        table.add(createSkillBox(SavegameVars.vars.weaponCombatShotgun), 3, 23);
+        table.add(createSkillBox(SavegameVars.vars.weaponMachinePistol), 3, 26, 1, 2);
+        table.add(createSkillBox(SavegameVars.vars.weaponSmg), 3, 28);
+        table.add(createSkillBox(SavegameVars.vars.weaponAk47), 3, 31);
+        table.add(createSkillBox(SavegameVars.vars.weaponM4), 3, 32);
 
         // Create alignment
         Alignment alignment = new Alignment(table, 0.0f, 0.0f, 1.0f, 0.0f);
@@ -185,7 +184,7 @@ public class PageWeapons extends Page {
     }
 
     private YBox createAmmoBox(int slot) {
-        TextFieldInterface var = SavegameModel.vars.weaponAmmo.get(slot);
+        TextFieldInterface var = SavegameVars.vars.weaponAmmo.get(slot);
 
         YBox ybox = new YBox();
         ybox.add(new ConnectedTextField(var));
@@ -195,7 +194,7 @@ public class PageWeapons extends Page {
         return ybox;
     }
 
-    private XBox createSkillBox(VariableFloat skill) {
+    private XBox createSkillBox(Variable<Float> skill) {
         XBox xbox = new XBox();
         xbox.add(new ConnectedTextField(skill));
         xbox.addSpace(5);

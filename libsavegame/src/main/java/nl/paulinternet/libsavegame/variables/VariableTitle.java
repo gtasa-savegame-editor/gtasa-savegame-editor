@@ -1,18 +1,16 @@
 package nl.paulinternet.libsavegame.variables;
 
+import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.TextFieldInterface;
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.ReportableEvent;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 
 public class VariableTitle implements TextFieldInterface {
     private String text;
-    private ReportableEvent onChange;
+    private CallbackHandler<String> onChange;
     private boolean hasChanged;
 
     public VariableTitle() {
         text = "";
-        onChange = new ReportableEvent();
     }
 
     @Override
@@ -31,6 +29,11 @@ public class VariableTitle implements TextFieldInterface {
     }
 
     @Override
+    public void setOnTextChange(CallbackHandler<String> onChange) {
+        this.onChange = onChange;
+    }
+
+    @Override
     public String getText() {
         return text;
     }
@@ -40,14 +43,11 @@ public class VariableTitle implements TextFieldInterface {
         if (text == null) throw new InvalidValueException();
         if (!this.text.equals(text)) {
             this.text = text;
-            onChange.report();
+            if(onChange != null) {
+                onChange.handle(text);
+            }
             hasChanged = true;
         }
-    }
-
-    @Override
-    public Event onChange() {
-        return onChange;
     }
 
     @Override

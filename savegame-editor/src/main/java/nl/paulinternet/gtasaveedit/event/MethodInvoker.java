@@ -1,7 +1,4 @@
-package nl.paulinternet.libsavegame;
-
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.EventHandler;
+package nl.paulinternet.gtasaveedit.event;
 
 import java.lang.reflect.Method;
 

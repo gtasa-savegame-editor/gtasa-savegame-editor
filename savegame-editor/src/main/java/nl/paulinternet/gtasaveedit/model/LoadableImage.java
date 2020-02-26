@@ -1,7 +1,7 @@
 package nl.paulinternet.gtasaveedit.model;
 
-import nl.paulinternet.libsavegame.event.Event;
-import nl.paulinternet.libsavegame.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.event.Event;
+import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.view.Images;
 
 import javax.imageio.ImageIO;
