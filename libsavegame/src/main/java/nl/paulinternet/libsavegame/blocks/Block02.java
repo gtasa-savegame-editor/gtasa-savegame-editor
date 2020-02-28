@@ -10,8 +10,6 @@ import nl.paulinternet.libsavegame.link.LinkFloat;
 import nl.paulinternet.libsavegame.link.LinkInt;
 import nl.paulinternet.libsavegame.variables.Variable;
 
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
-
 public class Block02 extends LinkArray {
     private static final int[] CLOTH_TEXTURE = new int[]{0x1d4, 0x1d8, 0x1dc, 0x1e0, 0x208, 0x20c, 0x210, 0x214, 0x218};
     private static final int[] CLOTH_MODEL = new int[]{0x1ac, 0x1b0, 0x1b8, 0x1bc, 0x1c0, 0x1c4, 0x1c8, 0x1cc, 0x1d0};

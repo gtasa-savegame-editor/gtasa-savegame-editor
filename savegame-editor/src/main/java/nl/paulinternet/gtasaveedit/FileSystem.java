@@ -15,6 +15,8 @@ public class FileSystem {
 
     private static boolean dllLoaded;
 
+    private static File savegameDir;
+
     static {
         try {
             if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
@@ -168,13 +170,16 @@ public class FileSystem {
     }
 
     public static File getDefaultSavegameDirectory() {
-        if (MAC) {
-            return new File(System.getProperty("user.home"), "/Documents/Rockstar Games/GTA San Andreas User Files");
-        } else if (LINUX) {
-            return new File(System.getProperty("user.home"), "/.steam/steam/steamapps/compatdata/12120/pfx/drive_c/users/steamuser/My Documents/GTA San Andreas User Files");
-        } else {
-            return new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "GTA San Andreas User Files");
+        if(savegameDir == null) {
+            if (MAC) {
+                savegameDir = new File(System.getProperty("user.home"), "/Documents/Rockstar Games/GTA San Andreas User Files");
+            } else if (LINUX) {
+                savegameDir = new File(System.getProperty("user.home"), "/.steam/steam/steamapps/compatdata/12120/pfx/drive_c/users/steamuser/My Documents/GTA San Andreas User Files");
+            } else {
+                savegameDir = new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "GTA San Andreas User Files");
+            }
         }
+        return savegameDir;
     }
 
     private static File getFile(byte[] data) {

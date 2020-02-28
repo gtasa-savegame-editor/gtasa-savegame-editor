@@ -4,8 +4,6 @@ import nl.paulinternet.libsavegame.SavegameData;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
 
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
-
 public class Block19 implements Link {
     @Override
     public void load(SavegameData io) throws FileFormatException {

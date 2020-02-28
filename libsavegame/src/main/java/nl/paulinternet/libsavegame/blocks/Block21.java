@@ -1,7 +1,6 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.link.Link;
 
 public class Block21 implements Link {
@@ -11,17 +10,17 @@ public class Block21 implements Link {
     @Override
     public void load(SavegameData io) {
         // Guess IPL version
-        int version = SavegameVars.vars.version.getValue();
+        int version = vars.version.getValue();
         int iplVersion = version == 0xfd148df6 || version == 0x5d31cc22 ? 2 : 1;
 
-        SavegameVars.vars.currentIplVersion.setValue(iplVersion);
-        SavegameVars.vars.convertIplVersion.setValue(iplVersion);
+        vars.currentIplVersion.setValue(iplVersion);
+        vars.convertIplVersion.setValue(iplVersion);
     }
 
     @Override
     public void save(SavegameData io) {
-        int currentIpl = SavegameVars.vars.currentIplVersion.getValue();
-        int convertIpl = SavegameVars.vars.convertIplVersion.getValue();
+        int currentIpl = vars.currentIplVersion.getValue();
+        int convertIpl = vars.convertIplVersion.getValue();
 
         // Convert
         if (currentIpl != convertIpl) {
@@ -35,7 +34,7 @@ public class Block21 implements Link {
             io.getBlock(21).overwrite(data, 4);
 
             currentIpl = convertIpl;
-            SavegameVars.vars.currentIplVersion.setValue(convertIpl);
+            vars.currentIplVersion.setValue(convertIpl);
         }
     }
 }

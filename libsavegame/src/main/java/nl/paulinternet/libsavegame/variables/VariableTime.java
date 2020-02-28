@@ -1,10 +1,9 @@
 package nl.paulinternet.libsavegame.variables;
 
 import nl.paulinternet.libsavegame.CallbackHandler;
+import nl.paulinternet.libsavegame.Savegame;
 import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
-
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class VariableTime implements TextFieldInterface {
 
@@ -30,10 +29,17 @@ public class VariableTime implements TextFieldInterface {
 
     @Override
     public String getText() {
-        int hour = vars.timeHour.getValue();
-        int minute = vars.timeMinute.getValue();
-        String minuteString = minute < 10 ? "0" + minute : String.valueOf(minute);
-        return hour + ":" + minuteString;
+        Variable<Integer> timeHour = Variables.get().timeHour;
+        Variable<Integer> timeMinute = Variables.get().timeMinute;
+
+        if(timeHour.getValue() == null || timeMinute.getValue() == null) {
+            return "--:--";
+        } else {
+            int hour = timeHour.getValue();
+            int minute = timeMinute.getValue();
+            String minuteString = minute < 10 ? "0" + minute : String.valueOf(minute);
+            return hour + ":" + minuteString;
+        }
     }
 
     @Override
@@ -52,8 +58,8 @@ public class VariableTime implements TextFieldInterface {
 
             if (hour < 0 || hour > 23 || minute < 0 || minute > 59) throw new InvalidValueException();
 
-            vars.timeHour.setValue(hour);
-            vars.timeMinute.setValue(minute);
+            Variables.get().timeHour.setValue(hour);
+            Variables.get().timeMinute.setValue(minute);
         } catch (NumberFormatException e) {
             throw new InvalidValueException();
         }

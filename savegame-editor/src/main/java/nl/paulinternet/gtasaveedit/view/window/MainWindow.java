@@ -5,9 +5,9 @@ import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.component.TabbedPane;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
-import nl.paulinternet.libsavegame.SavegameVars;
 
 import javax.swing.*;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 public class MainWindow extends JFrame {
     private static MainWindow instance;
@@ -50,7 +50,7 @@ public class MainWindow extends JFrame {
         // Observe
         SavegameModel.gameClosed.addHandler(this, "onGameClose");
         SavegameModel.gameLoaded.addHandler(this, "onTitleChange");
-        SavegameVars.vars.title.setOnTextChange(s -> onTitleChange());
+        Variables.get().title.setOnTextChange(s -> onTitleChange());
 
         invalidate();
         validate();
@@ -66,7 +66,7 @@ public class MainWindow extends JFrame {
     }
 
     public void onTitleChange() {
-        setTitle(SavegameVars.vars.title.getText() + " - GTA SA Savegame Editor");
+        setTitle(Variables.get().title.getText() + " - GTA SA Savegame Editor");
     }
 
 }

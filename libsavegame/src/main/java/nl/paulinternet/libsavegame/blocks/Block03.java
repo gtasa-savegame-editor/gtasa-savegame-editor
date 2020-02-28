@@ -12,8 +12,6 @@ import nl.paulinternet.libsavegame.link.LinkInt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
-
 
 /**
  * @author Sebastian Hardt (s.hardt@micromata.de) Date: 19.10.18 Time: 17:07

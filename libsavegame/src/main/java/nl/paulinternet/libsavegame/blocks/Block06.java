@@ -1,14 +1,11 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Pickup;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
 
 import java.util.ArrayList;
-
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class Block06 implements Link {
     @Override
@@ -43,11 +40,11 @@ public class Block06 implements Link {
             }
         }
 
-        SavegameVars.vars.helpReplaceWeapon.setValue(io.readByte(6, 0x4d82));
+        vars.helpReplaceWeapon.setValue(io.readByte(6, 0x4d82));
     }
 
     @Override
     public void save(SavegameData io) {
-        io.writeByte(6, 0x4d82, SavegameVars.vars.helpReplaceWeapon.getValue());
+        io.writeByte(6, 0x4d82, vars.helpReplaceWeapon.getValue());
     }
 }

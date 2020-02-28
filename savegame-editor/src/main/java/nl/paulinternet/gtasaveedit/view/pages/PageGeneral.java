@@ -9,7 +9,6 @@ import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.variables.VariableTime;
 import nl.paulinternet.libsavegame.variables.Variables;
 
@@ -19,9 +18,9 @@ public class PageGeneral extends Page {
     public PageGeneral() {
         super("General");
 
-        Variables vars = SavegameVars.vars;
+        Variables vars = Variables.get();
 
-        ConnectedComboBox<String> versionBox = new ConnectedComboBox<>(SavegameVars.vars.version);
+        ConnectedComboBox<String> versionBox = new ConnectedComboBox<>(Variables.get().version);
         versionBox.addItem(0x35da8175, "Version 1.00 Unmodified EXE");
         versionBox.addItem(0x65f3e583, "Version 1.00 Modified EXE");
         versionBox.addItem(0x9a6ebe58, "Version 1.01 Unmodified EXE");
@@ -30,9 +29,9 @@ public class PageGeneral extends Page {
         versionBox.addItem(0xfd148df6, "Version 2.00 Unmodified EXE");
         versionBox.addItem(0x5d31cc22, "Version 2.00 (German)");
 
-        ConnectedRadioButtons buttonsScriptVersion = new ConnectedRadioButtons(SavegameVars.vars.scriptVersion);
-        ConnectedRadioButtons buttonsCurrentIpl = new ConnectedRadioButtons(SavegameVars.vars.currentIplVersion);
-        ConnectedRadioButtons buttonsConvertIpl = new ConnectedRadioButtons(SavegameVars.vars.convertIplVersion);
+        ConnectedRadioButtons buttonsScriptVersion = new ConnectedRadioButtons(Variables.get().scriptVersion);
+        ConnectedRadioButtons buttonsCurrentIpl = new ConnectedRadioButtons(Variables.get().currentIplVersion);
+        ConnectedRadioButtons buttonsConvertIpl = new ConnectedRadioButtons(Variables.get().convertIplVersion);
 
         Table versionTable = new Table();
         versionTable.setSpacing(10, 3);
@@ -54,7 +53,7 @@ public class PageGeneral extends Page {
         XBox titlePanel = new XBox();
         titlePanel.add(new JLabel("Title:"));
         titlePanel.addSpace(10);
-        titlePanel.add(new ConnectedTextField(SavegameVars.vars.title), 1);
+        titlePanel.add(new ConnectedTextField(Variables.get().title), 1);
 
         Table tableMoney = new Table();
         tableMoney.setSpacing(10, 3);

@@ -1,7 +1,6 @@
 package nl.paulinternet.libsavegame.blocks;
 
 import nl.paulinternet.libsavegame.SavegameData;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
 import nl.paulinternet.libsavegame.link.LinkArray;
@@ -10,8 +9,6 @@ import nl.paulinternet.libsavegame.link.LinkInt;
 import nl.paulinternet.libsavegame.variables.Variable;
 
 import java.util.List;
-
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class Block01 extends LinkArray {
     private static final int[] DRIVING = new int[]{1, 2, 4, 5, 7, 9, 10, 11, 13, 14, 15, 16};
@@ -82,9 +79,9 @@ public class Block01 extends LinkArray {
                 version = 0;
         }
 
-        SavegameVars.vars.scriptVersion.setValue(version);
-        SavegameVars.vars.scriptVersion.setEnabled(version != 0);
-        SavegameVars.vars.scriptVersion.resetChangedState();
+        vars.scriptVersion.setValue(version);
+        vars.scriptVersion.setEnabled(version != 0);
+        vars.scriptVersion.resetChangedState();
 
         // Driving
         boolean drivingEditable = io.readInt(1, 0xd8) != 0;
@@ -109,8 +106,8 @@ public class Block01 extends LinkArray {
     @Override
     public void save(SavegameData io) {
         // Script version
-        if (SavegameVars.vars.scriptVersion.hasChanged()) {
-            int version = SavegameVars.vars.scriptVersion.getValue();
+        if (vars.scriptVersion.hasChanged()) {
+            int version = vars.scriptVersion.getValue();
 
             // Write scm size
             int afterGlobalVars = 0x4 + io.readInt(1, 0);

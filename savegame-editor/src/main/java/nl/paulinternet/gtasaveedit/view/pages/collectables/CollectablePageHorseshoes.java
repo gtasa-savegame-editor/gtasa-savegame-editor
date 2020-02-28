@@ -12,8 +12,8 @@ import nl.paulinternet.gtasaveedit.view.selectable.SelectionSizeLabel;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Pickup;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class CollectablePageHorseshoes extends Page {
         SelectableItemComponent select = new SelectableItemComponent(MapImage.LAS_VENTURAS, items, SelectableItemComponent.MULTIPLE);
 
         XBox xbox = new XBox();
-        xbox.add(new IntLabel("? / 50 horseshoes collected", SavegameVars.vars.horseshoesCollected));
+        xbox.add(new IntLabel("? / 50 horseshoes collected", Variables.get().horseshoesCollected));
         xbox.addSpace(10, 1);
         xbox.add(new SelectionSizeLabel(items, "horseshoes"));
 
@@ -42,7 +42,7 @@ public class CollectablePageHorseshoes extends Page {
         YBox ybox = new YBox();
         ybox.add(new JLabel(message));
         ybox.addSpace(10);
-        ybox.add(new PickupCollectButton("Collect selected horseshoes", items, SavegameVars.vars.horseshoesCollected), 0, 0.5f, 0.0f);
+        ybox.add(new PickupCollectButton("Collect selected horseshoes", items, Variables.get().horseshoesCollected), 0, 0.5f, 0.0f);
         ybox.addSpace(5);
         ybox.add(select);
         ybox.addSpace(5);
@@ -59,7 +59,7 @@ public class CollectablePageHorseshoes extends Page {
         List<SelectablePickup> horseshoes = items.getItems();
 
         horseshoes.clear();
-        for (Pickup shoe : SavegameVars.vars.horseshoes) {
+        for (Pickup shoe : Variables.get().horseshoes) {
             horseshoes.add(new SelectablePickup(shoe, MapImage.LAS_VENTURAS));
         }
 

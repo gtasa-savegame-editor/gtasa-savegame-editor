@@ -1,6 +1,5 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.gtasaveedit.view.component.ValueButton;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
@@ -13,6 +12,7 @@ import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.*;
 import java.util.List;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 public class PageWeapons extends Page {
 
@@ -32,7 +32,7 @@ public class PageWeapons extends Page {
         table.add(new JSeparator(), 0, 1, 4, 1);
 
         // Start slot
-        ConnectedRadioButtons startSlot = new ConnectedRadioButtons(SavegameVars.vars.weaponStartSlot);
+        ConnectedRadioButtons startSlot = new ConnectedRadioButtons(Variables.get().weaponStartSlot);
 
         table.setCellWeight(0.0, 0.0);
         table.setCellExpand(0.0f, 1.0f);
@@ -55,7 +55,7 @@ public class PageWeapons extends Page {
         // Weapons
         table.setCellExpand(1.0f, 1.0f);
 
-        List<Variable<Integer>> weaponType = SavegameVars.vars.weaponType;
+        List<Variable<Integer>> weaponType = Variables.get().weaponType;
 
         ConnectedRadioButtons weapon = new ConnectedRadioButtons(weaponType.get(0));
         table.add(weapon.create(0x00, "Unarmed"), 1, 2);
@@ -166,16 +166,16 @@ public class PageWeapons extends Page {
         // Skills
         table.setCellWeight(0.0, 0.0);
         table.add(new JLabel("Skill"), 3, 0);
-        table.add(createSkillBox(SavegameVars.vars.weaponPistol), 3, 16);
-        table.add(createSkillBox(SavegameVars.vars.weaponSilencedPistol), 3, 17);
-        table.add(createSkillBox(SavegameVars.vars.weaponDesertEagle), 3, 18);
-        table.add(createSkillBox(SavegameVars.vars.weaponShotgun), 3, 21);
-        table.add(createSkillBox(SavegameVars.vars.weaponSawnoffShotgun), 3, 22);
-        table.add(createSkillBox(SavegameVars.vars.weaponCombatShotgun), 3, 23);
-        table.add(createSkillBox(SavegameVars.vars.weaponMachinePistol), 3, 26, 1, 2);
-        table.add(createSkillBox(SavegameVars.vars.weaponSmg), 3, 28);
-        table.add(createSkillBox(SavegameVars.vars.weaponAk47), 3, 31);
-        table.add(createSkillBox(SavegameVars.vars.weaponM4), 3, 32);
+        table.add(createSkillBox(Variables.get().weaponPistol), 3, 16);
+        table.add(createSkillBox(Variables.get().weaponSilencedPistol), 3, 17);
+        table.add(createSkillBox(Variables.get().weaponDesertEagle), 3, 18);
+        table.add(createSkillBox(Variables.get().weaponShotgun), 3, 21);
+        table.add(createSkillBox(Variables.get().weaponSawnoffShotgun), 3, 22);
+        table.add(createSkillBox(Variables.get().weaponCombatShotgun), 3, 23);
+        table.add(createSkillBox(Variables.get().weaponMachinePistol), 3, 26, 1, 2);
+        table.add(createSkillBox(Variables.get().weaponSmg), 3, 28);
+        table.add(createSkillBox(Variables.get().weaponAk47), 3, 31);
+        table.add(createSkillBox(Variables.get().weaponM4), 3, 32);
 
         // Create alignment
         Alignment alignment = new Alignment(table, 0.0f, 0.0f, 1.0f, 0.0f);
@@ -184,7 +184,7 @@ public class PageWeapons extends Page {
     }
 
     private YBox createAmmoBox(int slot) {
-        TextFieldInterface var = SavegameVars.vars.weaponAmmo.get(slot);
+        TextFieldInterface var = Variables.get().weaponAmmo.get(slot);
 
         YBox ybox = new YBox();
         ybox.add(new ConnectedTextField(var));

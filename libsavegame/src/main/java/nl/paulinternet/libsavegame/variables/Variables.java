@@ -1,5 +1,6 @@
 package nl.paulinternet.libsavegame.variables;
 
+import nl.paulinternet.libsavegame.Savegame;
 import nl.paulinternet.libsavegame.data.Cloth;
 import nl.paulinternet.libsavegame.data.Garage;
 import nl.paulinternet.libsavegame.data.Jump;
@@ -10,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Variables {
+    private static Variables instance;
     // Version
     public final Variable<Integer> version = new Variable<>();
     public final Variable<Integer> scriptVersion = new Variable<>();
@@ -126,9 +128,14 @@ public class Variables {
     // Garages / Cars
     public final List<Garage.Car> garageCars = garageCarList(Garage.TOTAL_COUNT); // TODO: probably not enough as you can place more than one car into a single garage
 
-    public Variables() {
-        currentIplVersion.setOnChange(i -> roadblockLV.updateValue());
-        currentIplVersion.setOnChange(i -> roadblockSF.updateValue());
+    private Variables() {
+    }
+
+    public static Variables get() {
+        if(instance == null) {
+            instance = new Variables();
+        }
+        return instance;
     }
 
     private List<Variable<Integer>> intList(int size) {

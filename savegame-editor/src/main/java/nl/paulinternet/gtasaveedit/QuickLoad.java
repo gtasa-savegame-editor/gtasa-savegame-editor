@@ -11,18 +11,17 @@ import java.io.RandomAccessFile;
 public class QuickLoad extends Variable<String> {
     private int number;
 
-    public QuickLoad(int number, File savegameDirectory) {
+    public QuickLoad(int number, SavegameModel model) {
         this.number = number;
-        loadValue(savegameDirectory);
+        loadValue(model);
     }
 
-    public void loadValue(File savegameDir) {
+    public void loadValue(SavegameModel model) {
         // Try to read the bytes of the title
         byte[] data;
 
         // Open file
-        try (RandomAccessFile file = new RandomAccessFile(SavegameModel.get(FileSystem.getSavegameDirectory())
-                .getSavegameFile(number), "r")) {
+        try (RandomAccessFile file = new RandomAccessFile(model.getSavegameFile(number), "r")) {
             if (file.length() != Savegame.FILESIZE) throw new FileFormatException();
 
             // Read bytes

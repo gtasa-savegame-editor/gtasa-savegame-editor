@@ -9,8 +9,8 @@ import nl.paulinternet.gtasaveedit.view.selectable.*;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.data.Jump;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class CollectablePageJumps extends Page {
         public void updateText() {
             int found = 0, completed = 0;
 
-            for (Jump jump : SavegameVars.vars.jumps) {
+            for (Jump jump : Variables.get().jumps) {
                 if (jump.found) found++;
                 if (jump.completed) completed++;
             }
@@ -83,7 +83,7 @@ public class CollectablePageJumps extends Page {
 
     public void onGameLoad() {
         jumps.clear();
-        for (Jump jump : SavegameVars.vars.jumps) {
+        for (Jump jump : Variables.get().jumps) {
             jumps.add(new SelectableJump(jump));
         }
         items.onSelectionChange().report();

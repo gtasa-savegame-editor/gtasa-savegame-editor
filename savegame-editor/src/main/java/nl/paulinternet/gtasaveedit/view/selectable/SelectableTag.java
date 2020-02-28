@@ -1,12 +1,9 @@
 package nl.paulinternet.gtasaveedit.view.selectable;
 
-import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
-import nl.paulinternet.libsavegame.SavegameVars;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import java.awt.*;
-
-import static nl.paulinternet.libsavegame.SavegameVars.vars;
 
 public class SelectableTag implements SelectableItemValue {
     private Rectangle bounds;
@@ -24,7 +21,7 @@ public class SelectableTag implements SelectableItemValue {
     public void paint(Graphics g) {
         g.setColor(selected ? Color.RED : Color.BLACK);
         g.drawRect(bounds.x, bounds.y, 7, 7);
-        g.setColor(vars.tags[id] >= 0xe5 ? Color.GREEN : Color.LIGHT_GRAY);
+        g.setColor(Variables.get().tags[id] >= 0xe5 ? Color.GREEN : Color.LIGHT_GRAY);
         g.fillRect(bounds.x + 1, bounds.y + 1, 6, 6);
     }
 
@@ -45,11 +42,11 @@ public class SelectableTag implements SelectableItemValue {
 
     @Override
     public int getValue(int var) {
-        return SavegameVars.vars.tags[id];
+        return Variables.get().tags[id];
     }
 
     @Override
     public void setValue(int var, int value) {
-        SavegameVars.vars.tags[id] = value;
+        Variables.get().tags[id] = value;
     }
 }

@@ -3,8 +3,8 @@ package nl.paulinternet.gtasaveedit.view.pages;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedComboBox;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.variables.Variable;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 
@@ -24,9 +24,9 @@ public class PageGangWeapons extends Page {
 
         for (int i = 0; i < gangs.length; i++) {
             table.add(new JLabel(gangs[i]), 0, i + 1);
-            table.add(new WeaponBox(SavegameVars.vars.gangWeapon.get(i * 3)), 1, i + 1);
-            table.add(new WeaponBox(SavegameVars.vars.gangWeapon.get(i * 3 + 1)), 2, i + 1);
-            table.add(new WeaponBox(SavegameVars.vars.gangWeapon.get(i * 3 + 2)), 3, i + 1);
+            table.add(new WeaponBox(Variables.get().gangWeapon.get(i * 3)), 1, i + 1);
+            table.add(new WeaponBox(Variables.get().gangWeapon.get(i * 3 + 1)), 2, i + 1);
+            table.add(new WeaponBox(Variables.get().gangWeapon.get(i * 3 + 2)), 3, i + 1);
         }
 
         Alignment alignment = new Alignment(table, 0.0f, 0.0f);

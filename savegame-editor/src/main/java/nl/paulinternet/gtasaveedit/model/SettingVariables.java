@@ -4,7 +4,9 @@ import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.event.MethodInvoker;
 import nl.paulinternet.gtasaveedit.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.extractor.FormDataHandler;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.*;
@@ -27,20 +29,20 @@ public class SettingVariables {
     public final Variable<Boolean> changesMade = new Variable<>();
 
     public SettingVariables() {
-        MethodInvoker changed = new MethodInvoker(changesMade, "setBooleanValue", true);
+        CallbackHandler<Void> changed = v -> changesMade.setValue(true);
 
-        savegameDirectoryType.setOnChange(v -> changed.handleEvent(null));
-        sanAndreasDirectoryType.setOnChange(v -> changed.handleEvent(null));
-        customSavegameDirectory.setOnChange(v -> changed.handleEvent(null));
-        customSanAndreasDirectory.setOnChange(v -> changed.handleEvent(null));
-        showClothes.setOnChange(v -> changed.handleEvent(null));
-        warnOverwriteFile.setOnChange(v -> changed.handleEvent(null));
-        warnDeleteFile.setOnChange(v -> changed.handleEvent(null));
-        lookAndFeelClassName.setOnChange(v -> changed.handleEvent(null));
-        windowWidth.setOnChange(v -> changed.handleEvent(null));
-        windowHeight.setOnChange(v -> changed.handleEvent(null));
-        windowMaximized.setOnChange(v -> changed.handleEvent(null));
-        soundOnAboutPage.setOnChange(v -> changed.handleEvent(null));
+        savegameDirectoryType.setOnChange(v -> changed.handle(null));
+        sanAndreasDirectoryType.setOnChange(v -> changed.handle(null));
+        customSavegameDirectory.setOnChange(v -> changed.handle(null));
+        customSanAndreasDirectory.setOnChange(v -> changed.handle(null));
+        showClothes.setOnChange(v -> changed.handle(null));
+        warnOverwriteFile.setOnChange(v -> changed.handle(null));
+        warnDeleteFile.setOnChange(v -> changed.handle(null));
+        lookAndFeelClassName.setOnChange(v -> changed.handle(null));
+        windowWidth.setOnChange(v -> changed.handle(null));
+        windowHeight.setOnChange(v -> changed.handle(null));
+        windowMaximized.setOnChange(v -> changed.handle(null));
+        soundOnAboutPage.setOnChange(v -> changed.handle(null));
     }
 
     public void copyFromSettings() {

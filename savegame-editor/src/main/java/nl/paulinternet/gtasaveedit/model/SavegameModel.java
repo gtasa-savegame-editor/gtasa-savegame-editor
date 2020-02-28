@@ -27,7 +27,7 @@ public class SavegameModel {
 
     public void updateQuickLoad() {
         for (int i = 1; i <= 8; i++) {
-            quickLoad.get(i).loadValue(savegameDirectory);
+            quickLoad.get(i).loadValue(this);
         }
         SavegameModel.quickLoadUpdate.report();
     }
@@ -38,7 +38,7 @@ public class SavegameModel {
         quickLoad = new ArrayList<>(9);
         quickLoad.add(null);
         for (int i = 1; i <= 8; i++) {
-            quickLoad.add(new QuickLoad(i, savegameDirectory));
+            quickLoad.add(new QuickLoad(i, this));
         }
     }
 

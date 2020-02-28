@@ -5,7 +5,7 @@ import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
-import nl.paulinternet.libsavegame.SavegameVars;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 
@@ -89,7 +89,7 @@ public class PageFix extends Page {
     }
 
     public void fixBasketballGlitch() {
-        SavegameVars.vars.basketballGlitch.setValue(false);
+        Variables.get().basketballGlitch.setValue(false);
         buttonBasketball.setEnabled(false);
         labelBasketball.setText("No");
     }
@@ -100,7 +100,7 @@ public class PageFix extends Page {
     }
 
     public void fixPoolPlayerGlitch() {
-        SavegameVars.vars.poolPlayerGlitch.setValue(false);
+        Variables.get().poolPlayerGlitch.setValue(false);
         buttonPoolPlayer.setEnabled(false);
         labelPoolPlayer.setText("No");
     }
@@ -124,17 +124,17 @@ public class PageFix extends Page {
     }
 
     public void onGameLoaded() {
-        buttonBasketball.setEnabled(SavegameVars.vars.basketballGlitch.getValue());
+        buttonBasketball.setEnabled(Variables.get().basketballGlitch.getValue());
         buttonSaveDisk.setEnabled(true);
-        buttonPoolPlayer.setEnabled(SavegameVars.vars.poolPlayerGlitch.getValue());
+        buttonPoolPlayer.setEnabled(Variables.get().poolPlayerGlitch.getValue());
         buttonTraffic.setEnabled(true);
         buttonGym.setEnabled(true);
-        buttonZone.setEnabled(SavegameVars.vars.zoneGlitch.getValue());
+        buttonZone.setEnabled(Variables.get().zoneGlitch.getValue());
 
-        labelBasketball.setText(SavegameVars.vars.basketballGlitch.getValue() ? "Yes" : "No");
-        labelPoolPlayer.setText(SavegameVars.vars.poolPlayerGlitch.getValue() ? "Yes" : "No");
+        labelBasketball.setText(Variables.get().basketballGlitch.getValue() ? "Yes" : "No");
+        labelPoolPlayer.setText(Variables.get().poolPlayerGlitch.getValue() ? "Yes" : "No");
         labelTraffic.setText("Unknown");
         labelGym.setText("Unknown");
-        labelZone.setText(SavegameVars.vars.zoneGlitch.getValue() ? "Yes" : "No");
+        labelZone.setText(Variables.get().zoneGlitch.getValue() ? "Yes" : "No");
     }
 }

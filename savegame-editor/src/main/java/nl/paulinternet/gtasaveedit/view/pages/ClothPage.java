@@ -1,7 +1,5 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.gtasaveedit.model.SavegameModel;
-import nl.paulinternet.libsavegame.SavegameVars;
 import nl.paulinternet.libsavegame.variables.Variable;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothButton;
 import nl.paulinternet.gtasaveedit.view.cloth.ClothCheckBox;
@@ -9,6 +7,7 @@ import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.libsavegame.data.Cloth;
 import nl.paulinternet.libsavegame.data.Clothes;
+import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 
@@ -94,7 +93,7 @@ public class ClothPage extends Page {
         y++;
 
         // Vars
-        Variable<Cloth> var = tattoo ? SavegameVars.vars.tattoos.get(type) : SavegameVars.vars.clothes.get(type);
+        Variable<Cloth> var = tattoo ? Variables.get().tattoos.get(type) : Variables.get().clothes.get(type);
         ButtonGroup buttonGroup = tattoo ? PageClothes.tattooButtonGroup[type] : PageClothes.clothButtonGroup[type];
         Cloth[] clothes = tattoo ? Clothes.tattoos[type] : Clothes.clothes[type][shop];
 
