@@ -1,3 +1,5 @@
+language: java
+os: linux
 jobs:
   include:
     - stage: build-resources
@@ -5,9 +7,7 @@ jobs:
       os: linux
       dist: bionic
       language: java
-      jdk:
-        - openjdk11
-      sudo: true
+      jdk: openjdk11
       addons:
         apt:
           packages:
@@ -32,7 +32,7 @@ jobs:
           secure: lsuKoTqqWkyjemQ9QvBNIou1yOZzhqQt9c+NGYF8FcREWyPuLiDOTwrQve8skrVzwwWZVlMfyj4oef4mftN+VAEAoXWamMs3Dd9gVSoSNbGghM3KIRvBmu7n7D0EtDF3MMwGTJ2p+CQgzKWYz5uvDr0FOO3rHnjT2xyH80EgJ5Oh6seZnTpiDM+OFC2lu4iiyvC9/CAl2t+fNktBOMPbCbrL6mVcbm+5fapJPXRRfRtZS5ZOCCZKcDpjgn1H+NvOGNjRz49sAhRIjbvxX6goTCVo1ieMh+N5/vOdQRySNonFehfRCWMhlqYpBBo1meZ2vnhRT3c2AqmiNC90IvIJYR4GDktlpJSgMxREuLLu5s+g20oPifkjylZOruipksPg/5gPI1x3iiER8r3p0rAdJcvhQ6MvuSCzNsPRdhu9Uicg++KxkkielshUiCF64Jsr/HjgYiyne/eUFTVo31VqdxAIokFzgcrHzQ0v38Ktsmfh7K3xuQt19e/GLvyRHHmFwfsuCxmRbMR33Oxav4a2FwIMu6BfitZQEmQDZQtgCA4wq8iJmFQ2UhvmjY+kfD41bKc+U+jBw2ueWp2qYqc/ZoTFR8GbyGmsY5d0LCU3i+UAApoWP4MGXXD1vLv2Fd9CVl7l/ScfnMhqUzC/IRaG8xliacURcLsIUomJiqKSvXo=
         file_glob: true
         file: deploy/*
-        skip_cleanup: true
+        cleanup: false
         on:
           repo: gtasa-savegame-editor/gtasa-savegame-editor
           tags: true
@@ -41,9 +41,7 @@ jobs:
       os: linux
       dist: bionic
       language: java
-      jdk:
-        - openjdk11
-      sudo: true
+      jdk: openjdk11
       addons:
         apt:
           update: true
@@ -63,11 +61,11 @@ jobs:
           on_start: never
       deploy:
         provider: releases
-        api_key:
+        token:
           secure: lsuKoTqqWkyjemQ9QvBNIou1yOZzhqQt9c+NGYF8FcREWyPuLiDOTwrQve8skrVzwwWZVlMfyj4oef4mftN+VAEAoXWamMs3Dd9gVSoSNbGghM3KIRvBmu7n7D0EtDF3MMwGTJ2p+CQgzKWYz5uvDr0FOO3rHnjT2xyH80EgJ5Oh6seZnTpiDM+OFC2lu4iiyvC9/CAl2t+fNktBOMPbCbrL6mVcbm+5fapJPXRRfRtZS5ZOCCZKcDpjgn1H+NvOGNjRz49sAhRIjbvxX6goTCVo1ieMh+N5/vOdQRySNonFehfRCWMhlqYpBBo1meZ2vnhRT3c2AqmiNC90IvIJYR4GDktlpJSgMxREuLLu5s+g20oPifkjylZOruipksPg/5gPI1x3iiER8r3p0rAdJcvhQ6MvuSCzNsPRdhu9Uicg++KxkkielshUiCF64Jsr/HjgYiyne/eUFTVo31VqdxAIokFzgcrHzQ0v38Ktsmfh7K3xuQt19e/GLvyRHHmFwfsuCxmRbMR33Oxav4a2FwIMu6BfitZQEmQDZQtgCA4wq8iJmFQ2UhvmjY+kfD41bKc+U+jBw2ueWp2qYqc/ZoTFR8GbyGmsY5d0LCU3i+UAApoWP4MGXXD1vLv2Fd9CVl7l/ScfnMhqUzC/IRaG8xliacURcLsIUomJiqKSvXo=
         file_glob: true
         file: deploy/*
-        skip_cleanup: true
+        cleanup: false
         on:
           repo: gtasa-savegame-editor/gtasa-savegame-editor
           tags: true
@@ -94,11 +92,11 @@ jobs:
           on_start: never
       deploy:
         provider: releases
-        api_key:
+        token:
           secure: lsuKoTqqWkyjemQ9QvBNIou1yOZzhqQt9c+NGYF8FcREWyPuLiDOTwrQve8skrVzwwWZVlMfyj4oef4mftN+VAEAoXWamMs3Dd9gVSoSNbGghM3KIRvBmu7n7D0EtDF3MMwGTJ2p+CQgzKWYz5uvDr0FOO3rHnjT2xyH80EgJ5Oh6seZnTpiDM+OFC2lu4iiyvC9/CAl2t+fNktBOMPbCbrL6mVcbm+5fapJPXRRfRtZS5ZOCCZKcDpjgn1H+NvOGNjRz49sAhRIjbvxX6goTCVo1ieMh+N5/vOdQRySNonFehfRCWMhlqYpBBo1meZ2vnhRT3c2AqmiNC90IvIJYR4GDktlpJSgMxREuLLu5s+g20oPifkjylZOruipksPg/5gPI1x3iiER8r3p0rAdJcvhQ6MvuSCzNsPRdhu9Uicg++KxkkielshUiCF64Jsr/HjgYiyne/eUFTVo31VqdxAIokFzgcrHzQ0v38Ktsmfh7K3xuQt19e/GLvyRHHmFwfsuCxmRbMR33Oxav4a2FwIMu6BfitZQEmQDZQtgCA4wq8iJmFQ2UhvmjY+kfD41bKc+U+jBw2ueWp2qYqc/ZoTFR8GbyGmsY5d0LCU3i+UAApoWP4MGXXD1vLv2Fd9CVl7l/ScfnMhqUzC/IRaG8xliacURcLsIUomJiqKSvXo=
         file_glob: true
         file: deploy/*
-        skip_cleanup: true
+        cleanup: false
         on:
           repo: gtasa-savegame-editor/gtasa-savegame-editor
           tags: true
@@ -107,9 +105,7 @@ jobs:
       os: linux
       dist: bionic
       language: java
-      jdk:
-        - openjdk11
-      sudo: true
+      jdk: openjdk11
       addons:
         apt:
           packages:
@@ -130,11 +126,11 @@ jobs:
           on_start: never
       deploy:
         provider: releases
-        api_key:
+        token:
           secure: lsuKoTqqWkyjemQ9QvBNIou1yOZzhqQt9c+NGYF8FcREWyPuLiDOTwrQve8skrVzwwWZVlMfyj4oef4mftN+VAEAoXWamMs3Dd9gVSoSNbGghM3KIRvBmu7n7D0EtDF3MMwGTJ2p+CQgzKWYz5uvDr0FOO3rHnjT2xyH80EgJ5Oh6seZnTpiDM+OFC2lu4iiyvC9/CAl2t+fNktBOMPbCbrL6mVcbm+5fapJPXRRfRtZS5ZOCCZKcDpjgn1H+NvOGNjRz49sAhRIjbvxX6goTCVo1ieMh+N5/vOdQRySNonFehfRCWMhlqYpBBo1meZ2vnhRT3c2AqmiNC90IvIJYR4GDktlpJSgMxREuLLu5s+g20oPifkjylZOruipksPg/5gPI1x3iiER8r3p0rAdJcvhQ6MvuSCzNsPRdhu9Uicg++KxkkielshUiCF64Jsr/HjgYiyne/eUFTVo31VqdxAIokFzgcrHzQ0v38Ktsmfh7K3xuQt19e/GLvyRHHmFwfsuCxmRbMR33Oxav4a2FwIMu6BfitZQEmQDZQtgCA4wq8iJmFQ2UhvmjY+kfD41bKc+U+jBw2ueWp2qYqc/ZoTFR8GbyGmsY5d0LCU3i+UAApoWP4MGXXD1vLv2Fd9CVl7l/ScfnMhqUzC/IRaG8xliacURcLsIUomJiqKSvXo=
         file_glob: true
         file: deploy/*
-        skip_cleanup: true
+        cleanup: false
         on:
           repo: gtasa-savegame-editor/gtasa-savegame-editor
           tags: true
