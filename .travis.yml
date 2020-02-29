@@ -1,5 +1,12 @@
 language: java
 os: linux
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
+    on_success: always
+    on_failure: always
+    on_start: never
 jobs:
   include:
     - stage: build-resources
@@ -19,13 +26,6 @@ jobs:
         - mvn clean install -Prpm -Dmaven.javadoc.skip=true -B -V
         - mkdir deploy
         - cp -v "savegame-editor/target/rpm/savegame-editor/RPMS/noarch/$(ls savegame-editor/target/rpm/savegame-editor/RPMS/noarch | grep .rpm)" deploy
-      notifications:
-        webhooks:
-          urls:
-            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
-          on_success: always
-          on_failure: always
-          on_start: never
       deploy:
         provider: releases
         token:
@@ -52,13 +52,6 @@ jobs:
         - mkdir deploy
         - cp -v "savegame-editor/target/$(ls savegame-editor/target | grep jar-with-dependencies)" deploy
         - cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .deb)" deploy
-      notifications:
-        webhooks:
-          urls:
-            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
-          on_success: always
-          on_failure: always
-          on_start: never
       deploy:
         provider: releases
         token:
@@ -83,13 +76,6 @@ jobs:
         - ls -lah savegame-editor/target
         - cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .dmg)" deploy
         - cp -v "savegame-editor/target/GTA.SA.Savegame.Editor.app.zip" deploy
-      notifications:
-        webhooks:
-          urls:
-            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
-          on_success: always
-          on_failure: always
-          on_start: never
       deploy:
         provider: releases
         token:
@@ -117,13 +103,6 @@ jobs:
         - mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V -Pwindows
         - mkdir deploy
         - cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .exe)" deploy
-      notifications:
-        webhooks:
-          urls:
-            - https://webhooks.gitter.im/e/74fc80c4ab6379eb9072
-          on_success: always
-          on_failure: always
-          on_start: never
       deploy:
         provider: releases
         token:
