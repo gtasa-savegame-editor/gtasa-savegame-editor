@@ -10,6 +10,10 @@
 
 You can then type in `help` to get an overview of the commands available.
 
-More from the author:
+### Workflow:
 
-> Use "copy 1 blabla" to split savegame 1 into blocks. After you modify the block files, use "copy blabla 2" to combine the block files to savegame file 2.
+1. Use the `copy` command to split a savegame into blocks
+    - ex: `copy 1 foo` splits savegame one into blocks in `foo`
+2. Modify/Analyze the block files
+3. Merge the blocks back into another savegame by using `copy` the other way around
+    - ex: `copy foo 2` merges the blocks in `foo` into savefile two
