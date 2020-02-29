@@ -51,11 +51,13 @@ public class MainWindow extends JFrame {
 
         // Observe
         Savegame.get().addOnGameClosedHandler(v -> {
+            SavegameModel.gameClosed.report();
             onGameClose();
             tabbedPane.onGameClosed();
             tabbedPane.updateUI();
         });
         Savegame.get().addOnGameLoadedHandler(v -> {
+            SavegameModel.gameLoaded.report();
             onTitleChange();
             tabbedPane.onGameLoaded();
             tabbedPane.updateUI();
