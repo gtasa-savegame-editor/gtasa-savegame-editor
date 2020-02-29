@@ -7,7 +7,7 @@ import javax.swing.*;
 public class ConnectedLabel extends JLabel {
 
     public ConnectedLabel(Variable<Integer> var) {
-        var.setOnChange(this::update);
+        var.addOnChangeListener(this::update);
         update(var.getValue());
     }
 

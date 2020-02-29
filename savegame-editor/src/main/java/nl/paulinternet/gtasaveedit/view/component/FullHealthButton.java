@@ -7,7 +7,7 @@ public class FullHealthButton extends PButton {
     private int value;
 
     public FullHealthButton() {
-        Variables.get().maxHealth.setOnTextChange(s -> updateValue());
+        Variables.get().maxHealth.addOnChangeListener(s -> updateValue());
         onClick().addHandler(this, "setFullHealth");
     }
 

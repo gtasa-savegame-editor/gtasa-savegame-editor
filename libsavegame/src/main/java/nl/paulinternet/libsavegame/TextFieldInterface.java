@@ -11,9 +11,5 @@ public interface TextFieldInterface {
 
     String getAllowedCharacters();
 
-    int getMaximumLength();
-
-    void setOnTextChange(CallbackHandler<String> onChange);
-
     boolean isEnabled();
 }

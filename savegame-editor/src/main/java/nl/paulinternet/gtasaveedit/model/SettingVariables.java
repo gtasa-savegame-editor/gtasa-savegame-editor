@@ -2,16 +2,18 @@ package nl.paulinternet.gtasaveedit.model;
 
 import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.Settings;
-import nl.paulinternet.gtasaveedit.event.MethodInvoker;
 import nl.paulinternet.gtasaveedit.event.ReportableEvent;
-import nl.paulinternet.gtasaveedit.extractor.FormDataHandler;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.variables.Variable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 
 public class SettingVariables {
+    private static Logger log = LoggerFactory.getLogger(SettingVariables.class);
+
     public final ReportableEvent settingsChanged = new ReportableEvent();
 
     public final Variable<Integer> savegameDirectoryType = new Variable<>();
@@ -31,18 +33,18 @@ public class SettingVariables {
     public SettingVariables() {
         CallbackHandler<Void> changed = v -> changesMade.setValue(true);
 
-        savegameDirectoryType.setOnChange(v -> changed.handle(null));
-        sanAndreasDirectoryType.setOnChange(v -> changed.handle(null));
-        customSavegameDirectory.setOnChange(v -> changed.handle(null));
-        customSanAndreasDirectory.setOnChange(v -> changed.handle(null));
-        showClothes.setOnChange(v -> changed.handle(null));
-        warnOverwriteFile.setOnChange(v -> changed.handle(null));
-        warnDeleteFile.setOnChange(v -> changed.handle(null));
-        lookAndFeelClassName.setOnChange(v -> changed.handle(null));
-        windowWidth.setOnChange(v -> changed.handle(null));
-        windowHeight.setOnChange(v -> changed.handle(null));
-        windowMaximized.setOnChange(v -> changed.handle(null));
-        soundOnAboutPage.setOnChange(v -> changed.handle(null));
+        savegameDirectoryType.addOnChangeListener(v -> changed.handle(null));
+        sanAndreasDirectoryType.addOnChangeListener(v -> changed.handle(null));
+        customSavegameDirectory.addOnChangeListener(v -> changed.handle(null));
+        customSanAndreasDirectory.addOnChangeListener(v -> changed.handle(null));
+        showClothes.addOnChangeListener(v -> changed.handle(null));
+        warnOverwriteFile.addOnChangeListener(v -> changed.handle(null));
+        warnDeleteFile.addOnChangeListener(v -> changed.handle(null));
+        lookAndFeelClassName.addOnChangeListener(v -> changed.handle(null));
+        windowWidth.addOnChangeListener(v -> changed.handle(null));
+        windowHeight.addOnChangeListener(v -> changed.handle(null));
+        windowMaximized.addOnChangeListener(v -> changed.handle(null));
+        soundOnAboutPage.addOnChangeListener(v -> changed.handle(null));
     }
 
     public void copyFromSettings() {
@@ -83,7 +85,8 @@ public class SettingVariables {
             try {
                 UIManager.setLookAndFeel(Settings.getLookAndFeelClassName());
                 SwingUtilities.updateComponentTreeUI(MainWindow.getInstance());
-            } catch (Exception ignored) {
+            } catch (Exception e) {
+                log.warn("Error setting look and feel!", e);
             }
         }
 

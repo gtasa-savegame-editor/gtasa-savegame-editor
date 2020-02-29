@@ -9,6 +9,7 @@ import nl.paulinternet.gtasaveedit.view.selectable.*;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
 import nl.paulinternet.libsavegame.TextFieldInterface;
+import nl.paulinternet.libsavegame.variables.Variable;
 import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
@@ -41,7 +42,7 @@ public class CollectablePageTags extends Page {
         SelectableItems<SelectableTag> tags = new SelectableItems<SelectableTag>(tagList);
 
         // Create xbox
-        TextFieldInterface var = new SelectableItemVariable<Integer>(tags, 0, 0, 255);
+        Variable var = new SelectableItemVariable<Integer>(tags, 0, 0, 255);
 
         XBox xbox = new XBox();
         xbox.add(new JLabel("Value:"));

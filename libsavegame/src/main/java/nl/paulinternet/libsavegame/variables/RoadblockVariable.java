@@ -32,9 +32,7 @@ public class RoadblockVariable extends Variable<Boolean> {
                     break;
             }
 
-            if (onChange != null) {
-                onChange.handle(value);
-            }
+            handleChange(value);
         }
     }
 

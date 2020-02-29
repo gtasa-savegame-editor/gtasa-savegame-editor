@@ -1,12 +1,9 @@
 package nl.paulinternet.libsavegame.variables;
 
-import nl.paulinternet.libsavegame.CallbackHandler;
-import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 
-public class VariableTitle implements TextFieldInterface {
+public class VariableTitle extends Variable<String> {
     private String text;
-    private CallbackHandler<String> onChange;
     private boolean hasChanged;
 
     public VariableTitle() {
@@ -24,13 +21,13 @@ public class VariableTitle implements TextFieldInterface {
     }
 
     @Override
-    public int getMaximumLength() {
-        return 99;
+    protected boolean validate(String value) {
+        return value.length() <= 99; //TODO take allowed chars into account!
     }
 
     @Override
-    public void setOnTextChange(CallbackHandler<String> onChange) {
-        this.onChange = onChange;
+    public int getMaxLength() {
+        return 99;
     }
 
     @Override
@@ -40,14 +37,23 @@ public class VariableTitle implements TextFieldInterface {
 
     @Override
     public void setText(String text) throws InvalidValueException {
-        if (text == null) throw new InvalidValueException();
+        if (text == null || text.isEmpty()) throw new InvalidValueException("Title may not be empty!");
         if (!this.text.equals(text)) {
             this.text = text;
-            if(onChange != null) {
-                onChange.handle(text);
-            }
+            handleChange(text);
             hasChanged = true;
+            this.value = getText();
         }
+    }
+
+    @Override
+    public String getValue() {
+        return getText();
+    }
+
+    @Override
+    public void setValue(String value) throws InvalidValueException {
+        setText(value);
     }
 
     @Override

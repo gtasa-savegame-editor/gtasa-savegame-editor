@@ -1,6 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.connected;
 
-import nl.paulinternet.libsavegame.TextFieldInterface;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -10,8 +10,8 @@ public class ConnectedTextFieldDocument extends PlainDocument {
     private int maxLength;
     private char[] chars;
 
-    public ConnectedTextFieldDocument(TextFieldInterface var) {
-        maxLength = var.getMaximumLength();
+    public ConnectedTextFieldDocument(Variable<?> var) {
+        maxLength = var.getMaxLength();
         chars = var.getAllowedCharacters() == null ? null : var.getAllowedCharacters().toCharArray();
     }
 

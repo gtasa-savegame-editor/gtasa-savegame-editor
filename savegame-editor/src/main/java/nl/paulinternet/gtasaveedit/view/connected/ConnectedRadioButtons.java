@@ -58,7 +58,7 @@ public class ConnectedRadioButtons {
         this.var = var;
         buttons = new ArrayList<>();
         group = new ButtonGroup();
-        var.setOnChange(i -> new Handler().handleEvent(null));
+        var.addOnChangeListener(i -> new Handler().handleEvent(null));
     }
 
     public JRadioButton create(int value) {

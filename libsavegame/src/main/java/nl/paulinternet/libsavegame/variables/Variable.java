@@ -4,14 +4,15 @@ import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Variable<E> implements TextFieldInterface {
-    private E value;
-    private boolean enabled;
-    protected CallbackHandler<E> onChange;
+    protected E value;
+    private boolean enabled = true;
+    protected List<CallbackHandler<E>> onChange;
     private boolean hasChanged;
-    private int maximumLength = 255;
 
     public Variable() {
     }
@@ -24,13 +25,29 @@ public class Variable<E> implements TextFieldInterface {
         return value;
     }
 
+    /**
+     * Setter for the value that also calls the callbacks.
+     * If you override this method, be sure to call
+     * {@link #handleChange(E)} in case there was an update!
+     *
+     * @param value the new value of this variable
+     * @throws InvalidValueException if the value is invalid
+     */
     public void setValue(E value) throws InvalidValueException {
-        if (!Objects.equals(this.value, value)) {
+        if (!Objects.equals(this.value, value) && validate(value)) {
             this.value = value;
-            hasChanged = true;
-            if (onChange != null) {
-                onChange.handle(value);
-            }
+            handleChange(value);
+        }
+    }
+
+    protected boolean validate(E value) {
+        return true; // default
+    }
+
+    protected void handleChange(E value) {
+        hasChanged = true;
+        if (onChange != null && !onChange.isEmpty()) {
+            onChange.forEach(h -> h.handle(value));
         }
     }
 
@@ -42,8 +59,11 @@ public class Variable<E> implements TextFieldInterface {
         hasChanged = false;
     }
 
-    public void setOnChange(CallbackHandler<E> onChange) {
-        this.onChange = onChange;
+    public void addOnChangeListener(CallbackHandler<E> handler) {
+        if (this.onChange == null) {
+            this.onChange = new ArrayList<>();
+        }
+        this.onChange.add(handler);
     }
 
     @Override
@@ -73,22 +93,11 @@ public class Variable<E> implements TextFieldInterface {
     }
 
     @Override
-    @Deprecated
     public String getAllowedCharacters() {
         return "-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.";
     }
 
     @Override
-    public int getMaximumLength() {
-        return maximumLength;
-    }
-
-    @Override
-    @Deprecated
-    public void setOnTextChange(CallbackHandler<String> onChange) {
-
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
@@ -97,7 +106,7 @@ public class Variable<E> implements TextFieldInterface {
         this.enabled = enabled;
     }
 
-    public void setMaximumLength(int maximumLength) {
-        this.maximumLength = maximumLength;
+    public int getMaxLength() {
+        return 255; // default value
     }
 }

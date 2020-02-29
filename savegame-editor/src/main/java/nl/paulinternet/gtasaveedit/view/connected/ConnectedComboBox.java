@@ -58,7 +58,13 @@ public class ConnectedComboBox<T> extends PComboBox<T> {
         Handler h = new Handler();
         addItemListener(h);
 
-        var.setOnChange(this::setSelectedIndex);
+        var.addOnChangeListener(anIndex -> {
+            for (int i = 0; i < values.size(); i++) {
+                if(anIndex.equals(values.get(i))) {
+                    setSelectedIndex(i);
+                }
+            }
+        });
     }
 
     public void addItem(int value, T name) {

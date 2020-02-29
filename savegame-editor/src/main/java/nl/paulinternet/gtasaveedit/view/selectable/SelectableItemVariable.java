@@ -76,7 +76,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     }
 
     @Override
-    public int getMaximumLength() {
+    public int getMaxLength() {
         return 0;
     }
 
@@ -88,11 +88,6 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     @Override
     public boolean isEnabled() {
         return !disabled;
-    }
-
-    @Override
-    public void setOnTextChange(CallbackHandler<String> onChange) {
-        this.onChange = i -> onChange.handle(String.valueOf(i));
     }
 
     public void setOnDataChange(CallbackHandler<Integer> onDataChange) {

@@ -36,10 +36,10 @@ public class Savegame {
         return instance;
     }
 
-    public void load(File filename) throws ErrorMessageException {
+    public void load(File file) throws ErrorMessageException {
         try {
             // Read data
-            SavegameData newData = new SavegameData(filename);
+            SavegameData newData = new SavegameData(file);
 
             // Read settings
             link.load(newData);

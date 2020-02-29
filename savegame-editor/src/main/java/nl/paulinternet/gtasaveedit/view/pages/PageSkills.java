@@ -6,6 +6,7 @@ import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.libsavegame.TextFieldInterface;
+import nl.paulinternet.libsavegame.variables.Variable;
 import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class PageSkills extends Page {
     private Table table;
     private int row;
 
-    private <E> void addRow(String label, TextFieldInterface var, int min, int max, boolean infinity) {
+    private <E> void addRow(String label, Variable<?> var, int min, int max, boolean infinity) {
         table.setCellExpand(0.0f, 0.0f);
         table.setCellAlignment(1.0f, 0.5f);
         table.add(new JLabel(label + ":", SwingConstants.RIGHT), 0, row);

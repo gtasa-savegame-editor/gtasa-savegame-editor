@@ -3,6 +3,7 @@ package nl.paulinternet.gtasaveedit.view.connected;
 import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 import nl.paulinternet.gtasaveedit.view.swing.PTextField;
+import nl.paulinternet.libsavegame.variables.Variable;
 
 import java.awt.*;
 
@@ -13,19 +14,19 @@ public class ConnectedTextField extends PTextField {
     private boolean error;
     private boolean disabled;
 
-    public ConnectedTextField(TextFieldInterface model, int columns) {
+    public ConnectedTextField(Variable<?> model, int columns) {
         super(new ConnectedTextFieldDocument(model), model.getText(), columns);
         this.model = model;
 
         // Observe
-        model.setOnTextChange(s -> updateFromModel());
+        model.addOnChangeListener(x -> updateFromModel());
         onFocusLost().addHandler(this, "updateFromModel");
         onChange().addHandler(this, "updateToModel");
 
         updateFromModel();
     }
 
-    public ConnectedTextField(TextFieldInterface model) {
+    public ConnectedTextField(Variable<?> model) {
         this(model, 10);
     }
 

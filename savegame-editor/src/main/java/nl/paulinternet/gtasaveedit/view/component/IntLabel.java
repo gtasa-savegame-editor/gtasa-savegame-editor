@@ -12,7 +12,7 @@ public class IntLabel extends JLabel {
         this.text = text;
         this.var = var;
         updateText();
-        var.setOnChange(i -> updateText());
+        var.addOnChangeListener(i -> updateText());
     }
 
     public void updateText() {

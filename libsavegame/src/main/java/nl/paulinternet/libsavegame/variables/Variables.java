@@ -45,7 +45,12 @@ public class Variables {
     public final List<Variable<Integer>> schoolBike = intList(6);
 
     // Player data (block 15)
-    public final Variable<Integer> money = new Variable<>();
+    public final Variable<Integer> money = new Variable<>() {
+        @Override
+        public int getMaxLength() {
+            return 9;
+        }
+    };
     public final Variable<Integer> moneyOnScreen = new Variable<>();
     public final Variable<Boolean> infiniteRun = new Variable<>();
     public final Variable<Boolean> fastReload = new Variable<>();
@@ -132,7 +137,7 @@ public class Variables {
     }
 
     public static Variables get() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new Variables();
         }
         return instance;

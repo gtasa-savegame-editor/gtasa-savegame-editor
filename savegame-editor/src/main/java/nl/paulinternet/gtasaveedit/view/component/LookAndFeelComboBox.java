@@ -29,7 +29,7 @@ public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
 
         // Register Events
         onChange().addHandler(this, "copyToModel");
-        Model.editSettings.lookAndFeelClassName.setOnTextChange(s -> copyFromModel());
+        Model.editSettings.lookAndFeelClassName.addOnChangeListener(s -> copyFromModel());
     }
 
     /**

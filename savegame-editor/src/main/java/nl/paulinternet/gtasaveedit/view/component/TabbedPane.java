@@ -68,7 +68,6 @@ public class TabbedPane extends JTabbedPane {
     }
 
 
-    @SuppressWarnings("unused") // used in event
     public void onGameLoaded() {
         if (!loaded) {
             removeAll();
@@ -84,7 +83,6 @@ public class TabbedPane extends JTabbedPane {
         }
     }
 
-    @SuppressWarnings("WeakerAccess") // used in event
     public void onGameClosed() {
         removeAll();
         pages.forEach(p -> {

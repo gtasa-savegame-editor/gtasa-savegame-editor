@@ -14,7 +14,7 @@ public class ConnectedCheckbox extends PCheckBox {
 
         // Observe
         onChange().addHandler(this, "updateToModel");
-        var.setOnChange(b -> updateFromModel());
+        var.addOnChangeListener(b -> updateFromModel());
         updateFromModel();
     }
 

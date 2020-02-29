@@ -154,27 +154,30 @@ public class PageGarages extends Page {
             super(new Variable<>());
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             updateView(color1, color2, garageCount);
-            Variables.get().garageCars.get(garageCount).getCarId().setOnChange(i -> updateView(color1, color2, garageCount));
+            Variables.get().garageCars.get(garageCount).getCarId().addOnChangeListener(i -> updateView(color1, color2, garageCount));
         }
 
         private void updateView(Variable<Integer> color1, Variable<Integer> color2, int garageCount) {
             removeAllItems();
             Garage.Car car = Variables.get().garageCars.get(garageCount);
-            VehicleType type = VehicleType.getType(car.getCarId().getValue());
-            if (type != null) {
-                ArrayList<VehicleColor.ColorPair> validColors = type.getValidColors();
+            Variable<Integer> carId = car.getCarId();
+            if (carId.getValue() != null) {
+                VehicleType type = VehicleType.getType(carId.getValue());
+                if (type != null) {
+                    ArrayList<VehicleColor.ColorPair> validColors = type.getValidColors();
 
-                log.debug("Vehicle '" + type.getName() + "' has " + validColors.size() + " valid colors");
+                    log.debug("Vehicle '" + type.getName() + "' has " + validColors.size() + " valid colors");
 
-                var.setOnChange(i -> {
-                    VehicleColor.ColorPair selectedColor = validColors.get(var.getValue());
-                    color1.setValue(selectedColor.getFirstColor());
-                    color2.setValue(selectedColor.getSecondColor());
-                });
+                    var.addOnChangeListener(i -> {
+                        VehicleColor.ColorPair selectedColor = validColors.get(var.getValue());
+                        color1.setValue(selectedColor.getFirstColor());
+                        color2.setValue(selectedColor.getSecondColor());
+                    });
 
-                for (int i = 0; i < validColors.size(); i++) {
-                    addItem(i, VehicleColor.getColor(validColors.get(i).getFirstColor()).getName() + "/" +
-                            VehicleColor.getColor(validColors.get(i).getFirstColor()).getName());
+                    for (int i = 0; i < validColors.size(); i++) {
+                        addItem(i, VehicleColor.getColor(validColors.get(i).getFirstColor()).getName() + "/" +
+                                VehicleColor.getColor(validColors.get(i).getFirstColor()).getName());
+                    }
                 }
             }
             updateUI();
@@ -186,16 +189,19 @@ public class PageGarages extends Page {
             super(var);
             setPrototypeDisplayValue(PROTOTYPE_DISPLAY_VALUE); // this determines dropdown width
             updateView(garageCount);
-            Variables.get().garageCars.get(garageCount).getCarId().setOnChange(i -> updateView(garageCount));
+            Variables.get().garageCars.get(garageCount).getCarId().addOnChangeListener(i -> updateView(garageCount));
         }
 
         private void updateView(int garageCount) {
             removeAllItems(); // remove current contents
-            Integer carId = Variables.get().garageCars.get(garageCount).getCarId().getValue();
-            List<String> validMods = Arrays.asList(VehicleType.getType(carId).getValidMods());
-            VehicleMod.getMods().stream() // stream mods
-                    .sorted(Comparator.comparingInt(VehicleMod::getId)) // sort by id
-                    .forEach(m -> addItem(m.getId(), buildDisplayName(validMods, m))); // add all to dropdown
+            Variable<Integer> id = Variables.get().garageCars.get(garageCount).getCarId();
+            if (id.getValue() != null) {
+                Integer carId = id.getValue();
+                List<String> validMods = Arrays.asList(VehicleType.getType(carId).getValidMods());
+                VehicleMod.getMods().stream() // stream mods
+                        .sorted(Comparator.comparingInt(VehicleMod::getId)) // sort by id
+                        .forEach(m -> addItem(m.getId(), buildDisplayName(validMods, m))); // add all to dropdown
+            }
         }
 
         /**

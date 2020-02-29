@@ -1,11 +1,15 @@
 package nl.paulinternet.libsavegame.variables;
 
-import nl.paulinternet.libsavegame.CallbackHandler;
-import nl.paulinternet.libsavegame.Savegame;
-import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 
-public class VariableTime implements TextFieldInterface {
+public class VariableTime extends Variable<String> {
+
+    public static final String UNSET = "--:--";
+
+    public VariableTime() {
+        Variables.get().timeHour.addOnChangeListener(i -> handleChange(getText()));
+        Variables.get().timeMinute.addOnChangeListener(i -> handleChange(getText()));
+    }
 
     @Override
     public String getAllowedCharacters() {
@@ -18,25 +22,34 @@ public class VariableTime implements TextFieldInterface {
     }
 
     @Override
-    public int getMaximumLength() {
+    public int getMaxLength() {
         return 0;
     }
 
     @Override
-    public void setOnTextChange(CallbackHandler<String> onChange) {
-        // ?
+    public String getValue() {
+        return getText();
+    }
+
+    @Override
+    public void setValue(String value) throws InvalidValueException {
+        if (!this.value.equals(value)) {
+            this.value = getText();
+            setText(value);
+            handleChange(value);
+        }
     }
 
     @Override
     public String getText() {
-        Variable<Integer> timeHour = Variables.get().timeHour;
-        Variable<Integer> timeMinute = Variables.get().timeMinute;
-
-        if(timeHour.getValue() == null || timeMinute.getValue() == null) {
-            return "--:--";
+        Variable<Integer> hours = Variables.get().timeHour;
+        Variable<Integer> minutes = Variables.get().timeMinute;
+        if (hours.getValue() == null ||
+                minutes.getValue() == null) {
+            return UNSET;
         } else {
-            int hour = timeHour.getValue();
-            int minute = timeMinute.getValue();
+            int hour = hours.getValue();
+            int minute = minutes.getValue();
             String minuteString = minute < 10 ? "0" + minute : String.valueOf(minute);
             return hour + ":" + minuteString;
         }
@@ -56,12 +69,13 @@ public class VariableTime implements TextFieldInterface {
                 minute = Integer.parseInt(text.substring(colon + 1));
             }
 
-            if (hour < 0 || hour > 23 || minute < 0 || minute > 59) throw new InvalidValueException();
+            if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
+                throw new InvalidValueException("Value '" + text + "' is not a valid time!");
 
             Variables.get().timeHour.setValue(hour);
             Variables.get().timeMinute.setValue(minute);
         } catch (NumberFormatException e) {
-            throw new InvalidValueException();
+            throw new InvalidValueException("Error parsing time!", e);
         }
     }
 
@@ -69,4 +83,5 @@ public class VariableTime implements TextFieldInterface {
     public boolean isEnabled() {
         return true;
     }
+
 }

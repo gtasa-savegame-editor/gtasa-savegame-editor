@@ -184,7 +184,7 @@ public class PageWeapons extends Page {
     }
 
     private YBox createAmmoBox(int slot) {
-        TextFieldInterface var = Variables.get().weaponAmmo.get(slot);
+        Variable<Integer> var = Variables.get().weaponAmmo.get(slot);
 
         YBox ybox = new YBox();
         ybox.add(new ConnectedTextField(var));

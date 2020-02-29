@@ -9,6 +9,7 @@ import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.XBox;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.libsavegame.variables.Variable;
 import nl.paulinternet.libsavegame.variables.VariableTime;
 import nl.paulinternet.libsavegame.variables.Variables;
 

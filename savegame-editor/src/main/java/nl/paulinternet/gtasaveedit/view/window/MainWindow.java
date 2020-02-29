@@ -7,6 +7,8 @@ import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.swing.Alignment;
 
 import javax.swing.*;
+
+import nl.paulinternet.libsavegame.Savegame;
 import nl.paulinternet.libsavegame.variables.Variables;
 
 public class MainWindow extends JFrame {
@@ -48,9 +50,17 @@ public class MainWindow extends JFrame {
         add(tabbedPane);
 
         // Observe
-        SavegameModel.gameClosed.addHandler(this, "onGameClose");
-        SavegameModel.gameLoaded.addHandler(this, "onTitleChange");
-        Variables.get().title.setOnTextChange(s -> onTitleChange());
+        Savegame.get().addOnGameClosedHandler(v -> {
+            onGameClose();
+            tabbedPane.onGameClosed();
+            tabbedPane.updateUI();
+        });
+        Savegame.get().addOnGameLoadedHandler(v -> {
+            onTitleChange();
+            tabbedPane.onGameLoaded();
+            tabbedPane.updateUI();
+        });
+        Variables.get().title.addOnChangeListener(s -> onTitleChange());
 
         invalidate();
         validate();

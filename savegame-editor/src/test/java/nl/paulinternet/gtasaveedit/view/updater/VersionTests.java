@@ -49,9 +49,13 @@ public class VersionTests extends TestCase {
         Version newerStableVersion = new Version("v1.1.0");
         Version newerMajorVersion = new Version("v2.0.0");
 
+        //noinspection EqualsWithItself just to be sure
         assertEquals(0, betaVersion.compareTo(betaVersion));
+        //noinspection EqualsWithItself just to be sure
         assertEquals(0, rcVersion.compareTo(rcVersion));
+        //noinspection EqualsWithItself just to be sure
         assertEquals(0, stableVersion.compareTo(stableVersion));
+
         assertTrue(betaVersion.compareTo(newerBetaVersion) < 0);
         assertTrue(betaVersion.compareTo(rcVersion) < 0);
         assertTrue(betaVersion.compareTo(newerRcVersion) < 0);

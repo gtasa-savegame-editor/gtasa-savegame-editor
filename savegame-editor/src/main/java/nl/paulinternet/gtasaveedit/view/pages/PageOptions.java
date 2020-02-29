@@ -87,16 +87,16 @@ public class PageOptions extends Page {
      * @param settings the settings.
      */
     private void initEvents(SettingVariables settings) {
-        settings.savegameDirectoryType.setOnChange(i -> checkSavegameDir());
-        settings.sanAndreasDirectoryType.setOnChange(i -> checkSaDir());
-        settings.windowWidth.setOnChange(i -> windowSizeChanged());
-        settings.windowHeight.setOnChange(i -> windowSizeChanged());
-        settings.changesMade.setOnChange(b -> changesMadeChanged());
-        settings.customSavegameDirectory.setOnChange(i -> {
+        settings.savegameDirectoryType.addOnChangeListener(i -> checkSavegameDir());
+        settings.sanAndreasDirectoryType.addOnChangeListener(i -> checkSaDir());
+        settings.windowWidth.addOnChangeListener(i -> windowSizeChanged());
+        settings.windowHeight.addOnChangeListener(i -> windowSizeChanged());
+        settings.changesMade.addOnChangeListener(b -> changesMadeChanged());
+        settings.customSavegameDirectory.addOnChangeListener(i -> {
             checkSavegameDir();
             customSavegameDirectoryChanged();
         });
-        settings.customSanAndreasDirectory.setOnChange(s -> {
+        settings.customSanAndreasDirectory.addOnChangeListener(s -> {
             checkSaDir();
             customSanAndreasDirectoryChanged();
         });

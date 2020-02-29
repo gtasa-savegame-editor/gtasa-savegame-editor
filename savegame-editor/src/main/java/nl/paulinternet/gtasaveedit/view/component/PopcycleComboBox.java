@@ -39,7 +39,7 @@ public class PopcycleComboBox extends PComboBox<String> {
         addItem(0x0e, "Shopping posh");
 
         // Observe
-        var.setOnChange(b -> updateView());
+        var.addOnChangeListener(b -> updateView());
 
         onChange().addHandler(this, "updateModel");
         updateView();
