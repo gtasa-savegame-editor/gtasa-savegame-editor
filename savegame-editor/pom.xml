@@ -17,6 +17,7 @@
 
     <properties>
         <windows.version.pre>1.</windows.version.pre>
+        <current.year>2020</current.year>
     </properties>
 
     <build>
@@ -282,7 +283,7 @@
         <dependency>
             <groupId>nl.paulinternet.gtasaveedit</groupId>
             <artifactId>libsavegame</artifactId>
-            <version>${parent.version}</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>net.java.dev.jna</groupId>

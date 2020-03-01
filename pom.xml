@@ -23,7 +23,6 @@
     </properties>
 
     <modules>
-        <module>libsavegame</module>
         <module>savegame-editor</module>
         <module>cli</module>
     </modules>
