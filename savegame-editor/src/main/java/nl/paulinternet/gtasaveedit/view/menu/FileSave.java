@@ -13,12 +13,13 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
 class FileSave extends JMenuItem implements ActionListener {
+
     public FileSave() {
         super("Save...");
-        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK));
+        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, MAC ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK));
         addActionListener(this);
     }
 

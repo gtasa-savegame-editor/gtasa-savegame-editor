@@ -4,7 +4,6 @@ import nl.paulinternet.gtasaveedit.event.Event;
 import nl.paulinternet.gtasaveedit.event.EventHandler;
 import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.TextFieldInterface;
-import nl.paulinternet.libsavegame.Util;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 import nl.paulinternet.libsavegame.variables.Variable;
 
@@ -72,7 +71,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
 
     @Override
     public String getDefaultText() {
-        return Util.EMPTYSTRING;
+        return "";
     }
 
     @Override

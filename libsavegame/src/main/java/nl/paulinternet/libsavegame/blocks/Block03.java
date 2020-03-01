@@ -94,7 +94,6 @@ public class Block03 extends LinkArray {
             final int y = io.readByte(3, pos + 61);
             final int z = io.readByte(3, pos + 62);
 
-            //TODO where to save `id`? What does it even mean? It's apparently neither the car id nor the garage id.
             final String id = (i < 10) ? " " + i : String.valueOf(i);
 
             final VehicleType vehicleType = VehicleType.getType(type);

@@ -13,7 +13,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
 public class QuickSave extends PMenuItem {
     private int number;
@@ -22,7 +22,7 @@ public class QuickSave extends PMenuItem {
         this.number = number;
 
         //noinspection deprecation
-        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0 + number, (MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK) | InputEvent.SHIFT_MASK));
+        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0 + number, (MAC ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK) | InputEvent.SHIFT_DOWN_MASK));
 
         SavegameModel.quickLoadUpdate.addHandler(this, "updateText");
         onClick().addHandler(this, "saveFile");
@@ -43,8 +43,9 @@ public class QuickSave extends PMenuItem {
 
     @SuppressWarnings("unused") //used in handler
     public void saveFile() {
+        SavegameModel savegameModel = SavegameModel.get(FileSystem.getSavegameDirectory());
         try {
-            File file = SavegameModel.get(FileSystem.getSavegameDirectory()).getSavegameFile(number);
+            File file = savegameModel.getSavegameFile(number);
             if (Settings.getWarnOverwriteFile() == Settings.YES && file.exists()) {
                 int result = JOptionPane.showConfirmDialog(
                         MainWindow.getInstance(),
@@ -61,5 +62,6 @@ public class QuickSave extends PMenuItem {
         } catch (ErrorMessageException e) {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
         }
+        savegameModel.updateQuickLoad();
     }
 }

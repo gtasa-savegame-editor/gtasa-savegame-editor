@@ -38,7 +38,7 @@ public class Table {
         // Copy the values to the array
         String[] copied = new String[columns];
         for (int i = 0; i < columns; i++) {
-            copied[i] = data.length > i && data[i] != null ? data[i] : Util.EMPTYSTRING;
+            copied[i] = data.length > i && data[i] != null ? data[i] : "";
             if (copied[i].length() > maxSize[i])
                 maxSize[i] = copied[i].length();
         }
@@ -57,8 +57,7 @@ public class Table {
             for (int i = 0; i < columns - 1; i++) {
                 builder.append(row[i]);
                 int padding = maxSize[i] - row[i].length() + 2;
-                for (int j = 0; j < padding; j++)
-                    builder.append(' ');
+                builder.append(" ".repeat(Math.max(0, padding)));
             }
             builder.append(row[columns - 1]);
             builder.append('\n');

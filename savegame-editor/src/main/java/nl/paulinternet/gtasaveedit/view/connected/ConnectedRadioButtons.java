@@ -62,7 +62,7 @@ public class ConnectedRadioButtons {
     }
 
     public JRadioButton create(int value) {
-        return create(value, Util.EMPTYSTRING);
+        return create(value, "");
     }
 
     public JRadioButton create(int value, String text) {

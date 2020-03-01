@@ -1,11 +1,11 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
+import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.model.Model;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.menu.extractor.ExtractorMenu;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.Savegame;
-import nl.paulinternet.gtasaveedit.model.SavegameModel;
-import nl.paulinternet.gtasaveedit.FileSystem;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
@@ -17,8 +17,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Objects;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
-import static nl.paulinternet.libsavegame.Util.WINDOWS;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.WINDOWS;
 
 public class MenuBar extends JMenuBar {
     private static class ExitMenuItem extends JMenuItem implements ActionListener {
@@ -36,7 +36,7 @@ public class MenuBar extends JMenuBar {
     private static class CloseMenuItem extends JMenuItem implements ActionListener {
         public CloseMenuItem() {
             super("Close");
-            setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK));
+            setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, MAC ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK));
             addActionListener(this);
         }
 
@@ -49,12 +49,13 @@ public class MenuBar extends JMenuBar {
     private static class LoadCompleteSavegame extends JMenuItem implements ActionListener {
         public LoadCompleteSavegame() {
             super("100% Complete savegame");
-            setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_9, MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK));
+            setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_9, MAC ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK));
             addActionListener(this);
         }
 
         @Override
         public void actionPerformed(ActionEvent ev) {
+            Savegame.get().close();
             Savegame.get().load(MenuBar.class.getResource("/savegame.b"));
         }
     }
@@ -62,7 +63,7 @@ public class MenuBar extends JMenuBar {
     public static class OpenDirMenuItem extends JMenuItem implements ActionListener {
         public OpenDirMenuItem() {
             super("Open savegame directory");
-            setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK));
+            setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, MAC ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK));
             addActionListener(this);
             settingsChanged();
             Model.editSettings.settingsChanged.addHandler(this, "settingsChanged");

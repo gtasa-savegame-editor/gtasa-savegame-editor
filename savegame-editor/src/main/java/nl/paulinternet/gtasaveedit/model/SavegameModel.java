@@ -2,6 +2,7 @@ package nl.paulinternet.gtasaveedit.model;
 
 import nl.paulinternet.gtasaveedit.QuickLoad;
 import nl.paulinternet.gtasaveedit.event.ReportableEvent;
+import nl.paulinternet.libsavegame.Savegame;
 import nl.paulinternet.libsavegame.io.ArchiveReader;
 import nl.paulinternet.libsavegame.variables.Variable;
 
@@ -40,6 +41,7 @@ public class SavegameModel {
         for (int i = 1; i <= 8; i++) {
             quickLoad.add(new QuickLoad(i, this));
         }
+        Savegame.get().addOnUpdateQuickloadHandler(v -> SavegameModel.quickLoadUpdate.report());
     }
 
     public static SavegameModel get(File savegameDirectory) {

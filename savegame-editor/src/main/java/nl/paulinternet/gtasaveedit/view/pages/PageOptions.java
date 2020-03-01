@@ -19,8 +19,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
-import static nl.paulinternet.libsavegame.Util.WINDOWS;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.WINDOWS;
 
 public class PageOptions extends Page {
     private PButton buttonApply, buttonCancel;
@@ -355,7 +355,7 @@ public class PageOptions extends Page {
 
         // Change
         if (result == JFileChooser.APPROVE_OPTION) {
-            Model.editSettings.customSavegameDirectory.setText(fileChooser.getSelectedFile().toString());
+            Model.editSettings.customSavegameDirectory.setText(fileChooser.getSelectedFile().getAbsolutePath());
         }
     }
 
@@ -369,7 +369,7 @@ public class PageOptions extends Page {
 
         // Change
         if (result == JFileChooser.APPROVE_OPTION) {
-            Model.editSettings.customSanAndreasDirectory.setText(fileChooser.getSelectedFile().toString());
+            Model.editSettings.customSanAndreasDirectory.setText(fileChooser.getSelectedFile().getAbsolutePath());
         }
     }
 

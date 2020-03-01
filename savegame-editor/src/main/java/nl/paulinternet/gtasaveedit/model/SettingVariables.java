@@ -18,8 +18,18 @@ public class SettingVariables {
 
     public final Variable<Integer> savegameDirectoryType = new Variable<>();
     public final Variable<Integer> sanAndreasDirectoryType = new Variable<>();
-    public final Variable<String> customSavegameDirectory = new Variable<>();
-    public final Variable<String> customSanAndreasDirectory = new Variable<>();
+    public final Variable<String> customSavegameDirectory = new Variable<>() {
+        @Override
+        public String getAllowedCharacters() {
+            return super.getAllowedCharacters() + "/\\:_ +";
+        }
+    };
+    public final Variable<String> customSanAndreasDirectory = new Variable<>() {
+        @Override
+        public String getAllowedCharacters() {
+            return super.getAllowedCharacters() + "/\\:_ ";
+        }
+    };
     public final Variable<Boolean> showClothes = new Variable<>();
     public final Variable<Boolean> warnOverwriteFile = new Variable<>();
     public final Variable<Boolean> warnDeleteFile = new Variable<>();

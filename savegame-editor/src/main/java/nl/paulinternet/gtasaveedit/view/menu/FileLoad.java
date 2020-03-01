@@ -10,11 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
 class FileLoad extends JMenuItem implements ActionListener {
     public FileLoad() {
         super("Load...");
+        //noinspection MagicConstant it's ok my dude
         setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, MAC ? ActionEvent.META_MASK : ActionEvent.CTRL_MASK));
         addActionListener(this);
     }

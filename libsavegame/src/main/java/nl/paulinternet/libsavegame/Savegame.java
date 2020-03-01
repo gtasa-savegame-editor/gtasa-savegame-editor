@@ -4,7 +4,6 @@ import nl.paulinternet.libsavegame.exceptions.ErrorMessageException;
 import nl.paulinternet.libsavegame.exceptions.FileFormatException;
 import nl.paulinternet.libsavegame.link.Link;
 import nl.paulinternet.libsavegame.link.SavegameLink;
-import nl.paulinternet.libsavegame.variables.Variables;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -100,6 +99,7 @@ public class Savegame {
     public void close() {
         // Remove data
         data = null;
+        link = new SavegameLink();
         if (onGameClosed != null && !onGameClosed.isEmpty()) {
             onGameClosed.forEach(h -> h.handle(null));
         }

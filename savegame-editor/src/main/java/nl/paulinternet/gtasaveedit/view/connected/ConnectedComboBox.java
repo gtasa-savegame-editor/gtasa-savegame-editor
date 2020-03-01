@@ -59,7 +59,7 @@ public class ConnectedComboBox<T> extends PComboBox<T> {
         addItemListener(h);
 
         var.addOnChangeListener(anIndex -> {
-            for (int i = 0; i < values.size(); i++) {
+            for (int i = 0; i < getItemCount(); i++) {
                 if(anIndex.equals(values.get(i))) {
                     setSelectedIndex(i);
                 }

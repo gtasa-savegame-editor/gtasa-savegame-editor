@@ -17,7 +17,7 @@ public class Dir {
     }
 
     private Dir() {
-        String[] TEMP = {Util.EMPTYSTRING, Util.EMPTYSTRING};
+        String[] TEMP = {"", ""};
         Properties prop = new Properties();
         try (InputStream stream = Dir.class.getResourceAsStream("/application.properties")) {
             prop.load(stream);
@@ -25,8 +25,8 @@ public class Dir {
             TEMP[1] = prop.getProperty("path.savegames");
         } catch (IOException e) {
             e.printStackTrace();
-            TEMP[0] = Util.EMPTYSTRING;
-            TEMP[1] = Util.EMPTYSTRING;
+            TEMP[0] = "";
+            TEMP[1] = "";
         }
         this.RESEARCH_PATH = TEMP[0];
         this.SAVEGAME_PATH = TEMP[1];

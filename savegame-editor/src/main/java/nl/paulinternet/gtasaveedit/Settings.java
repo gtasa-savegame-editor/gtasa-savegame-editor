@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.io.*;
 import java.nio.channels.FileChannel;
 
+import static nl.paulinternet.gtasaveedit.view.Main.WINDOWS;
+
 public class Settings implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -62,7 +64,7 @@ public class Settings implements Serializable {
     }
 
     private static File getSettingsFile() {
-        if (Util.WINDOWS) {
+        if (WINDOWS) {
             char[] path = new char[]{};
             if (Shell32.INSTANCE.SHGetSpecialFolderPath(null, path, ShlObj.CSIDL_LOCAL_APPDATA, false)) {
                 configDir = String.valueOf(path) + File.separator + "gta-sa_savegame_editor";

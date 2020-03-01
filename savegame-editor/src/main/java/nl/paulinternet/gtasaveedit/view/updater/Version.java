@@ -65,7 +65,7 @@ public class Version implements Comparable<Version> {
         minor = Integer.parseInt(flagSplit[0]); // 3 // 3 // 3
         patch = Integer.parseInt(((split.length >= 3) ? split[2] : "0")); // 4 // 0 // 1
 
-        flag = Flag.byRepresentation((flagSplit.length >= 2) ? flagSplit[1] : ""); // BETA, RELEASE, RELEASE
+        flag = Flag.byRepresentation((flagSplit.length >= 2) ? flagSplit[1] : ""); // BETA, RC, RELEASE
     }
 
     /**

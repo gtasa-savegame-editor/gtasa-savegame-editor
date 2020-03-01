@@ -13,11 +13,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
-
 public class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
+
+    public static final boolean WINDOWS = System.getProperty("os.name").toLowerCase().startsWith("windows");
+    public static final boolean MAC = System.getProperty("os.name").toLowerCase().startsWith("mac");
+    public static final boolean LINUX = System.getProperty("os.name").toLowerCase().startsWith("linux");
 
     public static void main(String[] args) {
         try {

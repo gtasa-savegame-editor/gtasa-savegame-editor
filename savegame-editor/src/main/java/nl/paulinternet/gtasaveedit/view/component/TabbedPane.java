@@ -1,7 +1,8 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
-import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.Settings;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
+import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.menu.MenuBar;
 import nl.paulinternet.gtasaveedit.view.pages.*;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
@@ -12,8 +13,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static nl.paulinternet.libsavegame.Util.MAC;
 
 public class TabbedPane extends JTabbedPane {
 
@@ -43,7 +42,7 @@ public class TabbedPane extends JTabbedPane {
                 new PageOptions()));
 
         pageAbout = new PageAbout();
-        if (!MAC) {
+        if (!Main.MAC) {
             pages.add(pageAbout);
         }
 

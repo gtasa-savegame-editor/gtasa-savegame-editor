@@ -1,6 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.menu;
 
 import nl.paulinternet.gtasaveedit.FileSystem;
+import nl.paulinternet.gtasaveedit.view.Main;
 import nl.paulinternet.gtasaveedit.view.swing.PMenuItem;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import nl.paulinternet.libsavegame.Savegame;
@@ -12,7 +13,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-import static nl.paulinternet.libsavegame.Util.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
 public class QuickLoad extends PMenuItem {
     private int number;
@@ -21,7 +22,7 @@ public class QuickLoad extends PMenuItem {
         this.number = number;
 
         // Accelerator
-        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0 + number, MAC ? InputEvent.META_MASK : InputEvent.CTRL_MASK));
+        setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0 + number, MAC ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK));
 
         // Observe
         SavegameModel.quickLoadUpdate.addHandler(this, "updateText");
@@ -34,7 +35,10 @@ public class QuickLoad extends PMenuItem {
     @SuppressWarnings("unused") //used in event
     public void loadSavegame() {
         try {
-            Savegame.get().load(SavegameModel.get(FileSystem.getSavegameDirectory()).getSavegameFile(number));
+            SavegameModel savegameModel = SavegameModel.get(FileSystem.getSavegameDirectory());
+            File savegameFile = savegameModel.getSavegameFile(number);
+            Savegame.get().close();
+            Savegame.get().load(savegameFile);
         } catch (ErrorMessageException e) {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getTitle(), JOptionPane.ERROR_MESSAGE);
         }

@@ -1,14 +1,13 @@
 package nl.paulinternet.gtasaveedit;
 
-import nl.paulinternet.libsavegame.Util;
 import nl.paulinternet.libsavegame.steam.SteamConfigNode;
 import nl.paulinternet.libsavegame.steam.SteamConfigReader;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
-import static nl.paulinternet.libsavegame.Util.LINUX;
-import static nl.paulinternet.libsavegame.Util.MAC;
+import static nl.paulinternet.gtasaveedit.view.Main.LINUX;
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
 public class FileSystem {
     public static final File activeDir = new File(System.getProperty("user.dir"));
@@ -63,10 +62,10 @@ public class FileSystem {
         if (sanAndreasDirectory != null) {
             saDir = sanAndreasDirectory.getAbsolutePath();
         } else {
-            saDir = Util.EMPTYSTRING;
+            saDir = "";
         }
 
-        if (MAC && !saDir.equals(Util.EMPTYSTRING)) {
+        if (MAC && !saDir.equals("")) {
             return new File(saDir.substring(0, saDir.indexOf(".app") + 4));
             // new File(saDir.getAbsolutePath().split("[.]app")[0] + ".app"); slower one
         }
@@ -170,7 +169,7 @@ public class FileSystem {
     }
 
     public static File getDefaultSavegameDirectory() {
-        if(savegameDir == null) {
+        if (savegameDir == null) {
             if (MAC) {
                 savegameDir = new File(System.getProperty("user.home"), "/Documents/Rockstar Games/GTA San Andreas User Files");
             } else if (LINUX) {
