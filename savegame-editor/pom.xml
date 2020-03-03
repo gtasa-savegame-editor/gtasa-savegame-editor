@@ -283,7 +283,7 @@
         <dependency>
             <groupId>nl.paulinternet.gtasaveedit</groupId>
             <artifactId>libsavegame</artifactId>
-            <version>1.0.1</version>
+            <version>${libsavegame.version}</version>
         </dependency>
         <dependency>
             <groupId>net.java.dev.jna</groupId>
