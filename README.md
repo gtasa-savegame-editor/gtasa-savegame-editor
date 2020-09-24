@@ -4,8 +4,8 @@
 [![Join the chat at https://gitter.im/gtasa-savegame-editor/Lobby](https://badges.gitter.im/gtasa-savegame-editor/Lobby.svg)](https://gitter.im/gtasa-savegame-editor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
 [![GitHub Pages Badge](https://img.shields.io/badge/docs-gh--pages-70dcf4.svg)](https://gtasa-savegame-editor.github.io/docs/#/)
 <details>
-    <summary>Even more badges...</summary>
-    
+<summary>Even more badges...</summary>
+
 ![License Badge](https://img.shields.io/github/license/gtasa-savegame-editor/gtasa-savegame-editor)
 ![Languages Badge](https://img.shields.io/github/languages/count/gtasa-savegame-editor/gtasa-savegame-editor)
 ![Repo Size Badge](https://img.shields.io/github/repo-size/gtasa-savegame-editor/gtasa-savegame-editor)
