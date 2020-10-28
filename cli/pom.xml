@@ -44,9 +44,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>nl.paulinternet.gtasaveedit</groupId>
+            <groupId>com.github.gtasa-savegame-editor</groupId>
             <artifactId>libsavegame</artifactId>
-            <version>${libsavegame.version}</version>
+            <version>v1.0.2</version>
         </dependency>
     </dependencies>
 

@@ -281,9 +281,9 @@
             <version>1.7.30</version>
         </dependency>
         <dependency>
-            <groupId>nl.paulinternet.gtasaveedit</groupId>
+            <groupId>com.github.gtasa-savegame-editor</groupId>
             <artifactId>libsavegame</artifactId>
-            <version>${libsavegame.version}</version>
+            <version>v1.0.2</version>
         </dependency>
         <dependency>
             <groupId>net.java.dev.jna</groupId>
