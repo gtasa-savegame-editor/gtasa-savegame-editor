@@ -24,6 +24,17 @@ public class Main {
     public static void main(String[] args) {
         try {
 
+            // OS X specific
+            if (MAC) {
+                System.setProperty("com.apple.mrj.application.apple.menu.about.name", "GTA:SA Savegame Editor");
+                System.setProperty("apple.laf.useScreenMenuBar", "true");
+                System.setProperty("apple.awt.application.name", "GTA:SA Savegame Editor");
+                Taskbar.getTaskbar().setIconImage(Images.readImage("icon-256.png"));
+
+                Desktop.getDesktop().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
+                Desktop.getDesktop().setAboutHandler(aboutEvent -> AboutWindow.get().setVisible(true));
+            }
+
             // setup look and feel
             try {
                 for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -34,17 +45,6 @@ public class Main {
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 log.error("Unable to set theme!", ex);
-            }
-
-            // OS X specific
-            if (MAC) {
-                System.setProperty("apple.laf.useScreenMenuBar", "true");
-                System.setProperty("apple.awt.application.name", "GTA:SA Savegame Editor");
-                System.setProperty("com.apple.mrj.application.apple.menu.about.name", "GTA:SA Savegame Editor");
-                Taskbar.getTaskbar().setIconImage(Images.readImage("icon-256.png"));
-
-                Desktop.getDesktop().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
-                Desktop.getDesktop().setAboutHandler(aboutEvent -> AboutWindow.get().setVisible(true));
             }
 
             // Set the icons
