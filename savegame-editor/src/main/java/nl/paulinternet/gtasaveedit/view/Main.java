@@ -28,6 +28,7 @@ public class Main {
             if (MAC) {
                 System.setProperty("com.apple.mrj.application.apple.menu.about.name", "GTA:SA Savegame Editor");
                 System.setProperty("apple.laf.useScreenMenuBar", "true");
+                System.setProperty("apple.awt.application.appearance", "system");
                 System.setProperty("apple.awt.application.name", "GTA:SA Savegame Editor");
                 Taskbar.getTaskbar().setIconImage(Images.readImage("icon-256.png"));
 

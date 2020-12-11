@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
+import com.bulenkov.darcula.DarculaLaf;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
 
@@ -16,13 +17,18 @@ public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
     public LookAndFeelComboBox() {
         items = new ArrayList<>();
 
-        // Load Available Themes
+        // Load Available System Themes
         LookAndFeelInfo[] looks = UIManager.getInstalledLookAndFeels();
         Arrays.asList(looks).forEach(look -> {
             Item item = new Item(look.getName(), look.getClassName());
             items.add(item);
             addItem(item);
         });
+
+        // Add darcula theme
+        Item darcula = new Item("Darcula", DarculaLaf.class.getName());
+        items.add(darcula);
+        addItem(darcula);
 
         // Select Default
         copyFromModel();
@@ -64,12 +70,14 @@ public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
 
     @SuppressWarnings("unused") // used in handler
     public void copyToModel() {
-        Model.editSettings.lookAndFeelClassName.setValue(items.get(getSelectedIndex()).className);
+        int selectedIndex = getSelectedIndex();
+        Item item = items.get(selectedIndex);
+        Model.editSettings.lookAndFeelClassName.setValue(item.className);
     }
 
     public static class Item {
-        private String name;
-        private String className;
+        private final String name;
+        private final String className;
 
         Item(String name, String className) {
             this.name = name;

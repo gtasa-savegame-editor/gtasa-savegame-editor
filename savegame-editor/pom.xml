@@ -187,6 +187,7 @@
                                 <CFBundleDisplayName>${parent.name}</CFBundleDisplayName>
                                 <JVMMainClassName>nl.paulinternet.gtasaveedit.view.Main</JVMMainClassName>
                                 <JVMVersion>11+</JVMVersion>
+                                <NSRequiresAquaSystemAppearance>NO</NSRequiresAquaSystemAppearance>
                             </plist>
                             <dmg>
                                 <generate>true</generate>
@@ -227,7 +228,8 @@
                                     </jar>
                                     <outfile>${project.build.directory}/gtasa-savegame-editor.exe</outfile>
                                     <downloadUrl>
-                                        <![CDATA[https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot]]></downloadUrl>
+                                        <![CDATA[https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot]]>
+                                    </downloadUrl>
                                     <classPath>
                                         <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
                                         <preCp>anything</preCp>
@@ -257,6 +259,21 @@
             </build>
         </profile>
     </profiles>
+
+    <repositories>
+        <repository>
+            <id>lib</id>
+            <name>lib</name>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -294,6 +311,11 @@
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna-platform</artifactId>
             <version>5.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bulenkov</groupId>
+            <artifactId>darcula</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>

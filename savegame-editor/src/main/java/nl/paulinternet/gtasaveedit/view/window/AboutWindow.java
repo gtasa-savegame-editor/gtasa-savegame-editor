@@ -44,6 +44,7 @@ public class AboutWindow extends JFrame {
                         "Thanks to Tim Smith, OrionSR, Seemann, Pdescobar, hmvartak, Ryosuke, Steve M. and others for researching and programming.<br />" +
                         "Thanks to Konoko45 for his 100% complete savegame.<br />" +
                         "Thanks to Dennis L for donating and keeping me motivated.<br />" +
+                        "Thanks to Konstantin Bulenkov for creating the Darcula Theme for Java.<br />" +
                         "<br /><font color=red><b>Please report bugs in this version on GitHub!</b></font><br />" +
                         "The original (pre 3.3) source code is available online.<br />" +
                         "The source code of <b>this</b> version is available under MIT License. It can be accessed by using the 'View Source' button.<br />" +
