@@ -3,12 +3,15 @@ package nl.paulinternet.gtasaveedit.view.component;
 import com.bulenkov.darcula.DarculaLaf;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.view.swing.PComboBox;
+import org.violetlib.aqua.AquaLookAndFeel;
 
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static nl.paulinternet.gtasaveedit.view.Main.MAC;
 
 public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
 
@@ -29,6 +32,13 @@ public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
         Item darcula = new Item("Darcula", DarculaLaf.class.getName());
         items.add(darcula);
         addItem(darcula);
+
+        if(MAC) {
+            // Add VAqua theme
+            Item vAqua = new Item("VAqua", AquaLookAndFeel.class.getName());
+            items.add(vAqua);
+            addItem(vAqua);
+        }
 
         // Select Default
         copyFromModel();

@@ -317,5 +317,10 @@
             <artifactId>darcula</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.violetlib</groupId>
+            <artifactId>vaqua</artifactId>
+            <version>8</version>
+        </dependency>
     </dependencies>
 </project>
