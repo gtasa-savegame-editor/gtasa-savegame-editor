@@ -19,7 +19,7 @@ jobs:
         with:
           java-version: 11
       - name: Build exe
-        run: mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V -Pwindows
+        run: mvn clean install -Pdeb "-Dmaven.javadoc.skip=true" -B -V -Pwindows
       - name: Create deploy directory
         run: mkdir deploy
         if: startsWith(github.ref, 'refs/tags/v')
