@@ -1,0 +1,42 @@
+name: 🍏 macOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dmg:
+    name: 🍏 .app/.dmg
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build app and dmg
+        run: mvn clean install -Dmaven.javadoc.skip=true -B -V -PmacOS
+      - name: Create deploy directory
+        run: mkdir deploy
+        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Compress app
+        run: zip -r "savegame-editor/target/GTA.SA.Savegame.Editor.app.zip" "$(find savegame-editor/target -type d | grep .app | head -n 1)"
+        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Copy dmg to deploy dir
+        run: cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .dmg)" deploy
+        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Copy app to deploy dir
+        run: cp -v "savegame-editor/target/GTA.SA.Savegame.Editor.app.zip" deploy
+        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Attach binaries to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: deploy/*
+          tag: ${{ github.ref }}
+          overwrite: true

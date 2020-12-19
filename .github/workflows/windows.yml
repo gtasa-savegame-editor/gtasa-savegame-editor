@@ -1,0 +1,36 @@
+name: 🏢 Windows
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  exe:
+    name: 🏢 .exe
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build exe
+        run: mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V -Pwindows
+      - name: Create deploy directory
+        run: mkdir deploy
+        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Copy app to deploy dir
+        run: cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .exe)" deploy
+        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Attach binaries to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: deploy/*
+          tag: ${{ github.ref }}
+          overwrite: true
