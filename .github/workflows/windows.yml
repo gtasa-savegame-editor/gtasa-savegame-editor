@@ -28,11 +28,25 @@ jobs:
       - name: Copy app to deploy dir
         run: cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .exe)" deploy
         if: startsWith(github.ref, 'refs/tags/v')
-      - name: Attach binaries to release
+      - name: Compress release
+        run: zip -r "GTA:SA-Savegame-Editor.Windows.zip" "deploy"
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: svenstaro/upload-release-action@v2
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: deploy/*
-          tag: ${{ github.ref }}
-          overwrite: true
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: true
+      - name: Upload Release Asset
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./GTA:SA-Savegame-Editor.Windows.zip
+          asset_name: GTA:SA-Savegame-Editor.Windows.zip
+          asset_content_type: application/zip
