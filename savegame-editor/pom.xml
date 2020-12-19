@@ -18,6 +18,7 @@
     <properties>
         <windows.version.pre>1.</windows.version.pre>
         <current.year>2020</current.year>
+        <application.filename>GTA SA Savegame Editor</application.filename>
     </properties>
 
     <build>
@@ -29,6 +30,13 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -183,11 +191,15 @@
                         <version>1.10.0</version>
                         <configuration>
                             <plist>
+                                <CFBundleName>${application.filename}</CFBundleName>
+                                <CFBundleDisplayName>${application.filename}</CFBundleDisplayName>
                                 <CFBundleIconFile>icon-dock.icns</CFBundleIconFile>
-                                <CFBundleDisplayName>${parent.name}</CFBundleDisplayName>
+                                <CFBundleIdentifier>${groupId}.${artifactId}</CFBundleIdentifier>
+                                <CFBundleExecutable>launcher</CFBundleExecutable>
+                                <NSHighResolutionCapable>true</NSHighResolutionCapable>
                                 <JVMMainClassName>nl.paulinternet.gtasaveedit.view.Main</JVMMainClassName>
-                                <JVMVersion>11+</JVMVersion>
-                                <NSRequiresAquaSystemAppearance>NO</NSRequiresAquaSystemAppearance>
+                                <JVMVersion>11</JVMVersion>
+                                <JVMLogLevel>TRACE</JVMLogLevel>
                             </plist>
                             <dmg>
                                 <generate>true</generate>
@@ -226,7 +238,7 @@
                                     <jar>
                                         ${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar
                                     </jar>
-                                    <outfile>${project.build.directory}/gtasa-savegame-editor.exe</outfile>
+                                    <outfile>${project.build.directory}/${application.filename}.exe</outfile>
                                     <downloadUrl>
                                         <![CDATA[https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot]]>
                                     </downloadUrl>
@@ -249,7 +261,7 @@
                                         <productName>${project.name}</productName>
                                         <companyName>${project.name}</companyName>
                                         <internalName>${project.name}</internalName>
-                                        <originalFilename>gtasa-savegame-editor.exe</originalFilename>
+                                        <originalFilename>${application.filename}.exe</originalFilename>
                                     </versionInfo>
                                 </configuration>
                             </execution>
