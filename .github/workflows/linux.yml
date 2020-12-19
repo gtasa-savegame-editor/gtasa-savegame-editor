@@ -32,6 +32,7 @@ jobs:
         run: zip -r "GTA:SA-Savegame-Editor.jar.zip" "deploy"
         if: startsWith(github.ref, 'refs/tags/v')
       - name: Create Release
+        id: create_release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/create-release@v1
         env:
@@ -71,6 +72,7 @@ jobs:
         run: zip -r "GTA:SA-Savegame-Editor.deb.zip" "deploy"
         if: startsWith(github.ref, 'refs/tags/v')
       - name: Create Release
+        id: create_release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/create-release@v1
         env:
@@ -110,6 +112,7 @@ jobs:
         run: zip -r "GTA:SA-Savegame-Editor.rpm.zip" "deploy"
         if: startsWith(github.ref, 'refs/tags/v')
       - name: Create Release
+        id: create_release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/create-release@v1
         env:
