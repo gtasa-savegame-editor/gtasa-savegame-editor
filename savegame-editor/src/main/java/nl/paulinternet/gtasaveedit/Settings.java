@@ -1,8 +1,5 @@
 package nl.paulinternet.gtasaveedit;
 
-import com.sun.jna.platform.win32.Shell32;
-import com.sun.jna.platform.win32.ShlObj;
-import nl.paulinternet.libsavegame.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,9 +62,8 @@ public class Settings implements Serializable {
 
     private static File getSettingsFile() {
         if (WINDOWS) {
-            char[] path = new char[]{};
-            if (Shell32.INSTANCE.SHGetSpecialFolderPath(null, path, ShlObj.CSIDL_LOCAL_APPDATA, false)) {
-                configDir = String.valueOf(path) + File.separator + "gta-sa_savegame_editor";
+            if (!System.getenv("APPDATA").isEmpty()) {
+                configDir = System.getenv("APPDATA") + File.separator + "gta-sa_savegame_editor";
             } else {
                 log.warn("Unable to determine appdata folder! Falling back to old config dir!");
                 return new File(System.getProperty("user.home"), ".gta_sa_savegame_editor");
