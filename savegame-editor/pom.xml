@@ -188,7 +188,7 @@
                     <plugin>
                         <groupId>de.perdian.maven.plugins</groupId>
                         <artifactId>macosappbundler-maven-plugin</artifactId>
-                        <version>1.10.0</version>
+                        <version>1.10.1</version>
                         <configuration>
                             <plist>
                                 <CFBundleName>${application.filename}</CFBundleName>
