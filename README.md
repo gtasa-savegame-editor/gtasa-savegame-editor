@@ -1,8 +1,8 @@
 # GTA:SA Savegame Editor 
 ![Version Badge](https://img.shields.io/github/v/release/gtasa-savegame-editor/gtasa-savegame-editor?include_prereleases)
-![Windows](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/workflows/%F0%9F%8F%A2%20Windows/badge.svg)
-![macOS](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/workflows/%F0%9F%8D%8F%20macOS/badge.svg)
-![Linux](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/workflows/%F0%9F%90%A7%20Linux/badge.svg)
+[![Windows](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/windows.yml/badge.svg)](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/windows.yml)
+[![macOS](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/macos.yml/badge.svg)](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/macos.yml)
+[![Linux](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/linux.yml/badge.svg)](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/linux.yml)
 [![Join the chat at Gitter](https://badges.gitter.im/gtasa-savegame-editor/Lobby.svg)](https://gitter.im/gtasa-savegame-editor/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
 [![GitHub Pages Badge](https://img.shields.io/badge/docs-gh--pages-70dcf4.svg)](https://gtasa-savegame-editor.github.io/docs/#/)
 <details>
@@ -12,7 +12,7 @@
 ![Languages Badge](https://img.shields.io/github/languages/count/gtasa-savegame-editor/gtasa-savegame-editor)
 ![Repo Size Badge](https://img.shields.io/github/repo-size/gtasa-savegame-editor/gtasa-savegame-editor)
 ![Top Language Badge](https://img.shields.io/github/languages/top/gtasa-savegame-editor/gtasa-savegame-editor)
-![CodeQL](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/workflows/%F0%9F%95%B5%EF%B8%8F%20CodeQL/badge.svg)
+[![CodeQL](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/codeql.yml/badge.svg)](https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/actions/workflows/codeql.yml)
 
 </details>
 
