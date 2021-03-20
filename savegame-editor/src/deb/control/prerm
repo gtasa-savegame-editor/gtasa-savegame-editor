@@ -6,14 +6,14 @@
 # create desktop entry?
 db_get gtasase/create_desktop_entry
 if [ "$RET" = "true" ]; then
-echo "Removing desktop entry..."
-rm /usr/share/applications/gtasa-savegame-editor.desktop
+  echo "Removing desktop entry..."
+  rm -f /usr/share/applications/gtasa-savegame-editor.desktop
 fi
 
 
 # create shell shortcut?
 db_get gtasase/create_shell_shortcut
 if [ "$RET" = "true" ]; then
-echo "Removing shell shortcut..."
-rm /usr/bin/gtasa-savegame-editor
+  echo "Removing shell shortcut..."
+  rm -f /usr/bin/gtasa-savegame-editor
 fi

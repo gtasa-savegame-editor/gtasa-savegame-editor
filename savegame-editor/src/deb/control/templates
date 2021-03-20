@@ -1,9 +1,9 @@
 Template: gtasase/create_desktop_entry
 Type: boolean
 Description: Create a desktop entry?
- Will create a desktop/menu entry visible for all users.
+ This will create a desktop/menu entry visible for all users.
 
 Template: gtasase/create_shell_shortcut
 Type: boolean
 Description: Create a shell shortcut?
- Will create /usr/bin/gtasa-savegame-editor available for all users.
+ This will create a shell shortcut at /usr/bin/gtasa-savegame-editor
