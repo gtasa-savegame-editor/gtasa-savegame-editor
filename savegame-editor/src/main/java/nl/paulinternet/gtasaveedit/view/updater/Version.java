@@ -165,9 +165,15 @@ public class Version implements Comparable<Version> {
 
     /**
      * Release flag.
-     * This is the bold part of the following tag: 'v3.3-<bold>beta</bold>.4'.
+     * This is the bold part of the following example tag: 'v3.3-<bold>beta</bold>.4'.
      */
     public enum Flag {
+
+        /**
+         * Dev release.
+         * This should usually not appear.
+         */
+        DEV("dev"),
 
         /**
          * Beta release.

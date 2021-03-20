@@ -28,6 +28,14 @@ public class VersionTests extends TestCase {
         assertEquals(Version.Flag.RC, version.getFlag());
     }
 
+    public void testParseValidDevVersion() throws Exception {
+        Version version = new Version("v1.0-dev.1");
+        assertEquals(1, version.getMajor());
+        assertEquals(0, version.getMinor());
+        assertEquals(1, version.getPatch());
+        assertEquals(Version.Flag.DEV, version.getFlag());
+    }
+
     public void testParseInvalidVersions() {
         expectException(() -> new Version("ABCDEFG"));
         expectException(() -> new Version("x1.0-alpha.lol"));
@@ -38,6 +46,7 @@ public class VersionTests extends TestCase {
         expectException(() -> new Version("v1.0.beta"));
         expectException(() -> new Version("v1.0.beta.0"));
         expectException(() -> new Version("v1.0.beta-0"));
+        expectException(() -> new Version("'; DROP TABLE VERSIONS;"));
     }
 
     public void testCompareTo() throws Exception {

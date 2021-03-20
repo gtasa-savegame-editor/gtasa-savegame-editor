@@ -3,6 +3,7 @@ package nl.paulinternet.gtasaveedit.view.window;
 import nl.paulinternet.gtasaveedit.view.PlayThread;
 import nl.paulinternet.gtasaveedit.view.swing.PButton;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
+import nl.paulinternet.gtasaveedit.view.updater.GitDataHandler;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.Settings;
 
@@ -36,14 +37,14 @@ public class AboutWindow extends JFrame {
         JLabel label = new JLabel(
                 "<html>" +
                         "<font size=+2>GTA:SA Savegame Editor</font><br />" +
-                        "<font size=+1>Version " + Updater.CURRENT_TAG + " (without 3d)</font><br />" +
+                        "<font size=+1>Version " + GitDataHandler.getCurrentTag() + " (" + GitDataHandler.getCurrentCommit() + ")</font><br />" +
                         "<br />" +
                         "This program was created by Paul Breeuwsma.<br />" +
                         "<br />macOS fixes and extended maintenance by Lukas Fülling.<br />" +
                         "<br />" +
                         "Thanks to Tim Smith, OrionSR, Seemann, Pdescobar, hmvartak, Ryosuke, Steve M. and others for researching and programming.<br />" +
                         "Thanks to Konoko45 for his 100% complete savegame.<br />" +
-                        "Thanks to Dennis L for donating and keeping me motivated.<br />" +
+                        "Thanks to Dennis L for donating and keeping Paul motivated.<br />" +
                         "Thanks to Konstantin Bulenkov for creating the Darcula Theme for Java.<br />" +
                         "<br /><font color=red><b>Please report bugs in this version on GitHub!</b></font><br />" +
                         "The original (pre 3.3) source code is available online.<br />" +
@@ -65,7 +66,7 @@ public class AboutWindow extends JFrame {
 
 
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setSize(new Dimension(400, 500));
+        setSize(new Dimension(420, 550));
         setLocationRelativeTo(null);
     }
 

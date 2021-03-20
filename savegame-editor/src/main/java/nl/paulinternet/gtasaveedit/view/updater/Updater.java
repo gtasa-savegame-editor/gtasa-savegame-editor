@@ -15,15 +15,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Updater {
-
-    /**
-     * The current version! This has to be manually lifted each release 👀
-     */
-    public static final String CURRENT_TAG = "v3.3-rc.13";
 
     /**
      * Logger.
@@ -78,7 +72,7 @@ public class Updater {
      * @throws Exception if there is an error parsing a {@link Version}.
      */
     private void notifyLatestVersion() throws Exception {
-        final Version current = new Version(CURRENT_TAG);
+        final Version current = new Version(GitDataHandler.getCurrentTag());
         List<Version> newerReleasesWithDuplicates = tags.stream().filter(v -> current.compareTo(v) < 0).distinct().collect(Collectors.toList());
         ArrayList<Version> newerReleases = getDeduplicatedVersions(newerReleasesWithDuplicates);
 
@@ -106,11 +100,11 @@ public class Updater {
         newerReleasesWithDuplicates.forEach(v -> {
             AtomicBoolean duplicate = new AtomicBoolean(false);
             newerReleases.forEach(n -> {
-                if(v.equals(n)) {
+                if (v.equals(n)) {
                     duplicate.set(true);
                 }
             });
-            if(!duplicate.get()) {
+            if (!duplicate.get()) {
                 newerReleases.add(v);
             }
         });
