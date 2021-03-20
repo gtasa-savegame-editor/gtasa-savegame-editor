@@ -47,7 +47,7 @@ To build the application:
 $ mvn clean install -DskipTests=true
 ```
 
-You should now have the following files inside a newly created `target` folder:
+You should now have the following files inside the newly created `savegame-editor/target` folder:
 
 - `gtasaveedit-[version]-jar-with-dependencies.jar`
     - This is the main executable. You can run it with `java -jar [jarfile]`.
