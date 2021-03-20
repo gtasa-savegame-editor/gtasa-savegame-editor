@@ -6,7 +6,7 @@
     <parent>
         <groupId>nl.paulinternet.gtasaveedit</groupId>
         <artifactId>gtasaveedit</artifactId>
-        <version>3.3-SNAPSHOT</version>
+        <version>3.3.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>savegame-editor</artifactId>
@@ -16,7 +16,6 @@
     <name>GTA:SA Savegame Editor GUI</name>
 
     <properties>
-        <windows.version.pre>1.</windows.version.pre>
         <current.year>2020</current.year>
         <application.filename>GTA SA Savegame Editor</application.filename>
     </properties>
