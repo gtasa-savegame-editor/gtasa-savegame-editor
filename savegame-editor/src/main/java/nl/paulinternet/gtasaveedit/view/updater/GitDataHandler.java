@@ -34,7 +34,7 @@ public class GitDataHandler {
                 return tagOptional.get();
             }
         }
-        return "0.0.0-dev.0";
+        return "0.0-dev.0";
     }
 
     /**
