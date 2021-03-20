@@ -3,7 +3,7 @@ Version: [[version]]
 Section: misc
 Priority: optional
 Architecture: all
-Depends: openjdk-8-jre, debconf (>= 0.5) | debconf-2.0
+Depends: openjdk-11-jre, debconf (>= 0.5) | debconf-2.0
 PreDepends: dpkg (>= 1.15.7.2)
 Maintainer: Lukas Fülling <lukas@k40s.net>
 Description: Savegame editor for GTA: San Andreas
