@@ -2,7 +2,7 @@ name: Linux
 
 on:
   release:
-    types: [created]
+    types: [released,prereleased]
 
 jobs:
   jar:

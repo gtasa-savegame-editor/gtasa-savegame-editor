@@ -2,7 +2,7 @@ name: Windows
 
 on:
   release:
-    types: [created]
+    types: [released,prereleased]
 
 jobs:
   exe:
