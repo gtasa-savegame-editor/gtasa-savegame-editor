@@ -1,9 +1,11 @@
 package nl.paulinternet.gtasaveedit.view;
 
+import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
 import nl.paulinternet.gtasaveedit.view.window.ExceptionDialog;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import nl.paulinternet.libsavegame.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +25,12 @@ public class Main {
 
     public static void main(String[] args) {
         try {
+
+            if(Settings.getGaragesEnabled() != Settings.YES) {
+                Config.get().setEnableGarages(false);
+            } else {
+                log.warn("The garage feature is currently very buggy!");
+            }
 
             // OS X specific
             if (MAC) {

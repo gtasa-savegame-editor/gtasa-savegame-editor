@@ -32,6 +32,7 @@ public class Settings implements Serializable {
     private int showClothes;
     private int windowWidth, windowHeight, windowMaximized;
     private int soundOnAboutPage;
+    private int garagesEnabled;
 
     private Settings() {
         if (new File(configDir).mkdirs()) {
@@ -175,6 +176,14 @@ public class Settings implements Serializable {
         instance.soundOnAboutPage = soundOnAboutPage;
     }
 
+    public static int getGaragesEnabled() {
+        return instance.garagesEnabled;
+    }
+
+    public static void setGaragesEnabled(int garagesEnabled) {
+        instance.garagesEnabled = garagesEnabled;
+    }
+
     public static void save() {
         // Try to save the settings
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(settingsFile))) {
@@ -193,7 +202,19 @@ public class Settings implements Serializable {
             settings = new Settings();
         }
 
-        // Change things
+        // load default settings if needed
+        loadDefaultsIfNeeded(settings);
+
+        // Return
+        return settings;
+    }
+
+    /**
+     * This method checks the settings for {@link Settings#UNKNOWN} and initializes those with the default value.
+     *
+     * @param settings the settings to check
+     */
+    private static void loadDefaultsIfNeeded(Settings settings) {
         if (settings.savegameDirectoryType == UNKNOWN) settings.savegameDirectoryType = DIR_DEFAULT;
         if (settings.sanAndreasDirectoryType == UNKNOWN) settings.sanAndreasDirectoryType = DIR_DEFAULT;
         if (settings.customSavegameDirectory == null) settings.customSavegameDirectory = "";
@@ -207,9 +228,7 @@ public class Settings implements Serializable {
         if (settings.windowHeight == 0) settings.windowHeight = 900;
         if (settings.windowMaximized == UNKNOWN) settings.windowMaximized = NO;
         if (settings.soundOnAboutPage == UNKNOWN) settings.soundOnAboutPage = YES;
-
-        // Return
-        return settings;
+        if (settings.garagesEnabled == UNKNOWN) settings.garagesEnabled = NO;
     }
 
 }

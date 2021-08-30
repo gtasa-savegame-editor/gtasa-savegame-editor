@@ -31,20 +31,25 @@ public class TabbedPane extends JTabbedPane {
                 new PageSkills(),
                 new PageLocation(),
                 new PageSchools(),
-                new PageGarages(),
                 new PageWeapons(),
                 new PageGangWeapons(),
                 new PageZones(),
                 new PagePeds(),
                 new PageClothes(),
                 new PageCollectables(),
-                new PageFix(),
-                new PageOptions()));
+                new PageFix()));
+
+        if (Settings.getGaragesEnabled() == Settings.YES) {
+            pages.add(new PageGarages());
+        }
 
         pageAbout = new PageAbout();
         if (!Main.MAC) {
             pages.add(pageAbout);
         }
+
+        // Options should come last
+        pages.add(new PageOptions());
 
         // Add tabs
         pages.forEach(p -> addTab(p.getTitle(), p.getComponent()));

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Lukas Fülling (lukas@k40s.net)
@@ -40,6 +41,7 @@ public class PageGarages extends Page {
         addHeaders(table);
 
         for (int i = 0; i < Garage.TOTAL_COUNT; i++) {
+            // TODO: this whole "Garage.TOTAL_COUNT" stuff seems sus...
             addGarage(table, i);
         }
 
@@ -51,7 +53,10 @@ public class PageGarages extends Page {
     private void addGarage(Table table, int i) {
         Garage garage = null;
         try {
-            garage = Garage.getGarages().get(i);
+            List<Garage> garageList = Garage.getGarages().stream()
+                    .filter(Garage::isValid)
+                    .collect(Collectors.toUnmodifiableList());
+            garage = garageList.get(i);
         } catch (IndexOutOfBoundsException e) {
             noop();
         }

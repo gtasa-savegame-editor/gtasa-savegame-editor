@@ -38,6 +38,7 @@ public class SettingVariables {
     public final Variable<Integer> windowHeight = new Variable<>();
     public final Variable<Integer> windowMaximized = new Variable<>();
     public final Variable<Boolean> soundOnAboutPage = new Variable<>();
+    public final Variable<Boolean> garagesEnabled = new Variable<>();
     public final Variable<Boolean> changesMade = new Variable<>();
 
     public SettingVariables() {
@@ -55,6 +56,7 @@ public class SettingVariables {
         windowHeight.addOnChangeListener(v -> changed.handle(null));
         windowMaximized.addOnChangeListener(v -> changed.handle(null));
         soundOnAboutPage.addOnChangeListener(v -> changed.handle(null));
+        garagesEnabled.addOnChangeListener(v -> changed.handle(null));
     }
 
     public void copyFromSettings() {
@@ -70,6 +72,7 @@ public class SettingVariables {
         windowHeight.setValue(Settings.getWindowHeight());
         windowMaximized.setValue(Settings.getWindowMaximized());
         soundOnAboutPage.setValue(Settings.getSoundOnAboutPage() == Settings.YES);
+        garagesEnabled.setValue(Settings.getGaragesEnabled() == Settings.YES);
 
         changesMade.setValue(false);
     }
@@ -87,6 +90,7 @@ public class SettingVariables {
         Settings.setWindowHeight(windowHeight.getValue());
         Settings.setWindowMaximized(windowMaximized.getValue());
         Settings.setSoundOnAboutPage(soundOnAboutPage.getValue() ? Settings.YES : Settings.NO);
+        Settings.setGaragesEnabled(garagesEnabled.getValue() ? Settings.YES : Settings.NO);
 
         Settings.save();
 

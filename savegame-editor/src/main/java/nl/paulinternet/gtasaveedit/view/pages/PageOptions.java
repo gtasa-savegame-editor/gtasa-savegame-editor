@@ -165,6 +165,8 @@ public class PageOptions extends Page {
         ybox.addSeparator(10);
         ybox.add(new ConnectedCheckbox(settings.soundOnAboutPage, "Play sound on about page"));
         ybox.addSeparator(10);
+        ybox.add(new ConnectedCheckbox(settings.garagesEnabled, "Enable garage editor (buggy, requires restart)"));
+        ybox.addSeparator(10);
         ybox.add(new JLabel("<html><b>Don't forget to click on Apply after making changes."), 1, 0.5f, 1);
         ybox.add(xboxApply);
         ybox.setBorder(10);
