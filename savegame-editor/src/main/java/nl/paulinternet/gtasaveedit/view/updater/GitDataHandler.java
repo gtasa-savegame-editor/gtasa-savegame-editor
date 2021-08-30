@@ -31,9 +31,12 @@ public class GitDataHandler {
                     .filter(tag -> tag.startsWith("v"))
                     .findFirst();
             if (tagOptional.isPresent()) {
-                return tagOptional.get();
+                String version = tagOptional.get();
+                log.info("Found version: '" + version + "'!");
+                return version;
             }
         }
+        log.warn("Unable to determine current version!");
         return "0.0-dev.0";
     }
 
