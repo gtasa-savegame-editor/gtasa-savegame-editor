@@ -3,11 +3,7 @@ package nl.paulinternet.gtasaveedit.view.updater;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Properties;
@@ -59,22 +55,16 @@ public class GitDataHandler {
     }
 
     private static Properties getGitProperties() {
-        try {
-            URL resource = Updater.class.getResource("git.properties");
-            if (resource != null) {
-                File file = new File(resource.toURI());
-                if (file.exists() && file.isFile()) {
-                    try (FileInputStream fis = new FileInputStream(file)) {
-                        Properties properties = new Properties();
-                        properties.load(fis);
-                        return properties;
-                    } catch (IOException e) {
-                        log.error("Unable to load property file!", e);
-                    }
-                }
+        try (InputStream is = GitDataHandler.class.getResourceAsStream("/git.properties")) {
+            if (is == null) {
+                throw new Exception("Stream is null!");
+            } else {
+                Properties properties = new Properties();
+                properties.load(is);
+                return properties;
             }
-        } catch (URISyntaxException e) {
-            log.error("Unable to parse property URI!", e);
+        } catch (Exception e) {
+            log.error("Unable to open file!", e);
         }
         return null;
     }
