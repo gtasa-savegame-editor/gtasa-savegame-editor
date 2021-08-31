@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.pages.collectables;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.component.ValueButton;
@@ -14,6 +15,7 @@ import nl.paulinternet.libsavegame.variables.Variables;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CollectablePageTags extends Page {
@@ -82,7 +84,8 @@ public class CollectablePageTags extends Page {
         setComponent(ybox, true);
     }
 
-    private void addTags(List<SelectableTag> tags) {
+    @SuppressFBWarnings("CE_CLASS_ENVY")
+    private void addTags(Collection<SelectableTag> tags) {
         int i = 0;
         tags.add(new SelectableTag(i++, 1549.890625f, -1714.523438f));
         tags.add(new SelectableTag(i++, 1448.234375f, -1755.898438f));

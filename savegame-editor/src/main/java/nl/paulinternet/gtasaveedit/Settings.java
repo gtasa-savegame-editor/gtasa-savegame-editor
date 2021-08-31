@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.swing.*;
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.nio.file.Files;
 
 import static nl.paulinternet.gtasaveedit.view.Main.WINDOWS;
 
@@ -186,7 +187,7 @@ public class Settings implements Serializable {
 
     public static void save() {
         // Try to save the settings
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(settingsFile))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(settingsFile.toPath()))) {
             out.writeObject(instance);
         } catch (IOException ignored) {
         }
@@ -196,9 +197,10 @@ public class Settings implements Serializable {
         // Read settings
 
         Settings settings;
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(settingsFile))) {
+        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(settingsFile.toPath()))) {
             settings = (Settings) in.readObject();
         } catch (Exception e) {
+            log.warn("Unable to read seetings!", e);
             settings = new Settings();
         }
 

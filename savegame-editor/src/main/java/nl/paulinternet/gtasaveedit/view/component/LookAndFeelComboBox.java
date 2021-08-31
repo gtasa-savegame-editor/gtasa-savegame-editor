@@ -101,5 +101,10 @@ public class LookAndFeelComboBox extends PComboBox<LookAndFeelComboBox.Item> {
                         className.equals(((Item) obj).className);
             }
         }
+
+        @Override
+        public int hashCode() {
+            return name.hashCode() + className.hashCode();
+        }
     }
 }

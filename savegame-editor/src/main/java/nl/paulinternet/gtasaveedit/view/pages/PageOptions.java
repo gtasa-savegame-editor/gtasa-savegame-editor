@@ -288,6 +288,8 @@ public class PageOptions extends Page {
             case Settings.DIR_CUSTOM:
                 dir = new File(Model.editSettings.customSavegameDirectory.getValue());
                 break;
+            default:
+                break;
         }
 
         if (dir != null) {
@@ -305,6 +307,8 @@ public class PageOptions extends Page {
                 break;
             case Settings.DIR_CUSTOM:
                 dir = new File(Model.editSettings.customSanAndreasDirectory.getValue());
+                break;
+            default:
                 break;
         }
 
@@ -327,7 +331,7 @@ public class PageOptions extends Page {
             if (changes) {
                 Taskbar.getTaskbar().setIconBadge("❕"); // emojis work 😱
             } else {
-                Taskbar.getTaskbar().setIconBadge(null);
+                Taskbar.getTaskbar().setIconBadge("");
             }
         }
     }

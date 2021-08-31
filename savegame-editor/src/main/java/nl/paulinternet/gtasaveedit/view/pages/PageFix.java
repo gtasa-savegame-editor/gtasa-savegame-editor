@@ -89,7 +89,7 @@ public class PageFix extends Page {
     }
 
     public void fixBasketballGlitch() {
-        Variables.get().basketballGlitch.setValue(false);
+        Variables.get().basketballGlitch.setValue(Boolean.FALSE);
         buttonBasketball.setEnabled(false);
         labelBasketball.setText("No");
     }
@@ -100,7 +100,7 @@ public class PageFix extends Page {
     }
 
     public void fixPoolPlayerGlitch() {
-        Variables.get().poolPlayerGlitch.setValue(false);
+        Variables.get().poolPlayerGlitch.setValue(Boolean.FALSE);
         buttonPoolPlayer.setEnabled(false);
         labelPoolPlayer.setText("No");
     }

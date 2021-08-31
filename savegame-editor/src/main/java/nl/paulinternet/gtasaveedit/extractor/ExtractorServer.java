@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -70,7 +71,7 @@ public class ExtractorServer extends Thread {
         }
     }
 
-    private void startServer() throws IOException {
+    private synchronized void startServer() throws IOException {
         String hostAddress = getPreferredNetworkAddress();
         log.info("Starting server on '" + hostAddress + "'");
         server = HttpServer.create(new InetSocketAddress(hostAddress, 0), 0);
@@ -82,7 +83,7 @@ public class ExtractorServer extends Thread {
             String response = PROTO_VERSION;
             httpExchange.sendResponseHeaders(200, response.length());
             OutputStream os = httpExchange.getResponseBody();
-            os.write(response.getBytes());
+            os.write(response.getBytes(StandardCharsets.UTF_8));
             os.close();
         });
         server.setExecutor(java.util.concurrent.Executors.newCachedThreadPool());
@@ -116,13 +117,14 @@ public class ExtractorServer extends Thread {
             //noinspection ForLoopReplaceableByForEach it's prettier this way
             for (int i = 0; i < fileData.length; i++) {
                 FormDataHandler.FileData f = (FormDataHandler.FileData) fileData[i];
-                if (f.contentType.equals("application/octet-stream")) {
-                    File savegameFile = new File(tempDir.toFile().getAbsolutePath() + File.separator + f.fileName);
-                    try (FileOutputStream stream = new FileOutputStream(savegameFile)) {
-                        log.info("Writing file: '" + savegameFile.getAbsolutePath() + "'");
+                if ("application/octet-stream".equals(f.contentType)) {
+                    String fileName = tempDir.toFile().getAbsolutePath() + File.separator + f.fileName;
+                    Path filePath = Path.of(fileName);
+                    try (OutputStream stream = Files.newOutputStream(filePath)) {
+                        log.info("Writing file: '" + filePath + "'");
                         stream.write(f.data);
-                        ExtractedSavegameHolder.addSavegame(new ExtractedSavegameFile(savegameFile, f.fileName), menu);
-                        JOptionPane.showMessageDialog(MainWindow.getInstance(), "Received file: '" + savegameFile.getName() + "' successfully.", "Savegame Received", JOptionPane.INFORMATION_MESSAGE);
+                        ExtractedSavegameHolder.addSavegame(new ExtractedSavegameFile(filePath.toFile(), f.fileName), menu);
+                        JOptionPane.showMessageDialog(MainWindow.getInstance(), "Received file: '" + filePath.toFile().getName() + "' successfully.", "Savegame Received", JOptionPane.INFORMATION_MESSAGE);
                     } catch (IOException e) {
                         JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), "Unable to write temp file!", JOptionPane.ERROR_MESSAGE);
                     }
@@ -141,7 +143,7 @@ public class ExtractorServer extends Thread {
                     "</form></body></html>";
             httpExchange.sendResponseHeaders(200, response.length());
             OutputStream os = httpExchange.getResponseBody();
-            os.write(response.getBytes());
+            os.write(response.getBytes(StandardCharsets.UTF_8));
             os.close();
         };
     }
@@ -165,16 +167,16 @@ public class ExtractorServer extends Thread {
             StringBuilder builder = new StringBuilder("[");
             ExtractedSavegameHolder.getSaveGameFiles().forEach(f ->
                     builder.append("{\"name\": \"").append(f.fileName).append("\"},"));
-            builder.append("]");
+            builder.append(']');
             String response = builder.toString().replaceAll(",]", "]");
             httpExchange.sendResponseHeaders(200, response.length());
             OutputStream os = httpExchange.getResponseBody();
-            os.write(response.getBytes());
+            os.write(response.getBytes(StandardCharsets.UTF_8));
             os.close();
         };
     }
 
-    public void stopServer() {
+    public synchronized void stopServer() {
         if (server != null) {
             log.info("Stopping server...");
             server.stop(0);

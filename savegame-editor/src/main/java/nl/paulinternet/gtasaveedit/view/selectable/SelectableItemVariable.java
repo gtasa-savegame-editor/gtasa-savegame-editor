@@ -57,7 +57,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     public void setText(String text) throws InvalidValueException {
         if (!text.isEmpty()) {
             try {
-                setSelectedValue(Integer.parseInt(text));
+                setSelectedValue(Integer.valueOf(text, 10));
             } catch (NumberFormatException e) {
                 throw new InvalidValueException();
             }

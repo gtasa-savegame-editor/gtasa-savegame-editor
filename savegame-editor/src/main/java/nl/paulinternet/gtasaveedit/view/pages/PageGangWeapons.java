@@ -10,11 +10,11 @@ import javax.swing.*;
 
 public class PageGangWeapons extends Page {
 
+    private final String[] gangs = new String[]{"Ballas", "Grove Street", "Los Santos Vagos", "San Fierro Rifa",
+            "Da Nang Boys", "Italian Mafia", "Triads", "Varrio Los Aztecas", "Unused Gang 1", "Unused Gang 2"};;
+
     public PageGangWeapons() {
         super("Gang weapons");
-
-        String[] gangs = new String[]{"Ballas", "Grove Street", "Los Santos Vagos", "San Fierro Rifa",
-                "Da Nang Boys", "Italian Mafia", "Triads", "Varrio Los Aztecas", "Unused Gang 1", "Unused Gang 2"};
 
         Table table = new Table();
         table.setSpacing(10, 3);

@@ -72,7 +72,7 @@ public class Main {
 
             Updater.start();
         } catch (Throwable e) {
-            e.printStackTrace();
+            log.error("Error encountered!", e);
             new ExceptionDialog(e).setVisible(true);
         }
     }

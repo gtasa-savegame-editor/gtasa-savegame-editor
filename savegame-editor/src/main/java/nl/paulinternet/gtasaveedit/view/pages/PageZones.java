@@ -35,7 +35,7 @@ public class PageZones extends Page implements ActionListener {
 	public PageZones() {
         super("Zones");
 
-        items = new ArrayList<>();
+        items = new ArrayList<>(Zones.getZones().size());
         for (Zone zone : Zones.getZones()) {
             items.add(new SelectableZone(zone));
         }

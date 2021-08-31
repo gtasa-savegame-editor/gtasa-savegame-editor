@@ -1,13 +1,18 @@
-package nl.paulinternet.gtasaveedit.view.pages;
+package nl.paulinternet.gtasaveedit.view.pages.schools;
 
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
+import nl.paulinternet.gtasaveedit.view.pages.Page;
 import nl.paulinternet.gtasaveedit.view.swing.Table;
 import nl.paulinternet.gtasaveedit.view.swing.YBox;
-
-import javax.swing.*;
 import nl.paulinternet.libsavegame.variables.Variables;
 
+import javax.swing.*;
+
+import static nl.paulinternet.gtasaveedit.view.pages.schools.SchoolConsts.*;
+
 public class PageSchools extends Page {
+
+
     public PageSchools() {
         super("Schools");
 
@@ -15,9 +20,6 @@ public class PageSchools extends Page {
         table.setSpacing(10, 3);
 
         // Driving
-        String[] driving = new String[]{"The 360", "The 180", "Whip and Terminate", "Pop and Control", "Burn and Lap",
-                "Cone Coil", "The '90'", "Wheelie Weave", "Spin and Go", "P.I.T. Maneuver", "Alley Oop",
-                "City Slicking"};
         table.add(new JLabel("Driving"), 0, 2);
         for (int i = 0; i < 12; i++) {
             table.add(new JLabel(driving[i]), 1, 2 + i);
@@ -28,8 +30,6 @@ public class PageSchools extends Page {
         table.add(new JSeparator(), 0, 14, 4, 1);
 
         // Flying
-        String[] flying = new String[]{"Takeoff", "Land Plane", "Circle Airstrip", "Cricle Airstrip and Land", "Helicopter Takeoff",
-                "Land Helicopter", "Destroy Targets", "Loop the Loop", "Barrel Roll", "Parachute onto Target"};
         table.add(new JLabel("Flying"), 0, 15);
         for (int i = 0; i < 10; i++) {
             table.add(new JLabel(flying[i]), 1, 15 + i);
@@ -40,10 +40,6 @@ public class PageSchools extends Page {
         table.add(new JSeparator(), 0, 25, 4, 1);
 
         // Boat
-        String[] boat = new String[]{"Basic Seamanship", "Plot a Course", "Fresh Slalom", "Flying Fish", "Land, Sea and Air"};
-        String[] boatUnit = new String[]{"ms (less than 12000 required)", "ms (less than 40000 required)", "ms (less than 120000 required)",
-                "m (more than 55 required)", "ms (less than 180000 required)"};
-
         table.add(new JLabel("Boat"), 0, 26);
         for (int i = 0; i < 5; i++) {
             table.add(new JLabel(boat[i]), 1, 26 + i);
@@ -54,7 +50,6 @@ public class PageSchools extends Page {
         table.add(new JSeparator(), 0, 31, 4, 1);
 
         // Bike
-        String[] bike = new String[]{"The 360", "The 180", "The Wheelie", "Jump & Stop", "The Stoppie", "Jump & Stoppie"};
         table.add(new JLabel("Bike"), 0, 32);
         for (int i = 0; i < 6; i++) {
             table.add(new JLabel(bike[i]), 1, 32 + i);

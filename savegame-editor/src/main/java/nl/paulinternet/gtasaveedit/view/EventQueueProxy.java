@@ -13,7 +13,7 @@ public class EventQueueProxy extends EventQueue {
         try {
             super.dispatchEvent(event);
         } catch (Throwable t) {
-            if (event instanceof MouseEvent && t.getStackTrace()[0].getMethodName().equals("tabForCoordinate")) {
+            if (event instanceof MouseEvent && "tabForCoordinate".equals(t.getStackTrace()[0].getMethodName())) {
                 return; // Hovering over a tab while clicking a menu item
                 // (and tabs are updating) triggers this, no visible side effects
                 //FIXME if you know how to fix this, do.

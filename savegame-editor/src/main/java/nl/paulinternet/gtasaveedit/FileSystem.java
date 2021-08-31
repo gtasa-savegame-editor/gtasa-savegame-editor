@@ -5,6 +5,7 @@ import nl.paulinternet.libsavegame.steam.SteamConfigReader;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 import static nl.paulinternet.gtasaveedit.view.Main.LINUX;
 import static nl.paulinternet.gtasaveedit.view.Main.MAC;
@@ -65,7 +66,7 @@ public class FileSystem {
             saDir = "";
         }
 
-        if (MAC && !saDir.equals("")) {
+        if (MAC && !"".equals(saDir)) {
             return new File(saDir.substring(0, saDir.indexOf(".app") + 4));
             // new File(saDir.getAbsolutePath().split("[.]app")[0] + ".app"); slower one
         }
@@ -101,7 +102,7 @@ public class FileSystem {
         File f1 = getMacOSSteamGameDirOrNull();
         if (f1 != null) return f1;
 
-        // Try not-steam
+        // Try non-steam
         File f = new File("/Applications/Grand Theft Auto - San Andreas.app");
         if (f.exists()) return f;
 
@@ -170,10 +171,11 @@ public class FileSystem {
 
     public static File getDefaultSavegameDirectory() {
         if (savegameDir == null) {
+            String userHome = System.getProperty("user.home");
             if (MAC) {
-                savegameDir = new File(System.getProperty("user.home"), "/Documents/Rockstar Games/GTA San Andreas User Files");
+                savegameDir = new File(userHome, "/Documents/Rockstar Games/GTA San Andreas User Files");
             } else if (LINUX) {
-                savegameDir = new File(System.getProperty("user.home"), "/.steam/steam/steamapps/compatdata/12120/pfx/drive_c/users/steamuser/My Documents/GTA San Andreas User Files");
+                savegameDir = new File(userHome, "/.steam/steam/steamapps/compatdata/12120/pfx/drive_c/users/steamuser/My Documents/GTA San Andreas User Files");
             } else {
                 savegameDir = new File(FileSystemView.getFileSystemView().getDefaultDirectory(), "GTA San Andreas User Files");
             }
@@ -188,7 +190,7 @@ public class FileSystem {
         if (end > 0 && data[end - 1] == 34) end--;
         if (end > 0 && data[0] == 34) start++;
 
-        return new File(new String(data, start, end - start));
+        return new File(new String(data, start, end - start, StandardCharsets.UTF_8));
     }
 
     private static native byte[] getSaDir();

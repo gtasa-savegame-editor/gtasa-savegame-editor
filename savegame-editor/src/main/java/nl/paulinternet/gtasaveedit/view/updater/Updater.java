@@ -1,5 +1,6 @@
 package nl.paulinternet.gtasaveedit.view.updater;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -54,7 +56,7 @@ public class Updater {
     /**
      * Initializes instance if applicable and checks for a new release.
      */
-    public static void start() {
+    public synchronized static void start() {
         if (instance == null) {
             instance = new Updater();
         }
@@ -116,11 +118,12 @@ public class Updater {
      *
      * @throws Exception when there was an error parsing a version.
      */
+    @SuppressFBWarnings("URLCONNECTION_SSRF_FD")
     private void checkForUpdate() throws Exception {
         try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = rd.readLine()) != null) {
                 if (line.contains("gtasa-savegame-editor")) {

@@ -42,7 +42,7 @@ public class SettingVariables {
     public final Variable<Boolean> changesMade = new Variable<>();
 
     public SettingVariables() {
-        CallbackHandler<Void> changed = v -> changesMade.setValue(true);
+        CallbackHandler<Void> changed = v -> changesMade.setValue(Boolean.TRUE);
 
         savegameDirectoryType.addOnChangeListener(v -> changed.handle(null));
         sanAndreasDirectoryType.addOnChangeListener(v -> changed.handle(null));
@@ -74,7 +74,7 @@ public class SettingVariables {
         soundOnAboutPage.setValue(Settings.getSoundOnAboutPage() == Settings.YES);
         garagesEnabled.setValue(Settings.getGaragesEnabled() == Settings.YES);
 
-        changesMade.setValue(false);
+        changesMade.setValue(Boolean.FALSE);
     }
 
     public void applySettings() {
@@ -111,7 +111,7 @@ public class SettingVariables {
         Model.updatePlayerImg();
 
         // Disable buttons
-        changesMade.setValue(false);
+        changesMade.setValue(Boolean.FALSE);
 
         // Settings changed
         settingsChanged.report();

@@ -46,7 +46,7 @@ public class FormDataHandler implements HttpHandler {
         sizeExceeded = false;
         files = new HashSet<>();
         String path = exchange.getRequestURI().getPath();
-        log.info(String.format("Requested URI: %s", path));
+        log.info("Requested URI: {}", path);
 
         // Get content type.
         // e.g.
@@ -60,7 +60,7 @@ public class FormDataHandler implements HttpHandler {
                 String[] params = contentType.split("boundary=");
                 boundary = params[params.length - 1];
             }
-            log.info(String.format("Content type: %s", contentType));
+            log.info("Content type: {}", contentType);
         }
 
         // Return error 400.
@@ -96,17 +96,17 @@ public class FormDataHandler implements HttpHandler {
 
                 // Get content type and wait for a blank line.
                 readContentType(is, file);
-                log.info(String.format("  Content type: %s", file.contentType));
+                log.info("  Content type: {}", file.contentType);
 
                 // Get file contents.
                 byte[] boundaryBytes = ("\r\n" + boundaryLine).getBytes(StandardCharsets.UTF_8);
                 file.data = readUntil(is, boundaryBytes);
                 if (file.data.length >= 0) {
-                    log.info(String.format("  Received: %d bytes", file.data.length));
+                    log.info("  Received: {} bytes", file.data.length);
                     currentLine = readLine(is);
 
                     // Check if this is the last part.
-                    if (currentLine.equals("--")) {
+                    if ("--".equals(currentLine)) {
                         break;
                     }
                 }
@@ -127,7 +127,7 @@ public class FormDataHandler implements HttpHandler {
             JOptionPane.showMessageDialog(MainWindow.getInstance(), e.getMessage(), e.getClass().getName(), JOptionPane.ERROR_MESSAGE);
         }
         if (file.data.length >= 0) {
-            log.info(String.format("  Received: %d bytes", file.data.length));
+            log.info("  Received: {} bytes", file.data.length);
             files.add(file);
         }
         sendResponse(exchange);
@@ -163,7 +163,7 @@ public class FormDataHandler implements HttpHandler {
             String currentLine = readLine(is);
 
             // Wait for a blank line.
-            if (currentLine.equals("")) {
+            if ("".equals(currentLine)) {
                 break;
             }
 
@@ -206,15 +206,13 @@ public class FormDataHandler implements HttpHandler {
             }
         }
 
-        log.info(String.format("Part.%d", ++part));
-        log.info(String.format("  Name: %s", data.name));
-        log.info(String.format("  File name: %s", data.fileName));
+        log.info("Part.{}", ++part);
+        log.info("  Name: {}", data.name);
+        log.info("  File name: {}", data.fileName);
     }
 
     private String readLine(InputStream is) throws IOException {
-        String line = new String(readUntil(is, "\r\n".getBytes()), "utf-8");
-        // System.err.println(line);
-        return line;
+        return new String(readUntil(is, "\r\n".getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
     }
 
     private byte[] readAll(InputStream is) throws IOException {

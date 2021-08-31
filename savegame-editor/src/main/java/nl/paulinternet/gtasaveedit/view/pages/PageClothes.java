@@ -13,8 +13,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class PageClothes extends Page implements ChangeListener {
-    public static final ButtonGroup[] clothButtonGroup, tattooButtonGroup;
-    public static boolean tattoo, haircut;
+    static final ButtonGroup[] clothButtonGroup, tattooButtonGroup;
+    boolean tattoo, haircut;
 
     static {
         clothButtonGroup = new ButtonGroup[9];
@@ -53,10 +53,10 @@ public class PageClothes extends Page implements ChangeListener {
         pane.addChangeListener(this);
 
         PButton buttonGetAll = new PButton("Get all clothes");
-        buttonGetAll.onClick().addHandler(this, "setAllPurchased", true);
+        buttonGetAll.onClick().addHandler(this, "setAllPurchased", Boolean.TRUE);
 
         PButton buttonLoseAll = new PButton("Lose all clothes");
-        buttonLoseAll.onClick().addHandler(this, "setAllPurchased", false);
+        buttonLoseAll.onClick().addHandler(this, "setAllPurchased", Boolean.FALSE);
 
         XBox xboxGet = new XBox();
         xboxGet.addSpace(0, 1);

@@ -25,7 +25,7 @@ public class PComboBox<T> extends JComboBox<T> {
 
     @Override
     public Dimension getMinimumSize() {
-        if (UIManager.getLookAndFeel().getID().equals("Windows")) {
+        if ("Windows".equals(UIManager.getLookAndFeel().getID())) {
             Dimension size = super.getMinimumSize();
             size.width += 15;
             return size;

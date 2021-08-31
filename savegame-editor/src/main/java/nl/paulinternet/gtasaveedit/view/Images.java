@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class Images {
@@ -22,8 +23,7 @@ public class Images {
 
     public static Image readImage(String name) {
         try {
-            BufferedImage read = ImageIO.read(Images.class.getResourceAsStream("/" + name));
-            return read;
+            return ImageIO.read(Objects.requireNonNull(Images.class.getResourceAsStream("/" + name)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

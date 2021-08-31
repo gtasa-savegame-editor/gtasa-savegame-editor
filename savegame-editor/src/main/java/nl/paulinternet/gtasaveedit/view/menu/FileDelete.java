@@ -4,6 +4,8 @@ import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 class FileDelete extends JMenuItem implements ActionListener {
+
+    private final Logger log = LoggerFactory.getLogger(FileDelete.class);
+
     public FileDelete() {
         super("Delete...");
         addActionListener(this);
@@ -40,7 +45,7 @@ class FileDelete extends JMenuItem implements ActionListener {
                 } else {
                     title = "Delete files?";
                     message = new StringBuilder("Are you sure you want to delete the following files?");
-                    for (File file : files) message.append("\n").append(file);
+                    for (File file : files) message.append('\n').append(file);
                 }
 
                 // Show dialog
@@ -55,8 +60,9 @@ class FileDelete extends JMenuItem implements ActionListener {
                 // Delete files
                 if (result == JOptionPane.YES_OPTION) {
                     for (File file : files) {
-                        //noinspection ResultOfMethodCallIgnored
-                        file.delete();
+                        if(!file.delete()) {
+                            log.warn("Unable to delete file: '" + file.getAbsolutePath() + "'!");
+                        }
                     }
                     SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();
                 }

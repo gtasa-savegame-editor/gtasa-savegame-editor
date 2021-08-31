@@ -143,20 +143,20 @@ public class Version implements Comparable<Version> {
      * @see Flag
      */
     private int compareFlags(Flag otherFlag) {
-        if (flag.equals(otherFlag)) {
+        if (flag ==otherFlag) {
             return 0;
-        } else if (flag.equals(Flag.BETA)) {
-            if (otherFlag.equals(Flag.RC) || otherFlag.equals(Flag.RELEASE)) {
+        } else if (flag == Flag.BETA) {
+            if (otherFlag == Flag.RC || otherFlag == Flag.RELEASE) {
                 return -1;
             }
-        } else if (flag.equals(Flag.RC)) {
-            if (otherFlag.equals(Flag.BETA)) {
+        } else if (flag == Flag.RC) {
+            if (otherFlag == Flag.BETA) {
                 return 1;
-            } else if (otherFlag.equals(Flag.RELEASE)) {
+            } else if (otherFlag == Flag.RELEASE) {
                 return -1;
             }
-        } else if (flag.equals(Flag.RELEASE)) {
-            if (otherFlag.equals(Flag.RC) || otherFlag.equals(Flag.BETA)) {
+        } else if (flag == Flag.RELEASE) {
+            if (otherFlag == Flag.RC || otherFlag == Flag.BETA) {
                 return 1;
             }
         }
@@ -232,5 +232,10 @@ public class Version implements Comparable<Version> {
             Version o = (Version) obj;
             return compareTo(o) == 0;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return major + minor + patch + flag.hashCode() + tag.hashCode();
     }
 }

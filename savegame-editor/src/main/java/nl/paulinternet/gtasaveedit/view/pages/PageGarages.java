@@ -222,7 +222,7 @@ public class PageGarages extends Page {
         private String buildDisplayName(List<String> validMods, VehicleMod m) {
             String invalidModString = (validMods.contains(m.getDffName())) ? "" : "[INVALID] ";
             String displayName = m.getName() + " (" + m.getType() + ")";
-            if (!m.getType().equals("None")) { // prevent [INVALID] when no mod is selected
+            if (!"None".equals(m.getType())) { // prevent [INVALID] when no mod is selected
                 displayName = invalidModString + displayName;
             }
             return displayName;

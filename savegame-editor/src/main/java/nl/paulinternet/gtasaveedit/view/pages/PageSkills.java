@@ -15,7 +15,7 @@ public class PageSkills extends Page {
     private Table table;
     private int row;
 
-    private <E> void addRow(String label, Variable<?> var, int min, int max, boolean infinity) {
+    private void addRow(String label, Variable<?> var, int min, int max, boolean infinity) {
         table.setCellExpand(0.0f, 0.0f);
         table.setCellAlignment(1.0f, 0.5f);
         table.add(new JLabel(label + ":", SwingConstants.RIGHT), 0, row);
