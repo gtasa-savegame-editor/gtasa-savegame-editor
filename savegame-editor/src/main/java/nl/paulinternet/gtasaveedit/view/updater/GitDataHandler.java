@@ -44,12 +44,7 @@ public class GitDataHandler {
     public static String getCurrentCommit() {
         Properties properties = getGitProperties();
         if (properties != null) {
-            Optional<String> tagOptional = Arrays.stream(properties.getProperty("git.commit.id.abbrev").split(","))
-                    .filter(tag -> tag.startsWith("v"))
-                    .findFirst();
-            if (tagOptional.isPresent()) {
-                return tagOptional.get();
-            }
+            return properties.getProperty("git.commit.id.abbrev");
         }
         return null;
     }
