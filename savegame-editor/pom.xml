@@ -271,8 +271,8 @@
                                     </classPath>
                                     <icon>src/main/resources/icon.ico</icon>
                                     <jre>
-                                        <path>./jre/</path>
-                                        <bundledJreAsFallback>true</bundledJreAsFallback>
+                                        <!-- path>./jre/</path -->
+                                        <!-- bundledJreAsFallback>true</bundledJreAsFallback -->
                                         <minVersion>${java.version}</minVersion>
                                         <jdkPreference>preferJre</jdkPreference>
                                     </jre>
