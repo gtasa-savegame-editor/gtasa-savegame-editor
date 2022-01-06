@@ -1,5 +1,8 @@
 package nl.paulinternet.gtasaveedit.view;
 
+import com.github.weisj.darklaf.LafManager;
+import com.github.weisj.darklaf.theme.event.ThemeChangeEvent;
+import com.github.weisj.darklaf.theme.event.ThemeChangeListener;
 import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.view.updater.Updater;
 import nl.paulinternet.gtasaveedit.view.window.AboutWindow;
@@ -42,18 +45,6 @@ public class Main {
 
                 Desktop.getDesktop().setPreferencesHandler(pe -> MainWindow.getInstance().getTabbedPane().onShowPreferences());
                 Desktop.getDesktop().setAboutHandler(aboutEvent -> AboutWindow.get().setVisible(true));
-            }
-
-            // setup look and feel
-            try {
-                for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                    if ("GTK+".equals(info.getName()) || "Windows".equals(info.getName())) {
-                        UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                log.error("Unable to set theme!", ex);
             }
 
             // Set the icons

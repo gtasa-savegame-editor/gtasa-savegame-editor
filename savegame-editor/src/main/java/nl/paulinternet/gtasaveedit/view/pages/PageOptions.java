@@ -1,12 +1,12 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
+import com.github.weisj.darklaf.settings.ThemeSettings;
 import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.model.Model;
 import nl.paulinternet.gtasaveedit.model.SettingVariables;
 import nl.paulinternet.gtasaveedit.view.Images;
 import nl.paulinternet.gtasaveedit.view.component.ImageComponent;
-import nl.paulinternet.gtasaveedit.view.component.LookAndFeelComboBox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedCheckbox;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedRadioButtons;
 import nl.paulinternet.gtasaveedit.view.connected.ConnectedTextField;
@@ -63,7 +63,6 @@ public class PageOptions extends Page {
                         buttonBrowseSa,
                         sadirButtons.create(Settings.DIR_CUSTOM, "Other directory:"),
                         new ConnectedTextField(settings.customSanAndreasDirectory)),
-                generateLookAndFeelBox(),
                 generateApplyBox(),
                 generateWindowSizeBox(settings, maximized),
                 buttonCurrentWindowSize,
@@ -129,14 +128,13 @@ public class PageOptions extends Page {
      * @param maximized               The maxmized radios. Also needed by the xboxWindowSize.
      * @param customPanel             The custom save game folder panel.
      * @param xboxSanAndreas          The sa installation dir panel.
-     * @param xboxLookAndFeel         The look and feel panel.
      * @param xboxApply               The apply box.
      * @param xboxWindowSize          the window size panel.
      * @param buttonCurrentWindowSize the currentWindowSize button.
      * @param detectedSaDir           the detectedSADir string. See {@link PageOptions#getDetectedSaDirOrError()}.
      * @return The generated YBox.
      */
-    private YBox generateMainBox(SettingVariables settings, ConnectedRadioButtons savedirButtons, ConnectedRadioButtons sadirButtons, ConnectedRadioButtons maximized, XBox customPanel, XBox xboxSanAndreas, XBox xboxLookAndFeel, XBox xboxApply, XBox xboxWindowSize, PButton buttonCurrentWindowSize, String detectedSaDir) {
+    private YBox generateMainBox(SettingVariables settings, ConnectedRadioButtons savedirButtons, ConnectedRadioButtons sadirButtons, ConnectedRadioButtons maximized, XBox customPanel, XBox xboxSanAndreas, XBox xboxApply, XBox xboxWindowSize, PButton buttonCurrentWindowSize, String detectedSaDir) {
         YBox ybox = new YBox();
         ybox.add(new JLabel("You can change settings here if you like."));
         ybox.addSeparator(10);
@@ -155,7 +153,8 @@ public class PageOptions extends Page {
         ybox.add(new ConnectedCheckbox(settings.warnOverwriteFile, "Warn before overwriting a file"));
         ybox.add(new ConnectedCheckbox(settings.warnDeleteFile, "Warn before deleting a file"));
         ybox.addSeparator(10);
-        ybox.add(xboxLookAndFeel);
+        ybox.add(new JLabel("<html><b>Theme Settings"));
+        ybox.add(generateThemeSettingsButton());
         ybox.addSeparator(10);
         ybox.add(new JLabel("<html><b>MainWindow size at startup:"));
         ybox.add(maximized.create(Settings.YES, "Maximized"));
@@ -171,6 +170,12 @@ public class PageOptions extends Page {
         ybox.add(xboxApply);
         ybox.setBorder(10);
         return ybox;
+    }
+
+    private Component generateThemeSettingsButton() {
+        PButton btn = new PButton("Change Theme Settings");
+        btn.onClick().addHandler((x) -> ThemeSettings.showSettingsDialog(PageOptions.this.getComponent()));
+        return btn;
     }
 
     /**
@@ -214,19 +219,6 @@ public class PageOptions extends Page {
         xboxSaExeExists.addSpace(5);
         xboxSaExeExists.add(new JLabel("The GTA executable file (gta_sa.exe or gta-sa.exe), does not exist in this directory"));
         xboxSaExeExists.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
-    }
-
-    /**
-     * Generates the "Look and Feel" panel.
-     *
-     * @return the generated XBox.
-     */
-    private XBox generateLookAndFeelBox() {
-        XBox xboxLookAndFeel = new XBox();
-        xboxLookAndFeel.add(new JLabel("Look and feel:"));
-        xboxLookAndFeel.addSpace(10);
-        xboxLookAndFeel.add(new LookAndFeelComboBox());
-        return xboxLookAndFeel;
     }
 
     /**
