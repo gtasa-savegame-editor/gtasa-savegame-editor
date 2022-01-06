@@ -8,6 +8,8 @@ db_input high gtasase/create_desktop_entry || false
 db_go
 db_get gtasase/create_desktop_entry
 if [ "$RET" = "true" ]; then
+  echo "Removing existing desktop entry if necessary..."
+  rm -f /usr/share/applications/gtasa-savegame-editor.desktop
   echo "Creating desktop entry..."
   cat >/usr/share/applications/gtasa-savegame-editor.desktop <<EOF
 [Desktop Entry]
@@ -26,6 +28,8 @@ db_input high gtasase/create_shell_shortcut || false
 db_go
 db_get gtasase/create_shell_shortcut
 if [ "$RET" = "true" ]; then
+  echo "Removing existing shell shortcut if necessary..."
+  rm -f /usr/bin/gtasa-savegame-editor
   echo "Creating shell shortcut..."
   cat >/usr/bin/gtasa-savegame-editor <<EOF
 #!/bin/bash
