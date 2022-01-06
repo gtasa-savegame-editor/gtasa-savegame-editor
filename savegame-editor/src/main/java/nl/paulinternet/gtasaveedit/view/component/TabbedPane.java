@@ -21,7 +21,7 @@ public class TabbedPane extends JTabbedPane {
 
     private Boolean loaded = Boolean.FALSE;
     private final PageAbout pageAbout;
-    private List<Page> pages;
+    private final List<Page> pages;
 
     public TabbedPane() {
         // Create pages
@@ -107,7 +107,7 @@ public class TabbedPane extends JTabbedPane {
 
     public void updateUI() {
         super.updateUI();
-        if (!loaded && pages != null) {
+        if (this.loaded != null && !loaded && pages != null) {
             pages.forEach(p -> {
                 if (!p.isAlwaysVisible()) {
                     SwingUtilities.updateComponentTreeUI(p.getComponent());
