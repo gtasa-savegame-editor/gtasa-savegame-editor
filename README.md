@@ -34,6 +34,7 @@ This version contains the following features (additionally to the ones found in 
     - a `.app` (and `.dmg`) for macOS
     - a `.deb` for Debian/Ubuntu
     - a `.rpm` for Fedora/CentOS
+- support for theming
 
 ## Downloading
 
