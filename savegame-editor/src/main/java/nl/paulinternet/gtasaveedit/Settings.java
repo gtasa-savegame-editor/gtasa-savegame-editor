@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import static nl.paulinternet.gtasaveedit.view.Main.WINDOWS;
 
 public class Settings implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     private static final Logger log = LoggerFactory.getLogger(Settings.class);
 
@@ -19,7 +19,6 @@ public class Settings implements Serializable {
     public static final int DIR_DEFAULT = 1, DIR_ACTIVE = 2, DIR_CUSTOM = 3;
 
     private static final File settingsFile = getSettingsFile();
-    private static String configDir;
 
     private static final Settings instance = loadSettings();
 
@@ -36,7 +35,7 @@ public class Settings implements Serializable {
     private int garagesEnabled;
 
     private Settings() {
-        if (new File(configDir).mkdirs()) {
+        if (getConfigDir().mkdirs()) {
             log.info("Config directory created!");
         }
         migrateOldConfig();
@@ -49,8 +48,14 @@ public class Settings implements Serializable {
                 if (settingsFile.createNewFile()) {
                     log.info("New config file created!");
                 }
-                FileChannel srcStream = new FileInputStream(oldSettingsFile).getChannel();
-                new FileOutputStream(settingsFile).getChannel().transferFrom(srcStream, 0, srcStream.size());
+                try (FileInputStream inputStream = new FileInputStream(oldSettingsFile)) {
+                    FileChannel srcStream = inputStream.getChannel();
+                    try(FileOutputStream outputStream = new FileOutputStream(settingsFile)) {
+                        outputStream.getChannel().transferFrom(srcStream, 0, srcStream.size());
+                    }
+                } catch (FileNotFoundException e) {
+                    throw new IOException("Error loading old settings file!", e);
+                }
             } catch (IOException e) {
                 log.warn("Error migrating config!", e);
             }
@@ -63,6 +68,11 @@ public class Settings implements Serializable {
     }
 
     private static File getSettingsFile() {
+        return new File(getConfigDir(), "config");
+    }
+
+    private static File getConfigDir() {
+        String configDir;
         if (WINDOWS) {
             if (!System.getenv("APPDATA").isEmpty()) {
                 configDir = System.getenv("APPDATA") + File.separator + "gta-sa_savegame_editor";
@@ -78,7 +88,7 @@ public class Settings implements Serializable {
                 configDir = xdgConfigHome + File.separator + "gta-sa_savegame_editor";
             }
         }
-        return new File(configDir, "config");
+        return new File(configDir);
     }
 
     public static int getSavegameDirectoryType() {
@@ -200,7 +210,7 @@ public class Settings implements Serializable {
         try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(settingsFile.toPath()))) {
             settings = (Settings) in.readObject();
         } catch (Exception e) {
-            log.warn("Unable to read seetings!", e);
+            log.warn("Unable to read settings!", e);
             settings = new Settings();
         }
 
