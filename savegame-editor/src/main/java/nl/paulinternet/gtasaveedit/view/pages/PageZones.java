@@ -1,5 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
+import nl.paulinternet.gtasaveedit.event.Event;
+import nl.paulinternet.gtasaveedit.event.EventHandler;
 import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 import nl.paulinternet.gtasaveedit.view.MapImage;
@@ -28,9 +30,9 @@ public class PageZones extends Page implements ActionListener {
         SavegameModel.gameLoaded.addHandler(update);
     }
 
-    private JCheckBox buttonMapZone;
-    private List<SelectableZone> items;
-    private SelectableItems<SelectableZone> zones;
+    private final JCheckBox buttonMapZone;
+    private final List<SelectableZone> items;
+    private final SelectableItems<SelectableZone> zones;
 
 	public PageZones() {
         super("Zones");
@@ -63,24 +65,22 @@ public class PageZones extends Page implements ActionListener {
         table.add(new JLabel("Pedestrians:"), 3, 7);
         table.setSpacing(5, 3);
 
-        SelectableItemVariable popCycle = new SelectableItemVariable(zones, Zone.POPCYCLE, 0, 0x1f);
-
         table.setCellExpand(1.0f, 0.0f);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 0, 0, 255)), 1, 0);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 1, 0, 255)), 1, 1);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 2, 0, 255)), 1, 2);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 3, 0, 255)), 1, 3);
-        table.add(new PopcycleComboBox(popCycle), 1, 4);
-        table.add(new ConnectedCheckbox(new SelectableItemVariable(zones, Zone.DISABLE_FOOTCOPS, 0, 255), "No cops on foot"), 1, 5, 2, 1);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 0, 0, 255)), 1, 0);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 1, 0, 255)), 1, 1);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 2, 0, 255)), 1, 2);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 3, 0, 255)), 1, 3);
+        table.add(new PopcycleComboBox(new SelectableItemVariable<>(zones, Zone.POPCYCLE, 0, 0x1f)), 1, 4);
+        table.add(new ConnectedCheckbox(new SelectableItemVariable<>(zones, Zone.DISABLE_FOOTCOPS, 0, 255), "No cops on foot"), 1, 5, 2, 1);
 
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 4, 0, 255)), 4, 0);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 5, 0, 255)), 4, 1);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 6, 0, 255)), 4, 2);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 7, 0, 255)), 4, 3);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 8, 0, 255)), 4, 4);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, 9, 0, 255)), 4, 5);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, Zone.DEALER, 0, 255)), 4, 6);
-        table.add(new ConnectedTextField(new SelectableItemVariable(zones, Zone.PED, 0, 255)), 4, 7);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 4, 0, 255)), 4, 0);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 5, 0, 255)), 4, 1);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 6, 0, 255)), 4, 2);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 7, 0, 255)), 4, 3);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 8, 0, 255)), 4, 4);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 9, 0, 255)), 4, 5);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, Zone.DEALER, 0, 255)), 4, 6);
+        table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, Zone.PED, 0, 255)), 4, 7);
 
         table.setCellExpand(0.0f, 0.0f);
         table.setCellAlignment(0.0f, 0.5f);

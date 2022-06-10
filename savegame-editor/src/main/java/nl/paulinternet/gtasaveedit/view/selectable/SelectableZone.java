@@ -5,12 +5,11 @@ import nl.paulinternet.libsavegame.data.Zone;
 import java.awt.*;
 
 public class SelectableZone implements SelectableItemValue {
-    public static final int GANG_PRESENT = 0x10, DISABLE_FOOTCOPS = 0x11;
 
     private static final Color ZONE_BORDER = new Color(0xdd, 0xdd, 0xdd);
 
-    private Zone zone;
-    private Rectangle bounds;
+    private final Zone zone;
+    private final Rectangle bounds;
     private boolean selected;
 
     public SelectableZone(Zone zone) {
