@@ -71,7 +71,7 @@ public class Settings implements Serializable {
         return new File(getConfigDir(), "config");
     }
 
-    private static File getConfigDir() {
+    public static File getConfigDir() {
         String configDir;
         if (WINDOWS) {
             if (!System.getenv("APPDATA").isEmpty()) {
