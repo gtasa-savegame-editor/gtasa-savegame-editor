@@ -51,9 +51,7 @@ public class GitDataHandler {
 
     private static Properties getGitProperties() {
         try (InputStream is = GitDataHandler.class.getResourceAsStream("/git.properties")) {
-            if (is == null) {
-                throw new Exception("Stream is null!");
-            } else {
+            if (is != null) {
                 Properties properties = new Properties();
                 properties.load(is);
                 return properties;
