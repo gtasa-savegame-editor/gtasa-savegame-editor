@@ -337,7 +337,7 @@
         <dependency>
             <groupId>com.github.gtasa-savegame-editor</groupId>
             <artifactId>libsavegame</artifactId>
-            <version>v1.0.5</version>
+            <version>${libsavegame.version}</version>
         </dependency>
         <dependency>
             <groupId>net.java.dev.jna</groupId>
