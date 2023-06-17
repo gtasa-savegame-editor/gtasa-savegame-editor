@@ -1,9 +1,7 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import nl.paulinternet.gtasaveedit.event.Event;
-import nl.paulinternet.gtasaveedit.event.EventHandler;
-import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.event.ReportableEvent;
+import nl.paulinternet.gtasaveedit.model.SavegameModel;
 import nl.paulinternet.gtasaveedit.view.MapImage;
 import nl.paulinternet.gtasaveedit.view.component.PopcycleComboBox;
 import nl.paulinternet.gtasaveedit.view.component.RectangleComponent;
@@ -34,7 +32,7 @@ public class PageZones extends Page implements ActionListener {
     private final List<SelectableZone> items;
     private final SelectableItems<SelectableZone> zones;
 
-	public PageZones() {
+    public PageZones() {
         super("Zones");
 
         items = new ArrayList<>(Zones.getZones().size());
@@ -92,7 +90,7 @@ public class PageZones extends Page implements ActionListener {
         message += "The gang density is usually between 0 and 40, but higher values are possible.<br />";
         message += "Note that it is dependent on the zone type whether gang members will show up.</html>";
 
-		SelectableItemComponent map = new SelectableItemComponent(MapImage.SAN_ANDREAS, zones, SelectableItemComponent.SMALLEST_AREA, 0.65f);
+        SelectableItemComponent map = new SelectableItemComponent(MapImage.SAN_ANDREAS, zones, SelectableItemComponent.SMALLEST_AREA, 0.65f);
 
         buttonMapZone = new JCheckBox("Zone that covers the whole map selected");
         buttonMapZone.addActionListener(this);

@@ -6,10 +6,10 @@ import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 import java.util.List;
 
 public class SelectableItems<T extends SelectableItem> {
-    private List<T> items;
-    private SelectedItems<T> selectedItems;
-    private ReportableEvent onSelectionChange;
-    private ReportableEvent onDataChange;
+    private final List<T> items;
+    private final SelectedItems<T> selectedItems;
+    private final ReportableEvent onSelectionChange;
+    private final ReportableEvent onDataChange;
 
     public SelectableItems(List<T> items) {
         this.items = items;

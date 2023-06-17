@@ -13,11 +13,11 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
 
     private CallbackHandler<Integer> onChange;
     private CallbackHandler<Integer> onDataChange;
-    private Iterable<? extends SelectableItemValue> items;
-    private int parameter;
+    private final Iterable<? extends SelectableItemValue> items;
+    private final int parameter;
     private boolean disabled;
     private Integer value;
-    private int min, max;
+    private final int min, max;
 
     public SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter, int min, int max) {
         this.items = items.getSelectedItems();
@@ -37,7 +37,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
 
     public void setSelectedValue(Integer value) {
         if (value == null) throw new NullPointerException();
-        if (value < min || value > max) throw new InvalidValueException();
+        if (value < min || value > max) throw new InvalidValueException("Value is outside of min or max values!");
 
         if (this.value == null || !this.value.equals(value)) {
             this.value = value;
@@ -59,7 +59,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
             try {
                 setSelectedValue(Integer.valueOf(text, 10));
             } catch (NumberFormatException e) {
-                throw new InvalidValueException();
+                throw new InvalidValueException("Unable to parse input!", e);
             }
         }
     }
@@ -67,11 +67,6 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     @Override
     public String getAllowedCharacters() {
         return "-0123456789";
-    }
-
-    @Override
-    public String getDefaultText() {
-        return "";
     }
 
     @Override
@@ -128,5 +123,4 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
             }
         }
     }
-
 }
