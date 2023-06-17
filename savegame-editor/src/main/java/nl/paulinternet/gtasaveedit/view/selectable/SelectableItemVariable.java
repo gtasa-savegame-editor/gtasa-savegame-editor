@@ -2,7 +2,7 @@ package nl.paulinternet.gtasaveedit.view.selectable;
 
 import nl.paulinternet.gtasaveedit.event.Event;
 import nl.paulinternet.gtasaveedit.event.EventHandler;
-import nl.paulinternet.libsavegame.CallbackHandler;
+import nl.paulinternet.gtasaveedit.event.ReportableEvent;
 import nl.paulinternet.libsavegame.TextFieldInterface;
 import nl.paulinternet.libsavegame.exceptions.InvalidValueException;
 import nl.paulinternet.libsavegame.variables.Variable;
@@ -11,8 +11,8 @@ import java.util.Objects;
 
 public class SelectableItemVariable<T> extends Variable<T> implements TextFieldInterface {
 
-    private CallbackHandler<Integer> onChange;
-    private CallbackHandler<Integer> onDataChange;
+    private final ReportableEvent onChange;
+    private final ReportableEvent onDataChange;
     private final Iterable<? extends SelectableItemValue> items;
     private final int parameter;
     private boolean disabled;
@@ -22,6 +22,8 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     public SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter, int min, int max) {
         this.items = items.getSelectedItems();
         this.parameter = parameter;
+        onChange = new ReportableEvent();
+        onDataChange = items.onDataChange();
         this.min = min;
         this.max = max;
 
@@ -35,7 +37,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
         this(items, parameter, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    public void setSelectedValue(Integer value) {
+    public void setIntValue(Integer value) {
         if (value == null) throw new NullPointerException();
         if (value < min || value > max) throw new InvalidValueException("Value is outside of min or max values!");
 
@@ -44,12 +46,8 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
             for (SelectableItemValue item : items) {
                 item.setValue(parameter, value);
             }
-            if (onChange != null) {
-                onChange.handle(value);
-            }
-            if (onDataChange != null) {
-                onDataChange.handle(value);
-            }
+            onChange.report();
+            onDataChange.report();
         }
     }
 
@@ -57,7 +55,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     public void setText(String text) throws InvalidValueException {
         if (!text.isEmpty()) {
             try {
-                setSelectedValue(Integer.valueOf(text, 10));
+                setIntValue(Integer.parseInt(text));
             } catch (NumberFormatException e) {
                 throw new InvalidValueException("Unable to parse input!", e);
             }
@@ -70,11 +68,6 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     }
 
     @Override
-    public int getMaxLength() {
-        return 0;
-    }
-
-    @Override
     public String getText() {
         return String.valueOf(value);
     }
@@ -82,10 +75,6 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     @Override
     public boolean isEnabled() {
         return !disabled;
-    }
-
-    public void setOnDataChange(CallbackHandler<Integer> onDataChange) {
-        this.onDataChange = onDataChange;
     }
 
     private class Updater implements EventHandler {
@@ -117,9 +106,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
             if ((!Objects.equals(value, newValue)) || newDisabled != disabled) {
                 value = newValue;
                 disabled = newDisabled;
-                if (onChange != null) {
-                    onChange.handle(value);
-                }
+                onChange.report();
             }
         }
     }

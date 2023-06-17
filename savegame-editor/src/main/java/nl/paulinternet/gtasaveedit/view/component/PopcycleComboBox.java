@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class PopcycleComboBox extends PComboBox<String> {
-    private SelectableItemVariable<Integer> var;
-    private List<Integer> values;
+    private final SelectableItemVariable<Integer> var;
+    private final List<Integer> values;
     private boolean disabled;
 
     public PopcycleComboBox(SelectableItemVariable<Integer> var) {
@@ -72,7 +72,7 @@ public class PopcycleComboBox extends PComboBox<String> {
     public void updateModel() {
         if (disabled) return;
         disabled = true;
-        var.setSelectedValue(values.get(getSelectedIndex()));
+        var.setIntValue(values.get(getSelectedIndex()));
         disabled = false;
     }
 
