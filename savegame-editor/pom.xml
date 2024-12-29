@@ -221,7 +221,7 @@
                                 <CFBundleExecutable>launcher</CFBundleExecutable>
                                 <NSHighResolutionCapable>true</NSHighResolutionCapable>
                                 <JVMMainClassName>nl.paulinternet.gtasaveedit.view.Main</JVMMainClassName>
-                                <JVMVersion>11</JVMVersion>
+                                <JVMVersion>23</JVMVersion>
                                 <JVMLogLevel>TRACE</JVMLogLevel>
                             </plist>
                             <dmg>
