@@ -15,7 +15,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 23
       - name: Build project
         run: mvn clean install -Dmaven.javadoc.skip=true -B -V
   windows:
@@ -26,7 +26,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 23
       - name: Build exe
         run: mvn clean install -Pdeb "-Dmaven.javadoc.skip=true" -B -V -Pwindows
   macos:
@@ -37,6 +37,6 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 23
       - name: Build app and dmg
         run: mvn clean install -Dmaven.javadoc.skip=true -B -V -PmacOS

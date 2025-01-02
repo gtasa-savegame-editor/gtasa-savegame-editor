@@ -13,7 +13,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 23
       - name: Build jar
         run: mvn clean install -Dmaven.javadoc.skip=true -B -V
       - name: Create deploy directory
@@ -49,7 +49,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 23
       - name: Build deb
         run: mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V
       - name: Create deploy directory
@@ -85,7 +85,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 23
       - name: Build rpm
         run: mvn clean install -Prpm -Dmaven.javadoc.skip=true -B -V
       - name: Create deploy directory

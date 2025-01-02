@@ -27,7 +27,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v1
       with:
-        java-version: 11
+        java-version: 23
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
