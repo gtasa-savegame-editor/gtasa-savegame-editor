@@ -124,7 +124,7 @@
                             <license>The MIT License</license>
                             <group>Amusements/Games/Other</group>
                             <icon>${project.basedir}/src/main/resources/icon-32.gif</icon>
-                            <packager>${parent.organization.name}</packager>
+                            <packager>${project.organization.name}</packager>
                             <prefix>/usr/local</prefix>
                             <mappings>
                                 <mapping>
@@ -246,51 +246,61 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
-                        <artifactId>launch4j-maven-plugin</artifactId>
-                        <version>2.6.0</version>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>3.6.1</version>
                         <executions>
                             <execution>
-                                <id>l4j-clui</id>
-                                <phase>package</phase>
+                                <id>jpackage-app-version</id>
+                                <phase>validate</phase>
                                 <goals>
-                                    <goal>launch4j</goal>
+                                    <goal>regex-property</goal>
                                 </goals>
                                 <configuration>
-                                    <headerType>gui</headerType>
-                                    <jar>
-                                        ${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar
-                                    </jar>
-                                    <outfile>${project.build.directory}/${application.filename}.exe</outfile>
-                                    <downloadUrl>
-                                        <![CDATA[https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot]]>
-                                    </downloadUrl>
-                                    <classPath>
-                                        <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
-                                        <preCp>anything</preCp>
-                                    </classPath>
-                                    <icon>src/main/resources/icon.ico</icon>
-                                    <jre>
-                                        <!-- path>./jre/</path -->
-                                        <!-- bundledJreAsFallback>true</bundledJreAsFallback -->
-                                        <minVersion>${java.version}</minVersion>
-                                        <jdkPreference>preferJre</jdkPreference>
-                                    </jre>
-                                    <versionInfo>
-                                        <fileVersion>1.0.0.0</fileVersion>
-                                        <txtFileVersion>${project.version}</txtFileVersion>
-                                        <fileDescription>${project.name}</fileDescription>
-                                        <copyright>${current.year} ${parent.organization.name}</copyright>
-                                        <productVersion>1.0.0.0</productVersion>
-                                        <txtProductVersion>${project.version}</txtProductVersion>
-                                        <productName>${project.name}</productName>
-                                        <companyName>${project.name}</companyName>
-                                        <internalName>${project.name}</internalName>
-                                        <originalFilename>${application.filename}.exe</originalFilename>
-                                    </versionInfo>
+                                    <name>jpackage.appVersion</name>
+                                    <value>${project.version}</value>
+                                    <regex>-SNAPSHOT</regex>
+                                    <replacement></replacement>
+                                    <failIfNoMatch>false</failIfNoMatch>
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <!--
+                            Replaces launch4j: launch4j only detects Java installs registered under the
+                            legacy Oracle registry key (HKLM\SOFTWARE\JavaSoft\Java Runtime Environment),
+                            so it can't see JREs installed by Adoptium/Temurin or most other OpenJDK
+                            distributions. jpackage sidesteps the whole "is a JRE installed" problem by
+                            bundling a private runtime image inside the installer.
+                        -->
+                        <groupId>org.panteleyev</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <version>1.7.4</version>
+                        <executions>
+                            <execution>
+                                <id>jpackage-exe</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jpackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <name>${application.filename}</name>
+                            <appVersion>${jpackage.appVersion}</appVersion>
+                            <vendor>${project.organization.name}</vendor>
+                            <copyright>${current.year} ${project.organization.name}</copyright>
+                            <destination>${project.build.directory}</destination>
+                            <input>${project.build.directory}</input>
+                            <mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
+                            <mainClass>nl.paulinternet.gtasaveedit.view.Main</mainClass>
+                            <icon>${project.basedir}/src/main/resources/icon.ico</icon>
+                            <type>EXE</type>
+                            <winMenu>true</winMenu>
+                            <winShortcut>true</winShortcut>
+                            <winDirChooser>true</winDirChooser>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

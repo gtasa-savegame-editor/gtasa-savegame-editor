@@ -15,17 +15,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '23'
+      - name: Install WiX Toolset
+        run: |
+          choco install wixtoolset --version=3.14.1 -y
+          echo "C:\Program Files (x86)\WiX Toolset v3.14\bin" >> $env:GITHUB_PATH
       - name: Build exe
         run: mvn clean install -Pdeb "-Dmaven.javadoc.skip=true" -B -V -Pwindows
       - name: Create deploy directory
         run: mkdir deploy
         if: startsWith(github.ref, 'refs/tags/v')
-      #- name: Create jre directory
-      #  run: mkdir deploy\jre
-      #  if: startsWith(github.ref, 'refs/tags/v')
-      #- name: Copy jre to deploy dir
-      #  run: xcopy "%JAVA_HOME%\*" deploy\jre /E/H
-      #  if: startsWith(github.ref, 'refs/tags/v')
       - name: Copy app to deploy dir
         run: copy "savegame-editor/target/*.exe" deploy
         if: startsWith(github.ref, 'refs/tags/v')

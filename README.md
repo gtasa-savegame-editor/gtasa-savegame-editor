@@ -19,7 +19,8 @@
 This is a modified/updated version of the software that can be found on [paulinternet.nl](https://paulinternet.nl/?page=sa).
 
 This version contains the following features (additionally to the ones found in the original version):
-- requires Java >= 11
+- the `.exe` for Windows bundles its own Java runtime, no separate install needed
+- the `.jar`, `.deb` and `.rpm` builds require Java >= 23 to be installed
 - macOS specific fixes
 - support for German/european steam versions of the game
 - support for macOS Steam version of the game
