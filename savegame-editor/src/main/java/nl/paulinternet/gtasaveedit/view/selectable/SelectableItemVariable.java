@@ -15,13 +15,23 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
     private final ReportableEvent onDataChange;
     private final Iterable<? extends SelectableItemValue> items;
     private final int parameter;
+    private final boolean booleanValue;
     private boolean disabled;
     private Integer value;
     private final int min, max;
 
     public SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter, int min, int max) {
+        this(items, parameter, min, max, false);
+    }
+
+    public SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter) {
+        this(items, parameter, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter, int min, int max, boolean booleanValue) {
         this.items = items.getSelectedItems();
         this.parameter = parameter;
+        this.booleanValue = booleanValue;
         onChange = new ReportableEvent();
         onDataChange = items.onDataChange();
         this.min = min;
@@ -33,8 +43,26 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
         updater.handleEvent(null);
     }
 
-    public SelectableItemVariable(SelectableItems<? extends SelectableItemValue> items, int parameter) {
-        this(items, parameter, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    /**
+     * Creates a boolean-backed variable over an integer item field (0 = false, any other value = true).
+     * Needed because {@link #getValue()}/{@link #setValue(Object)} must hand back real Boolean
+     * instances here, not the Integer this class tracks internally, or callers expecting
+     * {@code Variable<Boolean>} (e.g. ConnectedCheckbox) get a ClassCastException.
+     */
+    public static Variable<Boolean> forBoolean(SelectableItems<? extends SelectableItemValue> items, int parameter) {
+        return new SelectableItemVariable<>(items, parameter, 0, 1, true);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public T getValue() {
+        if (value == null) return null;
+        return booleanValue ? (T) Boolean.valueOf(value != 0) : (T) value;
+    }
+
+    @Override
+    public void setValue(T value) {
+        setIntValue(booleanValue ? ((Boolean) value ? 1 : 0) : (Integer) value);
     }
 
     public void setIntValue(Integer value) {

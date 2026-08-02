@@ -69,7 +69,7 @@ public class PageZones extends Page implements ActionListener {
         table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 2, 0, 255)), 1, 2);
         table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 3, 0, 255)), 1, 3);
         table.add(new PopcycleComboBox(new SelectableItemVariable<>(zones, Zone.POPCYCLE, 0, 0x1f)), 1, 4);
-        table.add(new ConnectedCheckbox(new SelectableItemVariable<>(zones, Zone.DISABLE_FOOT_COPS, 0, 255), "No cops on foot"), 1, 5, 2, 1);
+        table.add(new ConnectedCheckbox(SelectableItemVariable.forBoolean(zones, Zone.DISABLE_FOOT_COPS), "No cops on foot"), 1, 5, 2, 1);
 
         table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 4, 0, 255)), 4, 0);
         table.add(new ConnectedTextField(new SelectableItemVariable<>(zones, 5, 0, 255)), 4, 1);
