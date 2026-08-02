@@ -29,6 +29,6 @@ jobs:
           Compress-Archive deploy GTA-SA-Savegame-Editor.Windows.zip
       - name: Upload Release Asset
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: GTA-SA-Savegame-Editor.Windows.zip
