@@ -277,7 +277,7 @@
                         -->
                         <groupId>org.panteleyev</groupId>
                         <artifactId>jpackage-maven-plugin</artifactId>
-                        <version>1.7.4</version>
+                        <version>1.8.0</version>
                         <executions>
                             <execution>
                                 <id>jpackage-exe</id>
