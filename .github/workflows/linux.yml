@@ -2,114 +2,75 @@ name: Linux
 
 on:
   release:
-    types: [released,prereleased]
+    types: [released, prereleased]
 
 jobs:
   jar:
     name: 🐧 .jar
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
-          java-version: 23
+          distribution: 'temurin'
+          java-version: '23'
+          cache: 'maven'
       - name: Build jar
         run: mvn clean install -Dmaven.javadoc.skip=true -B -V
-      - name: Create deploy directory
-        run: mkdir deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Copy jar to deploy dir
-        run: cp -v "savegame-editor/target/$(ls savegame-editor/target | grep jar-with-dependencies)" deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Compress release
-        run: zip -r "GTA:SA-Savegame-Editor.jar.zip" "deploy"
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Get release
-        id: get_release
-        uses: bruceadams/get-release@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Package jar
+        run: |
+          mkdir deploy
+          cp -v savegame-editor/target/*-jar-with-dependencies.jar deploy/
+          zip -r "GTA:SA-Savegame-Editor.jar.zip" deploy/
       - name: Upload Release Asset
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./GTA:SA-Savegame-Editor.jar.zip
-          asset_name: GTA:SA-Savegame-Editor.jar.zip
-          asset_content_type: application/zip
+          files: GTA:SA-Savegame-Editor.jar.zip
   deb:
     name: 🐧 .deb
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
-          java-version: 23
+          distribution: 'temurin'
+          java-version: '23'
+          cache: 'maven'
       - name: Build deb
         run: mvn clean install -Pdeb -Dmaven.javadoc.skip=true -B -V
-      - name: Create deploy directory
-        run: mkdir deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Copy deb to deploy dir
-        run: cp -v "savegame-editor/target/$(ls savegame-editor/target | grep .deb)" deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Compress release
-        run: zip -r "GTA:SA-Savegame-Editor.deb.zip" "deploy"
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Get release
-        id: get_release
-        uses: bruceadams/get-release@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Package deb
+        run: |
+          mkdir deploy
+          cp -v savegame-editor/target/*.deb deploy/
+          zip -r "GTA:SA-Savegame-Editor.deb.zip" deploy/
       - name: Upload Release Asset
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./GTA:SA-Savegame-Editor.deb.zip
-          asset_name: GTA:SA-Savegame-Editor.deb.zip
-          asset_content_type: application/zip
+          files: GTA:SA-Savegame-Editor.deb.zip
   rpm:
     name: 🐧 .rpm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
-          java-version: 23
+          distribution: 'temurin'
+          java-version: '23'
+          cache: 'maven'
       - name: Build rpm
         run: mvn clean install -Prpm -Dmaven.javadoc.skip=true -B -V
-      - name: Create deploy directory
-        run: mkdir deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Copy rpm to deploy dir
-        run: cp -v "savegame-editor/target/rpm/savegame-editor/RPMS/noarch/$(ls savegame-editor/target/rpm/savegame-editor/RPMS/noarch | grep .rpm)" deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Compress release
-        run: zip -r "GTA:SA-Savegame-Editor.rpm.zip" "deploy"
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Get release
-        id: get_release
-        uses: bruceadams/get-release@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Package rpm
+        run: |
+          mkdir deploy
+          cp -v savegame-editor/target/rpm/savegame-editor/RPMS/noarch/*.rpm deploy/
+          zip -r "GTA:SA-Savegame-Editor.rpm.zip" deploy/
       - name: Upload Release Asset
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./GTA:SA-Savegame-Editor.rpm.zip
-          asset_name: GTA:SA-Savegame-Editor.rpm.zip
-          asset_content_type: application/zip
+          files: GTA:SA-Savegame-Editor.rpm.zip

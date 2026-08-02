@@ -2,47 +2,33 @@ name: Windows
 
 on:
   release:
-    types: [released,prereleased]
+    types: [released, prereleased]
 
 jobs:
   exe:
     name: 🏢 .exe
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '23'
+          cache: 'maven'
       - name: Install WiX Toolset
         run: |
           choco install wixtoolset --version=3.14.1 -y
           echo "C:\Program Files (x86)\WiX Toolset v3.14\bin" >> $env:GITHUB_PATH
       - name: Build exe
         run: mvn clean install -Pdeb "-Dmaven.javadoc.skip=true" -B -V -Pwindows
-      - name: Create deploy directory
-        run: mkdir deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Copy app to deploy dir
-        run: copy "savegame-editor/target/*.exe" deploy
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Compress release
-        run: Compress-Archive "deploy" "GTA-SA-Savegame-Editor.Windows.zip"
-        if: startsWith(github.ref, 'refs/tags/v')
-      - name: Get release
-        id: get_release
-        uses: bruceadams/get-release@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Package exe
+        run: |
+          mkdir deploy
+          copy savegame-editor\target\*.exe deploy\
+          Compress-Archive deploy GTA-SA-Savegame-Editor.Windows.zip
       - name: Upload Release Asset
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./GTA-SA-Savegame-Editor.Windows.zip
-          asset_name: GTA-SA-Savegame-Editor.Windows.zip
-          asset_content_type: application/zip
+          files: GTA-SA-Savegame-Editor.Windows.zip
