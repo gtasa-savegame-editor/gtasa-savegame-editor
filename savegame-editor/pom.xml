@@ -212,7 +212,7 @@
                     <plugin>
                         <groupId>de.perdian.maven.plugins</groupId>
                         <artifactId>macosappbundler-maven-plugin</artifactId>
-                        <version>1.21.1</version>
+                        <version>1.21.2</version>
                         <configuration>
                             <plist>
                                 <CFBundleName>${application.filename}</CFBundleName>
