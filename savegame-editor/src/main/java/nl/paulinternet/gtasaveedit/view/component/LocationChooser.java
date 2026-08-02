@@ -29,8 +29,8 @@ public class LocationChooser extends ImageComponent implements MouseListener {
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.setColor(overlay);
         g.fillRect(0, 0, 620, 620);
 

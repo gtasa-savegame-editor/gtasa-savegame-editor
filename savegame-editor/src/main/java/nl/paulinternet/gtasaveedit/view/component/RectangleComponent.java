@@ -1,8 +1,9 @@
 package nl.paulinternet.gtasaveedit.view.component;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class RectangleComponent extends Component {
+public class RectangleComponent extends JComponent {
     private static final Dimension size = new Dimension(10, 10);
 
     private Color color;
@@ -11,11 +12,18 @@ public class RectangleComponent extends Component {
         this.color = color;
     }
 
+    @Override
     public Dimension getMinimumSize() {
         return size;
     }
 
-    public void paint(Graphics g) {
+    @Override
+    public Dimension getPreferredSize() {
+        return size;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
         Dimension compSize = getSize();
         int x = (compSize.width - size.width) / 2;
         int y = (compSize.height - size.height) / 2;
