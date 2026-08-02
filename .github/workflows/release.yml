@@ -22,11 +22,11 @@ jobs:
         run: |
           mkdir deploy
           cp -v savegame-editor/target/*-jar-with-dependencies.jar deploy/
-          zip -r "GTA:SA-Savegame-Editor.jar.zip" deploy/
+          zip -r "GTA-SA-Savegame-Editor.jar.zip" deploy/
       - uses: actions/upload-artifact@v4
         with:
           name: jar
-          path: GTA:SA-Savegame-Editor.jar.zip
+          path: GTA-SA-Savegame-Editor.jar.zip
 
   deb:
     name: 🐧 .deb
@@ -44,11 +44,11 @@ jobs:
         run: |
           mkdir deploy
           cp -v savegame-editor/target/*.deb deploy/
-          zip -r "GTA:SA-Savegame-Editor.deb.zip" deploy/
+          zip -r "GTA-SA-Savegame-Editor.deb.zip" deploy/
       - uses: actions/upload-artifact@v4
         with:
           name: deb
-          path: GTA:SA-Savegame-Editor.deb.zip
+          path: GTA-SA-Savegame-Editor.deb.zip
 
   rpm:
     name: 🐧 .rpm
@@ -66,11 +66,11 @@ jobs:
         run: |
           mkdir deploy
           cp -v savegame-editor/target/rpm/savegame-editor/RPMS/noarch/*.rpm deploy/
-          zip -r "GTA:SA-Savegame-Editor.rpm.zip" deploy/
+          zip -r "GTA-SA-Savegame-Editor.rpm.zip" deploy/
       - uses: actions/upload-artifact@v4
         with:
           name: rpm
-          path: GTA:SA-Savegame-Editor.rpm.zip
+          path: GTA-SA-Savegame-Editor.rpm.zip
 
   dmg:
     name: 🍏 .app/.dmg
@@ -88,11 +88,11 @@ jobs:
         run: |
           mkdir deploy
           cp -v savegame-editor/target/*.dmg deploy/
-          zip -r "GTA:SA-Savegame-Editor.macOS.zip" deploy/
+          zip -r "GTA-SA-Savegame-Editor.macOS.zip" deploy/
       - uses: actions/upload-artifact@v4
         with:
           name: dmg
-          path: GTA:SA-Savegame-Editor.macOS.zip
+          path: GTA-SA-Savegame-Editor.macOS.zip
 
   exe:
     name: 🏢 .exe
@@ -106,8 +106,9 @@ jobs:
           cache: 'maven'
       - name: Install WiX Toolset
         run: |
-          choco install wixtoolset --version=3.14.1 -y
-          echo "C:\Program Files (x86)\WiX Toolset v3.14\bin" >> $env:GITHUB_PATH
+          Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip" -OutFile wix.zip
+          Expand-Archive wix.zip -DestinationPath C:\WiX
+          echo "C:\WiX" >> $env:GITHUB_PATH
       - name: Build exe
         run: mvn clean install -Pdeb "-Dmaven.javadoc.skip=true" -B -V -Pwindows
       - name: Package exe
