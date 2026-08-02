@@ -74,7 +74,11 @@ public class Updater {
      * @throws Exception if there is an error parsing a {@link Version}.
      */
     private void notifyLatestVersion() throws Exception {
-        final Version current = new Version(GitDataHandler.getCurrentTag()); //FIXME this does not seem to work
+        final Version current = new Version(GitDataHandler.getCurrentTag());
+        if (current.getFlag() == Version.Flag.DEV) {
+            log.info("Development build, skipping update check.");
+            return;
+        }
         List<Version> newerReleasesWithDuplicates = tags.stream().filter(v -> current.compareTo(v) < 0).distinct().collect(Collectors.toList());
         ArrayList<Version> newerReleases = getDeduplicatedVersions(newerReleasesWithDuplicates);
 

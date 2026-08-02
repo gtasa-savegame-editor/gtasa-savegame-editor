@@ -16,14 +16,14 @@ public class GitDataHandler {
     private static final Logger log = LoggerFactory.getLogger(GitDataHandler.class);
 
     /**
-     * Tries to read the current tag from git.properties, otherwise returns "0.0.0-dev.0"
+     * Tries to read the current tag from git.properties, otherwise returns "0.0-DEV"
      *
-     * @return the current tag from git.properties or "0.0.0-dev.0" if an error occurred
+     * @return the current tag from git.properties or "0.0-DEV" if an error occurred
      */
     public static String getCurrentTag() {
         Properties properties = getGitProperties();
         if (properties != null) {
-            Optional<String> tagOptional = Arrays.stream(properties.getProperty("git.tags").split(","))
+            Optional<String> tagOptional = Arrays.stream(properties.getProperty("git.tags", "").split(","))
                     .filter(tag -> tag.startsWith("v"))
                     .findFirst();
             if (tagOptional.isPresent()) {
@@ -31,9 +31,18 @@ public class GitDataHandler {
                 log.info("Found version: '" + version + "'!");
                 return version;
             }
+
+            // No tag on HEAD — derive from the closest tag
+            String closestTag = properties.getProperty("git.closest.tag.name");
+            if (closestTag != null && !closestTag.isEmpty()) {
+                String baseVersion = closestTag.replaceAll("^(v\\d+\\.\\d+).*$", "$1");
+                String version = baseVersion + "-DEV";
+                log.info("No tag on HEAD, using closest tag '" + closestTag + "' → '" + version + "'");
+                return version;
+            }
         }
         log.warn("Unable to determine current version!");
-        return "0.0-dev.0";
+        return "0.0-DEV";
     }
 
     /**
