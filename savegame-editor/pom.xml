@@ -13,10 +13,10 @@
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>GTA:SA Savegame Editor GUI</name>
+    <name>GTA SA Savegame Editor GUI</name>
 
     <properties>
-        <current.year>2020</current.year>
+        <current.year>2026</current.year>
         <application.filename>GTA SA Savegame Editor</application.filename>
     </properties>
 

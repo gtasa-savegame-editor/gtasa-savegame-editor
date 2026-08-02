@@ -14,7 +14,7 @@
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>GTA:SA Savegame Editor CLI</name>
+    <name>GTA SA Savegame Editor CLI</name>
 
     <build>
         <plugins>
