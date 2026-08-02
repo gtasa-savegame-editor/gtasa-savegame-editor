@@ -11,7 +11,6 @@ import java.util.Objects;
 
 public class SelectableItemVariable<T> extends Variable<T> implements TextFieldInterface {
 
-    private final ReportableEvent onChange;
     private final ReportableEvent onDataChange;
     private final Iterable<? extends SelectableItemValue> items;
     private final int parameter;
@@ -32,7 +31,6 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
         this.items = items.getSelectedItems();
         this.parameter = parameter;
         this.booleanValue = booleanValue;
-        onChange = new ReportableEvent();
         onDataChange = items.onDataChange();
         this.min = min;
         this.max = max;
@@ -74,7 +72,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
             for (SelectableItemValue item : items) {
                 item.setValue(parameter, value);
             }
-            onChange.report();
+            handleChange(getValue());
             onDataChange.report();
         }
     }
@@ -97,7 +95,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
 
     @Override
     public String getText() {
-        return String.valueOf(value);
+        return value == null ? "" : String.valueOf(value);
     }
 
     @Override
@@ -134,7 +132,7 @@ public class SelectableItemVariable<T> extends Variable<T> implements TextFieldI
             if ((!Objects.equals(value, newValue)) || newDisabled != disabled) {
                 value = newValue;
                 disabled = newDisabled;
-                onChange.report();
+                handleChange(getValue());
             }
         }
     }

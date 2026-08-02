@@ -58,6 +58,38 @@ public class SelectableItemVariableTest {
     }
 
     @Test
+    public void selectionChangeNotifiesOnChangeListenersLikeConnectedTextFieldRelyOn() {
+        // Regression test for https://github.com/gtasa-savegame-editor/gtasa-savegame-editor/issues/97
+        // and /issues/121: SelectableItemVariable declared its own "onChange" ReportableEvent field
+        // that shadowed Variable<T>'s inherited "onChange" listener list. Updater fired the shadowed
+        // (unused) field on every selection/data change, so ConnectedTextField's
+        // model.addOnChangeListener(...) - the only thing that keeps the widget in sync with the
+        // model - was never actually invoked. Zone tab fields stayed disabled/blank no matter what
+        // was selected on the map.
+        SelectableItemVariable<Integer> var = new SelectableItemVariable<>(items, 0, 0, 255);
+        List<Integer> notifications = new ArrayList<>();
+        var.addOnChangeListener(notifications::add);
+
+        assertFalse(var.isEnabled());
+        assertEquals("", var.getText());
+
+        itemList.get(0).setValue(0, 42);
+        itemList.get(0).setSelected(true);
+        items.onSelectionChange().report();
+
+        assertEquals(1, notifications.size());
+        assertTrue(var.isEnabled());
+        assertEquals("42", var.getText());
+
+        itemList.get(0).setSelected(false);
+        items.onSelectionChange().report();
+
+        assertEquals(2, notifications.size());
+        assertFalse(var.isEnabled());
+        assertEquals("", var.getText());
+    }
+
+    @Test
     public void forBooleanGetValueReturnsARealBooleanNotAClassCastException() {
         // Regression test: this exact "Boolean value = var.getValue();" pattern is what
         // ConnectedCheckbox does. Before the fix, getValue() returned the disconnected
