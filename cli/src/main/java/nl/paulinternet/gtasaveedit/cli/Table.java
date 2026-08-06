@@ -57,7 +57,9 @@ public class Table {
             for (int i = 0; i < columns - 1; i++) {
                 builder.append(row[i]);
                 int padding = maxSize[i] - row[i].length() + 2;
-                builder.append(" ".repeat(Math.max(0, padding)));
+                for (int j = 0; j < padding; j++) {
+                    builder.append(' ');
+                }
             }
             builder.append(row[columns - 1]);
             builder.append('\n');

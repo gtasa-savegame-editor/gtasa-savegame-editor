@@ -3,7 +3,6 @@ package nl.paulinternet.gtasaveedit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
@@ -17,6 +16,7 @@ public class Settings implements Serializable {
 
     public static final int UNKNOWN = 0, NO = 1, YES = 2;
     public static final int DIR_DEFAULT = 1, DIR_ACTIVE = 2, DIR_CUSTOM = 3;
+    public static final int THEME_LIGHT = 1, THEME_DARK = 2, THEME_SYSTEM = 3;
 
     private static final File settingsFile = getSettingsFile();
 
@@ -26,7 +26,7 @@ public class Settings implements Serializable {
     private String customSavegameDirectory;
     private int warnOverwriteFile;
     private int warnDeleteFile;
-    private String lookAndFeelClassName;
+    private int themeMode;
     private int sanAndreasDirectoryType;
     private String customSanAndreasDirectory;
     private int showClothes;
@@ -82,7 +82,7 @@ public class Settings implements Serializable {
             }
         } else {
             String xdgConfigHome = System.getenv("XDG_CONFIG_HOME");
-            if (xdgConfigHome == null || xdgConfigHome.isBlank() || xdgConfigHome.isEmpty()) {
+            if (xdgConfigHome == null || xdgConfigHome.trim().isEmpty()) {
                 configDir = System.getProperty("user.home") + File.separator + ".config" + File.separator + "gta-sa_savegame_editor";
             } else {
                 configDir = xdgConfigHome + File.separator + "gta-sa_savegame_editor";
@@ -123,12 +123,12 @@ public class Settings implements Serializable {
         instance.warnDeleteFile = warnDeleteFile;
     }
 
-    public static String getLookAndFeelClassName() {
-        return instance.lookAndFeelClassName;
+    public static int getThemeMode() {
+        return instance.themeMode;
     }
 
-    public static void setLookAndFeelClassName(String lookAndFeelClassName) {
-        instance.lookAndFeelClassName = lookAndFeelClassName;
+    public static void setThemeMode(int themeMode) {
+        instance.themeMode = themeMode;
     }
 
     public static int getSanAndreasDirectoryType() {
@@ -232,8 +232,7 @@ public class Settings implements Serializable {
         if (settings.customSavegameDirectory == null) settings.customSavegameDirectory = "";
         if (settings.warnOverwriteFile == UNKNOWN) settings.warnOverwriteFile = YES;
         if (settings.warnDeleteFile == UNKNOWN) settings.warnDeleteFile = YES;
-        if (settings.lookAndFeelClassName == null)
-            settings.lookAndFeelClassName = UIManager.getSystemLookAndFeelClassName();
+        if (settings.themeMode == UNKNOWN) settings.themeMode = THEME_SYSTEM;
         if (settings.customSanAndreasDirectory == null) settings.customSanAndreasDirectory = "";
         if (settings.showClothes == UNKNOWN) settings.showClothes = YES;
         if (settings.windowWidth == 0) settings.windowWidth = 900;

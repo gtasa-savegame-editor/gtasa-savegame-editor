@@ -1,6 +1,5 @@
 package nl.paulinternet.gtasaveedit.view.pages;
 
-import com.github.weisj.darklaf.settings.ThemeSettings;
 import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.model.Model;
@@ -47,6 +46,7 @@ public class PageOptions extends Page {
         ConnectedRadioButtons savedirButtons = new ConnectedRadioButtons(settings.savegameDirectoryType);
         ConnectedRadioButtons sadirButtons = new ConnectedRadioButtons(settings.sanAndreasDirectoryType);
         ConnectedRadioButtons maximized = new ConnectedRadioButtons(settings.windowMaximized);
+        ConnectedRadioButtons themeButtons = new ConnectedRadioButtons(settings.themeMode);
 
         // generate main box!
         // To understand this call, look at that method!
@@ -55,6 +55,7 @@ public class PageOptions extends Page {
                 savedirButtons,
                 sadirButtons,
                 maximized,
+                themeButtons,
                 generateFileSelectionBox(
                         buttonBrowse,
                         savedirButtons.create(Settings.DIR_CUSTOM, "Other directory:"),
@@ -126,6 +127,7 @@ public class PageOptions extends Page {
      * @param savedirButtons          The saveDir buttons. Also needed by the customPanel.
      * @param sadirButtons            The saDir buttons. Also needed by the xboxSanAndreas.
      * @param maximized               The maxmized radios. Also needed by the xboxWindowSize.
+     * @param themeButtons            The theme radios.
      * @param customPanel             The custom save game folder panel.
      * @param xboxSanAndreas          The sa installation dir panel.
      * @param xboxApply               The apply box.
@@ -134,7 +136,7 @@ public class PageOptions extends Page {
      * @param detectedSaDir           the detectedSADir string. See {@link PageOptions#getDetectedSaDirOrError()}.
      * @return The generated YBox.
      */
-    private YBox generateMainBox(SettingVariables settings, ConnectedRadioButtons savedirButtons, ConnectedRadioButtons sadirButtons, ConnectedRadioButtons maximized, XBox customPanel, XBox xboxSanAndreas, XBox xboxApply, XBox xboxWindowSize, PButton buttonCurrentWindowSize, String detectedSaDir) {
+    private YBox generateMainBox(SettingVariables settings, ConnectedRadioButtons savedirButtons, ConnectedRadioButtons sadirButtons, ConnectedRadioButtons maximized, ConnectedRadioButtons themeButtons, XBox customPanel, XBox xboxSanAndreas, XBox xboxApply, XBox xboxWindowSize, PButton buttonCurrentWindowSize, String detectedSaDir) {
         YBox ybox = new YBox();
         ybox.add(new JLabel("You can change settings here if you like."));
         ybox.addSeparator(10);
@@ -153,8 +155,10 @@ public class PageOptions extends Page {
         ybox.add(new ConnectedCheckbox(settings.warnOverwriteFile, "Warn before overwriting a file"));
         ybox.add(new ConnectedCheckbox(settings.warnDeleteFile, "Warn before deleting a file"));
         ybox.addSeparator(10);
-        ybox.add(new JLabel("<html><b>Theme Settings"));
-        ybox.add(generateThemeSettingsButton());
+        ybox.add(new JLabel("<html><b>Theme"));
+        ybox.add(themeButtons.create(Settings.THEME_SYSTEM, "Match system"));
+        ybox.add(themeButtons.create(Settings.THEME_LIGHT, "Light"));
+        ybox.add(themeButtons.create(Settings.THEME_DARK, "Dark"));
         ybox.addSeparator(10);
         ybox.add(new JLabel("<html><b>MainWindow size at startup:"));
         ybox.add(maximized.create(Settings.YES, "Maximized"));
@@ -170,12 +174,6 @@ public class PageOptions extends Page {
         ybox.add(xboxApply);
         ybox.setBorder(10);
         return ybox;
-    }
-
-    private Component generateThemeSettingsButton() {
-        PButton btn = new PButton("Change Theme Settings");
-        btn.onClick().addHandler((x) -> ThemeSettings.showSettingsDialog(PageOptions.this.getComponent()));
-        return btn;
     }
 
     /**

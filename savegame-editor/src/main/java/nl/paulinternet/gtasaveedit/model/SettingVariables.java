@@ -3,28 +3,23 @@ package nl.paulinternet.gtasaveedit.model;
 import nl.paulinternet.gtasaveedit.FileSystem;
 import nl.paulinternet.gtasaveedit.Settings;
 import nl.paulinternet.gtasaveedit.event.ReportableEvent;
-import nl.paulinternet.gtasaveedit.view.window.MainWindow;
+import nl.paulinternet.gtasaveedit.view.ThemeManager;
 import nl.paulinternet.libsavegame.CallbackHandler;
 import nl.paulinternet.libsavegame.variables.Variable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.swing.*;
 
 public class SettingVariables {
-    private static Logger log = LoggerFactory.getLogger(SettingVariables.class);
 
     public final ReportableEvent settingsChanged = new ReportableEvent();
 
     public final Variable<Integer> savegameDirectoryType = new Variable<>();
     public final Variable<Integer> sanAndreasDirectoryType = new Variable<>();
-    public final Variable<String> customSavegameDirectory = new Variable<>() {
+    public final Variable<String> customSavegameDirectory = new Variable<String>() {
         @Override
         public String getAllowedCharacters() {
             return super.getAllowedCharacters() + "/\\:_ +";
         }
     };
-    public final Variable<String> customSanAndreasDirectory = new Variable<>() {
+    public final Variable<String> customSanAndreasDirectory = new Variable<String>() {
         @Override
         public String getAllowedCharacters() {
             return super.getAllowedCharacters() + "/\\:_ ";
@@ -33,7 +28,7 @@ public class SettingVariables {
     public final Variable<Boolean> showClothes = new Variable<>();
     public final Variable<Boolean> warnOverwriteFile = new Variable<>();
     public final Variable<Boolean> warnDeleteFile = new Variable<>();
-    public final Variable<String> lookAndFeelClassName = new Variable<>();
+    public final Variable<Integer> themeMode = new Variable<>();
     public final Variable<Integer> windowWidth = new Variable<>();
     public final Variable<Integer> windowHeight = new Variable<>();
     public final Variable<Integer> windowMaximized = new Variable<>();
@@ -51,7 +46,7 @@ public class SettingVariables {
         showClothes.addOnChangeListener(v -> changed.handle(null));
         warnOverwriteFile.addOnChangeListener(v -> changed.handle(null));
         warnDeleteFile.addOnChangeListener(v -> changed.handle(null));
-        lookAndFeelClassName.addOnChangeListener(v -> changed.handle(null));
+        themeMode.addOnChangeListener(v -> changed.handle(null));
         windowWidth.addOnChangeListener(v -> changed.handle(null));
         windowHeight.addOnChangeListener(v -> changed.handle(null));
         windowMaximized.addOnChangeListener(v -> changed.handle(null));
@@ -67,7 +62,7 @@ public class SettingVariables {
         showClothes.setValue(Settings.getShowClothes() == Settings.YES);
         warnOverwriteFile.setValue(Settings.getWarnOverwriteFile() == Settings.YES);
         warnDeleteFile.setValue(Settings.getWarnDeleteFile() == Settings.YES);
-        lookAndFeelClassName.setValue(Settings.getLookAndFeelClassName());
+        themeMode.setValue(Settings.getThemeMode());
         windowWidth.setValue(Settings.getWindowWidth());
         windowHeight.setValue(Settings.getWindowHeight());
         windowMaximized.setValue(Settings.getWindowMaximized());
@@ -85,7 +80,7 @@ public class SettingVariables {
         Settings.setShowClothes(showClothes.getValue() ? Settings.YES : Settings.NO);
         Settings.setWarnOverwriteFile(warnOverwriteFile.getValue() ? Settings.YES : Settings.NO);
         Settings.setWarnDeleteFile(warnDeleteFile.getValue() ? Settings.YES : Settings.NO);
-        Settings.setLookAndFeelClassName(lookAndFeelClassName.getValue());
+        Settings.setThemeMode(themeMode.getValue());
         Settings.setWindowWidth(windowWidth.getValue());
         Settings.setWindowHeight(windowHeight.getValue());
         Settings.setWindowMaximized(windowMaximized.getValue());
@@ -94,15 +89,8 @@ public class SettingVariables {
 
         Settings.save();
 
-        // Look and feel
-        if (!UIManager.getLookAndFeel().getClass().getName().equals(Settings.getLookAndFeelClassName())) {
-            try {
-                UIManager.setLookAndFeel(Settings.getLookAndFeelClassName());
-                SwingUtilities.updateComponentTreeUI(MainWindow.getInstance());
-            } catch (Exception e) {
-                log.warn("Error setting look and feel!", e);
-            }
-        }
+        // Theme
+        ThemeManager.install(Settings.getThemeMode());
 
         // Update quick load
         SavegameModel.get(FileSystem.getSavegameDirectory()).updateQuickLoad();

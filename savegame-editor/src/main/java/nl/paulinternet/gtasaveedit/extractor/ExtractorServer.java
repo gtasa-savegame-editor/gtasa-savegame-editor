@@ -18,6 +18,7 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -119,7 +120,7 @@ public class ExtractorServer extends Thread {
                 FormDataHandler.FileData f = (FormDataHandler.FileData) fileData[i];
                 if ("application/octet-stream".equals(f.contentType)) {
                     String fileName = tempDir.toFile().getAbsolutePath() + File.separator + f.fileName;
-                    Path filePath = Path.of(fileName);
+                    Path filePath = Paths.get(fileName);
                     try (OutputStream stream = Files.newOutputStream(filePath)) {
                         log.info("Writing file: '" + filePath + "'");
                         stream.write(f.data);

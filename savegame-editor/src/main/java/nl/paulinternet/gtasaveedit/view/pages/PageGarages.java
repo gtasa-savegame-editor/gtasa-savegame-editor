@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +56,7 @@ public class PageGarages extends Page {
         try {
             List<Garage> garageList = Garage.getGarages().stream()
                     .filter(Garage::isValid)
-                    .collect(Collectors.toUnmodifiableList());
+                    .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
             garage = garageList.get(i);
         } catch (IndexOutOfBoundsException e) {
             noop();

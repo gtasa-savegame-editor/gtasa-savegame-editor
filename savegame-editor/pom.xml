@@ -27,8 +27,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.15.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -361,9 +360,9 @@
             <version>5.19.1</version>
         </dependency>
         <dependency>
-            <groupId>com.github.weisj</groupId>
-            <artifactId>darklaf-core</artifactId>
-            <version>3.1.1</version>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.7.2</version>
         </dependency>
         <dependency>
             <groupId>com.github.spotbugs</groupId>
