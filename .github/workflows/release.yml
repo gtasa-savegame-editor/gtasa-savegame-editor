@@ -23,7 +23,7 @@ jobs:
           mkdir deploy
           cp -v savegame-editor/target/*-jar-with-dependencies.jar deploy/
           zip -r "GTA-SA-Savegame-Editor.jar.zip" deploy/
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: jar
           path: GTA-SA-Savegame-Editor.jar.zip
@@ -45,7 +45,7 @@ jobs:
           mkdir deploy
           cp -v savegame-editor/target/*.deb deploy/
           zip -r "GTA-SA-Savegame-Editor.deb.zip" deploy/
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: deb
           path: GTA-SA-Savegame-Editor.deb.zip
@@ -67,7 +67,7 @@ jobs:
           mkdir deploy
           cp -v savegame-editor/target/rpm/savegame-editor/RPMS/noarch/*.rpm deploy/
           zip -r "GTA-SA-Savegame-Editor.rpm.zip" deploy/
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: rpm
           path: GTA-SA-Savegame-Editor.rpm.zip
@@ -89,7 +89,7 @@ jobs:
           mkdir deploy
           cp -v savegame-editor/target/*.dmg deploy/
           zip -r "GTA-SA-Savegame-Editor.macOS.zip" deploy/
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dmg
           path: GTA-SA-Savegame-Editor.macOS.zip
@@ -116,7 +116,7 @@ jobs:
           mkdir deploy
           copy savegame-editor\target\*.exe deploy\
           Compress-Archive deploy GTA-SA-Savegame-Editor.Windows.zip
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: exe
           path: GTA-SA-Savegame-Editor.Windows.zip
