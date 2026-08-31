@@ -24,6 +24,9 @@ class FileLoad extends JMenuItem implements ActionListener {
     public void actionPerformed(ActionEvent ev) {
         // Create filechooser
         JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("San Andreas Save Files (*.b)", "b");
+
+        fileChooser.setFileFilter(fileFilter);
         fileChooser.setCurrentDirectory(FileSystem.getSavegameDirectory());
         fileChooser.setDialogTitle("Load file");
 
