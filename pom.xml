@@ -20,7 +20,7 @@
         <java.version>9</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <libsavegame.version>1.0.10</libsavegame.version>
+        <libsavegame.version>1.0.11</libsavegame.version>
     </properties>
 
     <modules>
